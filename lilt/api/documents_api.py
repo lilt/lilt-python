@@ -17,7 +17,7 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from pylilt.api_client import ApiClient
+from lilt.api_client import ApiClient
 
 
 class DocumentsApi(object):

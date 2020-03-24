@@ -1,4 +1,4 @@
-# pylilt.FilesApi
+# lilt.FilesApi
 
 All URIs are relative to *https://lilt.com/2*
 
@@ -19,21 +19,21 @@ Delete a File.  Example CURL command: ```   curl -X DELETE https://lilt.com/2/fi
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.FilesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.FilesApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique File identifier.
 
 try:
@@ -76,21 +76,21 @@ Retrieves one or more files available to your user. Files are not associated wit
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.FilesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.FilesApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique File identifier. (optional)
 
 try:
@@ -133,21 +133,21 @@ Upload a File in any of the formats [documented in our knowledge base](https://s
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.FilesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.FilesApi(lilt.ApiClient(configuration))
 body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
 name = 'name_example' # str | A file name.
 export_uri = 'export_uri_example' # str | A webhook endpoint that will export the translated document back to the source repository. (optional)

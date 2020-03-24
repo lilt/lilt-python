@@ -1,4 +1,4 @@
-# pylilt.MemoriesApi
+# lilt.MemoriesApi
 
 All URIs are relative to *https://lilt.com/2*
 
@@ -26,21 +26,21 @@ Create a new Memory. A Memory is a container that collects source/target sentenc
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 body = NULL # object | The Memory resource to create.
 
 try:
@@ -83,21 +83,21 @@ Delete a Memory.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique Memory identifier.
 
 try:
@@ -140,21 +140,21 @@ Retrieve a Memory. If you cannot access the Memory (401 error) please check perm
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 id = 56 # int | An optional Memory identifier. (optional)
 
 try:
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_memory_file**
-> object import_memory_file(body, id, name)
+> object import_memory_file(body, memory_id, name)
 
 File import for a Memory
 
@@ -197,28 +197,28 @@ Imports common translation memory or termbase file formats to a specific Lilt me
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
-id = 56 # int | A unique Memory identifier.
+memory_id = 56 # int | A unique Memory identifier.
 name = 'name_example' # str | Name of the TM or termbase file.
 
 try:
     # File import for a Memory
-    api_response = api_instance.import_memory_file(body, id, name)
+    api_response = api_instance.import_memory_file(body, memory_id, name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MemoriesApi->import_memory_file: %s\n" % e)
@@ -229,7 +229,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**str**](str.md)| The file contents to be uploaded. The entire POST body will be treated as the file. | 
- **id** | **int**| A unique Memory identifier. | 
+ **memory_id** | **int**| A unique Memory identifier. | 
  **name** | **str**| Name of the TM or termbase file. | 
 
 ### Return type
@@ -258,21 +258,21 @@ Perform a translation memory query.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique Memory identifier.
 query = 'query_example' # str | A source query.
 n = 56 # int | Maximum number of results to return. (optional)
@@ -319,21 +319,21 @@ Deletes segments in the Memory matching the `from_time`, `to_time` and `when` pa
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique Memory identifier.
 from_time = 56 # int | Unix time stamp (epoch, in seconds) of the start of the Memory section. (optional)
 to_time = 56 # int | Unix time stamp (epoch, in seconds) of the end of the Memory section. (optional)
@@ -382,21 +382,21 @@ Get all or part of a memory in TMX 1.4b format. If the `from_time` and/or `to_ti
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique Memory identifier.
 from_time = 56 # int | Unix time stamp (epoch, in seconds) of the start of the Memory section. (optional)
 to_time = 56 # int | Unix time stamp (epoch, in seconds) of the end of the Memory section. (optional)
@@ -445,21 +445,21 @@ Inserts a TM in TMX 1.4b format into the Memory. Request parameters should be pa
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
 id = 56 # int | A unique Memory identifier.
 name = 'name_example' # str | Name of the TMX file. (optional)
@@ -506,21 +506,21 @@ Updates the Memory with given TMX file. Request parameters should be passed as J
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 body = 'body_example' # str | The file contents to be uploaded. The entire PUT body will be treated as the file.
 id = 56 # int | A unique Memory identifier.
 from_time = 56 # int | Unix time stamp (epoch, in seconds) of the start of the Memory section. (optional)
@@ -571,21 +571,21 @@ Update a Memory.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.MemoriesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.MemoriesApi(lilt.ApiClient(configuration))
 body = NULL # object | The Memory resource to update.
 
 try:

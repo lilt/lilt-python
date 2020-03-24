@@ -17,7 +17,7 @@ import re  # noqa: F401
 # python 2 and python 3 compatibility library
 import six
 
-from pylilt.api_client import ApiClient
+from lilt.api_client import ApiClient
 
 
 class MemoriesApi(object):
@@ -317,18 +317,18 @@ class MemoriesApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def import_memory_file(self, body, id, name, **kwargs):  # noqa: E501
+    def import_memory_file(self, body, memory_id, name, **kwargs):  # noqa: E501
         """File import for a Memory  # noqa: E501
 
         Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm` and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example cURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.import_memory_file(body, id, name, async_req=True)
+        >>> thread = api.import_memory_file(body, memory_id, name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
-        :param int id: A unique Memory identifier. (required)
+        :param int memory_id: A unique Memory identifier. (required)
         :param str name: Name of the TM or termbase file. (required)
         :return: object
                  If the method is called asynchronously,
@@ -336,30 +336,30 @@ class MemoriesApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.import_memory_file_with_http_info(body, id, name, **kwargs)  # noqa: E501
+            return self.import_memory_file_with_http_info(body, memory_id, name, **kwargs)  # noqa: E501
         else:
-            (data) = self.import_memory_file_with_http_info(body, id, name, **kwargs)  # noqa: E501
+            (data) = self.import_memory_file_with_http_info(body, memory_id, name, **kwargs)  # noqa: E501
             return data
 
-    def import_memory_file_with_http_info(self, body, id, name, **kwargs):  # noqa: E501
+    def import_memory_file_with_http_info(self, body, memory_id, name, **kwargs):  # noqa: E501
         """File import for a Memory  # noqa: E501
 
         Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm` and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example cURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.import_memory_file_with_http_info(body, id, name, async_req=True)
+        >>> thread = api.import_memory_file_with_http_info(body, memory_id, name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
-        :param int id: A unique Memory identifier. (required)
+        :param int memory_id: A unique Memory identifier. (required)
         :param str name: Name of the TM or termbase file. (required)
         :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'id', 'name']  # noqa: E501
+        all_params = ['body', 'memory_id', 'name']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -378,10 +378,10 @@ class MemoriesApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `import_memory_file`")  # noqa: E501
-        # verify the required parameter 'id' is set
-        if ('id' not in params or
-                params['id'] is None):
-            raise ValueError("Missing the required parameter `id` when calling `import_memory_file`")  # noqa: E501
+        # verify the required parameter 'memory_id' is set
+        if ('memory_id' not in params or
+                params['memory_id'] is None):
+            raise ValueError("Missing the required parameter `memory_id` when calling `import_memory_file`")  # noqa: E501
         # verify the required parameter 'name' is set
         if ('name' not in params or
                 params['name'] is None):
@@ -394,8 +394,8 @@ class MemoriesApi(object):
         query_params = []
 
         header_params = {}
-        if 'id' in params:
-            header_params['id'] = params['id']  # noqa: E501
+        if 'memory_id' in params:
+            header_params['memory_id'] = params['memory_id']  # noqa: E501
         if 'name' in params:
             header_params['name'] = params['name']  # noqa: E501
 

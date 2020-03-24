@@ -1,4 +1,4 @@
-# pylilt.LexiconApi
+# lilt.LexiconApi
 
 All URIs are relative to *https://lilt.com/2*
 
@@ -18,21 +18,21 @@ Query the Lexicon. The Lexicon is an editable termbase / concordance that is int
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.LexiconApi(pylilt.ApiClient(configuration))
+api_instance = lilt.LexiconApi(lilt.ApiClient(configuration))
 memory_id = 56 # int | A unique Memory identifier.
 srclang = 'srclang_example' # str | An ISO 639-1 language code.
 trglang = 'trglang_example' # str | An ISO 639-1 language code.
@@ -83,21 +83,21 @@ Update the Lexicon (Termbase as displayed in the ui) with a new term. The maximu
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.LexiconApi(pylilt.ApiClient(configuration))
+api_instance = lilt.LexiconApi(lilt.ApiClient(configuration))
 body = NULL # object | The lexicon entry.
 
 try:

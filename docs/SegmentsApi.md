@@ -1,4 +1,4 @@
-# pylilt.SegmentsApi
+# lilt.SegmentsApi
 
 All URIs are relative to *https://lilt.com/2*
 
@@ -21,21 +21,21 @@ Create a Segment and add it to a Memory. A Segment is a source/target pair that 
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.SegmentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.SegmentsApi(lilt.ApiClient(configuration))
 body = NULL # object | The Segment resource to create.
 
 To add a Segment to a Memory, include the `memory_id` and `target` parameters.
@@ -90,21 +90,21 @@ Delete a Segment from memory. This will not delete a segment from a document.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.SegmentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.SegmentsApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique Segment identifier.
 
 try:
@@ -147,21 +147,21 @@ Retrieve a Segment.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.SegmentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.SegmentsApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique Segment identifier.
 
 try:
@@ -204,21 +204,21 @@ Project tags for a segment. The `source_tagged` string contains one or more SGML
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.SegmentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.SegmentsApi(lilt.ApiClient(configuration))
 source_tagged = 'source_tagged_example' # str | The tagged source string.
 target = 'target_example' # str | The target string.
 memory_id = 56 # int | A unique Memory identifier.
@@ -265,21 +265,21 @@ Update a Segment in memory. The Memory will be updated with the new target strin
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.SegmentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.SegmentsApi(lilt.ApiClient(configuration))
 body = NULL # object | The Segment resource to update.
 
 try:

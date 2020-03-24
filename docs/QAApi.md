@@ -1,4 +1,4 @@
-# pylilt.QAApi
+# lilt.QAApi
 
 All URIs are relative to *https://lilt.com/2*
 
@@ -17,21 +17,21 @@ Perform QA checks on a target string. Optionally, you can specify a source strin
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.QAApi(pylilt.ApiClient(configuration))
+api_instance = lilt.QAApi(lilt.ApiClient(configuration))
 target = 'target_example' # str | A target string to be checked.
 trglang = 'trglang_example' # str | An ISO 639-1 language code.
 source = 'source_example' # str | An optional source string. (optional)

@@ -1,4 +1,4 @@
-# pylilt.DocumentsApi
+# lilt.DocumentsApi
 
 All URIs are relative to *https://lilt.com/2*
 
@@ -24,21 +24,21 @@ Assign and unassign a Document for translation and/or review.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.DocumentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.DocumentsApi(lilt.ApiClient(configuration))
 body = NULL # object | Attributes of the Document resource to assign.
 
 try:
@@ -81,21 +81,21 @@ Create a new Document. A Document is a collection of one or more Segments. Docum
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.DocumentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.DocumentsApi(lilt.ApiClient(configuration))
 body = NULL # object | The Document resource to create. (optional)
 
 try:
@@ -138,21 +138,21 @@ Delete a Document.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.DocumentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.DocumentsApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique Document identifier.
 
 try:
@@ -195,21 +195,21 @@ Export a Document that has been translated in the Lilt web application. Any Docu
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.DocumentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.DocumentsApi(lilt.ApiClient(configuration))
 id = 56 # int | An unique Document identifier.
 is_xliff = true # bool | Download the document in XLIFF 1.2 format. (optional)
 
@@ -254,21 +254,21 @@ List a Document.  The listing will include the pretranslation status for the doc
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.DocumentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.DocumentsApi(lilt.ApiClient(configuration))
 id = 56 # int | A unique Document identifier.
 with_segments = true # bool | Flag indicating whether full segment information should be returned. (optional)
 
@@ -313,21 +313,21 @@ Initiate pretranslation of a list of Documents. This request will mark document(
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.DocumentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.DocumentsApi(lilt.ApiClient(configuration))
 body = NULL # object | A list of unique Document identifiers.
 case_sensitive = true # bool | Optional for using case matching against TM hits. (optional)
 auto_accept = true # bool | Optional parameter for auto-accepting 100% TM hits. (optional)
@@ -374,21 +374,21 @@ Update a Document.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.DocumentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.DocumentsApi(lilt.ApiClient(configuration))
 body = NULL # object | The Document resource to update.
 
 try:
@@ -431,21 +431,21 @@ Create a Document from a file in any of the formats [documented in our knowledge
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.DocumentsApi(pylilt.ApiClient(configuration))
+api_instance = lilt.DocumentsApi(lilt.ApiClient(configuration))
 body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be
 treated as the file.
 

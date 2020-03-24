@@ -1,4 +1,4 @@
-# pylilt.LanguagesApi
+# lilt.LanguagesApi
 
 All URIs are relative to *https://lilt.com/2*
 
@@ -17,21 +17,21 @@ Get a list of supported languages.
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.LanguagesApi(pylilt.ApiClient(configuration))
+api_instance = lilt.LanguagesApi(lilt.ApiClient(configuration))
 
 try:
     # Retrieve supported languages

@@ -1,4 +1,4 @@
-# pylilt.TranslateApi
+# lilt.TranslateApi
 
 All URIs are relative to *https://lilt.com/2*
 
@@ -18,21 +18,21 @@ Register a source string for interactive translation. The `source_hash` value th
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.TranslateApi(pylilt.ApiClient(configuration))
+api_instance = lilt.TranslateApi(lilt.ApiClient(configuration))
 source = 'source_example' # str | A source string to be registered.
 srclang = 'srclang_example' # str | An ISO 639-1 language code.
 trglang = 'trglang_example' # str | An ISO 639-1 language code.
@@ -79,21 +79,21 @@ Translate a source string.  Setting the `rich` parameter to `true` will change t
 ```python
 from __future__ import print_function
 import time
-import pylilt
-from pylilt.rest import ApiException
+import lilt
+from lilt.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: ApiKeyAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.api_key['key'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'# Configure HTTP basic authorization: BasicAuth
-configuration = pylilt.Configuration()
+configuration = lilt.Configuration()
 configuration.username = 'YOUR_USERNAME'
 configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
-api_instance = pylilt.TranslateApi(pylilt.ApiClient(configuration))
+api_instance = lilt.TranslateApi(lilt.ApiClient(configuration))
 memory_id = 56 # int | A unique Memory identifier.
 source = 'source_example' # str | The source text to be translated. (optional)
 source_hash = 56 # int | A source hash code. (optional)
