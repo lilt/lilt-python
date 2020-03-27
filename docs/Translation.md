@@ -1,5 +1,6 @@
 # Translation
 
+A machine translation (MT) or a translation memory (TM) match of a source segment.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -13,4 +14,5 @@ Name | Type | Description | Notes
 **target_words** | **list[str]** | A list of target words corresponding with the same dimension as  &#x60;targetDelimiters&#x60;. The target string can be constructed by prefixing each word with its corresponding value in &#x60;targetDelimiters&#x60;, and then concatenating the words.  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 

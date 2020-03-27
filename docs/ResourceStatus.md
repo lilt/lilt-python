@@ -1,5 +1,6 @@
 # ResourceStatus
 
+The status of a resource working on a Project. 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -18,4 +19,5 @@ Name | Type | Description | Notes
 **num_segments_reviewed** | **int** | The number of source segments reviewed. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 

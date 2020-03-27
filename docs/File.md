@@ -1,5 +1,6 @@
 # File
 
+A File is an unprocessed source file that can later be added to a project.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -11,4 +12,5 @@ Name | Type | Description | Notes
 **updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 

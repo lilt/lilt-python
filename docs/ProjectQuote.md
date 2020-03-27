@@ -1,5 +1,6 @@
 # ProjectQuote
 
+Quoting information for a Project. 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -12,4 +13,5 @@ Name | Type | Description | Notes
 **resources** | [**list[MatchBand]**](MatchBand.md) | A list of MatchBand objects that represent translation memory leverage statistics. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 
