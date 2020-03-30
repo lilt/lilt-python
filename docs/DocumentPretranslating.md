@@ -1,5 +1,6 @@
 # DocumentPretranslating
 
+Document object for which pretranslation was requested. 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -9,7 +10,8 @@ Name | Type | Description | Notes
 **import_error_message** | **str** | Indicates there was an error importing the document. | [optional] 
 **is_processing** | **bool** | Indicates the document is being processed. | [optional] 
 **is_pretranslating** | **bool** | Indicates the document is being pretranslated. | [optional] 
-**status** | **object** | A status object indicating the pretranslation status. | [optional] 
+**status** | [**DocumentPretranslatingStatus**](DocumentPretranslatingStatus.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 

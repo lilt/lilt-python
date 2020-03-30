@@ -1,5 +1,6 @@
 # ProjectStatus
 
+The status of a Project. 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
@@ -14,4 +15,5 @@ Name | Type | Description | Notes
 **resources** | [**list[ResourceStatus]**](ResourceStatus.md) | A list of ResourceStatus objects that represent per-resource statistics. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 
