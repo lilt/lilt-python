@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.lexicon_entry_source_span import LexiconEntrySourceSpan  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.lexicon_entry_source_span import LexiconEntrySourceSpan  # noqa: E501
+from lilt.rest import ApiException
 
 class TestLexiconEntrySourceSpan(unittest.TestCase):
     """LexiconEntrySourceSpan unit test stubs"""
@@ -34,7 +34,7 @@ class TestLexiconEntrySourceSpan(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.lexicon_entry_source_span.LexiconEntrySourceSpan()  # noqa: E501
+        # model = lilt.models.lexicon_entry_source_span.LexiconEntrySourceSpan()  # noqa: E501
         if include_optional :
             return LexiconEntrySourceSpan(
                 start = 1.337, 

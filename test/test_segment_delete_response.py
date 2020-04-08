@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.segment_delete_response import SegmentDeleteResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.segment_delete_response import SegmentDeleteResponse  # noqa: E501
+from lilt.rest import ApiException
 
 class TestSegmentDeleteResponse(unittest.TestCase):
     """SegmentDeleteResponse unit test stubs"""
@@ -34,7 +34,7 @@ class TestSegmentDeleteResponse(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.segment_delete_response.SegmentDeleteResponse()  # noqa: E501
+        # model = lilt.models.segment_delete_response.SegmentDeleteResponse()  # noqa: E501
         if include_optional :
             return SegmentDeleteResponse(
                 id = 46530, 

@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
-from openapi_client.api.translate_api import TranslateApi  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.api.translate_api import TranslateApi  # noqa: E501
+from lilt.rest import ApiException
 
 
 class TestTranslateApi(unittest.TestCase):
     """TranslateApi unit test stubs"""
 
     def setUp(self):
-        self.api = openapi_client.api.translate_api.TranslateApi()  # noqa: E501
+        self.api = lilt.api.translate_api.TranslateApi()  # noqa: E501
 
     def tearDown(self):
         pass

@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
-from openapi_client.api.files_api import FilesApi  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.api.files_api import FilesApi  # noqa: E501
+from lilt.rest import ApiException
 
 
 class TestFilesApi(unittest.TestCase):
     """FilesApi unit test stubs"""
 
     def setUp(self):
-        self.api = openapi_client.api.files_api.FilesApi()  # noqa: E501
+        self.api = lilt.api.files_api.FilesApi()  # noqa: E501
 
     def tearDown(self):
         pass

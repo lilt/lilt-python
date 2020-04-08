@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.document_with_segments import DocumentWithSegments  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.document_with_segments import DocumentWithSegments  # noqa: E501
+from lilt.rest import ApiException
 
 class TestDocumentWithSegments(unittest.TestCase):
     """DocumentWithSegments unit test stubs"""
@@ -34,7 +34,7 @@ class TestDocumentWithSegments(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.document_with_segments.DocumentWithSegments()  # noqa: E501
+        # model = lilt.models.document_with_segments.DocumentWithSegments()  # noqa: E501
         if include_optional :
             return DocumentWithSegments(
                 id = 46530, 
@@ -55,7 +55,7 @@ class TestDocumentWithSegments(unittest.TestCase):
                 created_at = 1489147692, 
                 updated_at = 1489147692, 
                 segments = [
-                    openapi_client.models.segment.Segment(
+                    lilt.models.segment.Segment(
                         id = 84480010, 
                         created_at = 1489147692, 
                         updated_at = 1489147692, 

@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.project_quote import ProjectQuote  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.project_quote import ProjectQuote  # noqa: E501
+from lilt.rest import ApiException
 
 class TestProjectQuote(unittest.TestCase):
     """ProjectQuote unit test stubs"""
@@ -34,7 +34,7 @@ class TestProjectQuote(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.project_quote.ProjectQuote()  # noqa: E501
+        # model = lilt.models.project_quote.ProjectQuote()  # noqa: E501
         if include_optional :
             return ProjectQuote(
                 id = 21902, 
@@ -44,7 +44,7 @@ class TestProjectQuote(unittest.TestCase):
                 num_words_repetition = 12, 
                 num_segments_repetition = 2980000, 
                 resources = [
-                    openapi_client.models.match_band.MatchBand(
+                    lilt.models.match_band.MatchBand(
                         minimum_score = 94, 
                         maximum_score = 85, 
                         num_source_words = 151, 

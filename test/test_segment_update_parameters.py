@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.segment_update_parameters import SegmentUpdateParameters  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.segment_update_parameters import SegmentUpdateParameters  # noqa: E501
+from lilt.rest import ApiException
 
 class TestSegmentUpdateParameters(unittest.TestCase):
     """SegmentUpdateParameters unit test stubs"""
@@ -34,7 +34,7 @@ class TestSegmentUpdateParameters(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.segment_update_parameters.SegmentUpdateParameters()  # noqa: E501
+        # model = lilt.models.segment_update_parameters.SegmentUpdateParameters()  # noqa: E501
         if include_optional :
             return SegmentUpdateParameters(
                 id = 84480010, 

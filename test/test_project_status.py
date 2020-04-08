@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.project_status import ProjectStatus  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.project_status import ProjectStatus  # noqa: E501
+from lilt.rest import ApiException
 
 class TestProjectStatus(unittest.TestCase):
     """ProjectStatus unit test stubs"""
@@ -34,7 +34,7 @@ class TestProjectStatus(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.project_status.ProjectStatus()  # noqa: E501
+        # model = lilt.models.project_status.ProjectStatus()  # noqa: E501
         if include_optional :
             return ProjectStatus(
                 id = 21902, 
@@ -46,7 +46,7 @@ class TestProjectStatus(unittest.TestCase):
                 time_elapsed_research = 912348, 
                 time_elapsed_review = 66521, 
                 resources = [
-                    openapi_client.models.resource_status.ResourceStatus(
+                    lilt.models.resource_status.ResourceStatus(
                         email = 'joe.strummer@lilt.com', 
                         name = 'Joe Strummer', 
                         num_words_confirmed = 151, 

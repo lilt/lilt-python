@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.qa_rule_matches import QARuleMatches  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.qa_rule_matches import QARuleMatches  # noqa: E501
+from lilt.rest import ApiException
 
 class TestQARuleMatches(unittest.TestCase):
     """QARuleMatches unit test stubs"""
@@ -34,21 +34,21 @@ class TestQARuleMatches(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.qa_rule_matches.QARuleMatches()  # noqa: E501
+        # model = lilt.models.qa_rule_matches.QARuleMatches()  # noqa: E501
         if include_optional :
             return QARuleMatches(
                 matches = [
-                    openapi_client.models.qa_rule_matches_matches.QARuleMatches_matches(
-                        context = openapi_client.models.qa_rule_matches_context.QARuleMatches_context(
+                    lilt.models.qa_rule_matches_matches.QARuleMatches_matches(
+                        context = lilt.models.qa_rule_matches_context.QARuleMatches_context(
                             length = 7, 
                             offset = 19, 
                             text = 'This segment has a speling mistake', ), 
                         length = 7, 
                         message = 'Possible spelling mistake found', 
                         offset = 19, 
-                        replacements = [{value=spelling}, {value=spewing}, {value=spieling}], 
-                        rule = openapi_client.models.qa_rule_matches_rule.QARuleMatches_rule(
-                            category = openapi_client.models.qa_rule_matches_rule_category.QARuleMatches_rule_category(
+                        replacements = [], 
+                        rule = lilt.models.qa_rule_matches_rule.QARuleMatches_rule(
+                            category = lilt.models.qa_rule_matches_rule_category.QARuleMatches_rule_category(
                                 id = 'TYPOS', 
                                 name = 'Possible Typo', ), 
                             description = 'Possible spelling mistake', 
@@ -65,8 +65,8 @@ class TestQARuleMatches(unittest.TestCase):
 
     def testQARuleMatches(self):
         """Test QARuleMatches"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        # inst_req_only = self.make_instance(include_optional=False)
+        # inst_req_and_optional = self.make_instance(include_optional=True)
 
 
 if __name__ == '__main__':

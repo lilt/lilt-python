@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.translation_list import TranslationList  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.translation_list import TranslationList  # noqa: E501
+from lilt.rest import ApiException
 
 class TestTranslationList(unittest.TestCase):
     """TranslationList unit test stubs"""
@@ -34,15 +34,13 @@ class TestTranslationList(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.translation_list.TranslationList()  # noqa: E501
+        # model = lilt.models.translation_list.TranslationList()  # noqa: E501
         if include_optional :
             return TranslationList(
                 untokenized_source = 'Authentication not required.', 
                 tokenized_source = 'Authentication not required .', 
-                source_delimiters = [,  ,  , , ], 
-                translation = [
-                    [{score=3.4936864E-8, align=0-0 1-1 2-2 3-3, targetDelimiters=[,  ,  , , ], targetWords=[Authentifizierung, nicht, erforderlich, .], target=Authentifizierung nicht erforderlich ., targetWithTags=Authentifizierung nicht erforderlich., isTMMatch=false, provenance=0 0 0 0}]
-                    ]
+                source_delimiters = [], 
+                translation = []
             )
         else :
             return TranslationList(

@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.project_delete_response import ProjectDeleteResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.project_delete_response import ProjectDeleteResponse  # noqa: E501
+from lilt.rest import ApiException
 
 class TestProjectDeleteResponse(unittest.TestCase):
     """ProjectDeleteResponse unit test stubs"""
@@ -34,7 +34,7 @@ class TestProjectDeleteResponse(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.project_delete_response.ProjectDeleteResponse()  # noqa: E501
+        # model = lilt.models.project_delete_response.ProjectDeleteResponse()  # noqa: E501
         if include_optional :
             return ProjectDeleteResponse(
                 id = 46530, 
