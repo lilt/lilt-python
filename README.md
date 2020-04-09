@@ -1,3 +1,4 @@
+![Pytest](https://github.com/lilt/lilt-python/workflows/Pytest/badge.svg)
 # lilt-python
 The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:
   * Training of and translating with interactive, adaptive machine translation
