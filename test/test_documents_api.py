@@ -14,7 +14,10 @@
 from __future__ import absolute_import
 
 import unittest
-from unittest.mock import Mock
+
+# from unittest.mock import Mock
+from unittest.mock import Mock, patch
+import json
 
 import lilt
 from lilt.api.documents_api import DocumentsApi  # noqa: E501
@@ -30,14 +33,33 @@ class TestDocumentsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_assign_document(self):
+    @patch.object(lilt.ApiClient, "request")
+    def test_create_document(self, mock_request):
+        """Test case for create_document
+
+        Create a Document  # noqa: E501
+        """
+        mock_response = Mock()
+        mock_response.data = json.dumps({"id": 46530})
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
+
+        body = {"name": "Introduction.xliff", "project_id": 23618}
+        r = doc_api.create_document(body=body)
+        assert r.id == 46530
+
+    @patch.object(lilt.ApiClient, "request")
+    def test_assign_document(self, mock_request):
         """Test case for assign_document
 
         Assign a Document  # noqa: E501
         """
-        mock_client = Mock()
-        mock_client.call_api.return_value = {"id": 46530}
-        doc_api = DocumentsApi(mock_client)
+        mock_response = Mock()
+        mock_response.data = json.dumps({"id": 46530})
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
         body = {
             "id": 46530,
@@ -47,38 +69,27 @@ class TestDocumentsApi(unittest.TestCase):
             "due_date": "2019-10-16T22:12:34.000Z",
         }
 
-        assert doc_api.assign_document(body) == {"id": 46530}
-        assert mock_client.call_api.call_count == 1
+        assignment_response = doc_api.assign_document(body)
+        assert assignment_response.id == 46530
 
-    def test_create_document(self):
-        """Test case for create_document
-
-        Create a Document  # noqa: E501
-        """
-        mock_client = Mock()
-        mock_client.call_api.return_value = {"id": 46530}
-        doc_api = DocumentsApi(mock_client)
-
-        body = {"name": "Introduction.xliff", "project_id": 23618}
-        r = doc_api.create_document(body=body)
-        assert r == {"id": 46530}
-        assert mock_client.call_api.call_count == 1
-
-    def test_delete_document(self):
+    @patch.object(lilt.ApiClient, "request")
+    def test_delete_document(self, mock_request):
         """Test case for delete_document
 
         Delete a Document  # noqa: E501
         """
-        mock_client = Mock()
-        vR = {"id": 46530, "deleted": True}
-        mock_client.call_api.return_value = vR
-        doc_api = DocumentsApi(mock_client)
+        mock_response = Mock()
+        mock_response.data = json.dumps({"id": 46530, "deleted": True})
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
         r = doc_api.delete_document(46530)
-        assert r == vR
-        assert mock_client.call_api.call_count == 1
+        assert r.id == 46530
+        assert r.deleted == True
 
-    def test_download_file(self):
+    @patch.object(lilt.ApiClient, "request")
+    def test_download_file(self, mock_request):
         """Test case for download_file
 
         Download a File  # noqa: E501
@@ -92,86 +103,80 @@ class TestDocumentsApi(unittest.TestCase):
         assert r == vR
         assert mock_client.call_api.call_count == 1
 
-    def test_get_document(self):
+    @patch.object(lilt.ApiClient, "request")
+    def test_get_document(self, mock_request):
         """Test case for get_document
 
         Retrieve a Document  # noqa: E501
         """
-        mock_client = Mock()
-        vR = {
-            "id": 46530,
-            "project_id": 287,
-            "srclang": "en",
-            "trglang": "de",
-            "name": "Introduction.xliff",
-        }
-        mock_client.call_api.return_value = vR
-        doc_api = DocumentsApi(mock_client)
+        mock_response = Mock()
+        data = None
+        with open("test_resources/get_documents.json") as f:
+            data = json.load(f)
+        mock_response.data = json.dumps(data)
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
         r = doc_api.get_document(46530)
-        assert r == vR
-        assert mock_client.call_api.call_count == 1
+        assert r.id == 46530
 
-    def test_pretranslate_document(self):
+    @patch.object(lilt.ApiClient, "request")
+    def test_pretranslate_document(self,mock_request):
         """Test case for pretranslate_document
 
         Pretranslate a Document  # noqa: E501
         """
-        mock_client = Mock()
-        vR = {
-            "id": [123, 234],
-            "is_pretranslating": True,
-            "documents": [
-                {
-                    "id": 123,
-                    "import_in_progress": False,
-                    "import_succeeded": True,
-                    "import_error_message": "",
-                    "is_processing": False,
-                    "is_pretranslating": True,
-                    "status": {"pretranslation": "running"},
-                }
-            ],
-        }
-        mock_client.call_api.return_value = vR
-        doc_api = DocumentsApi(mock_client)
+        mock_response = Mock()
+        data = None
+        with open("test_resources/post_translate.json") as f:
+            data = json.load(f)
+        mock_response.data = json.dumps(data)
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
         body = {"id": [123, 234]}
-
         r = doc_api.pretranslate_document(body=body)
-        assert r == vR
-        assert mock_client.call_api.call_count == 1
+        assert r.is_pretranslating == True
 
-    def test_update_document(self):
+    @patch.object(lilt.ApiClient, "request")
+    def test_update_document(self, mock_request):
         """Test case for update_document
 
         Update a Document  # noqa: E501
         """
-        mock_client = Mock()
-        vR = {"id": 46530}
-        mock_client.call_api.return_value = vR
-        doc_api = DocumentsApi(mock_client)
+        mock_response = Mock()
+        data = None
+        with open("test_resources/put_documents.json") as f:
+            data = json.load(f)
+        mock_response.data = json.dumps(data)
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
         body = {"id": 46530, "name": "Introduction to our App"}
-
         r = doc_api.update_document(body)
-        assert r == vR
-        assert mock_client.call_api.call_count == 1
+        assert r.id == 46530
 
-    def test_upload_document_file(self):
+    @patch.object(lilt.ApiClient, "request")
+    def test_upload_document_file(self, mock_request):
         """Test case for upload_document_file
 
         Upload a File  # noqa: E501
         """
-        mock_client = Mock()
-        vR = {"id": 46530, "project_id": 287}
-        mock_client.call_api.return_value = vR
-        doc_api = DocumentsApi(mock_client)
+        mock_response = Mock()
+        data = None
+        with open("test_resources/post_documents.json") as f:
+            data = json.load(f)
+        mock_response.data = json.dumps(data)
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
         body = "file"
         r = doc_api.upload_document_file("test", 4234, body)
-        assert r == vR
-        assert mock_client.call_api.call_count == 1
+        assert r.id == 46530
 
 
 if __name__ == "__main__":
