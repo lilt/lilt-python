@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.segment import Segment  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.segment import Segment  # noqa: E501
+from lilt.rest import ApiException
 
 class TestSegment(unittest.TestCase):
     """Segment unit test stubs"""
@@ -34,7 +34,7 @@ class TestSegment(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.segment.Segment()  # noqa: E501
+        # model = lilt.models.segment.Segment()  # noqa: E501
         if include_optional :
             return Segment(
                 id = 84480010, 

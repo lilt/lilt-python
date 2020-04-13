@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
-from openapi_client.api.lexicon_api import LexiconApi  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.api.lexicon_api import LexiconApi  # noqa: E501
+from lilt.rest import ApiException
 
 
 class TestLexiconApi(unittest.TestCase):
     """LexiconApi unit test stubs"""
 
     def setUp(self):
-        self.api = openapi_client.api.lexicon_api.LexiconApi()  # noqa: E501
+        self.api = lilt.api.lexicon_api.LexiconApi()  # noqa: E501
 
     def tearDown(self):
         pass

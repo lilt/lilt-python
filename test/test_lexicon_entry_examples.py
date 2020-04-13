@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.lexicon_entry_examples import LexiconEntryExamples  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.lexicon_entry_examples import LexiconEntryExamples  # noqa: E501
+from lilt.rest import ApiException
 
 class TestLexiconEntryExamples(unittest.TestCase):
     """LexiconEntryExamples unit test stubs"""
@@ -34,7 +34,7 @@ class TestLexiconEntryExamples(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.lexicon_entry_examples.LexiconEntryExamples()  # noqa: E501
+        # model = lilt.models.lexicon_entry_examples.LexiconEntryExamples()  # noqa: E501
         if include_optional :
             return LexiconEntryExamples(
                 source = '0', 
@@ -44,15 +44,7 @@ class TestLexiconEntryExamples(unittest.TestCase):
                 target = '0', 
                 target_delimiters = [
                     '0'
-                    ], 
-                source_span = openapi_client.models.lexicon_entry_source_span.LexiconEntry_sourceSpan(
-                    start = 1.337, 
-                    length = 1.337, ), 
-                target_span = openapi_client.models.lexicon_entry_target_span.LexiconEntry_targetSpan(
-                    start = 1.337, 
-                    length = 1.337, ), 
-                similarity = 1.337, 
-                memory_id = 1.337
+                    ]
             )
         else :
             return LexiconEntryExamples(

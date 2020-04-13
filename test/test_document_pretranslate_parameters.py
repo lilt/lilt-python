@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.document_pretranslate_parameters import DocumentPretranslateParameters  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.document_pretranslate_parameters import DocumentPretranslateParameters  # noqa: E501
+from lilt.rest import ApiException
 
 class TestDocumentPretranslateParameters(unittest.TestCase):
     """DocumentPretranslateParameters unit test stubs"""
@@ -34,7 +34,7 @@ class TestDocumentPretranslateParameters(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.document_pretranslate_parameters.DocumentPretranslateParameters()  # noqa: E501
+        # model = lilt.models.document_pretranslate_parameters.DocumentPretranslateParameters()  # noqa: E501
         if include_optional :
             return DocumentPretranslateParameters(
                 id = [123, 234]

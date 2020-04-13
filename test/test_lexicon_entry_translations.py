@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.lexicon_entry_translations import LexiconEntryTranslations  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.lexicon_entry_translations import LexiconEntryTranslations  # noqa: E501
+from lilt.rest import ApiException
 
 class TestLexiconEntryTranslations(unittest.TestCase):
     """LexiconEntryTranslations unit test stubs"""
@@ -34,7 +34,7 @@ class TestLexiconEntryTranslations(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.lexicon_entry_translations.LexiconEntryTranslations()  # noqa: E501
+        # model = lilt.models.lexicon_entry_translations.LexiconEntryTranslations()  # noqa: E501
         if include_optional :
             return LexiconEntryTranslations(
                 source = '0', 

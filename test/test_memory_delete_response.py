@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.memory_delete_response import MemoryDeleteResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.memory_delete_response import MemoryDeleteResponse  # noqa: E501
+from lilt.rest import ApiException
 
 class TestMemoryDeleteResponse(unittest.TestCase):
     """MemoryDeleteResponse unit test stubs"""
@@ -34,7 +34,7 @@ class TestMemoryDeleteResponse(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.memory_delete_response.MemoryDeleteResponse()  # noqa: E501
+        # model = lilt.models.memory_delete_response.MemoryDeleteResponse()  # noqa: E501
         if include_optional :
             return MemoryDeleteResponse(
                 id = 46530, 

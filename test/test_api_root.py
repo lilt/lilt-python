@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.api_root import ApiRoot  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.api_root import ApiRoot  # noqa: E501
+from lilt.rest import ApiException
 
 class TestApiRoot(unittest.TestCase):
     """ApiRoot unit test stubs"""
@@ -34,7 +34,7 @@ class TestApiRoot(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.api_root.ApiRoot()  # noqa: E501
+        # model = lilt.models.api_root.ApiRoot()  # noqa: E501
         if include_optional :
             return ApiRoot(
                 api_name = 'Lilt REST API v2', 

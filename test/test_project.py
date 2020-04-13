@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.project import Project  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.project import Project  # noqa: E501
+from lilt.rest import ApiException
 
 class TestProject(unittest.TestCase):
     """Project unit test stubs"""
@@ -34,7 +34,7 @@ class TestProject(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.project.Project()  # noqa: E501
+        # model = lilt.models.project.Project()  # noqa: E501
         if include_optional :
             return Project(
                 id = 448, 
@@ -51,7 +51,7 @@ class TestProject(unittest.TestCase):
                 created_at = 1489147692, 
                 updated_at = 1489147692, 
                 document = [
-                    openapi_client.models.document_without_segments.DocumentWithoutSegments(
+                    lilt.models.document_without_segments.DocumentWithoutSegments(
                         id = 46530, 
                         project_id = 287, 
                         srclang = 'en', 

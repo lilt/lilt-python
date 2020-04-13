@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.languages_response import LanguagesResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.languages_response import LanguagesResponse  # noqa: E501
+from lilt.rest import ApiException
 
 class TestLanguagesResponse(unittest.TestCase):
     """LanguagesResponse unit test stubs"""
@@ -34,10 +34,10 @@ class TestLanguagesResponse(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.languages_response.LanguagesResponse()  # noqa: E501
+        # model = lilt.models.languages_response.LanguagesResponse()  # noqa: E501
         if include_optional :
             return LanguagesResponse(
-                source_to_target = {"en":{"da":true,"de":true,"fr":true,"...":"..."},"...":"..."}, 
+                source_to_target = {"en":{"da":True,"de":True,"fr":True,"...":"..."},"...":"..."}, 
                 code_to_name = {"aa":"Afar","ab":"Abkhazian","af":"Afrikaans","...":"..."}
             )
         else :

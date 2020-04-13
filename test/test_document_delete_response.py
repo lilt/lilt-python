@@ -16,9 +16,9 @@ from __future__ import absolute_import
 import unittest
 import datetime
 
-import openapi_client
-from openapi_client.models.document_delete_response import DocumentDeleteResponse  # noqa: E501
-from openapi_client.rest import ApiException
+import lilt
+from lilt.models.document_delete_response import DocumentDeleteResponse  # noqa: E501
+from lilt.rest import ApiException
 
 class TestDocumentDeleteResponse(unittest.TestCase):
     """DocumentDeleteResponse unit test stubs"""
@@ -34,7 +34,7 @@ class TestDocumentDeleteResponse(unittest.TestCase):
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = openapi_client.models.document_delete_response.DocumentDeleteResponse()  # noqa: E501
+        # model = lilt.models.document_delete_response.DocumentDeleteResponse()  # noqa: E501
         if include_optional :
             return DocumentDeleteResponse(
                 id = 46530, 

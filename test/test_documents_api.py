@@ -15,76 +15,169 @@ from __future__ import absolute_import
 
 import unittest
 
-import openapi_client
-from openapi_client.api.documents_api import DocumentsApi  # noqa: E501
-from openapi_client.rest import ApiException
+# from unittest.mock import Mock
+from unittest.mock import Mock, patch
+import json
+
+import lilt
+from lilt.api.documents_api import DocumentsApi  # noqa: E501
+from lilt.rest import ApiException
 
 
 class TestDocumentsApi(unittest.TestCase):
     """DocumentsApi unit test stubs"""
 
     def setUp(self):
-        self.api = openapi_client.api.documents_api.DocumentsApi()  # noqa: E501
+        self.api = lilt.api.documents_api.DocumentsApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def test_assign_document(self):
-        """Test case for assign_document
-
-        Assign a Document  # noqa: E501
-        """
-        pass
-
-    def test_create_document(self):
+    @patch.object(lilt.ApiClient, "request")
+    def test_create_document(self, mock_request):
         """Test case for create_document
 
         Create a Document  # noqa: E501
         """
-        pass
+        mock_response = Mock()
+        mock_response.data = json.dumps({"id": 46530})
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
-    def test_delete_document(self):
+        body = {"name": "Introduction.xliff", "project_id": 23618}
+        r = doc_api.create_document(body=body)
+        assert r.id == 46530
+
+    @patch.object(lilt.ApiClient, "request")
+    def test_assign_document(self, mock_request):
+        """Test case for assign_document
+
+        Assign a Document  # noqa: E501
+        """
+        mock_response = Mock()
+        mock_response.data = json.dumps({"id": 46530})
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
+
+        body = {
+            "id": 46530,
+            "email": "user@email.com",
+            "is_translator": True,
+            "is_reviewer": False,
+            "due_date": "2019-10-16T22:12:34.000Z",
+        }
+
+        assignment_response = doc_api.assign_document(body)
+        assert assignment_response.id == 46530
+
+    @patch.object(lilt.ApiClient, "request")
+    def test_delete_document(self, mock_request):
         """Test case for delete_document
 
         Delete a Document  # noqa: E501
         """
-        pass
+        mock_response = Mock()
+        mock_response.data = json.dumps({"id": 46530, "deleted": True})
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
-    def test_download_file(self):
+        r = doc_api.delete_document(46530)
+        assert r.id == 46530
+        assert r.deleted == True
+
+    @patch.object(lilt.ApiClient, "request")
+    def test_download_file(self, mock_request):
         """Test case for download_file
 
         Download a File  # noqa: E501
         """
-        pass
+        mock_client = Mock()
+        vR = "file"
+        mock_client.call_api.return_value = vR
+        doc_api = DocumentsApi(mock_client)
 
-    def test_get_document(self):
+        r = doc_api.download_file(46530)
+        assert r == vR
+        assert mock_client.call_api.call_count == 1
+
+    @patch.object(lilt.ApiClient, "request")
+    def test_get_document(self, mock_request):
         """Test case for get_document
 
         Retrieve a Document  # noqa: E501
         """
-        pass
+        mock_response = Mock()
+        data = None
+        with open("test_resources/get_documents.json") as f:
+            data = json.load(f)
+        mock_response.data = json.dumps(data)
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
-    def test_pretranslate_document(self):
+        r = doc_api.get_document(46530)
+        assert r.id == 46530
+
+    @patch.object(lilt.ApiClient, "request")
+    def test_pretranslate_document(self,mock_request):
         """Test case for pretranslate_document
 
         Pretranslate a Document  # noqa: E501
         """
-        pass
+        mock_response = Mock()
+        data = None
+        with open("test_resources/post_translate.json") as f:
+            data = json.load(f)
+        mock_response.data = json.dumps(data)
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
-    def test_update_document(self):
+        body = {"id": [123, 234]}
+        r = doc_api.pretranslate_document(body=body)
+        assert r.is_pretranslating == True
+
+    @patch.object(lilt.ApiClient, "request")
+    def test_update_document(self, mock_request):
         """Test case for update_document
 
         Update a Document  # noqa: E501
         """
-        pass
+        mock_response = Mock()
+        data = None
+        with open("test_resources/put_documents.json") as f:
+            data = json.load(f)
+        mock_response.data = json.dumps(data)
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
 
-    def test_upload_document_file(self):
+        body = {"id": 46530, "name": "Introduction to our App"}
+        r = doc_api.update_document(body)
+        assert r.id == 46530
+
+    @patch.object(lilt.ApiClient, "request")
+    def test_upload_document_file(self, mock_request):
         """Test case for upload_document_file
 
         Upload a File  # noqa: E501
         """
-        pass
+        mock_response = Mock()
+        data = None
+        with open("test_resources/post_documents.json") as f:
+            data = json.load(f)
+        mock_response.data = json.dumps(data)
+        mock_request.return_value = mock_response
+        api_client = lilt.ApiClient()
+        doc_api = DocumentsApi(api_client)
+
+        body = "file"
+        r = doc_api.upload_document_file("test", 4234, body)
+        assert r.id == 46530
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

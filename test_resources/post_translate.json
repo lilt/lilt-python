@@ -1,0 +1,20 @@
+{
+    "id": [
+      123,
+      234
+    ],
+    "is_pretranslating": true,
+    "documents": [
+      {
+        "id": 123,
+        "import_in_progress": false,
+        "import_succeeded": true,
+        "import_error_message": "",
+        "is_processing": false,
+        "is_pretranslating": true,
+        "status": {
+          "pretranslation": "running"
+        }
+      }
+    ]
+  }
