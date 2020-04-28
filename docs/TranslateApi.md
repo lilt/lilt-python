@@ -36,6 +36,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -71,6 +72,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -117,7 +119,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **translate_segment**
-> TranslationList translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches)
+> TranslationList translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags)
 
 Translate a segment
 
@@ -144,6 +146,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -155,10 +158,11 @@ prefix = 'prefix_example' # str | A target prefix. (optional)
 n = 1 # int | Return top n translations. (optional) (default to 1)
 rich = False # bool | Returns rich translation information (e.g., with word alignments). (optional) (default to False)
 tm_matches = True # bool | Include translation memory fuzzy matches. (optional) (default to True)
+project_tags = False # bool | Project tags. Projects tags in source to target if set to true. (optional) (default to False)
 
     try:
         # Translate a segment
-        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches)
+        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TranslateApi->translate_segment: %s\n" % e)
@@ -183,6 +187,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -194,10 +199,11 @@ prefix = 'prefix_example' # str | A target prefix. (optional)
 n = 1 # int | Return top n translations. (optional) (default to 1)
 rich = False # bool | Returns rich translation information (e.g., with word alignments). (optional) (default to False)
 tm_matches = True # bool | Include translation memory fuzzy matches. (optional) (default to True)
+project_tags = False # bool | Project tags. Projects tags in source to target if set to true. (optional) (default to False)
 
     try:
         # Translate a segment
-        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches)
+        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TranslateApi->translate_segment: %s\n" % e)
@@ -214,6 +220,7 @@ Name | Type | Description  | Notes
  **n** | **int**| Return top n translations. | [optional] [default to 1]
  **rich** | **bool**| Returns rich translation information (e.g., with word alignments). | [optional] [default to False]
  **tm_matches** | **bool**| Include translation memory fuzzy matches. | [optional] [default to True]
+ **project_tags** | **bool**| Project tags. Projects tags in source to target if set to true. | [optional] [default to False]
 
 ### Return type
 

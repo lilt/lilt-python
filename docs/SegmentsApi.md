@@ -39,11 +39,12 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.SegmentsApi(api_client)
-    body = lilt.SegmentParameters() # SegmentParameters | 
+    body = lilt.SegmentCreateParameters() # SegmentCreateParameters | 
 
     try:
         # Create a Segment
@@ -72,11 +73,12 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.SegmentsApi(api_client)
-    body = lilt.SegmentParameters() # SegmentParameters | 
+    body = lilt.SegmentCreateParameters() # SegmentCreateParameters | 
 
     try:
         # Create a Segment
@@ -90,7 +92,7 @@ with lilt.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**SegmentParameters**](SegmentParameters.md)|  | 
+ **body** | [**SegmentCreateParameters**](SegmentCreateParameters.md)|  | 
 
 ### Return type
 
@@ -141,6 +143,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -174,6 +177,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -243,6 +247,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -276,6 +281,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -345,6 +351,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -380,6 +387,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -453,6 +461,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -486,6 +495,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class

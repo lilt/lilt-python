@@ -1,4 +1,3 @@
-![Pytest](https://github.com/lilt/lilt-python/workflows/Pytest/badge.svg)
 # lilt-python
 The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:
   * Training of and translating with interactive, adaptive machine translation
@@ -79,6 +78,9 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
+# Defining host is optional and default to https://lilt.com/2
+configuration.host = "https://lilt.com/2"
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -152,13 +154,14 @@ Class | Method | HTTP request | Description
  - [DocumentPretranslateResponse](docs/DocumentPretranslateResponse.md)
  - [DocumentPretranslating](docs/DocumentPretranslating.md)
  - [DocumentPretranslatingStatus](docs/DocumentPretranslatingStatus.md)
+ - [DocumentQuote](docs/DocumentQuote.md)
  - [DocumentUpdateParameters](docs/DocumentUpdateParameters.md)
  - [DocumentWithSegments](docs/DocumentWithSegments.md)
  - [DocumentWithoutSegments](docs/DocumentWithoutSegments.md)
  - [DocumentWithoutSegmentsStatus](docs/DocumentWithoutSegmentsStatus.md)
  - [Error](docs/Error.md)
  - [File](docs/File.md)
- - [FileResponse](docs/FileResponse.md)
+ - [FileDeleteResponse](docs/FileDeleteResponse.md)
  - [LanguagesResponse](docs/LanguagesResponse.md)
  - [LexiconEntry](docs/LexiconEntry.md)
  - [LexiconEntryExamples](docs/LexiconEntryExamples.md)
@@ -169,15 +172,15 @@ Class | Method | HTTP request | Description
  - [LexiconUpdateResponse](docs/LexiconUpdateResponse.md)
  - [MatchBand](docs/MatchBand.md)
  - [Memory](docs/Memory.md)
+ - [MemoryCreateParameters](docs/MemoryCreateParameters.md)
  - [MemoryDeleteResponse](docs/MemoryDeleteResponse.md)
  - [MemoryImportResponse](docs/MemoryImportResponse.md)
  - [MemoryInsertResponse](docs/MemoryInsertResponse.md)
- - [MemoryParameters](docs/MemoryParameters.md)
  - [MemoryUpdateParameters](docs/MemoryUpdateParameters.md)
  - [MemoryUpdateResponse](docs/MemoryUpdateResponse.md)
  - [Project](docs/Project.md)
+ - [ProjectCreateParameters](docs/ProjectCreateParameters.md)
  - [ProjectDeleteResponse](docs/ProjectDeleteResponse.md)
- - [ProjectParameters](docs/ProjectParameters.md)
  - [ProjectQuote](docs/ProjectQuote.md)
  - [ProjectStatus](docs/ProjectStatus.md)
  - [ProjectUpdateResponse](docs/ProjectUpdateResponse.md)
@@ -190,8 +193,8 @@ Class | Method | HTTP request | Description
  - [QARuleMatchesRuleUrls](docs/QARuleMatchesRuleUrls.md)
  - [ResourceStatus](docs/ResourceStatus.md)
  - [Segment](docs/Segment.md)
+ - [SegmentCreateParameters](docs/SegmentCreateParameters.md)
  - [SegmentDeleteResponse](docs/SegmentDeleteResponse.md)
- - [SegmentParameters](docs/SegmentParameters.md)
  - [SegmentUpdateParameters](docs/SegmentUpdateParameters.md)
  - [TaggedSegment](docs/TaggedSegment.md)
  - [TranslateRegisterResponse](docs/TranslateRegisterResponse.md)

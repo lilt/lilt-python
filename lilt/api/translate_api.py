@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from lilt.api_client import ApiClient
-from lilt.exceptions import (
+from lilt.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -93,11 +93,19 @@ class TranslateApi(object):
 
         local_var_params = locals()
 
-        all_params = ['source', 'srclang', 'trglang']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'source',
+            'srclang',
+            'trglang'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -178,6 +186,7 @@ class TranslateApi(object):
         :param int n: Return top n translations.
         :param bool rich: Returns rich translation information (e.g., with word alignments).
         :param bool tm_matches: Include translation memory fuzzy matches.
+        :param bool project_tags: Project tags. Projects tags in source to target if set to true.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -209,6 +218,7 @@ class TranslateApi(object):
         :param int n: Return top n translations.
         :param bool rich: Returns rich translation information (e.g., with word alignments).
         :param bool tm_matches: Include translation memory fuzzy matches.
+        :param bool project_tags: Project tags. Projects tags in source to target if set to true.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -225,11 +235,24 @@ class TranslateApi(object):
 
         local_var_params = locals()
 
-        all_params = ['memory_id', 'source', 'source_hash', 'prefix', 'n', 'rich', 'tm_matches']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'memory_id',
+            'source',
+            'source_hash',
+            'prefix',
+            'n',
+            'rich',
+            'tm_matches',
+            'project_tags'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -263,6 +286,8 @@ class TranslateApi(object):
             query_params.append(('rich', local_var_params['rich']))  # noqa: E501
         if 'tm_matches' in local_var_params and local_var_params['tm_matches'] is not None:  # noqa: E501
             query_params.append(('tm_matches', local_var_params['tm_matches']))  # noqa: E501
+        if 'project_tags' in local_var_params and local_var_params['project_tags'] is not None:  # noqa: E501
+            query_params.append(('project_tags', local_var_params['project_tags']))  # noqa: E501
 
         header_params = {}
 

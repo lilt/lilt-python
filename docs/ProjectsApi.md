@@ -40,11 +40,12 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
-    body = lilt.ProjectParameters() # ProjectParameters | 
+    body = lilt.ProjectCreateParameters() # ProjectCreateParameters | 
 
     try:
         # Create a Project
@@ -73,11 +74,12 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
-    body = lilt.ProjectParameters() # ProjectParameters | 
+    body = lilt.ProjectCreateParameters() # ProjectCreateParameters | 
 
     try:
         # Create a Project
@@ -91,7 +93,7 @@ with lilt.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ProjectParameters**](ProjectParameters.md)|  | 
+ **body** | [**ProjectCreateParameters**](ProjectCreateParameters.md)|  | 
 
 ### Return type
 
@@ -142,6 +144,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -175,6 +178,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -217,7 +221,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project**
-> list[Project] get_project(id=id, srclang=srclang, trglang=trglang, from_time=from_time, to_time=to_time, state=state, archived=archived)
+> list[Project] get_project(id=id, srclang=srclang, trglang=trglang, from_time=from_time, to_time=to_time, state=state, archived=archived, connector_id=connector_id)
 
 Retrieve a Project
 
@@ -244,6 +248,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -255,10 +260,11 @@ from_time = 56 # int | Unix time stamp (epoch, in seconds) of Projects with `cre
 to_time = 56 # int | Unix time stamp (epoch, in seconds) of Projects with `created_at` less than the value. (optional)
 state = 'state_example' # str | A project state (backlog, inProgress, inReview, inQA, done). (optional)
 archived = True # bool | A flag that toggles whether to include archived projects in the response (the default is `true`). (optional)
+connector_id = 56 # int | A unique Connector identifier. (optional)
 
     try:
         # Retrieve a Project
-        api_response = api_instance.get_project(id=id, srclang=srclang, trglang=trglang, from_time=from_time, to_time=to_time, state=state, archived=archived)
+        api_response = api_instance.get_project(id=id, srclang=srclang, trglang=trglang, from_time=from_time, to_time=to_time, state=state, archived=archived, connector_id=connector_id)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->get_project: %s\n" % e)
@@ -283,6 +289,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -294,10 +301,11 @@ from_time = 56 # int | Unix time stamp (epoch, in seconds) of Projects with `cre
 to_time = 56 # int | Unix time stamp (epoch, in seconds) of Projects with `created_at` less than the value. (optional)
 state = 'state_example' # str | A project state (backlog, inProgress, inReview, inQA, done). (optional)
 archived = True # bool | A flag that toggles whether to include archived projects in the response (the default is `true`). (optional)
+connector_id = 56 # int | A unique Connector identifier. (optional)
 
     try:
         # Retrieve a Project
-        api_response = api_instance.get_project(id=id, srclang=srclang, trglang=trglang, from_time=from_time, to_time=to_time, state=state, archived=archived)
+        api_response = api_instance.get_project(id=id, srclang=srclang, trglang=trglang, from_time=from_time, to_time=to_time, state=state, archived=archived, connector_id=connector_id)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling ProjectsApi->get_project: %s\n" % e)
@@ -314,6 +322,7 @@ Name | Type | Description  | Notes
  **to_time** | **int**| Unix time stamp (epoch, in seconds) of Projects with &#x60;created_at&#x60; less than the value. | [optional] 
  **state** | **str**| A project state (backlog, inProgress, inReview, inQA, done). | [optional] 
  **archived** | **bool**| A flag that toggles whether to include archived projects in the response (the default is &#x60;true&#x60;). | [optional] 
+ **connector_id** | **int**| A unique Connector identifier. | [optional] 
 
 ### Return type
 
@@ -364,6 +373,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -397,6 +407,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -466,6 +477,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -499,6 +511,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -568,6 +581,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -601,6 +615,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class

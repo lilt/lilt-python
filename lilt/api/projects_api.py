@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from lilt.api_client import ApiClient
-from lilt.exceptions import (
+from lilt.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -47,7 +47,7 @@ class ProjectsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param ProjectParameters body: (required)
+        :param ProjectCreateParameters body: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -72,7 +72,7 @@ class ProjectsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param ProjectParameters body: (required)
+        :param ProjectCreateParameters body: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -89,11 +89,17 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'body'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -201,11 +207,17 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -270,6 +282,7 @@ class ProjectsApi(object):
         :param int to_time: Unix time stamp (epoch, in seconds) of Projects with `created_at` less than the value.
         :param str state: A project state (backlog, inProgress, inReview, inQA, done).
         :param bool archived: A flag that toggles whether to include archived projects in the response (the default is `true`).
+        :param int connector_id: A unique Connector identifier.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -301,6 +314,7 @@ class ProjectsApi(object):
         :param int to_time: Unix time stamp (epoch, in seconds) of Projects with `created_at` less than the value.
         :param str state: A project state (backlog, inProgress, inReview, inQA, done).
         :param bool archived: A flag that toggles whether to include archived projects in the response (the default is `true`).
+        :param int connector_id: A unique Connector identifier.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -317,11 +331,24 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id', 'srclang', 'trglang', 'from_time', 'to_time', 'state', 'archived']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'id',
+            'srclang',
+            'trglang',
+            'from_time',
+            'to_time',
+            'state',
+            'archived',
+            'connector_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -351,6 +378,8 @@ class ProjectsApi(object):
             query_params.append(('state', local_var_params['state']))  # noqa: E501
         if 'archived' in local_var_params and local_var_params['archived'] is not None:  # noqa: E501
             query_params.append(('archived', local_var_params['archived']))  # noqa: E501
+        if 'connector_id' in local_var_params and local_var_params['connector_id'] is not None:  # noqa: E501
+            query_params.append(('connector_id', local_var_params['connector_id']))  # noqa: E501
 
         header_params = {}
 
@@ -433,11 +462,17 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -541,11 +576,17 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -649,11 +690,17 @@ class ProjectsApi(object):
 
         local_var_params = locals()
 
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'body'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:

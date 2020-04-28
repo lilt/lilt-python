@@ -17,11 +17,11 @@ import unittest
 import datetime
 
 import lilt
-from lilt.models.project_quote import ProjectQuote  # noqa: E501
+from lilt.models.segment_create_parameters import SegmentCreateParameters  # noqa: E501
 from lilt.rest import ApiException
 
-class TestProjectQuote(unittest.TestCase):
-    """ProjectQuote unit test stubs"""
+class TestSegmentCreateParameters(unittest.TestCase):
+    """SegmentCreateParameters unit test stubs"""
 
     def setUp(self):
         pass
@@ -30,49 +30,25 @@ class TestProjectQuote(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test ProjectQuote
+        """Test SegmentCreateParameters
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = lilt.models.project_quote.ProjectQuote()  # noqa: E501
+        # model = lilt.models.segment_create_parameters.SegmentCreateParameters()  # noqa: E501
         if include_optional :
-            return ProjectQuote(
-                id = 21902, 
-                num_source_words = 8000, 
-                num_words_new = 6039, 
-                num_segments_new = 151, 
-                num_words_repetition = 12, 
-                num_segments_repetition = 2980000, 
-                bands = [
-                    lilt.models.match_band.MatchBand(
-                        minimum_score = 94, 
-                        maximum_score = 85, 
-                        num_source_words = 151, 
-                        num_segments = 12, )
-                    ], 
-                documents = [
-                    lilt.models.document_quote.DocumentQuote(
-                        id = 21902, 
-                        num_source_words = 8000, 
-                        num_words_new = 6039, 
-                        num_segments_new = 151, 
-                        num_words_repetition = 12, 
-                        num_segments_repetition = 2980000, 
-                        bands = [
-                            lilt.models.match_band.MatchBand(
-                                minimum_score = 94, 
-                                maximum_score = 85, 
-                                num_source_words = 151, 
-                                num_segments = 12, )
-                            ], )
-                    ]
+            return SegmentCreateParameters(
+                memory_id = 10641, 
+                document_id = 1876, 
+                source = 'Code zur Fehleranalyse einschalten', 
+                target = 'Enable debugging code'
             )
         else :
-            return ProjectQuote(
+            return SegmentCreateParameters(
+                source = 'Code zur Fehleranalyse einschalten',
         )
 
-    def testProjectQuote(self):
-        """Test ProjectQuote"""
+    def testSegmentCreateParameters(self):
+        """Test SegmentCreateParameters"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -36,6 +36,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -73,6 +74,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -150,6 +152,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -183,6 +186,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class

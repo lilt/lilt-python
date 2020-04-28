@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from lilt.api_client import ApiClient
-from lilt.exceptions import (
+from lilt.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -95,11 +95,20 @@ class QAApi(object):
 
         local_var_params = locals()
 
-        all_params = ['target', 'trglang', 'source', 'srclang']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'target',
+            'trglang',
+            'source',
+            'srclang'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:

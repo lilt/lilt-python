@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **delete_file**
-> FileResponse delete_file(id)
+> FileDeleteResponse delete_file(id)
 
 Delete a File
 
@@ -37,6 +37,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -70,6 +71,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -92,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FileResponse**](FileResponse.md)
+[**FileDeleteResponse**](FileDeleteResponse.md)
 
 ### Authorization
 
@@ -139,6 +141,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -172,6 +175,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -216,7 +220,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file**
-> File upload_file(name, body, export_uri=export_uri, file_hash=file_hash)
+> File upload_file(name, body, export_uri=export_uri, file_hash=file_hash, lang_id=lang_id)
 
 Upload a File
 
@@ -243,6 +247,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -251,10 +256,11 @@ with lilt.ApiClient(configuration) as api_client:
 body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
 export_uri = 'export_uri_example' # str | A webhook endpoint that will export the translated document back to the source repository. (optional)
 file_hash = 'file_hash_example' # str | A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided. (optional)
+lang_id = True # bool | Flag indicating whether to perform language detection on the uploaded file. Default is false. (optional)
 
     try:
         # Upload a File
-        api_response = api_instance.upload_file(name, body, export_uri=export_uri, file_hash=file_hash)
+        api_response = api_instance.upload_file(name, body, export_uri=export_uri, file_hash=file_hash, lang_id=lang_id)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling FilesApi->upload_file: %s\n" % e)
@@ -279,6 +285,7 @@ configuration.password = 'YOUR_PASSWORD'
 
 # Defining host is optional and default to https://lilt.com/2
 configuration.host = "https://lilt.com/2"
+
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
@@ -287,10 +294,11 @@ with lilt.ApiClient(configuration) as api_client:
 body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
 export_uri = 'export_uri_example' # str | A webhook endpoint that will export the translated document back to the source repository. (optional)
 file_hash = 'file_hash_example' # str | A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided. (optional)
+lang_id = True # bool | Flag indicating whether to perform language detection on the uploaded file. Default is false. (optional)
 
     try:
         # Upload a File
-        api_response = api_instance.upload_file(name, body, export_uri=export_uri, file_hash=file_hash)
+        api_response = api_instance.upload_file(name, body, export_uri=export_uri, file_hash=file_hash, lang_id=lang_id)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling FilesApi->upload_file: %s\n" % e)
@@ -304,6 +312,7 @@ Name | Type | Description  | Notes
  **body** | **str**| The file contents to be uploaded. The entire POST body will be treated as the file. | 
  **export_uri** | **str**| A webhook endpoint that will export the translated document back to the source repository. | [optional] 
  **file_hash** | **str**| A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn&#39;t provided. | [optional] 
+ **lang_id** | **bool**| Flag indicating whether to perform language detection on the uploaded file. Default is false. | [optional] 
 
 ### Return type
 
