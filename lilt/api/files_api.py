@@ -19,7 +19,7 @@ import re  # noqa: F401
 import six
 
 from lilt.api_client import ApiClient
-from lilt.exceptions import (
+from lilt.exceptions import (  # noqa: F401
     ApiTypeError,
     ApiValueError
 )
@@ -55,7 +55,7 @@ class FilesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: FileResponse
+        :return: FileDeleteResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -82,18 +82,24 @@ class FilesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(FileResponse, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(FileDeleteResponse, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -137,7 +143,7 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='FileResponse',  # noqa: E501
+            response_type='FileDeleteResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -197,11 +203,17 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['id']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -263,6 +275,7 @@ class FilesApi(object):
         :param str body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
         :param str export_uri: A webhook endpoint that will export the translated document back to the source repository.
         :param str file_hash: A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided.
+        :param bool lang_id: Flag indicating whether to perform language detection on the uploaded file. Default is false.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -291,6 +304,7 @@ class FilesApi(object):
         :param str body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
         :param str export_uri: A webhook endpoint that will export the translated document back to the source repository.
         :param str file_hash: A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided.
+        :param bool lang_id: Flag indicating whether to perform language detection on the uploaded file. Default is false.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -307,11 +321,21 @@ class FilesApi(object):
 
         local_var_params = locals()
 
-        all_params = ['name', 'body', 'export_uri', 'file_hash']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
+        all_params = [
+            'name',
+            'body',
+            'export_uri',
+            'file_hash',
+            'lang_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
 
         for key, val in six.iteritems(local_var_params['kwargs']):
             if key not in all_params:
@@ -341,6 +365,8 @@ class FilesApi(object):
             query_params.append(('export_uri', local_var_params['export_uri']))  # noqa: E501
         if 'file_hash' in local_var_params and local_var_params['file_hash'] is not None:  # noqa: E501
             query_params.append(('file_hash', local_var_params['file_hash']))  # noqa: E501
+        if 'lang_id' in local_var_params and local_var_params['lang_id'] is not None:  # noqa: E501
+            query_params.append(('langId', local_var_params['lang_id']))  # noqa: E501
 
         header_params = {}
 
