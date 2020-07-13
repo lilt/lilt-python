@@ -634,6 +634,7 @@ class DocumentsApi(object):
         :param DocumentPretranslateParameters body: (required)
         :param bool case_sensitive: Optional for using case matching against TM hits.
         :param bool auto_accept: Optional parameter for auto-accepting 100% TM hits.
+        :param str mode: An optional parameter indicating how the document will be pretranslated.  The accepted values are `null`, `tm`, or `tm+mt`. Default is `tm+mt`. 
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -661,6 +662,7 @@ class DocumentsApi(object):
         :param DocumentPretranslateParameters body: (required)
         :param bool case_sensitive: Optional for using case matching against TM hits.
         :param bool auto_accept: Optional parameter for auto-accepting 100% TM hits.
+        :param str mode: An optional parameter indicating how the document will be pretranslated.  The accepted values are `null`, `tm`, or `tm+mt`. Default is `tm+mt`. 
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -680,7 +682,8 @@ class DocumentsApi(object):
         all_params = [
             'body',
             'case_sensitive',
-            'auto_accept'
+            'auto_accept',
+            'mode'
         ]
         all_params.extend(
             [
@@ -713,6 +716,8 @@ class DocumentsApi(object):
             query_params.append(('case_sensitive', local_var_params['case_sensitive']))  # noqa: E501
         if 'auto_accept' in local_var_params and local_var_params['auto_accept'] is not None:  # noqa: E501
             query_params.append(('auto_accept', local_var_params['auto_accept']))  # noqa: E501
+        if 'mode' in local_var_params and local_var_params['mode'] is not None:  # noqa: E501
+            query_params.append(('mode', local_var_params['mode']))  # noqa: E501
 
         header_params = {}
 
@@ -882,6 +887,7 @@ class DocumentsApi(object):
         :param str body: The file contents to be uploaded. The entire POST body will be treated as the file.  (required)
         :param str pretranslate: An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are `null`, `tm`, or `tm+mt` 
         :param bool auto_accept: An optional parameter to auto-accept segments with 100% translation memory matches when the `pretranslate` option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to `false`, no segments will be auto-accepted. 
+        :param int config_id: An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. 
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -911,6 +917,7 @@ class DocumentsApi(object):
         :param str body: The file contents to be uploaded. The entire POST body will be treated as the file.  (required)
         :param str pretranslate: An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are `null`, `tm`, or `tm+mt` 
         :param bool auto_accept: An optional parameter to auto-accept segments with 100% translation memory matches when the `pretranslate` option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to `false`, no segments will be auto-accepted. 
+        :param int config_id: An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. 
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -932,7 +939,8 @@ class DocumentsApi(object):
             'project_id',
             'body',
             'pretranslate',
-            'auto_accept'
+            'auto_accept',
+            'config_id'
         ]
         all_params.extend(
             [
@@ -979,6 +987,8 @@ class DocumentsApi(object):
             header_params['pretranslate'] = local_var_params['pretranslate']  # noqa: E501
         if 'auto_accept' in local_var_params:
             header_params['auto_accept'] = local_var_params['auto_accept']  # noqa: E501
+        if 'config_id' in local_var_params:
+            header_params['config_id'] = local_var_params['config_id']  # noqa: E501
 
         form_params = []
         local_var_files = {}

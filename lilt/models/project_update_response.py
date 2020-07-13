@@ -39,7 +39,8 @@ class ProjectUpdateResponse(object):
         'state': 'str',
         'due_date': 'int',
         'archived': 'bool',
-        'metadata': 'object'
+        'metadata': 'object',
+        'sample_review_percentage': 'int'
     }
 
     attribute_map = {
@@ -48,10 +49,11 @@ class ProjectUpdateResponse(object):
         'state': 'state',
         'due_date': 'due_date',
         'archived': 'archived',
-        'metadata': 'metadata'
+        'metadata': 'metadata',
+        'sample_review_percentage': 'sample_review_percentage'
     }
 
-    def __init__(self, id=None, name=None, state=None, due_date=None, archived=None, metadata=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, state=None, due_date=None, archived=None, metadata=None, sample_review_percentage=None, local_vars_configuration=None):  # noqa: E501
         """ProjectUpdateResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -63,6 +65,7 @@ class ProjectUpdateResponse(object):
         self._due_date = None
         self._archived = None
         self._metadata = None
+        self._sample_review_percentage = None
         self.discriminator = None
 
         self.id = id
@@ -76,6 +79,8 @@ class ProjectUpdateResponse(object):
             self.archived = archived
         if metadata is not None:
             self.metadata = metadata
+        if sample_review_percentage is not None:
+            self.sample_review_percentage = sample_review_percentage
 
     @property
     def id(self):
@@ -216,6 +221,29 @@ class ProjectUpdateResponse(object):
         """
 
         self._metadata = metadata
+
+    @property
+    def sample_review_percentage(self):
+        """Gets the sample_review_percentage of this ProjectUpdateResponse.  # noqa: E501
+
+        The Project's sample review percentage. Must be an integer between 10 and 100, a multiple of 10 and greater than minimum value (displayed in error message).  # noqa: E501
+
+        :return: The sample_review_percentage of this ProjectUpdateResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._sample_review_percentage
+
+    @sample_review_percentage.setter
+    def sample_review_percentage(self, sample_review_percentage):
+        """Sets the sample_review_percentage of this ProjectUpdateResponse.
+
+        The Project's sample review percentage. Must be an integer between 10 and 100, a multiple of 10 and greater than minimum value (displayed in error message).  # noqa: E501
+
+        :param sample_review_percentage: The sample_review_percentage of this ProjectUpdateResponse.  # noqa: E501
+        :type: int
+        """
+
+        self._sample_review_percentage = sample_review_percentage
 
     def to_dict(self):
         """Returns the model properties as a dict"""

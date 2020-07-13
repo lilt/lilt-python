@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **due_date** | **int** | The due date. Measured in seconds since the Unix epoch. | [optional] 
 **archived** | **bool** | True if the project is archived. Otherwise, false. | [optional] 
 **metadata** | [**object**](.md) | Metadata associated with a project. This field must be valid JSON. | [optional] 
+**sample_review_percentage** | **int** | The Project&#39;s sample review percentage. Must be an integer between 10 and 100, a multiple of 10 and greater than minimum value (displayed in error message). | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
