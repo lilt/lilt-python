@@ -3,6 +3,7 @@ from __future__ import absolute_import
 # flake8: noqa
 
 # import apis into api package
+from lilt.api.connectors_api import ConnectorsApi
 from lilt.api.documents_api import DocumentsApi
 from lilt.api.files_api import FilesApi
 from lilt.api.languages_api import LanguagesApi

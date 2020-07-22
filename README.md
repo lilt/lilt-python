@@ -84,15 +84,15 @@ configuration.host = "https://lilt.com/2"
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = lilt.DocumentsApi(api_client)
-    body = lilt.DocumentAssignmentParameters() # DocumentAssignmentParameters | 
+    api_instance = lilt.ConnectorsApi(api_client)
+    body = lilt.Connector1() # Connector1 | 
 
     try:
-        # Assign a Document
-        api_response = api_instance.assign_document(body)
+        # Upload a Connector
+        api_response = api_instance.create_connector(body)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DocumentsApi->assign_document: %s\n" % e)
+        print("Exception when calling ConnectorsApi->create_connector: %s\n" % e)
     
 ```
 
@@ -102,6 +102,10 @@ All URIs are relative to *https://lilt.com/2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*ConnectorsApi* | [**create_connector**](docs/ConnectorsApi.md#create_connector) | **POST** /connectors | Upload a Connector
+*ConnectorsApi* | [**delete_connector**](docs/ConnectorsApi.md#delete_connector) | **DELETE** /connectors | Delete a Connector
+*ConnectorsApi* | [**get_connectors**](docs/ConnectorsApi.md#get_connectors) | **GET** /connectors | Retrieve a Connector
+*ConnectorsApi* | [**update_connector**](docs/ConnectorsApi.md#update_connector) | **PUT** /connectors | Upload a Connector
 *DocumentsApi* | [**assign_document**](docs/DocumentsApi.md#assign_document) | **PUT** /documents/share | Assign a Document
 *DocumentsApi* | [**create_document**](docs/DocumentsApi.md#create_document) | **POST** /documents | Create a Document
 *DocumentsApi* | [**delete_document**](docs/DocumentsApi.md#delete_document) | **DELETE** /documents | Delete a Document
@@ -145,7 +149,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Annotation](docs/Annotation.md)
  - [ApiRoot](docs/ApiRoot.md)
+ - [Comment](docs/Comment.md)
+ - [Connector](docs/Connector.md)
+ - [Connector1](docs/Connector1.md)
+ - [ConnectorDeleteResponse](docs/ConnectorDeleteResponse.md)
  - [DocumentAssignmentParameters](docs/DocumentAssignmentParameters.md)
  - [DocumentAssignmentResponse](docs/DocumentAssignmentResponse.md)
  - [DocumentDeleteResponse](docs/DocumentDeleteResponse.md)
@@ -196,6 +205,7 @@ Class | Method | HTTP request | Description
  - [SegmentCreateParameters](docs/SegmentCreateParameters.md)
  - [SegmentDeleteResponse](docs/SegmentDeleteResponse.md)
  - [SegmentUpdateParameters](docs/SegmentUpdateParameters.md)
+ - [SegmentWithComments](docs/SegmentWithComments.md)
  - [TaggedSegment](docs/TaggedSegment.md)
  - [TranslateRegisterResponse](docs/TranslateRegisterResponse.md)
  - [Translation](docs/Translation.md)

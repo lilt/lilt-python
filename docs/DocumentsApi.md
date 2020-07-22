@@ -542,7 +542,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pretranslate_document**
-> DocumentPretranslateResponse pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept)
+> DocumentPretranslateResponse pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept, mode=mode)
 
 Pretranslate a Document
 
@@ -577,10 +577,11 @@ with lilt.ApiClient(configuration) as api_client:
     body = lilt.DocumentPretranslateParameters() # DocumentPretranslateParameters | 
 case_sensitive = True # bool | Optional for using case matching against TM hits. (optional)
 auto_accept = True # bool | Optional parameter for auto-accepting 100% TM hits. (optional)
+mode = 'mode_example' # str | An optional parameter indicating how the document will be pretranslated.  The accepted values are `null`, `tm`, or `tm+mt`. Default is `tm+mt`.  (optional)
 
     try:
         # Pretranslate a Document
-        api_response = api_instance.pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept)
+        api_response = api_instance.pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept, mode=mode)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DocumentsApi->pretranslate_document: %s\n" % e)
@@ -613,10 +614,11 @@ with lilt.ApiClient(configuration) as api_client:
     body = lilt.DocumentPretranslateParameters() # DocumentPretranslateParameters | 
 case_sensitive = True # bool | Optional for using case matching against TM hits. (optional)
 auto_accept = True # bool | Optional parameter for auto-accepting 100% TM hits. (optional)
+mode = 'mode_example' # str | An optional parameter indicating how the document will be pretranslated.  The accepted values are `null`, `tm`, or `tm+mt`. Default is `tm+mt`.  (optional)
 
     try:
         # Pretranslate a Document
-        api_response = api_instance.pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept)
+        api_response = api_instance.pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept, mode=mode)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DocumentsApi->pretranslate_document: %s\n" % e)
@@ -629,6 +631,7 @@ Name | Type | Description  | Notes
  **body** | [**DocumentPretranslateParameters**](DocumentPretranslateParameters.md)|  | 
  **case_sensitive** | **bool**| Optional for using case matching against TM hits. | [optional] 
  **auto_accept** | **bool**| Optional parameter for auto-accepting 100% TM hits. | [optional] 
+ **mode** | **str**| An optional parameter indicating how the document will be pretranslated.  The accepted values are &#x60;null&#x60;, &#x60;tm&#x60;, or &#x60;tm+mt&#x60;. Default is &#x60;tm+mt&#x60;.  | [optional] 
 
 ### Return type
 
@@ -756,7 +759,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_document_file**
-> DocumentWithSegments upload_document_file(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept)
+> DocumentWithSegments upload_document_file(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, config_id=config_id)
 
 Upload a File
 
@@ -793,10 +796,11 @@ project_id = 56 # int | A unique Project identifier.
 body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file. 
 pretranslate = 'pretranslate_example' # str | An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are `null`, `tm`, or `tm+mt`  (optional)
 auto_accept = True # bool | An optional parameter to auto-accept segments with 100% translation memory matches when the `pretranslate` option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to `false`, no segments will be auto-accepted.  (optional)
+config_id = 56 # int | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.  (optional)
 
     try:
         # Upload a File
-        api_response = api_instance.upload_document_file(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept)
+        api_response = api_instance.upload_document_file(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, config_id=config_id)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DocumentsApi->upload_document_file: %s\n" % e)
@@ -831,10 +835,11 @@ project_id = 56 # int | A unique Project identifier.
 body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file. 
 pretranslate = 'pretranslate_example' # str | An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are `null`, `tm`, or `tm+mt`  (optional)
 auto_accept = True # bool | An optional parameter to auto-accept segments with 100% translation memory matches when the `pretranslate` option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to `false`, no segments will be auto-accepted.  (optional)
+config_id = 56 # int | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.  (optional)
 
     try:
         # Upload a File
-        api_response = api_instance.upload_document_file(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept)
+        api_response = api_instance.upload_document_file(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, config_id=config_id)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DocumentsApi->upload_document_file: %s\n" % e)
@@ -849,6 +854,7 @@ Name | Type | Description  | Notes
  **body** | **str**| The file contents to be uploaded. The entire POST body will be treated as the file.  | 
  **pretranslate** | **str**| An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are &#x60;null&#x60;, &#x60;tm&#x60;, or &#x60;tm+mt&#x60;  | [optional] 
  **auto_accept** | **bool**| An optional parameter to auto-accept segments with 100% translation memory matches when the &#x60;pretranslate&#x60; option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to &#x60;false&#x60;, no segments will be auto-accepted.  | [optional] 
+ **config_id** | **int**| An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.  | [optional] 
 
 ### Return type
 

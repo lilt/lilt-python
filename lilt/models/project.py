@@ -45,6 +45,7 @@ class Project(object):
         'due_date': 'int',
         'archived': 'bool',
         'metadata': 'object',
+        'sample_review_percentage': 'int',
         'created_at': 'int',
         'updated_at': 'int',
         'document': 'list[DocumentWithoutSegments]'
@@ -62,12 +63,13 @@ class Project(object):
         'due_date': 'due_date',
         'archived': 'archived',
         'metadata': 'metadata',
+        'sample_review_percentage': 'sample_review_percentage',
         'created_at': 'created_at',
         'updated_at': 'updated_at',
         'document': 'document'
     }
 
-    def __init__(self, id=None, memory_id=None, srclang=None, trglang=None, srclocale=None, trglocale=None, name=None, state=None, due_date=None, archived=None, metadata=None, created_at=None, updated_at=None, document=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, memory_id=None, srclang=None, trglang=None, srclocale=None, trglocale=None, name=None, state=None, due_date=None, archived=None, metadata=None, sample_review_percentage=None, created_at=None, updated_at=None, document=None, local_vars_configuration=None):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -84,6 +86,7 @@ class Project(object):
         self._due_date = None
         self._archived = None
         self._metadata = None
+        self._sample_review_percentage = None
         self._created_at = None
         self._updated_at = None
         self._document = None
@@ -111,6 +114,8 @@ class Project(object):
             self.archived = archived
         if metadata is not None:
             self.metadata = metadata
+        if sample_review_percentage is not None:
+            self.sample_review_percentage = sample_review_percentage
         if created_at is not None:
             self.created_at = created_at
         if updated_at is not None:
@@ -370,6 +375,29 @@ class Project(object):
         """
 
         self._metadata = metadata
+
+    @property
+    def sample_review_percentage(self):
+        """Gets the sample_review_percentage of this Project.  # noqa: E501
+
+        The project's sample review percentage.  # noqa: E501
+
+        :return: The sample_review_percentage of this Project.  # noqa: E501
+        :rtype: int
+        """
+        return self._sample_review_percentage
+
+    @sample_review_percentage.setter
+    def sample_review_percentage(self, sample_review_percentage):
+        """Sets the sample_review_percentage of this Project.
+
+        The project's sample review percentage.  # noqa: E501
+
+        :param sample_review_percentage: The sample_review_percentage of this Project.  # noqa: E501
+        :type: int
+        """
+
+        self._sample_review_percentage = sample_review_percentage
 
     @property
     def created_at(self):

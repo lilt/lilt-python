@@ -15,7 +15,12 @@
 from __future__ import absolute_import
 
 # import models into model package
+from lilt.models.annotation import Annotation
 from lilt.models.api_root import ApiRoot
+from lilt.models.comment import Comment
+from lilt.models.connector import Connector
+from lilt.models.connector1 import Connector1
+from lilt.models.connector_delete_response import ConnectorDeleteResponse
 from lilt.models.document_assignment_parameters import DocumentAssignmentParameters
 from lilt.models.document_assignment_response import DocumentAssignmentResponse
 from lilt.models.document_delete_response import DocumentDeleteResponse
@@ -66,6 +71,7 @@ from lilt.models.segment import Segment
 from lilt.models.segment_create_parameters import SegmentCreateParameters
 from lilt.models.segment_delete_response import SegmentDeleteResponse
 from lilt.models.segment_update_parameters import SegmentUpdateParameters
+from lilt.models.segment_with_comments import SegmentWithComments
 from lilt.models.tagged_segment import TaggedSegment
 from lilt.models.translate_register_response import TranslateRegisterResponse
 from lilt.models.translation import Translation
