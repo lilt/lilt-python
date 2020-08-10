@@ -137,7 +137,7 @@ class TestDocumentsApi(unittest.TestCase):
         doc_api = DocumentsApi(api_client)
 
         body = {"id": [123, 234]}
-        r = doc_api.pretranslate_document(body=body)
+        r = doc_api.pretranslate_documents(body=body)
         assert r.is_pretranslating == True
 
     @patch.object(lilt.ApiClient, "request")

@@ -61,6 +61,8 @@ from lilt.models.document_without_segments_status import DocumentWithoutSegments
 from lilt.models.error import Error
 from lilt.models.file import File
 from lilt.models.file_delete_response import FileDeleteResponse
+from lilt.models.inline_response200 import InlineResponse200
+from lilt.models.inline_response201 import InlineResponse201
 from lilt.models.languages_response import LanguagesResponse
 from lilt.models.lexicon_entry import LexiconEntry
 from lilt.models.lexicon_entry_examples import LexiconEntryExamples

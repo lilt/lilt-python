@@ -621,20 +621,21 @@ class DocumentsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def pretranslate_document(self, body, **kwargs):  # noqa: E501
+    def pretranslate_documents(self, body, **kwargs):  # noqa: E501
         """Pretranslate a Document  # noqa: E501
 
         Initiate pretranslation of a list of Documents. This request will mark document(s) as being pretranslated. Pretranslation in this context is: - Applying and confirming exact TM matches based on the Memory of the Project; - Translating all other segments via MT without confirming them.  Example cURL command: ``` curl -X POST https://lilt.com/2/documents/pretranslate?key=API_KEY -d {\"id\": [123]} -H \"Content-Type: application/json\" ```  Document translation is an asynchronous process that, in effect, is performed in the background.  To check the status of pretranslation for a document, use the `GET /documents` endpoint. When pretranslation is in progress for a document, the `GET /documents` endpoint's response will include `is_pretranslating = true` as well as a more detailed status property `status.pretranslation` one of `idle`, `pending`, or `running`.  Once pretranslation is finished, the document can be downloaded via `GET /documents/files`.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pretranslate_document(body, async_req=True)
+        >>> thread = api.pretranslate_documents(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param DocumentPretranslateParameters body: (required)
-        :param bool case_sensitive: Optional for using case matching against TM hits.
         :param bool auto_accept: Optional parameter for auto-accepting 100% TM hits.
-        :param str mode: An optional parameter indicating how the document will be pretranslated.  The accepted values are `null`, `tm`, or `tm+mt`. Default is `tm+mt`. 
+        :param bool case_sensitive: Optional for using case matching against TM hits.
+        :param bool attribute_to_creator: Optional parameter for attributing translation authorship of exact matches to document creator.
+        :param str mode: An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm+mt`. 
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -647,22 +648,23 @@ class DocumentsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.pretranslate_document_with_http_info(body, **kwargs)  # noqa: E501
+        return self.pretranslate_documents_with_http_info(body, **kwargs)  # noqa: E501
 
-    def pretranslate_document_with_http_info(self, body, **kwargs):  # noqa: E501
+    def pretranslate_documents_with_http_info(self, body, **kwargs):  # noqa: E501
         """Pretranslate a Document  # noqa: E501
 
         Initiate pretranslation of a list of Documents. This request will mark document(s) as being pretranslated. Pretranslation in this context is: - Applying and confirming exact TM matches based on the Memory of the Project; - Translating all other segments via MT without confirming them.  Example cURL command: ``` curl -X POST https://lilt.com/2/documents/pretranslate?key=API_KEY -d {\"id\": [123]} -H \"Content-Type: application/json\" ```  Document translation is an asynchronous process that, in effect, is performed in the background.  To check the status of pretranslation for a document, use the `GET /documents` endpoint. When pretranslation is in progress for a document, the `GET /documents` endpoint's response will include `is_pretranslating = true` as well as a more detailed status property `status.pretranslation` one of `idle`, `pending`, or `running`.  Once pretranslation is finished, the document can be downloaded via `GET /documents/files`.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pretranslate_document_with_http_info(body, async_req=True)
+        >>> thread = api.pretranslate_documents_with_http_info(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param DocumentPretranslateParameters body: (required)
-        :param bool case_sensitive: Optional for using case matching against TM hits.
         :param bool auto_accept: Optional parameter for auto-accepting 100% TM hits.
-        :param str mode: An optional parameter indicating how the document will be pretranslated.  The accepted values are `null`, `tm`, or `tm+mt`. Default is `tm+mt`. 
+        :param bool case_sensitive: Optional for using case matching against TM hits.
+        :param bool attribute_to_creator: Optional parameter for attributing translation authorship of exact matches to document creator.
+        :param str mode: An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm+mt`. 
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -681,8 +683,9 @@ class DocumentsApi(object):
 
         all_params = [
             'body',
-            'case_sensitive',
             'auto_accept',
+            'case_sensitive',
+            'attribute_to_creator',
             'mode'
         ]
         all_params.extend(
@@ -698,24 +701,26 @@ class DocumentsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method pretranslate_document" % key
+                    " to method pretranslate_documents" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'body' is set
         if self.api_client.client_side_validation and ('body' not in local_var_params or  # noqa: E501
                                                         local_var_params['body'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `body` when calling `pretranslate_document`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `body` when calling `pretranslate_documents`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'case_sensitive' in local_var_params and local_var_params['case_sensitive'] is not None:  # noqa: E501
-            query_params.append(('case_sensitive', local_var_params['case_sensitive']))  # noqa: E501
         if 'auto_accept' in local_var_params and local_var_params['auto_accept'] is not None:  # noqa: E501
             query_params.append(('auto_accept', local_var_params['auto_accept']))  # noqa: E501
+        if 'case_sensitive' in local_var_params and local_var_params['case_sensitive'] is not None:  # noqa: E501
+            query_params.append(('case_sensitive', local_var_params['case_sensitive']))  # noqa: E501
+        if 'attribute_to_creator' in local_var_params and local_var_params['attribute_to_creator'] is not None:  # noqa: E501
+            query_params.append(('attribute_to_creator', local_var_params['attribute_to_creator']))  # noqa: E501
         if 'mode' in local_var_params and local_var_params['mode'] is not None:  # noqa: E501
             query_params.append(('mode', local_var_params['mode']))  # noqa: E501
 

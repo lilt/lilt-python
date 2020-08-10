@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**delete_document**](DocumentsApi.md#delete_document) | **DELETE** /documents | Delete a Document
 [**download_file**](DocumentsApi.md#download_file) | **GET** /documents/files | Download a File
 [**get_document**](DocumentsApi.md#get_document) | **GET** /documents | Retrieve a Document
-[**pretranslate_document**](DocumentsApi.md#pretranslate_document) | **POST** /documents/pretranslate | Pretranslate a Document
+[**pretranslate_documents**](DocumentsApi.md#pretranslate_documents) | **POST** /documents/pretranslate | Pretranslate a Document
 [**update_document**](DocumentsApi.md#update_document) | **PUT** /documents | Update a Document
 [**upload_document_file**](DocumentsApi.md#upload_document_file) | **POST** /documents/files | Upload a File
 
@@ -541,8 +541,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **pretranslate_document**
-> DocumentPretranslateResponse pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept, mode=mode)
+# **pretranslate_documents**
+> DocumentPretranslateResponse pretranslate_documents(body, auto_accept=auto_accept, case_sensitive=case_sensitive, attribute_to_creator=attribute_to_creator, mode=mode)
 
 Pretranslate a Document
 
@@ -575,16 +575,17 @@ with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.DocumentsApi(api_client)
     body = lilt.DocumentPretranslateParameters() # DocumentPretranslateParameters | 
-case_sensitive = True # bool | Optional for using case matching against TM hits. (optional)
 auto_accept = True # bool | Optional parameter for auto-accepting 100% TM hits. (optional)
-mode = 'mode_example' # str | An optional parameter indicating how the document will be pretranslated.  The accepted values are `null`, `tm`, or `tm+mt`. Default is `tm+mt`.  (optional)
+case_sensitive = True # bool | Optional for using case matching against TM hits. (optional)
+attribute_to_creator = True # bool | Optional parameter for attributing translation authorship of exact matches to document creator. (optional)
+mode = 'mode_example' # str | An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm+mt`.  (optional)
 
     try:
         # Pretranslate a Document
-        api_response = api_instance.pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept, mode=mode)
+        api_response = api_instance.pretranslate_documents(body, auto_accept=auto_accept, case_sensitive=case_sensitive, attribute_to_creator=attribute_to_creator, mode=mode)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DocumentsApi->pretranslate_document: %s\n" % e)
+        print("Exception when calling DocumentsApi->pretranslate_documents: %s\n" % e)
 ```
 
 * Basic Authentication (BasicAuth):
@@ -612,16 +613,17 @@ with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.DocumentsApi(api_client)
     body = lilt.DocumentPretranslateParameters() # DocumentPretranslateParameters | 
-case_sensitive = True # bool | Optional for using case matching against TM hits. (optional)
 auto_accept = True # bool | Optional parameter for auto-accepting 100% TM hits. (optional)
-mode = 'mode_example' # str | An optional parameter indicating how the document will be pretranslated.  The accepted values are `null`, `tm`, or `tm+mt`. Default is `tm+mt`.  (optional)
+case_sensitive = True # bool | Optional for using case matching against TM hits. (optional)
+attribute_to_creator = True # bool | Optional parameter for attributing translation authorship of exact matches to document creator. (optional)
+mode = 'mode_example' # str | An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm+mt`.  (optional)
 
     try:
         # Pretranslate a Document
-        api_response = api_instance.pretranslate_document(body, case_sensitive=case_sensitive, auto_accept=auto_accept, mode=mode)
+        api_response = api_instance.pretranslate_documents(body, auto_accept=auto_accept, case_sensitive=case_sensitive, attribute_to_creator=attribute_to_creator, mode=mode)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DocumentsApi->pretranslate_document: %s\n" % e)
+        print("Exception when calling DocumentsApi->pretranslate_documents: %s\n" % e)
 ```
 
 ### Parameters
@@ -629,9 +631,10 @@ mode = 'mode_example' # str | An optional parameter indicating how the document 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**DocumentPretranslateParameters**](DocumentPretranslateParameters.md)|  | 
- **case_sensitive** | **bool**| Optional for using case matching against TM hits. | [optional] 
  **auto_accept** | **bool**| Optional parameter for auto-accepting 100% TM hits. | [optional] 
- **mode** | **str**| An optional parameter indicating how the document will be pretranslated.  The accepted values are &#x60;null&#x60;, &#x60;tm&#x60;, or &#x60;tm+mt&#x60;. Default is &#x60;tm+mt&#x60;.  | [optional] 
+ **case_sensitive** | **bool**| Optional for using case matching against TM hits. | [optional] 
+ **attribute_to_creator** | **bool**| Optional parameter for attributing translation authorship of exact matches to document creator. | [optional] 
+ **mode** | **str**| An optional parameter indicating how the document will be pretranslated.  The accepted values are &#x60;tm&#x60;, or &#x60;tm+mt&#x60;. Default is &#x60;tm+mt&#x60;.  | [optional] 
 
 ### Return type
 

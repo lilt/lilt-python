@@ -183,6 +183,7 @@ class TranslateApi(object):
         :param str source: The source text to be translated.
         :param int source_hash: A source hash code.
         :param str prefix: A target prefix.
+        :param int n: Return top n translations.
         :param bool rich: Returns rich translation information (e.g., with word alignments).
         :param bool tm_matches: Include translation memory fuzzy matches.
         :param bool project_tags: Project tags. Projects tags in source to target if set to true.
@@ -214,6 +215,7 @@ class TranslateApi(object):
         :param str source: The source text to be translated.
         :param int source_hash: A source hash code.
         :param str prefix: A target prefix.
+        :param int n: Return top n translations.
         :param bool rich: Returns rich translation information (e.g., with word alignments).
         :param bool tm_matches: Include translation memory fuzzy matches.
         :param bool project_tags: Project tags. Projects tags in source to target if set to true.
@@ -238,6 +240,7 @@ class TranslateApi(object):
             'source',
             'source_hash',
             'prefix',
+            'n',
             'rich',
             'tm_matches',
             'project_tags'
@@ -277,6 +280,8 @@ class TranslateApi(object):
             query_params.append(('source_hash', local_var_params['source_hash']))  # noqa: E501
         if 'prefix' in local_var_params and local_var_params['prefix'] is not None:  # noqa: E501
             query_params.append(('prefix', local_var_params['prefix']))  # noqa: E501
+        if 'n' in local_var_params and local_var_params['n'] is not None:  # noqa: E501
+            query_params.append(('n', local_var_params['n']))  # noqa: E501
         if 'rich' in local_var_params and local_var_params['rich'] is not None:  # noqa: E501
             query_params.append(('rich', local_var_params['rich']))  # noqa: E501
         if 'tm_matches' in local_var_params and local_var_params['tm_matches'] is not None:  # noqa: E501

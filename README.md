@@ -111,7 +111,7 @@ Class | Method | HTTP request | Description
 *DocumentsApi* | [**delete_document**](docs/DocumentsApi.md#delete_document) | **DELETE** /documents | Delete a Document
 *DocumentsApi* | [**download_file**](docs/DocumentsApi.md#download_file) | **GET** /documents/files | Download a File
 *DocumentsApi* | [**get_document**](docs/DocumentsApi.md#get_document) | **GET** /documents | Retrieve a Document
-*DocumentsApi* | [**pretranslate_document**](docs/DocumentsApi.md#pretranslate_document) | **POST** /documents/pretranslate | Pretranslate a Document
+*DocumentsApi* | [**pretranslate_documents**](docs/DocumentsApi.md#pretranslate_documents) | **POST** /documents/pretranslate | Pretranslate a Document
 *DocumentsApi* | [**update_document**](docs/DocumentsApi.md#update_document) | **PUT** /documents | Update a Document
 *DocumentsApi* | [**upload_document_file**](docs/DocumentsApi.md#upload_document_file) | **POST** /documents/files | Upload a File
 *FilesApi* | [**delete_file**](docs/FilesApi.md#delete_file) | **DELETE** /files | Delete a File
@@ -171,6 +171,8 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [File](docs/File.md)
  - [FileDeleteResponse](docs/FileDeleteResponse.md)
+ - [InlineResponse200](docs/InlineResponse200.md)
+ - [InlineResponse201](docs/InlineResponse201.md)
  - [LanguagesResponse](docs/LanguagesResponse.md)
  - [LexiconEntry](docs/LexiconEntry.md)
  - [LexiconEntryExamples](docs/LexiconEntryExamples.md)
