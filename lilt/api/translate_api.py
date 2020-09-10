@@ -183,7 +183,7 @@ class TranslateApi(object):
         :param str source: The source text to be translated.
         :param int source_hash: A source hash code.
         :param str prefix: A target prefix.
-        :param int n: Return top n translations.
+        :param int n: Return top n translations (deprecated).
         :param bool rich: Returns rich translation information (e.g., with word alignments).
         :param bool tm_matches: Include translation memory fuzzy matches.
         :param bool project_tags: Project tags. Projects tags in source to target if set to true.
@@ -215,7 +215,7 @@ class TranslateApi(object):
         :param str source: The source text to be translated.
         :param int source_hash: A source hash code.
         :param str prefix: A target prefix.
-        :param int n: Return top n translations.
+        :param int n: Return top n translations (deprecated).
         :param bool rich: Returns rich translation information (e.g., with word alignments).
         :param bool tm_matches: Include translation memory fuzzy matches.
         :param bool project_tags: Project tags. Projects tags in source to target if set to true.

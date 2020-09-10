@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.0"
+__version__ = "0.5.2"
 
 # import apis into sdk package
 from lilt.api.connectors_api import ConnectorsApi
@@ -43,7 +43,7 @@ from lilt.models.annotation import Annotation
 from lilt.models.api_root import ApiRoot
 from lilt.models.comment import Comment
 from lilt.models.connector import Connector
-from lilt.models.connector1 import Connector1
+from lilt.models.connector_arguments import ConnectorArguments
 from lilt.models.connector_delete_response import ConnectorDeleteResponse
 from lilt.models.document_assignment_parameters import DocumentAssignmentParameters
 from lilt.models.document_assignment_response import DocumentAssignmentResponse
@@ -61,8 +61,6 @@ from lilt.models.document_without_segments_status import DocumentWithoutSegments
 from lilt.models.error import Error
 from lilt.models.file import File
 from lilt.models.file_delete_response import FileDeleteResponse
-from lilt.models.inline_response200 import InlineResponse200
-from lilt.models.inline_response201 import InlineResponse201
 from lilt.models.languages_response import LanguagesResponse
 from lilt.models.lexicon_entry import LexiconEntry
 from lilt.models.lexicon_entry_examples import LexiconEntryExamples

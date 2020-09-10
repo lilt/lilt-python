@@ -38,6 +38,8 @@ class File(object):
         'name': 'str',
         'file_hash': 'str',
         'export_uri': 'str',
+        'detected_lang': 'str',
+        'detected_lang_confidence': 'float',
         'created_at': 'int',
         'updated_at': 'int'
     }
@@ -47,11 +49,13 @@ class File(object):
         'name': 'name',
         'file_hash': 'file_hash',
         'export_uri': 'export_uri',
+        'detected_lang': 'detected_lang',
+        'detected_lang_confidence': 'detected_lang_confidence',
         'created_at': 'created_at',
         'updated_at': 'updated_at'
     }
 
-    def __init__(self, id=None, name=None, file_hash=None, export_uri=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, file_hash=None, export_uri=None, detected_lang=None, detected_lang_confidence=None, created_at=None, updated_at=None, local_vars_configuration=None):  # noqa: E501
         """File - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -61,6 +65,8 @@ class File(object):
         self._name = None
         self._file_hash = None
         self._export_uri = None
+        self._detected_lang = None
+        self._detected_lang_confidence = None
         self._created_at = None
         self._updated_at = None
         self.discriminator = None
@@ -73,6 +79,10 @@ class File(object):
             self.file_hash = file_hash
         if export_uri is not None:
             self.export_uri = export_uri
+        if detected_lang is not None:
+            self.detected_lang = detected_lang
+        if detected_lang_confidence is not None:
+            self.detected_lang_confidence = detected_lang_confidence
         if created_at is not None:
             self.created_at = created_at
         if updated_at is not None:
@@ -169,6 +179,52 @@ class File(object):
         """
 
         self._export_uri = export_uri
+
+    @property
+    def detected_lang(self):
+        """Gets the detected_lang of this File.  # noqa: E501
+
+        Language associated with the file.  # noqa: E501
+
+        :return: The detected_lang of this File.  # noqa: E501
+        :rtype: str
+        """
+        return self._detected_lang
+
+    @detected_lang.setter
+    def detected_lang(self, detected_lang):
+        """Sets the detected_lang of this File.
+
+        Language associated with the file.  # noqa: E501
+
+        :param detected_lang: The detected_lang of this File.  # noqa: E501
+        :type: str
+        """
+
+        self._detected_lang = detected_lang
+
+    @property
+    def detected_lang_confidence(self):
+        """Gets the detected_lang_confidence of this File.  # noqa: E501
+
+        Confidence score for the language associated with the file.  # noqa: E501
+
+        :return: The detected_lang_confidence of this File.  # noqa: E501
+        :rtype: float
+        """
+        return self._detected_lang_confidence
+
+    @detected_lang_confidence.setter
+    def detected_lang_confidence(self, detected_lang_confidence):
+        """Sets the detected_lang_confidence of this File.
+
+        Confidence score for the language associated with the file.  # noqa: E501
+
+        :param detected_lang_confidence: The detected_lang_confidence of this File.  # noqa: E501
+        :type: float
+        """
+
+        self._detected_lang_confidence = detected_lang_confidence
 
     @property
     def created_at(self):

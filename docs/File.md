@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **name** | **str** | The file name. | [optional] 
 **file_hash** | **str** | A unique hash value associated with the file. An MD5 hash of the file content will be used by default. | [optional] 
 **export_uri** | **str** | A webhook endpoint that will export the translated document back to the source repository. | [optional] 
+**detected_lang** | **str** | Language associated with the file. | [optional] 
+**detected_lang_confidence** | **float** | Confidence score for the language associated with the file. | [optional] 
 **created_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 **updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 

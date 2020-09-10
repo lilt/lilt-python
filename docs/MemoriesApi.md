@@ -32,18 +32,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -66,18 +80,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -136,18 +164,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -170,18 +212,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -240,18 +296,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -274,18 +344,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -344,18 +428,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -380,18 +478,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -454,18 +566,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -490,18 +616,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -564,18 +704,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -601,18 +755,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -662,7 +830,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sync_down_memory**
-> file sync_down_memory(id, from_time=from_time, to_time=to_time, when=when)
+> str sync_down_memory(id, from_time=from_time, to_time=to_time, when=when)
 
 Get-sync for a Memory
 
@@ -677,18 +845,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -714,18 +896,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -755,7 +951,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**file**
+**str**
 
 ### Authorization
 
@@ -790,18 +986,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -826,18 +1036,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -900,18 +1124,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -938,18 +1176,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -1016,18 +1268,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -1050,18 +1316,32 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-configuration = lilt.Configuration()
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['key'] = 'YOUR_API_KEY'
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['key'] = 'Bearer'
-configuration = lilt.Configuration()
-# Configure HTTP basic authorization: BasicAuth
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
 
-# Defining host is optional and default to https://lilt.com/2
-configuration.host = "https://lilt.com/2"
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
