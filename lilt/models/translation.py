@@ -253,7 +253,7 @@ class Translation(object):
     def target_words(self):
         """Gets the target_words of this Translation.  # noqa: E501
 
-        The target string can be constructed by suffixing each `targetDelimiters` entry with its corresponding word in `targetWords` and concatenating the constructed array.  Please note that the `targetDelimiters` array has one more entry than `targetWords` array which is why the last entry in the array will be the last value of `targetDelimiters`.   # noqa: E501
+        The target string can be constructed by suffixing each `targetDelimiters` entry with its corresponding word in `targetWords` and concatenating the constructed array. Please note that the `targetDelimiters` array has one more entry than `targetWords` array which is why the last entry in the array will be the last value of `targetDelimiters`.   # noqa: E501
 
         :return: The target_words of this Translation.  # noqa: E501
         :rtype: list[str]
@@ -264,7 +264,7 @@ class Translation(object):
     def target_words(self, target_words):
         """Sets the target_words of this Translation.
 
-        The target string can be constructed by suffixing each `targetDelimiters` entry with its corresponding word in `targetWords` and concatenating the constructed array.  Please note that the `targetDelimiters` array has one more entry than `targetWords` array which is why the last entry in the array will be the last value of `targetDelimiters`.   # noqa: E501
+        The target string can be constructed by suffixing each `targetDelimiters` entry with its corresponding word in `targetWords` and concatenating the constructed array. Please note that the `targetDelimiters` array has one more entry than `targetWords` array which is why the last entry in the array will be the last value of `targetDelimiters`.   # noqa: E501
 
         :param target_words: The target_words of this Translation.  # noqa: E501
         :type: list[str]

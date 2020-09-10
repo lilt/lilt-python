@@ -383,13 +383,13 @@ class DocumentsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def download_file(self, id, **kwargs):  # noqa: E501
-        """Download a File  # noqa: E501
+    def download_document(self, id, **kwargs):  # noqa: E501
+        """Download a Document  # noqa: E501
 
         Export a Document that has been translated in the Lilt web application. Any Document can be downloaded in XLIFF 1.2 format, or can be retrieved in its original uploaded format by setting `is_xliff=false`. This endpoint will fail if either (a) export or (b) pre-translation operations are in-progress. The status of those operations can be determined by retrieving the Document resource. Example CURL command: ```   curl -X GET https://lilt.com/2/documents/files?key=API_KEY&id=274 -o from_lilt.xliff ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.download_file(id, async_req=True)
+        >>> thread = api.download_document(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -402,20 +402,20 @@ class DocumentsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: file
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.download_file_with_http_info(id, **kwargs)  # noqa: E501
+        return self.download_document_with_http_info(id, **kwargs)  # noqa: E501
 
-    def download_file_with_http_info(self, id, **kwargs):  # noqa: E501
-        """Download a File  # noqa: E501
+    def download_document_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Download a Document  # noqa: E501
 
         Export a Document that has been translated in the Lilt web application. Any Document can be downloaded in XLIFF 1.2 format, or can be retrieved in its original uploaded format by setting `is_xliff=false`. This endpoint will fail if either (a) export or (b) pre-translation operations are in-progress. The status of those operations can be determined by retrieving the Document resource. Example CURL command: ```   curl -X GET https://lilt.com/2/documents/files?key=API_KEY&id=274 -o from_lilt.xliff ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.download_file_with_http_info(id, async_req=True)
+        >>> thread = api.download_document_with_http_info(id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -430,7 +430,7 @@ class DocumentsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(file, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(str, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -454,14 +454,14 @@ class DocumentsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method download_file" % key
+                    " to method download_document" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'id' is set
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `download_file`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `download_document`")  # noqa: E501
 
         collection_formats = {}
 
@@ -494,7 +494,7 @@ class DocumentsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='file',  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -877,13 +877,13 @@ class DocumentsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def upload_document_file(self, name, project_id, body, **kwargs):  # noqa: E501
+    def upload_document(self, name, project_id, body, **kwargs):  # noqa: E501
         """Upload a File  # noqa: E501
 
         Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed as JSON object with the header  field `LILT-API`. Example CURL command: ```   curl -X POST https://lilt.com/2/documents/files?key=API_KEY \\   --header \"LILT-API: {\\\"name\\\": \\\"introduction.xliff\\\",\\\"pretranslate\\\": \\\"tm+mt\\\",\\\"project_id\\\": 9}\" \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @Introduction.xliff ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.upload_document_file(name, project_id, body, async_req=True)
+        >>> thread = api.upload_document(name, project_id, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -905,15 +905,15 @@ class DocumentsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.upload_document_file_with_http_info(name, project_id, body, **kwargs)  # noqa: E501
+        return self.upload_document_with_http_info(name, project_id, body, **kwargs)  # noqa: E501
 
-    def upload_document_file_with_http_info(self, name, project_id, body, **kwargs):  # noqa: E501
+    def upload_document_with_http_info(self, name, project_id, body, **kwargs):  # noqa: E501
         """Upload a File  # noqa: E501
 
         Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed as JSON object with the header  field `LILT-API`. Example CURL command: ```   curl -X POST https://lilt.com/2/documents/files?key=API_KEY \\   --header \"LILT-API: {\\\"name\\\": \\\"introduction.xliff\\\",\\\"pretranslate\\\": \\\"tm+mt\\\",\\\"project_id\\\": 9}\" \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @Introduction.xliff ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.upload_document_file_with_http_info(name, project_id, body, async_req=True)
+        >>> thread = api.upload_document_with_http_info(name, project_id, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -960,22 +960,22 @@ class DocumentsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method upload_document_file" % key
+                    " to method upload_document" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'name' is set
         if self.api_client.client_side_validation and ('name' not in local_var_params or  # noqa: E501
                                                         local_var_params['name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `name` when calling `upload_document_file`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `name` when calling `upload_document`")  # noqa: E501
         # verify the required parameter 'project_id' is set
         if self.api_client.client_side_validation and ('project_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `project_id` when calling `upload_document_file`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_id` when calling `upload_document`")  # noqa: E501
         # verify the required parameter 'body' is set
         if self.api_client.client_side_validation and ('body' not in local_var_params or  # noqa: E501
                                                         local_var_params['body'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `body` when calling `upload_document_file`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `body` when calling `upload_document`")  # noqa: E501
 
         collection_formats = {}
 

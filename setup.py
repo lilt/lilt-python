@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "lilt-python"
-VERSION = "1.0.0"
+VERSION = "0.5.2"
 # To install the library, run the following
 #
 # python setup.py install
@@ -30,7 +30,7 @@ setup(
     description="Lilt REST API",
     author="Lilt REST API Support",
     author_email="support@lilt.com",
-    url="",
+    url="https://github.com/lilt/lilt-python",
     keywords=["OpenAPI", "OpenAPI-Generator", "Lilt REST API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),

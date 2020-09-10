@@ -47,7 +47,7 @@ class ConnectorsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param Connector1 body: (required)
+        :param Connector body: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -72,7 +72,7 @@ class ConnectorsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param Connector1 body: (required)
+        :param Connector body: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -287,7 +287,7 @@ class ConnectorsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Connector
+        :return: list[Connector]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -314,7 +314,7 @@ class ConnectorsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Connector, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(list[Connector], status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -371,7 +371,7 @@ class ConnectorsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Connector',  # noqa: E501
+            response_type='list[Connector]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -389,7 +389,7 @@ class ConnectorsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param Connector body: (required)
+        :param ConnectorArguments body: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -414,7 +414,7 @@ class ConnectorsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param Connector body: (required)
+        :param ConnectorArguments body: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
