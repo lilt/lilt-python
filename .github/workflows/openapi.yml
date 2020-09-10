@@ -23,7 +23,6 @@ jobs:
         env:
           VERSION: ${{ steps.latest.outputs.tag }}
         with:
-          entrypoint: docker-entrypoint.sh
           args: |
             generate
               -i https://beta.lilt.com/docs/api/public-http-api-swagger.yaml
