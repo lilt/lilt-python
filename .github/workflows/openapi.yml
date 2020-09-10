@@ -20,8 +20,6 @@ jobs:
         id: latest
       - name: Generate API Bindings
         uses: docker://openapitools/openapi-generator-cli:v4.3.1
-        env:
-          VERSION: ${{ steps.latest.outputs.tag }}
         with:
           args: >-
             generate
@@ -30,7 +28,7 @@ jobs:
             -p packageName=lilt
             -p projectName=lilt-python
             -p packageUrl=https://github.com/lilt/lilt-python
-            -p packageVersion=$VERSION
+            -p packageVersion=${{ steps.latest.outputs.tag }}
             --git-user-id lilt
             --git-repo-id lilt-python
             -o .
