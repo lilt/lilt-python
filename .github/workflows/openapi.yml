@@ -24,15 +24,15 @@ jobs:
           VERSION: ${{ steps.latest.outputs.tag }}
         with:
           args: |
-            generate
-              -i https://beta.lilt.com/docs/api/public-http-api-swagger.yaml
-              -g python
-              -p packageName=lilt
-              -p projectName=lilt-python
-              -p packageUrl=https://github.com/lilt/lilt-python
-              -p packageVersion=$VERSION
-              --git-user-id lilt
-              --git-repo-id lilt-python
+            generate \
+              -i https://lilt.com/docs/api/public-http-api-swagger.yaml \
+              -g python \
+              -p packageName=lilt \
+              -p projectName=lilt-python \
+              -p packageUrl=https://github.com/lilt/lilt-python \
+              -p packageVersion=$VERSION \
+              --git-user-id lilt \
+              --git-repo-id lilt-python \
               -o .
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.3.0
