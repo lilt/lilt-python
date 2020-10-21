@@ -34,24 +34,43 @@ class DocumentPretranslateParameters(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'list[int]'
+        'id': 'list[int]',
+        'auto_accept': 'bool',
+        'case_sensitive': 'bool',
+        'attribute_to_creator': 'bool',
+        'mode': 'str'
     }
 
     attribute_map = {
-        'id': 'id'
+        'id': 'id',
+        'auto_accept': 'auto_accept',
+        'case_sensitive': 'case_sensitive',
+        'attribute_to_creator': 'attribute_to_creator',
+        'mode': 'mode'
     }
 
-    def __init__(self, id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, auto_accept=None, case_sensitive=None, attribute_to_creator=None, mode=None, local_vars_configuration=None):  # noqa: E501
         """DocumentPretranslateParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
+        self._auto_accept = None
+        self._case_sensitive = None
+        self._attribute_to_creator = None
+        self._mode = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
+        self.id = id
+        if auto_accept is not None:
+            self.auto_accept = auto_accept
+        if case_sensitive is not None:
+            self.case_sensitive = case_sensitive
+        if attribute_to_creator is not None:
+            self.attribute_to_creator = attribute_to_creator
+        if mode is not None:
+            self.mode = mode
 
     @property
     def id(self):
@@ -73,8 +92,102 @@ class DocumentPretranslateParameters(object):
         :param id: The id of this DocumentPretranslateParameters.  # noqa: E501
         :type: list[int]
         """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def auto_accept(self):
+        """Gets the auto_accept of this DocumentPretranslateParameters.  # noqa: E501
+
+        Optional parameter for auto-accepting 100% TM hits.  # noqa: E501
+
+        :return: The auto_accept of this DocumentPretranslateParameters.  # noqa: E501
+        :rtype: bool
+        """
+        return self._auto_accept
+
+    @auto_accept.setter
+    def auto_accept(self, auto_accept):
+        """Sets the auto_accept of this DocumentPretranslateParameters.
+
+        Optional parameter for auto-accepting 100% TM hits.  # noqa: E501
+
+        :param auto_accept: The auto_accept of this DocumentPretranslateParameters.  # noqa: E501
+        :type: bool
+        """
+
+        self._auto_accept = auto_accept
+
+    @property
+    def case_sensitive(self):
+        """Gets the case_sensitive of this DocumentPretranslateParameters.  # noqa: E501
+
+        Optional for using case matching against TM hits..  # noqa: E501
+
+        :return: The case_sensitive of this DocumentPretranslateParameters.  # noqa: E501
+        :rtype: bool
+        """
+        return self._case_sensitive
+
+    @case_sensitive.setter
+    def case_sensitive(self, case_sensitive):
+        """Sets the case_sensitive of this DocumentPretranslateParameters.
+
+        Optional for using case matching against TM hits..  # noqa: E501
+
+        :param case_sensitive: The case_sensitive of this DocumentPretranslateParameters.  # noqa: E501
+        :type: bool
+        """
+
+        self._case_sensitive = case_sensitive
+
+    @property
+    def attribute_to_creator(self):
+        """Gets the attribute_to_creator of this DocumentPretranslateParameters.  # noqa: E501
+
+        Optional parameter for attributing translation authorship of exact matches to document creator.  # noqa: E501
+
+        :return: The attribute_to_creator of this DocumentPretranslateParameters.  # noqa: E501
+        :rtype: bool
+        """
+        return self._attribute_to_creator
+
+    @attribute_to_creator.setter
+    def attribute_to_creator(self, attribute_to_creator):
+        """Sets the attribute_to_creator of this DocumentPretranslateParameters.
+
+        Optional parameter for attributing translation authorship of exact matches to document creator.  # noqa: E501
+
+        :param attribute_to_creator: The attribute_to_creator of this DocumentPretranslateParameters.  # noqa: E501
+        :type: bool
+        """
+
+        self._attribute_to_creator = attribute_to_creator
+
+    @property
+    def mode(self):
+        """Gets the mode of this DocumentPretranslateParameters.  # noqa: E501
+
+        An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm`.   # noqa: E501
+
+        :return: The mode of this DocumentPretranslateParameters.  # noqa: E501
+        :rtype: str
+        """
+        return self._mode
+
+    @mode.setter
+    def mode(self, mode):
+        """Sets the mode of this DocumentPretranslateParameters.
+
+        An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm`.   # noqa: E501
+
+        :param mode: The mode of this DocumentPretranslateParameters.  # noqa: E501
+        :type: str
+        """
+
+        self._mode = mode
 
     def to_dict(self):
         """Returns the model properties as a dict"""

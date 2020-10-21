@@ -45,9 +45,11 @@ from lilt.models.comment import Comment
 from lilt.models.connector import Connector
 from lilt.models.connector_arguments import ConnectorArguments
 from lilt.models.connector_delete_response import ConnectorDeleteResponse
+from lilt.models.connector_job import ConnectorJob
 from lilt.models.document_assignment_parameters import DocumentAssignmentParameters
 from lilt.models.document_assignment_response import DocumentAssignmentResponse
 from lilt.models.document_delete_response import DocumentDeleteResponse
+from lilt.models.document_done_update_parameters import DocumentDoneUpdateParameters
 from lilt.models.document_parameters import DocumentParameters
 from lilt.models.document_pretranslate_parameters import DocumentPretranslateParameters
 from lilt.models.document_pretranslate_response import DocumentPretranslateResponse

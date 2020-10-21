@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**assign_document**](DocumentsApi.md#assign_document) | **PUT** /documents/share | Assign a Document
 [**create_document**](DocumentsApi.md#create_document) | **POST** /documents | Create a Document
 [**delete_document**](DocumentsApi.md#delete_document) | **DELETE** /documents | Delete a Document
+[**documents_done_translation_post**](DocumentsApi.md#documents_done_translation_post) | **POST** /documents/done/translation | Mark translation done
 [**download_document**](DocumentsApi.md#download_document) | **GET** /documents/files | Download a Document
 [**get_document**](DocumentsApi.md#get_document) | **GET** /documents | Retrieve a Document
 [**pretranslate_documents**](DocumentsApi.md#pretranslate_documents) | **POST** /documents/pretranslate | Pretranslate a Document
@@ -410,6 +411,137 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **documents_done_translation_post**
+> DocumentWithSegments documents_done_translation_post(body)
+
+Mark translation done
+
+Mark the translation of documents as done/undone in bulk. When being marked positively as done: - Documents must not already be marked as done and all segments must be confirmed. - This request will also trigger an email notification to a document's assigned reviewer that the document is ready for review. Example curl: ``` curl --location --request POST 'https://lilt.com/2/documents/done/translation' \\ --header 'Authorization: Basic API_KEY=' \\ --header 'Content-Type: application/json' \\ --data-raw '{     \"documentIds\": [23921, 23922],     \"isDone\": true }' ``` 
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['key'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.DocumentsApi(api_client)
+    body = lilt.DocumentDoneUpdateParameters() # DocumentDoneUpdateParameters | 
+
+    try:
+        # Mark translation done
+        api_response = api_instance.documents_done_translation_post(body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DocumentsApi->documents_done_translation_post: %s\n" % e)
+```
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['key'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.DocumentsApi(api_client)
+    body = lilt.DocumentDoneUpdateParameters() # DocumentDoneUpdateParameters | 
+
+    try:
+        # Mark translation done
+        api_response = api_instance.documents_done_translation_post(body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DocumentsApi->documents_done_translation_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DocumentDoneUpdateParameters**](DocumentDoneUpdateParameters.md)|  | 
+
+### Return type
+
+[**DocumentWithSegments**](DocumentWithSegments.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array of updated documents |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **download_document**
 > str download_document(id, is_xliff=is_xliff)
 
@@ -686,7 +818,7 @@ Name | Type | Description  | Notes
 
 Pretranslate a Document
 
-Initiate pretranslation of a list of Documents. This request will mark document(s) as being pretranslated. Pretranslation in this context is: - Applying and confirming exact TM matches based on the Memory of the Project; - Translating all other segments via MT without confirming them.  Example cURL command: ``` curl -X POST https://lilt.com/2/documents/pretranslate?key=API_KEY -d {\"id\": [123]} -H \"Content-Type: application/json\" ```  Document translation is an asynchronous process that, in effect, is performed in the background.  To check the status of pretranslation for a document, use the `GET /documents` endpoint. When pretranslation is in progress for a document, the `GET /documents` endpoint's response will include `is_pretranslating = true` as well as a more detailed status property `status.pretranslation` one of `idle`, `pending`, or `running`.  Once pretranslation is finished, the document can be downloaded via `GET /documents/files`. 
+Initiate pretranslation of a list of Documents. This request will mark document(s) as being pretranslated. Pretranslation in this context is: - Applying and confirming exact TM matches based on the Memory of the Project; - Translating all other segments via MT without confirming them.  Example CURL command: ``` curl -X POST https://lilt.com/2/documents/pretranslate?key=API_KEY -d {\"id\": [123]} -H \"Content-Type: application/json\" ```  Document translation is an asynchronous process that, in effect, is performed in the background.  To check the status of pretranslation for a document, use the `GET /documents` endpoint. When pretranslation is in progress for a document, the `GET /documents` endpoint's response will include `is_pretranslating = true` as well as a more detailed status property `status.pretranslation` one of `idle`, `pending`, or `running`.  Once pretranslation is finished, the document can be downloaded via `GET /documents/files`. 
 
 ### Example
 
@@ -729,10 +861,10 @@ with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.DocumentsApi(api_client)
     body = lilt.DocumentPretranslateParameters() # DocumentPretranslateParameters | 
-auto_accept = True # bool | Optional parameter for auto-accepting 100% TM hits. (optional)
-case_sensitive = True # bool | Optional for using case matching against TM hits. (optional)
-attribute_to_creator = True # bool | Optional parameter for attributing translation authorship of exact matches to document creator. (optional)
-mode = 'mode_example' # str | An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm+mt`.  (optional)
+auto_accept = True # bool | Deprecated, use body param instead. Optional parameter for auto-accepting 100% TM hits. (optional)
+case_sensitive = True # bool | Deprecated, use body param instead. Optional for using case matching against TM hits. (optional)
+attribute_to_creator = True # bool | Deprecated, use body param instead. Optional parameter for attributing translation authorship of exact matches to document creator. (optional)
+mode = 'mode_example' # str | Deprecated, use body param instead. An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm`.  (optional)
 
     try:
         # Pretranslate a Document
@@ -781,10 +913,10 @@ with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.DocumentsApi(api_client)
     body = lilt.DocumentPretranslateParameters() # DocumentPretranslateParameters | 
-auto_accept = True # bool | Optional parameter for auto-accepting 100% TM hits. (optional)
-case_sensitive = True # bool | Optional for using case matching against TM hits. (optional)
-attribute_to_creator = True # bool | Optional parameter for attributing translation authorship of exact matches to document creator. (optional)
-mode = 'mode_example' # str | An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm+mt`.  (optional)
+auto_accept = True # bool | Deprecated, use body param instead. Optional parameter for auto-accepting 100% TM hits. (optional)
+case_sensitive = True # bool | Deprecated, use body param instead. Optional for using case matching against TM hits. (optional)
+attribute_to_creator = True # bool | Deprecated, use body param instead. Optional parameter for attributing translation authorship of exact matches to document creator. (optional)
+mode = 'mode_example' # str | Deprecated, use body param instead. An optional parameter indicating how the document will be pretranslated.  The accepted values are `tm`, or `tm+mt`. Default is `tm`.  (optional)
 
     try:
         # Pretranslate a Document
@@ -799,10 +931,10 @@ mode = 'mode_example' # str | An optional parameter indicating how the document 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**DocumentPretranslateParameters**](DocumentPretranslateParameters.md)|  | 
- **auto_accept** | **bool**| Optional parameter for auto-accepting 100% TM hits. | [optional] 
- **case_sensitive** | **bool**| Optional for using case matching against TM hits. | [optional] 
- **attribute_to_creator** | **bool**| Optional parameter for attributing translation authorship of exact matches to document creator. | [optional] 
- **mode** | **str**| An optional parameter indicating how the document will be pretranslated.  The accepted values are &#x60;tm&#x60;, or &#x60;tm+mt&#x60;. Default is &#x60;tm+mt&#x60;.  | [optional] 
+ **auto_accept** | **bool**| Deprecated, use body param instead. Optional parameter for auto-accepting 100% TM hits. | [optional] 
+ **case_sensitive** | **bool**| Deprecated, use body param instead. Optional for using case matching against TM hits. | [optional] 
+ **attribute_to_creator** | **bool**| Deprecated, use body param instead. Optional parameter for attributing translation authorship of exact matches to document creator. | [optional] 
+ **mode** | **str**| Deprecated, use body param instead. An optional parameter indicating how the document will be pretranslated.  The accepted values are &#x60;tm&#x60;, or &#x60;tm+mt&#x60;. Default is &#x60;tm&#x60;.  | [optional] 
 
 ### Return type
 
