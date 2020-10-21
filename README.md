@@ -119,10 +119,12 @@ Class | Method | HTTP request | Description
 *ConnectorsApi* | [**create_connector**](docs/ConnectorsApi.md#create_connector) | **POST** /connectors | Upload a Connector
 *ConnectorsApi* | [**delete_connector**](docs/ConnectorsApi.md#delete_connector) | **DELETE** /connectors | Delete a Connector
 *ConnectorsApi* | [**get_connectors**](docs/ConnectorsApi.md#get_connectors) | **GET** /connectors | Retrieve a Connector
+*ConnectorsApi* | [**sync_connector**](docs/ConnectorsApi.md#sync_connector) | **POST** /connectors/sync | Sync a Connector
 *ConnectorsApi* | [**update_connector**](docs/ConnectorsApi.md#update_connector) | **PUT** /connectors | Upload a Connector
 *DocumentsApi* | [**assign_document**](docs/DocumentsApi.md#assign_document) | **PUT** /documents/share | Assign a Document
 *DocumentsApi* | [**create_document**](docs/DocumentsApi.md#create_document) | **POST** /documents | Create a Document
 *DocumentsApi* | [**delete_document**](docs/DocumentsApi.md#delete_document) | **DELETE** /documents | Delete a Document
+*DocumentsApi* | [**documents_done_translation_post**](docs/DocumentsApi.md#documents_done_translation_post) | **POST** /documents/done/translation | Mark translation done
 *DocumentsApi* | [**download_document**](docs/DocumentsApi.md#download_document) | **GET** /documents/files | Download a Document
 *DocumentsApi* | [**get_document**](docs/DocumentsApi.md#get_document) | **GET** /documents | Retrieve a Document
 *DocumentsApi* | [**pretranslate_documents**](docs/DocumentsApi.md#pretranslate_documents) | **POST** /documents/pretranslate | Pretranslate a Document
@@ -169,9 +171,11 @@ Class | Method | HTTP request | Description
  - [Connector](docs/Connector.md)
  - [ConnectorArguments](docs/ConnectorArguments.md)
  - [ConnectorDeleteResponse](docs/ConnectorDeleteResponse.md)
+ - [ConnectorJob](docs/ConnectorJob.md)
  - [DocumentAssignmentParameters](docs/DocumentAssignmentParameters.md)
  - [DocumentAssignmentResponse](docs/DocumentAssignmentResponse.md)
  - [DocumentDeleteResponse](docs/DocumentDeleteResponse.md)
+ - [DocumentDoneUpdateParameters](docs/DocumentDoneUpdateParameters.md)
  - [DocumentParameters](docs/DocumentParameters.md)
  - [DocumentPretranslateParameters](docs/DocumentPretranslateParameters.md)
  - [DocumentPretranslateResponse](docs/DocumentPretranslateResponse.md)
