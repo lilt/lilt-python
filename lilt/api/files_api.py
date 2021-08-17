@@ -169,7 +169,7 @@ class FilesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: list[File]
+        :return: list[SourceFile]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -196,7 +196,7 @@ class FilesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(list[File], status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(list[SourceFile], status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -253,7 +253,7 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[File]',  # noqa: E501
+            response_type='list[SourceFile]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -264,7 +264,7 @@ class FilesApi(object):
     def upload_file(self, name, body, **kwargs):  # noqa: E501
         """Upload a File  # noqa: E501
 
-        Upload a File in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed in as query string parameters.  When uploading a file, any parameters needed to issue a request to the specified export_uri can be encoded in the export_uri itself as query parameters. Typical examples of parameters that may be required are an access token to authorize requests to a third-party HTTP API and the unique identifier of a resource available via the third-party HTTP API that corresponds to the file. An example export_uri that encodes a target resource identifier (i.e., source_id) of an associated resource behind a third party HTTP API is given in the CURL command below.  Example CURL command: ```   curl -X POST https://lilt.com/2/files?key=API_KEY&name=en_US.json&export_uri=https://example.com/export?source_id=12345 \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @en_US.json ``` Calls to GET /files are used to monitor the language detection results. The API response will be augmented to include detected language and confidence score.  The language detection will complete asynchronously. Prior to completion, the `detected_lang` value will be `zxx`, the reserved ISO 639-2 code for \"No linguistic content/not applicable\".  If the language can not be determined, or the detection process fails, the `detected_lang` field will return `und`, the reserved ISO 639-2 code for undetermined language, and the `detected_lang_confidence` score will be `0`.    # noqa: E501
+        Upload a File in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed in as query string parameters.  Example CURL command: ```   curl -X POST https://lilt.com/2/files?key=API_KEY&name=en_US.json \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @en_US.json ``` Calls to GET /files are used to monitor the language detection results. The API response will be augmented to include detected language and confidence score.  The language detection will complete asynchronously. Prior to completion, the `detected_lang` value will be `zxx`, the reserved ISO 639-2 code for \"No linguistic content/not applicable\".  If the language can not be determined, or the detection process fails, the `detected_lang` field will return `und`, the reserved ISO 639-2 code for undetermined language, and the `detected_lang_confidence` score will be `0`.    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.upload_file(name, body, async_req=True)
@@ -272,10 +272,12 @@ class FilesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str name: A file name. (required)
-        :param str body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
-        :param str export_uri: A webhook endpoint that will export the translated document back to the source repository.
+        :param file body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
         :param str file_hash: A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided.
         :param bool lang_id: Flag indicating whether to perform language detection on the uploaded file. Default is false.
+        :param int project_id: The project to associate the uploaded file with.
+        :param str category: The category of the file. The options are `REFERENCE`, or `API`. The default is API. Files with the `REFERENCE` category will be displayed as reference material.
+        :param str labels: Comma-separated list of labels to add to the uploaded document.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -283,7 +285,7 @@ class FilesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: File
+        :return: SourceFile
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -293,7 +295,7 @@ class FilesApi(object):
     def upload_file_with_http_info(self, name, body, **kwargs):  # noqa: E501
         """Upload a File  # noqa: E501
 
-        Upload a File in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed in as query string parameters.  When uploading a file, any parameters needed to issue a request to the specified export_uri can be encoded in the export_uri itself as query parameters. Typical examples of parameters that may be required are an access token to authorize requests to a third-party HTTP API and the unique identifier of a resource available via the third-party HTTP API that corresponds to the file. An example export_uri that encodes a target resource identifier (i.e., source_id) of an associated resource behind a third party HTTP API is given in the CURL command below.  Example CURL command: ```   curl -X POST https://lilt.com/2/files?key=API_KEY&name=en_US.json&export_uri=https://example.com/export?source_id=12345 \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @en_US.json ``` Calls to GET /files are used to monitor the language detection results. The API response will be augmented to include detected language and confidence score.  The language detection will complete asynchronously. Prior to completion, the `detected_lang` value will be `zxx`, the reserved ISO 639-2 code for \"No linguistic content/not applicable\".  If the language can not be determined, or the detection process fails, the `detected_lang` field will return `und`, the reserved ISO 639-2 code for undetermined language, and the `detected_lang_confidence` score will be `0`.    # noqa: E501
+        Upload a File in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed in as query string parameters.  Example CURL command: ```   curl -X POST https://lilt.com/2/files?key=API_KEY&name=en_US.json \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @en_US.json ``` Calls to GET /files are used to monitor the language detection results. The API response will be augmented to include detected language and confidence score.  The language detection will complete asynchronously. Prior to completion, the `detected_lang` value will be `zxx`, the reserved ISO 639-2 code for \"No linguistic content/not applicable\".  If the language can not be determined, or the detection process fails, the `detected_lang` field will return `und`, the reserved ISO 639-2 code for undetermined language, and the `detected_lang_confidence` score will be `0`.    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.upload_file_with_http_info(name, body, async_req=True)
@@ -301,10 +303,12 @@ class FilesApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str name: A file name. (required)
-        :param str body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
-        :param str export_uri: A webhook endpoint that will export the translated document back to the source repository.
+        :param file body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
         :param str file_hash: A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided.
         :param bool lang_id: Flag indicating whether to perform language detection on the uploaded file. Default is false.
+        :param int project_id: The project to associate the uploaded file with.
+        :param str category: The category of the file. The options are `REFERENCE`, or `API`. The default is API. Files with the `REFERENCE` category will be displayed as reference material.
+        :param str labels: Comma-separated list of labels to add to the uploaded document.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -314,7 +318,7 @@ class FilesApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(File, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(SourceFile, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -324,9 +328,11 @@ class FilesApi(object):
         all_params = [
             'name',
             'body',
-            'export_uri',
             'file_hash',
-            'lang_id'
+            'lang_id',
+            'project_id',
+            'category',
+            'labels'
         ]
         all_params.extend(
             [
@@ -361,12 +367,16 @@ class FilesApi(object):
         query_params = []
         if 'name' in local_var_params and local_var_params['name'] is not None:  # noqa: E501
             query_params.append(('name', local_var_params['name']))  # noqa: E501
-        if 'export_uri' in local_var_params and local_var_params['export_uri'] is not None:  # noqa: E501
-            query_params.append(('export_uri', local_var_params['export_uri']))  # noqa: E501
         if 'file_hash' in local_var_params and local_var_params['file_hash'] is not None:  # noqa: E501
             query_params.append(('file_hash', local_var_params['file_hash']))  # noqa: E501
         if 'lang_id' in local_var_params and local_var_params['lang_id'] is not None:  # noqa: E501
             query_params.append(('langId', local_var_params['lang_id']))  # noqa: E501
+        if 'project_id' in local_var_params and local_var_params['project_id'] is not None:  # noqa: E501
+            query_params.append(('project_id', local_var_params['project_id']))  # noqa: E501
+        if 'category' in local_var_params and local_var_params['category'] is not None:  # noqa: E501
+            query_params.append(('category', local_var_params['category']))  # noqa: E501
+        if 'labels' in local_var_params and local_var_params['labels'] is not None:  # noqa: E501
+            query_params.append(('labels', local_var_params['labels']))  # noqa: E501
 
         header_params = {}
 
@@ -395,7 +405,7 @@ class FilesApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='File',  # noqa: E501
+            response_type='SourceFile',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

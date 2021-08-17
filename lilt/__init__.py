@@ -15,12 +15,14 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.5.2"
+__version__ = "0.6.0"
 
 # import apis into sdk package
+from lilt.api.comments_api import CommentsApi
 from lilt.api.connectors_api import ConnectorsApi
 from lilt.api.documents_api import DocumentsApi
 from lilt.api.files_api import FilesApi
+from lilt.api.jobs_api import JobsApi
 from lilt.api.languages_api import LanguagesApi
 from lilt.api.lexicon_api import LexiconApi
 from lilt.api.memories_api import MemoriesApi
@@ -28,6 +30,7 @@ from lilt.api.projects_api import ProjectsApi
 from lilt.api.qa_api import QAApi
 from lilt.api.root_api import RootApi
 from lilt.api.segments_api import SegmentsApi
+from lilt.api.settings_api import SettingsApi
 from lilt.api.translate_api import TranslateApi
 
 # import ApiClient
@@ -42,14 +45,19 @@ from lilt.exceptions import ApiException
 from lilt.models.annotation import Annotation
 from lilt.models.api_root import ApiRoot
 from lilt.models.comment import Comment
+from lilt.models.comment_body import CommentBody
+from lilt.models.comment_delete_response import CommentDeleteResponse
 from lilt.models.connector import Connector
 from lilt.models.connector_arguments import ConnectorArguments
 from lilt.models.connector_delete_response import ConnectorDeleteResponse
 from lilt.models.connector_job import ConnectorJob
 from lilt.models.document_assignment_parameters import DocumentAssignmentParameters
 from lilt.models.document_assignment_response import DocumentAssignmentResponse
+from lilt.models.document_comments import DocumentComments
 from lilt.models.document_delete_response import DocumentDeleteResponse
 from lilt.models.document_done_update_parameters import DocumentDoneUpdateParameters
+from lilt.models.document_done_update_parameters1 import DocumentDoneUpdateParameters1
+from lilt.models.document_done_update_parameters2 import DocumentDoneUpdateParameters2
 from lilt.models.document_parameters import DocumentParameters
 from lilt.models.document_pretranslate_parameters import DocumentPretranslateParameters
 from lilt.models.document_pretranslate_response import DocumentPretranslateResponse
@@ -61,8 +69,16 @@ from lilt.models.document_with_segments import DocumentWithSegments
 from lilt.models.document_without_segments import DocumentWithoutSegments
 from lilt.models.document_without_segments_status import DocumentWithoutSegmentsStatus
 from lilt.models.error import Error
-from lilt.models.file import File
 from lilt.models.file_delete_response import FileDeleteResponse
+from lilt.models.job import Job
+from lilt.models.job_create_parameters import JobCreateParameters
+from lilt.models.job_delete_response import JobDeleteResponse
+from lilt.models.job_leverage_stats import JobLeverageStats
+from lilt.models.job_leverage_stats_projects import JobLeverageStatsProjects
+from lilt.models.job_project import JobProject
+from lilt.models.job_stats import JobStats
+from lilt.models.job_update_parameters import JobUpdateParameters
+from lilt.models.language_pair import LanguagePair
 from lilt.models.languages_response import LanguagesResponse
 from lilt.models.lexicon_entry import LexiconEntry
 from lilt.models.lexicon_entry_examples import LexiconEntryExamples
@@ -96,11 +112,17 @@ from lilt.models.resource_status import ResourceStatus
 from lilt.models.segment import Segment
 from lilt.models.segment_create_parameters import SegmentCreateParameters
 from lilt.models.segment_delete_response import SegmentDeleteResponse
+from lilt.models.segment_done_response import SegmentDoneResponse
 from lilt.models.segment_update_parameters import SegmentUpdateParameters
 from lilt.models.segment_with_comments import SegmentWithComments
+from lilt.models.setting import Setting
+from lilt.models.setting_dictionary import SettingDictionary
+from lilt.models.setting_upsert_response import SettingUpsertResponse
+from lilt.models.source_file import SourceFile
 from lilt.models.tagged_segment import TaggedSegment
 from lilt.models.translate_register_response import TranslateRegisterResponse
 from lilt.models.translation import Translation
+from lilt.models.translation_info import TranslationInfo
 from lilt.models.translation_list import TranslationList
 from lilt.models.translation_memory_entry import TranslationMemoryEntry
 

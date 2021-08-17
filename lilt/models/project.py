@@ -36,6 +36,7 @@ class Project(object):
     openapi_types = {
         'id': 'int',
         'memory_id': 'int',
+        'job_id': 'int',
         'srclang': 'str',
         'trglang': 'str',
         'srclocale': 'str',
@@ -54,6 +55,7 @@ class Project(object):
     attribute_map = {
         'id': 'id',
         'memory_id': 'memory_id',
+        'job_id': 'job_id',
         'srclang': 'srclang',
         'trglang': 'trglang',
         'srclocale': 'srclocale',
@@ -69,7 +71,7 @@ class Project(object):
         'document': 'document'
     }
 
-    def __init__(self, id=None, memory_id=None, srclang=None, trglang=None, srclocale=None, trglocale=None, name=None, state=None, due_date=None, archived=None, metadata=None, sample_review_percentage=None, created_at=None, updated_at=None, document=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, memory_id=None, job_id=None, srclang=None, trglang=None, srclocale=None, trglocale=None, name=None, state=None, due_date=None, archived=None, metadata=None, sample_review_percentage=None, created_at=None, updated_at=None, document=None, local_vars_configuration=None):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -77,6 +79,7 @@ class Project(object):
 
         self._id = None
         self._memory_id = None
+        self._job_id = None
         self._srclang = None
         self._trglang = None
         self._srclocale = None
@@ -96,6 +99,8 @@ class Project(object):
             self.id = id
         if memory_id is not None:
             self.memory_id = memory_id
+        if job_id is not None:
+            self.job_id = job_id
         if srclang is not None:
             self.srclang = srclang
         if trglang is not None:
@@ -168,6 +173,29 @@ class Project(object):
         """
 
         self._memory_id = memory_id
+
+    @property
+    def job_id(self):
+        """Gets the job_id of this Project.  # noqa: E501
+
+        A unique number identifying the associated Job.  # noqa: E501
+
+        :return: The job_id of this Project.  # noqa: E501
+        :rtype: int
+        """
+        return self._job_id
+
+    @job_id.setter
+    def job_id(self, job_id):
+        """Sets the job_id of this Project.
+
+        A unique number identifying the associated Job.  # noqa: E501
+
+        :param job_id: The job_id of this Project.  # noqa: E501
+        :type: int
+        """
+
+        self._job_id = job_id
 
     @property
     def srclang(self):
@@ -288,7 +316,7 @@ class Project(object):
     def state(self):
         """Gets the state of this Project.  # noqa: E501
 
-        The project's state. The possible states are 'backlog', 'inProgress', 'inReview', 'inQA', and 'done'  # noqa: E501
+        The project's state. The possible states are `backlog`, `inProgress`, `inReview`, `inQA`, and `done`.  # noqa: E501
 
         :return: The state of this Project.  # noqa: E501
         :rtype: str
@@ -299,7 +327,7 @@ class Project(object):
     def state(self, state):
         """Sets the state of this Project.
 
-        The project's state. The possible states are 'backlog', 'inProgress', 'inReview', 'inQA', and 'done'  # noqa: E501
+        The project's state. The possible states are `backlog`, `inProgress`, `inReview`, `inQA`, and `done`.  # noqa: E501
 
         :param state: The state of this Project.  # noqa: E501
         :type: str
@@ -357,7 +385,7 @@ class Project(object):
     def metadata(self):
         """Gets the metadata of this Project.  # noqa: E501
 
-        A JSON object for storing various project metadata.  # noqa: E501
+        A JSON object of key/value string pairs. Stores custom project information.  # noqa: E501
 
         :return: The metadata of this Project.  # noqa: E501
         :rtype: object
@@ -368,7 +396,7 @@ class Project(object):
     def metadata(self, metadata):
         """Sets the metadata of this Project.
 
-        A JSON object for storing various project metadata.  # noqa: E501
+        A JSON object of key/value string pairs. Stores custom project information.  # noqa: E501
 
         :param metadata: The metadata of this Project.  # noqa: E501
         :type: object

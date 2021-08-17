@@ -36,22 +36,28 @@ class Comment(object):
     openapi_types = {
         'id': 'int',
         'text': 'str',
-        'user_id': 'int',
-        'is_resolved': 'bool',
         'annotations': 'list[Annotation]',
+        'is_resolved': 'bool',
+        'document_id': 'int',
+        'segment_id': 'int',
+        'segment_revision_id': 'int',
+        'user_id': 'int',
         'created_at': 'int'
     }
 
     attribute_map = {
         'id': 'id',
         'text': 'text',
-        'user_id': 'user_id',
-        'is_resolved': 'is_resolved',
         'annotations': 'annotations',
+        'is_resolved': 'is_resolved',
+        'document_id': 'document_id',
+        'segment_id': 'segment_id',
+        'segment_revision_id': 'segment_revision_id',
+        'user_id': 'user_id',
         'created_at': 'created_at'
     }
 
-    def __init__(self, id=None, text=None, user_id=None, is_resolved=None, annotations=None, created_at=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, text=None, annotations=None, is_resolved=None, document_id=None, segment_id=None, segment_revision_id=None, user_id=None, created_at=None, local_vars_configuration=None):  # noqa: E501
         """Comment - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,9 +65,12 @@ class Comment(object):
 
         self._id = None
         self._text = None
-        self._user_id = None
-        self._is_resolved = None
         self._annotations = None
+        self._is_resolved = None
+        self._document_id = None
+        self._segment_id = None
+        self._segment_revision_id = None
+        self._user_id = None
         self._created_at = None
         self.discriminator = None
 
@@ -69,12 +78,18 @@ class Comment(object):
             self.id = id
         if text is not None:
             self.text = text
-        if user_id is not None:
-            self.user_id = user_id
-        if is_resolved is not None:
-            self.is_resolved = is_resolved
         if annotations is not None:
             self.annotations = annotations
+        if is_resolved is not None:
+            self.is_resolved = is_resolved
+        if document_id is not None:
+            self.document_id = document_id
+        if segment_id is not None:
+            self.segment_id = segment_id
+        if segment_revision_id is not None:
+            self.segment_revision_id = segment_revision_id
+        if user_id is not None:
+            self.user_id = user_id
         if created_at is not None:
             self.created_at = created_at
 
@@ -125,27 +140,27 @@ class Comment(object):
         self._text = text
 
     @property
-    def user_id(self):
-        """Gets the user_id of this Comment.  # noqa: E501
+    def annotations(self):
+        """Gets the annotations of this Comment.  # noqa: E501
 
-        The User who created this Comment.  # noqa: E501
+        A list of optional Annotations.  # noqa: E501
 
-        :return: The user_id of this Comment.  # noqa: E501
-        :rtype: int
+        :return: The annotations of this Comment.  # noqa: E501
+        :rtype: list[Annotation]
         """
-        return self._user_id
+        return self._annotations
 
-    @user_id.setter
-    def user_id(self, user_id):
-        """Sets the user_id of this Comment.
+    @annotations.setter
+    def annotations(self, annotations):
+        """Sets the annotations of this Comment.
 
-        The User who created this Comment.  # noqa: E501
+        A list of optional Annotations.  # noqa: E501
 
-        :param user_id: The user_id of this Comment.  # noqa: E501
-        :type: int
+        :param annotations: The annotations of this Comment.  # noqa: E501
+        :type: list[Annotation]
         """
 
-        self._user_id = user_id
+        self._annotations = annotations
 
     @property
     def is_resolved(self):
@@ -171,27 +186,96 @@ class Comment(object):
         self._is_resolved = is_resolved
 
     @property
-    def annotations(self):
-        """Gets the annotations of this Comment.  # noqa: E501
+    def document_id(self):
+        """Gets the document_id of this Comment.  # noqa: E501
 
-        A list of optional Annotations.  # noqa: E501
+        The document to which the comment belongs.  # noqa: E501
 
-        :return: The annotations of this Comment.  # noqa: E501
-        :rtype: list[Annotation]
+        :return: The document_id of this Comment.  # noqa: E501
+        :rtype: int
         """
-        return self._annotations
+        return self._document_id
 
-    @annotations.setter
-    def annotations(self, annotations):
-        """Sets the annotations of this Comment.
+    @document_id.setter
+    def document_id(self, document_id):
+        """Sets the document_id of this Comment.
 
-        A list of optional Annotations.  # noqa: E501
+        The document to which the comment belongs.  # noqa: E501
 
-        :param annotations: The annotations of this Comment.  # noqa: E501
-        :type: list[Annotation]
+        :param document_id: The document_id of this Comment.  # noqa: E501
+        :type: int
         """
 
-        self._annotations = annotations
+        self._document_id = document_id
+
+    @property
+    def segment_id(self):
+        """Gets the segment_id of this Comment.  # noqa: E501
+
+        The individual segment to which the comment applies.  # noqa: E501
+
+        :return: The segment_id of this Comment.  # noqa: E501
+        :rtype: int
+        """
+        return self._segment_id
+
+    @segment_id.setter
+    def segment_id(self, segment_id):
+        """Sets the segment_id of this Comment.
+
+        The individual segment to which the comment applies.  # noqa: E501
+
+        :param segment_id: The segment_id of this Comment.  # noqa: E501
+        :type: int
+        """
+
+        self._segment_id = segment_id
+
+    @property
+    def segment_revision_id(self):
+        """Gets the segment_revision_id of this Comment.  # noqa: E501
+
+        The revision of the individual segment to which the comment applies.  # noqa: E501
+
+        :return: The segment_revision_id of this Comment.  # noqa: E501
+        :rtype: int
+        """
+        return self._segment_revision_id
+
+    @segment_revision_id.setter
+    def segment_revision_id(self, segment_revision_id):
+        """Sets the segment_revision_id of this Comment.
+
+        The revision of the individual segment to which the comment applies.  # noqa: E501
+
+        :param segment_revision_id: The segment_revision_id of this Comment.  # noqa: E501
+        :type: int
+        """
+
+        self._segment_revision_id = segment_revision_id
+
+    @property
+    def user_id(self):
+        """Gets the user_id of this Comment.  # noqa: E501
+
+        The user who created this comment.  # noqa: E501
+
+        :return: The user_id of this Comment.  # noqa: E501
+        :rtype: int
+        """
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, user_id):
+        """Sets the user_id of this Comment.
+
+        The user who created this comment.  # noqa: E501
+
+        :param user_id: The user_id of this Comment.  # noqa: E501
+        :type: int
+        """
+
+        self._user_id = user_id
 
     @property
     def created_at(self):

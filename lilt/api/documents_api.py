@@ -383,17 +383,17 @@ class DocumentsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def documents_done_translation_post(self, body, **kwargs):  # noqa: E501
+    def document_translation_done(self, body, **kwargs):  # noqa: E501
         """Mark translation done  # noqa: E501
 
-        Mark the translation of documents as done/undone in bulk. When being marked positively as done: - Documents must not already be marked as done and all segments must be confirmed. - This request will also trigger an email notification to a document's assigned reviewer that the document is ready for review. Example curl: ``` curl --location --request POST 'https://lilt.com/2/documents/done/translation' \\ --header 'Authorization: Basic API_KEY=' \\ --header 'Content-Type: application/json' \\ --data-raw '{     \"documentIds\": [23921, 23922],     \"isDone\": true }' ```   # noqa: E501
+        Mark the translation of documents as done/undone in bulk.  When being marked positively as done:  - Documents must not already be marked as done and all segments must be confirmed. - This request will also trigger an email notification to a document's assigned reviewer that the document is ready for review.  When being marked as un-done: - Documents must not be marked as complete for review.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/translation?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922],       \"isDone\": true   }' ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.documents_done_translation_post(body, async_req=True)
+        >>> thread = api.document_translation_done(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param DocumentDoneUpdateParameters body: (required)
+        :param DocumentDoneUpdateParameters1 body: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -401,24 +401,24 @@ class DocumentsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: DocumentWithSegments
+        :return: list[float]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.documents_done_translation_post_with_http_info(body, **kwargs)  # noqa: E501
+        return self.document_translation_done_with_http_info(body, **kwargs)  # noqa: E501
 
-    def documents_done_translation_post_with_http_info(self, body, **kwargs):  # noqa: E501
+    def document_translation_done_with_http_info(self, body, **kwargs):  # noqa: E501
         """Mark translation done  # noqa: E501
 
-        Mark the translation of documents as done/undone in bulk. When being marked positively as done: - Documents must not already be marked as done and all segments must be confirmed. - This request will also trigger an email notification to a document's assigned reviewer that the document is ready for review. Example curl: ``` curl --location --request POST 'https://lilt.com/2/documents/done/translation' \\ --header 'Authorization: Basic API_KEY=' \\ --header 'Content-Type: application/json' \\ --data-raw '{     \"documentIds\": [23921, 23922],     \"isDone\": true }' ```   # noqa: E501
+        Mark the translation of documents as done/undone in bulk.  When being marked positively as done:  - Documents must not already be marked as done and all segments must be confirmed. - This request will also trigger an email notification to a document's assigned reviewer that the document is ready for review.  When being marked as un-done: - Documents must not be marked as complete for review.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/translation?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922],       \"isDone\": true   }' ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.documents_done_translation_post_with_http_info(body, async_req=True)
+        >>> thread = api.document_translation_done_with_http_info(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param DocumentDoneUpdateParameters body: (required)
+        :param DocumentDoneUpdateParameters1 body: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -428,7 +428,7 @@ class DocumentsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(DocumentWithSegments, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(list[float], status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -451,14 +451,14 @@ class DocumentsApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method documents_done_translation_post" % key
+                    " to method document_translation_done" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
         # verify the required parameter 'body' is set
         if self.api_client.client_side_validation and ('body' not in local_var_params or  # noqa: E501
                                                         local_var_params['body'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `body` when calling `documents_done_translation_post`")  # noqa: E501
+            raise ApiValueError("Missing the required parameter `body` when calling `document_translation_done`")  # noqa: E501
 
         collection_formats = {}
 
@@ -493,7 +493,243 @@ class DocumentsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='DocumentWithSegments',  # noqa: E501
+            response_type='list[float]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def document_unlock(self, body, **kwargs):  # noqa: E501
+        """Unlock documents  # noqa: E501
+
+        Unlock documents for translation. Sets document \"Translation Done\" and \"Review Done\" to false.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/unlock?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922]   }' ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.document_unlock(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param DocumentDoneUpdateParameters body: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[float]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.document_unlock_with_http_info(body, **kwargs)  # noqa: E501
+
+    def document_unlock_with_http_info(self, body, **kwargs):  # noqa: E501
+        """Unlock documents  # noqa: E501
+
+        Unlock documents for translation. Sets document \"Translation Done\" and \"Review Done\" to false.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/unlock?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922]   }' ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.document_unlock_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param DocumentDoneUpdateParameters body: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[float], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'body'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method document_unlock" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in local_var_params or  # noqa: E501
+                                                        local_var_params['body'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `body` when calling `document_unlock`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in local_var_params:
+            body_params = local_var_params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/documents/done/unlock', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[float]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def documents_done_review_post(self, body, **kwargs):  # noqa: E501
+        """Mark review done  # noqa: E501
+
+        Mark the review of documents as done/undone in bulk.  When being marked positively as done:  - Documents must not already be marked as done for review. - Documents must already be marked as done for translation. - This request will also trigger an email notification.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/review?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922],       \"isDone\": true   }' ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.documents_done_review_post(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param DocumentDoneUpdateParameters2 body: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[float]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.documents_done_review_post_with_http_info(body, **kwargs)  # noqa: E501
+
+    def documents_done_review_post_with_http_info(self, body, **kwargs):  # noqa: E501
+        """Mark review done  # noqa: E501
+
+        Mark the review of documents as done/undone in bulk.  When being marked positively as done:  - Documents must not already be marked as done for review. - Documents must already be marked as done for translation. - This request will also trigger an email notification.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/review?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922],       \"isDone\": true   }' ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.documents_done_review_post_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param DocumentDoneUpdateParameters2 body: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[float], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'body'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method documents_done_review_post" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in local_var_params or  # noqa: E501
+                                                        local_var_params['body'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `body` when calling `documents_done_review_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in local_var_params:
+            body_params = local_var_params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/documents/done/review', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[float]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -998,7 +1234,7 @@ class DocumentsApi(object):
     def upload_document(self, name, project_id, body, **kwargs):  # noqa: E501
         """Upload a File  # noqa: E501
 
-        Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed as JSON object with the header  field `LILT-API`. Example CURL command: ```   curl -X POST https://lilt.com/2/documents/files?key=API_KEY \\   --header \"LILT-API: {\\\"name\\\": \\\"introduction.xliff\\\",\\\"pretranslate\\\": \\\"tm+mt\\\",\\\"project_id\\\": 9}\" \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @Introduction.xliff ```    # noqa: E501
+        Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed as JSON object with the header field `LILT-API`.  File names in the header can only contain [US-ASCII characters](https://en.wikipedia.org/wiki/ASCII). File names with characters outside of US-ASCII should be [URI encoded](https://en.wikipedia.org/wiki/Percent-encoding) or transliterated to US-ASCII strings.  Example CURL command: ```   curl -X POST https://lilt.com/2/documents/files?key=API_KEY \\   --header \"LILT-API: {\\\"name\\\": \\\"introduction.xliff\\\",\\\"pretranslate\\\": \\\"tm+mt\\\",\\\"project_id\\\": 9}\" \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @Introduction.xliff ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.upload_document(name, project_id, body, async_req=True)
@@ -1007,9 +1243,11 @@ class DocumentsApi(object):
         :param async_req bool: execute request asynchronously
         :param str name: A file name. (required)
         :param int project_id: A unique Project identifier. (required)
-        :param str body: The file contents to be uploaded. The entire POST body will be treated as the file.  (required)
-        :param str pretranslate: An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are `null`, `tm`, or `tm+mt` 
+        :param file body: The file contents to be uploaded. The entire POST body will be treated as the file.  (required)
+        :param str pretranslate: An optional parameter indicating if and how the document will be pretranslated upon being uploaded. The accepted values are `TM`, or `TM+MT` 
         :param bool auto_accept: An optional parameter to auto-accept segments with 100% translation memory matches when the `pretranslate` option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to `false`, no segments will be auto-accepted. 
+        :param bool case_sensitive: An optional parameter to use case sensitive translation memory matching when the `pretranslate` option is also enabled. Matches must have identical character-by-character case to qualify as matches. Default value is `false` 
+        :param bool match_attribution: An optional parameter to attribute translation authorship of exact matches to the author of the file when the `pretranslate` option is also enabled. Default value is `false` 
         :param int config_id: An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. 
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -1028,7 +1266,7 @@ class DocumentsApi(object):
     def upload_document_with_http_info(self, name, project_id, body, **kwargs):  # noqa: E501
         """Upload a File  # noqa: E501
 
-        Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed as JSON object with the header  field `LILT-API`. Example CURL command: ```   curl -X POST https://lilt.com/2/documents/files?key=API_KEY \\   --header \"LILT-API: {\\\"name\\\": \\\"introduction.xliff\\\",\\\"pretranslate\\\": \\\"tm+mt\\\",\\\"project_id\\\": 9}\" \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @Introduction.xliff ```    # noqa: E501
+        Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed as JSON object with the header field `LILT-API`.  File names in the header can only contain [US-ASCII characters](https://en.wikipedia.org/wiki/ASCII). File names with characters outside of US-ASCII should be [URI encoded](https://en.wikipedia.org/wiki/Percent-encoding) or transliterated to US-ASCII strings.  Example CURL command: ```   curl -X POST https://lilt.com/2/documents/files?key=API_KEY \\   --header \"LILT-API: {\\\"name\\\": \\\"introduction.xliff\\\",\\\"pretranslate\\\": \\\"tm+mt\\\",\\\"project_id\\\": 9}\" \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @Introduction.xliff ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.upload_document_with_http_info(name, project_id, body, async_req=True)
@@ -1037,9 +1275,11 @@ class DocumentsApi(object):
         :param async_req bool: execute request asynchronously
         :param str name: A file name. (required)
         :param int project_id: A unique Project identifier. (required)
-        :param str body: The file contents to be uploaded. The entire POST body will be treated as the file.  (required)
-        :param str pretranslate: An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are `null`, `tm`, or `tm+mt` 
+        :param file body: The file contents to be uploaded. The entire POST body will be treated as the file.  (required)
+        :param str pretranslate: An optional parameter indicating if and how the document will be pretranslated upon being uploaded. The accepted values are `TM`, or `TM+MT` 
         :param bool auto_accept: An optional parameter to auto-accept segments with 100% translation memory matches when the `pretranslate` option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to `false`, no segments will be auto-accepted. 
+        :param bool case_sensitive: An optional parameter to use case sensitive translation memory matching when the `pretranslate` option is also enabled. Matches must have identical character-by-character case to qualify as matches. Default value is `false` 
+        :param bool match_attribution: An optional parameter to attribute translation authorship of exact matches to the author of the file when the `pretranslate` option is also enabled. Default value is `false` 
         :param int config_id: An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. 
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -1063,6 +1303,8 @@ class DocumentsApi(object):
             'body',
             'pretranslate',
             'auto_accept',
+            'case_sensitive',
+            'match_attribution',
             'config_id'
         ]
         all_params.extend(
@@ -1110,6 +1352,10 @@ class DocumentsApi(object):
             header_params['pretranslate'] = local_var_params['pretranslate']  # noqa: E501
         if 'auto_accept' in local_var_params:
             header_params['auto_accept'] = local_var_params['auto_accept']  # noqa: E501
+        if 'case_sensitive' in local_var_params:
+            header_params['case_sensitive'] = local_var_params['case_sensitive']  # noqa: E501
+        if 'match_attribution' in local_var_params:
+            header_params['match_attribution'] = local_var_params['match_attribution']  # noqa: E501
         if 'config_id' in local_var_params:
             header_params['config_id'] = local_var_params['config_id']  # noqa: E501
 

@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_files**
-> list[File] get_files(id=id)
+> list[SourceFile] get_files(id=id)
 
 Retrieve a File
 
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[File]**](File.md)
+[**list[SourceFile]**](SourceFile.md)
 
 ### Authorization
 
@@ -276,11 +276,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_file**
-> File upload_file(name, body, export_uri=export_uri, file_hash=file_hash, lang_id=lang_id)
+> SourceFile upload_file(name, body, file_hash=file_hash, lang_id=lang_id, project_id=project_id, category=category, labels=labels)
 
 Upload a File
 
-Upload a File in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed in as query string parameters.  When uploading a file, any parameters needed to issue a request to the specified export_uri can be encoded in the export_uri itself as query parameters. Typical examples of parameters that may be required are an access token to authorize requests to a third-party HTTP API and the unique identifier of a resource available via the third-party HTTP API that corresponds to the file. An example export_uri that encodes a target resource identifier (i.e., source_id) of an associated resource behind a third party HTTP API is given in the CURL command below.  Example CURL command: ```   curl -X POST https://lilt.com/2/files?key=API_KEY&name=en_US.json&export_uri=https://example.com/export?source_id=12345 \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @en_US.json ``` Calls to GET /files are used to monitor the language detection results. The API response will be augmented to include detected language and confidence score.  The language detection will complete asynchronously. Prior to completion, the `detected_lang` value will be `zxx`, the reserved ISO 639-2 code for \"No linguistic content/not applicable\".  If the language can not be determined, or the detection process fails, the `detected_lang` field will return `und`, the reserved ISO 639-2 code for undetermined language, and the `detected_lang_confidence` score will be `0`.  
+Upload a File in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed in as query string parameters.  Example CURL command: ```   curl -X POST https://lilt.com/2/files?key=API_KEY&name=en_US.json \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @en_US.json ``` Calls to GET /files are used to monitor the language detection results. The API response will be augmented to include detected language and confidence score.  The language detection will complete asynchronously. Prior to completion, the `detected_lang` value will be `zxx`, the reserved ISO 639-2 code for \"No linguistic content/not applicable\".  If the language can not be determined, or the detection process fails, the `detected_lang` field will return `und`, the reserved ISO 639-2 code for undetermined language, and the `detected_lang_confidence` score will be `0`.  
 
 ### Example
 
@@ -323,14 +323,16 @@ with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.FilesApi(api_client)
     name = 'name_example' # str | A file name.
-body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
-export_uri = 'export_uri_example' # str | A webhook endpoint that will export the translated document back to the source repository. (optional)
+body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
 file_hash = 'file_hash_example' # str | A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided. (optional)
 lang_id = True # bool | Flag indicating whether to perform language detection on the uploaded file. Default is false. (optional)
+project_id = 56 # int | The project to associate the uploaded file with. (optional)
+category = 'category_example' # str | The category of the file. The options are `REFERENCE`, or `API`. The default is API. Files with the `REFERENCE` category will be displayed as reference material. (optional)
+labels = 'labels_example' # str | Comma-separated list of labels to add to the uploaded document. (optional)
 
     try:
         # Upload a File
-        api_response = api_instance.upload_file(name, body, export_uri=export_uri, file_hash=file_hash, lang_id=lang_id)
+        api_response = api_instance.upload_file(name, body, file_hash=file_hash, lang_id=lang_id, project_id=project_id, category=category, labels=labels)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling FilesApi->upload_file: %s\n" % e)
@@ -375,14 +377,16 @@ with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.FilesApi(api_client)
     name = 'name_example' # str | A file name.
-body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
-export_uri = 'export_uri_example' # str | A webhook endpoint that will export the translated document back to the source repository. (optional)
+body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
 file_hash = 'file_hash_example' # str | A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided. (optional)
 lang_id = True # bool | Flag indicating whether to perform language detection on the uploaded file. Default is false. (optional)
+project_id = 56 # int | The project to associate the uploaded file with. (optional)
+category = 'category_example' # str | The category of the file. The options are `REFERENCE`, or `API`. The default is API. Files with the `REFERENCE` category will be displayed as reference material. (optional)
+labels = 'labels_example' # str | Comma-separated list of labels to add to the uploaded document. (optional)
 
     try:
         # Upload a File
-        api_response = api_instance.upload_file(name, body, export_uri=export_uri, file_hash=file_hash, lang_id=lang_id)
+        api_response = api_instance.upload_file(name, body, file_hash=file_hash, lang_id=lang_id, project_id=project_id, category=category, labels=labels)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling FilesApi->upload_file: %s\n" % e)
@@ -393,14 +397,16 @@ lang_id = True # bool | Flag indicating whether to perform language detection on
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| A file name. | 
- **body** | **str**| The file contents to be uploaded. The entire POST body will be treated as the file. | 
- **export_uri** | **str**| A webhook endpoint that will export the translated document back to the source repository. | [optional] 
+ **body** | **file**| The file contents to be uploaded. The entire POST body will be treated as the file. | 
  **file_hash** | **str**| A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn&#39;t provided. | [optional] 
  **lang_id** | **bool**| Flag indicating whether to perform language detection on the uploaded file. Default is false. | [optional] 
+ **project_id** | **int**| The project to associate the uploaded file with. | [optional] 
+ **category** | **str**| The category of the file. The options are &#x60;REFERENCE&#x60;, or &#x60;API&#x60;. The default is API. Files with the &#x60;REFERENCE&#x60; category will be displayed as reference material. | [optional] 
+ **labels** | **str**| Comma-separated list of labels to add to the uploaded document. | [optional] 
 
 ### Return type
 
-[**File**](File.md)
+[**SourceFile**](SourceFile.md)
 
 ### Authorization
 
@@ -414,7 +420,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | A File object. |  -  |
+**201** | A SourceFile object. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

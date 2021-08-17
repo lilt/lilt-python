@@ -37,6 +37,373 @@ class TranslateApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def batch_translate_file(self, file_id, memory_id, **kwargs):  # noqa: E501
+        """Translate a File  # noqa: E501
+
+        Start machine translation of one or more Files that have previously been uploaded.  The response will include an `id` parameter that can be used to monitor and download the translations in subsequent calls.  Example CURL: ``` curl --X --request POST 'https://lilt.com/2/translate/file?key=API_KEY&fileId=583&memoryId=2495&configId=123' ```    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.batch_translate_file(file_id, memory_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str file_id: List of File ids to be translated, comma separated. (required)
+        :param str memory_id: Id of Memory to use in translation. (required)
+        :param float config_id: An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: TranslationInfo
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.batch_translate_file_with_http_info(file_id, memory_id, **kwargs)  # noqa: E501
+
+    def batch_translate_file_with_http_info(self, file_id, memory_id, **kwargs):  # noqa: E501
+        """Translate a File  # noqa: E501
+
+        Start machine translation of one or more Files that have previously been uploaded.  The response will include an `id` parameter that can be used to monitor and download the translations in subsequent calls.  Example CURL: ``` curl --X --request POST 'https://lilt.com/2/translate/file?key=API_KEY&fileId=583&memoryId=2495&configId=123' ```    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.batch_translate_file_with_http_info(file_id, memory_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str file_id: List of File ids to be translated, comma separated. (required)
+        :param str memory_id: Id of Memory to use in translation. (required)
+        :param float config_id: An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(TranslationInfo, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'file_id',
+            'memory_id',
+            'config_id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method batch_translate_file" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'file_id' is set
+        if self.api_client.client_side_validation and ('file_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `file_id` when calling `batch_translate_file`")  # noqa: E501
+        # verify the required parameter 'memory_id' is set
+        if self.api_client.client_side_validation and ('memory_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['memory_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `memory_id` when calling `batch_translate_file`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'file_id' in local_var_params and local_var_params['file_id'] is not None:  # noqa: E501
+            query_params.append(('fileId', local_var_params['file_id']))  # noqa: E501
+        if 'memory_id' in local_var_params and local_var_params['memory_id'] is not None:  # noqa: E501
+            query_params.append(('memoryId', local_var_params['memory_id']))  # noqa: E501
+        if 'config_id' in local_var_params and local_var_params['config_id'] is not None:  # noqa: E501
+            query_params.append(('configId', local_var_params['config_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/translate/file', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TranslationInfo',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def download_file(self, id, **kwargs):  # noqa: E501
+        """Download translated file  # noqa: E501
+
+        Download a translated File.  Example CURL: ``` curl --X --request GET 'https://lilt.com/2/translate/files?key=API_KEY&id=1' ```    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.download_file(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str id: A translation id. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.download_file_with_http_info(id, **kwargs)  # noqa: E501
+
+    def download_file_with_http_info(self, id, **kwargs):  # noqa: E501
+        """Download translated file  # noqa: E501
+
+        Download a translated File.  Example CURL: ``` curl --X --request GET 'https://lilt.com/2/translate/files?key=API_KEY&id=1' ```    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.download_file_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str id: A translation id. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(str, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'id'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method download_file" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `id` when calling `download_file`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'id' in local_var_params and local_var_params['id'] is not None:  # noqa: E501
+            query_params.append(('id', local_var_params['id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/translate/files', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def monitor_file_translation(self, **kwargs):  # noqa: E501
+        """Monitor file translation  # noqa: E501
+
+        Get information about the one or more Files that are being translated with machine translation. Query filters are optional but at least one must be provided.  Example CURL: ``` curl --X --request GET 'https://lilt.com/2/translate/file?key=API_KEY&translationIds=1,2&fromTime=1607966744&toTime=1707966744&status=InProgress' ```    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.monitor_file_translation(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str translation_ids: List of translation ids, comma separated
+        :param str status: One of the translation statuses - `InProgress`, `Completed`, `Failed`, `ReadyForDownload`
+        :param float from_time: Results after this time (inclusive) will be returned, specified as seconds since the Unix epoch.
+        :param float to_time: Results before this time (exclusive) will be returned, specified as seconds since the Unix epoch.
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: TranslationInfo
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.monitor_file_translation_with_http_info(**kwargs)  # noqa: E501
+
+    def monitor_file_translation_with_http_info(self, **kwargs):  # noqa: E501
+        """Monitor file translation  # noqa: E501
+
+        Get information about the one or more Files that are being translated with machine translation. Query filters are optional but at least one must be provided.  Example CURL: ``` curl --X --request GET 'https://lilt.com/2/translate/file?key=API_KEY&translationIds=1,2&fromTime=1607966744&toTime=1707966744&status=InProgress' ```    # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.monitor_file_translation_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str translation_ids: List of translation ids, comma separated
+        :param str status: One of the translation statuses - `InProgress`, `Completed`, `Failed`, `ReadyForDownload`
+        :param float from_time: Results after this time (inclusive) will be returned, specified as seconds since the Unix epoch.
+        :param float to_time: Results before this time (exclusive) will be returned, specified as seconds since the Unix epoch.
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(TranslationInfo, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'translation_ids',
+            'status',
+            'from_time',
+            'to_time'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method monitor_file_translation" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'translation_ids' in local_var_params and local_var_params['translation_ids'] is not None:  # noqa: E501
+            query_params.append(('translationIds', local_var_params['translation_ids']))  # noqa: E501
+        if 'status' in local_var_params and local_var_params['status'] is not None:  # noqa: E501
+            query_params.append(('status', local_var_params['status']))  # noqa: E501
+        if 'from_time' in local_var_params and local_var_params['from_time'] is not None:  # noqa: E501
+            query_params.append(('fromTime', local_var_params['from_time']))  # noqa: E501
+        if 'to_time' in local_var_params and local_var_params['to_time'] is not None:  # noqa: E501
+            query_params.append(('toTime', local_var_params['to_time']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/translate/file', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TranslationInfo',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def register_segment(self, source, srclang, trglang, **kwargs):  # noqa: E501
         """Register a segment  # noqa: E501
 

@@ -34,46 +34,48 @@ class DocumentDoneUpdateParameters(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'is_done': 'bool'
+        'document_ids': 'list[float]'
     }
 
     attribute_map = {
-        'is_done': 'isDone'
+        'document_ids': 'documentIds'
     }
 
-    def __init__(self, is_done=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, document_ids=None, local_vars_configuration=None):  # noqa: E501
         """DocumentDoneUpdateParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._is_done = None
+        self._document_ids = None
         self.discriminator = None
 
-        self.is_done = is_done
+        self.document_ids = document_ids
 
     @property
-    def is_done(self):
-        """Gets the is_done of this DocumentDoneUpdateParameters.  # noqa: E501
+    def document_ids(self):
+        """Gets the document_ids of this DocumentDoneUpdateParameters.  # noqa: E501
 
+        array of document ids  # noqa: E501
 
-        :return: The is_done of this DocumentDoneUpdateParameters.  # noqa: E501
-        :rtype: bool
+        :return: The document_ids of this DocumentDoneUpdateParameters.  # noqa: E501
+        :rtype: list[float]
         """
-        return self._is_done
+        return self._document_ids
 
-    @is_done.setter
-    def is_done(self, is_done):
-        """Sets the is_done of this DocumentDoneUpdateParameters.
+    @document_ids.setter
+    def document_ids(self, document_ids):
+        """Sets the document_ids of this DocumentDoneUpdateParameters.
 
+        array of document ids  # noqa: E501
 
-        :param is_done: The is_done of this DocumentDoneUpdateParameters.  # noqa: E501
-        :type: bool
+        :param document_ids: The document_ids of this DocumentDoneUpdateParameters.  # noqa: E501
+        :type: list[float]
         """
-        if self.local_vars_configuration.client_side_validation and is_done is None:  # noqa: E501
-            raise ValueError("Invalid value for `is_done`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and document_ids is None:  # noqa: E501
+            raise ValueError("Invalid value for `document_ids`, must not be `None`")  # noqa: E501
 
-        self._is_done = is_done
+        self._document_ids = document_ids
 
     def to_dict(self):
         """Returns the model properties as a dict"""

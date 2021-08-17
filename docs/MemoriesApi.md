@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 Create a Memory
 
-Create a new Memory. A Memory is a container that collects source/target sentences for a specific language pair (e.g., English>French). The data in the Memory is used to train the MT system, populate the TM, and update the lexicon. Memories are private to your account - the data is not shared across users - unless you explicitly share a Memory with your team (via web app only).  <a href=\"https://lilt.com/kb/memory/memories\" target=_blank>Refer to our KB</a> for a more detailed description.  
+Create a new Memory. A Memory is a container that collects source/target sentences for a specific language pair (e.g., English>French). The data in the Memory is used to train the MT system, populate the TM, and update the lexicon. Memories are private to your account - the data is not shared across users - unless you explicitly share a Memory with your team (via web app only).  <a href=\"https://support.lilt.com/hc/en-us/sections/360012579193-Lilt-Translate-Engine\" target=_blank>Refer to our KB</a> for a more detailed description.  
 
 ### Example
 
@@ -413,7 +413,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_memory_file**
-> MemoryImportResponse import_memory_file(memory_id, name, body)
+> MemoryImportResponse import_memory_file(memory_id, name, body, has_header_row=has_header_row)
 
 File import for a Memory
 
@@ -461,11 +461,12 @@ with lilt.ApiClient(configuration) as api_client:
     api_instance = lilt.MemoriesApi(api_client)
     memory_id = 56 # int | A unique Memory identifier.
 name = 'name_example' # str | Name of the TM or termbase file.
-body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
+body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
+has_header_row = True # bool | A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`). (optional)
 
     try:
         # File import for a Memory
-        api_response = api_instance.import_memory_file(memory_id, name, body)
+        api_response = api_instance.import_memory_file(memory_id, name, body, has_header_row=has_header_row)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling MemoriesApi->import_memory_file: %s\n" % e)
@@ -511,11 +512,12 @@ with lilt.ApiClient(configuration) as api_client:
     api_instance = lilt.MemoriesApi(api_client)
     memory_id = 56 # int | A unique Memory identifier.
 name = 'name_example' # str | Name of the TM or termbase file.
-body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file.
+body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
+has_header_row = True # bool | A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`). (optional)
 
     try:
         # File import for a Memory
-        api_response = api_instance.import_memory_file(memory_id, name, body)
+        api_response = api_instance.import_memory_file(memory_id, name, body, has_header_row=has_header_row)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling MemoriesApi->import_memory_file: %s\n" % e)
@@ -527,7 +529,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memory_id** | **int**| A unique Memory identifier. | 
  **name** | **str**| Name of the TM or termbase file. | 
- **body** | **str**| The file contents to be uploaded. The entire POST body will be treated as the file. | 
+ **body** | **file**| The file contents to be uploaded. The entire POST body will be treated as the file. | 
+ **has_header_row** | **bool**| A flag indicating whether an imported Termbase CSV has a header row or not (the default value is &#x60;false&#x60;). | [optional] 
 
 ### Return type
 

@@ -7,7 +7,9 @@ Method | HTTP request | Description
 [**assign_document**](DocumentsApi.md#assign_document) | **PUT** /documents/share | Assign a Document
 [**create_document**](DocumentsApi.md#create_document) | **POST** /documents | Create a Document
 [**delete_document**](DocumentsApi.md#delete_document) | **DELETE** /documents | Delete a Document
-[**documents_done_translation_post**](DocumentsApi.md#documents_done_translation_post) | **POST** /documents/done/translation | Mark translation done
+[**document_translation_done**](DocumentsApi.md#document_translation_done) | **POST** /documents/done/translation | Mark translation done
+[**document_unlock**](DocumentsApi.md#document_unlock) | **POST** /documents/done/unlock | Unlock documents
+[**documents_done_review_post**](DocumentsApi.md#documents_done_review_post) | **POST** /documents/done/review | Mark review done
 [**download_document**](DocumentsApi.md#download_document) | **GET** /documents/files | Download a Document
 [**get_document**](DocumentsApi.md#get_document) | **GET** /documents | Retrieve a Document
 [**pretranslate_documents**](DocumentsApi.md#pretranslate_documents) | **POST** /documents/pretranslate | Pretranslate a Document
@@ -411,12 +413,143 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **documents_done_translation_post**
-> DocumentWithSegments documents_done_translation_post(body)
+# **document_translation_done**
+> list[float] document_translation_done(body)
 
 Mark translation done
 
-Mark the translation of documents as done/undone in bulk. When being marked positively as done: - Documents must not already be marked as done and all segments must be confirmed. - This request will also trigger an email notification to a document's assigned reviewer that the document is ready for review. Example curl: ``` curl --location --request POST 'https://lilt.com/2/documents/done/translation' \\ --header 'Authorization: Basic API_KEY=' \\ --header 'Content-Type: application/json' \\ --data-raw '{     \"documentIds\": [23921, 23922],     \"isDone\": true }' ``` 
+Mark the translation of documents as done/undone in bulk.  When being marked positively as done:  - Documents must not already be marked as done and all segments must be confirmed. - This request will also trigger an email notification to a document's assigned reviewer that the document is ready for review.  When being marked as un-done: - Documents must not be marked as complete for review.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/translation?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922],       \"isDone\": true   }' ``` 
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['key'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.DocumentsApi(api_client)
+    body = lilt.DocumentDoneUpdateParameters1() # DocumentDoneUpdateParameters1 | 
+
+    try:
+        # Mark translation done
+        api_response = api_instance.document_translation_done(body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DocumentsApi->document_translation_done: %s\n" % e)
+```
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['key'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.DocumentsApi(api_client)
+    body = lilt.DocumentDoneUpdateParameters1() # DocumentDoneUpdateParameters1 | 
+
+    try:
+        # Mark translation done
+        api_response = api_instance.document_translation_done(body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DocumentsApi->document_translation_done: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DocumentDoneUpdateParameters1**](DocumentDoneUpdateParameters1.md)|  | 
+
+### Return type
+
+**list[float]**
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array of updated documents |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **document_unlock**
+> list[float] document_unlock(body)
+
+Unlock documents
+
+Unlock documents for translation. Sets document \"Translation Done\" and \"Review Done\" to false.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/unlock?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922]   }' ``` 
 
 ### Example
 
@@ -461,11 +594,11 @@ with lilt.ApiClient(configuration) as api_client:
     body = lilt.DocumentDoneUpdateParameters() # DocumentDoneUpdateParameters | 
 
     try:
-        # Mark translation done
-        api_response = api_instance.documents_done_translation_post(body)
+        # Unlock documents
+        api_response = api_instance.document_unlock(body)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DocumentsApi->documents_done_translation_post: %s\n" % e)
+        print("Exception when calling DocumentsApi->document_unlock: %s\n" % e)
 ```
 
 * Basic Authentication (BasicAuth):
@@ -509,11 +642,11 @@ with lilt.ApiClient(configuration) as api_client:
     body = lilt.DocumentDoneUpdateParameters() # DocumentDoneUpdateParameters | 
 
     try:
-        # Mark translation done
-        api_response = api_instance.documents_done_translation_post(body)
+        # Unlock documents
+        api_response = api_instance.document_unlock(body)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DocumentsApi->documents_done_translation_post: %s\n" % e)
+        print("Exception when calling DocumentsApi->document_unlock: %s\n" % e)
 ```
 
 ### Parameters
@@ -524,7 +657,138 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DocumentWithSegments**](DocumentWithSegments.md)
+**list[float]**
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array of updated documents |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **documents_done_review_post**
+> list[float] documents_done_review_post(body)
+
+Mark review done
+
+Mark the review of documents as done/undone in bulk.  When being marked positively as done:  - Documents must not already be marked as done for review. - Documents must already be marked as done for translation. - This request will also trigger an email notification.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/documents/done/review?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"documentIds\": [23921, 23922],       \"isDone\": true   }' ``` 
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['key'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.DocumentsApi(api_client)
+    body = lilt.DocumentDoneUpdateParameters2() # DocumentDoneUpdateParameters2 | 
+
+    try:
+        # Mark review done
+        api_response = api_instance.documents_done_review_post(body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DocumentsApi->documents_done_review_post: %s\n" % e)
+```
+
+* Basic Authentication (BasicAuth):
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2",
+    api_key = {
+        'key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['key'] = 'Bearer'
+
+# Configure HTTP basic authorization: BasicAuth
+configuration = lilt.Configuration(
+    username = 'YOUR_USERNAME',
+    password = 'YOUR_PASSWORD'
+)
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.DocumentsApi(api_client)
+    body = lilt.DocumentDoneUpdateParameters2() # DocumentDoneUpdateParameters2 | 
+
+    try:
+        # Mark review done
+        api_response = api_instance.documents_done_review_post(body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DocumentsApi->documents_done_review_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DocumentDoneUpdateParameters2**](DocumentDoneUpdateParameters2.md)|  | 
+
+### Return type
+
+**list[float]**
 
 ### Authorization
 
@@ -1090,11 +1354,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_document**
-> DocumentWithSegments upload_document(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, config_id=config_id)
+> DocumentWithSegments upload_document(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, case_sensitive=case_sensitive, match_attribution=match_attribution, config_id=config_id)
 
 Upload a File
 
-Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed as JSON object with the header  field `LILT-API`. Example CURL command: ```   curl -X POST https://lilt.com/2/documents/files?key=API_KEY \\   --header \"LILT-API: {\\\"name\\\": \\\"introduction.xliff\\\",\\\"pretranslate\\\": \\\"tm+mt\\\",\\\"project_id\\\": 9}\" \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @Introduction.xliff ```  
+Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed as JSON object with the header field `LILT-API`.  File names in the header can only contain [US-ASCII characters](https://en.wikipedia.org/wiki/ASCII). File names with characters outside of US-ASCII should be [URI encoded](https://en.wikipedia.org/wiki/Percent-encoding) or transliterated to US-ASCII strings.  Example CURL command: ```   curl -X POST https://lilt.com/2/documents/files?key=API_KEY \\   --header \"LILT-API: {\\\"name\\\": \\\"introduction.xliff\\\",\\\"pretranslate\\\": \\\"tm+mt\\\",\\\"project_id\\\": 9}\" \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @Introduction.xliff ```  
 
 ### Example
 
@@ -1138,14 +1402,16 @@ with lilt.ApiClient(configuration) as api_client:
     api_instance = lilt.DocumentsApi(api_client)
     name = 'name_example' # str | A file name.
 project_id = 56 # int | A unique Project identifier.
-body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file. 
-pretranslate = 'pretranslate_example' # str | An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are `null`, `tm`, or `tm+mt`  (optional)
+body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file. 
+pretranslate = 'pretranslate_example' # str | An optional parameter indicating if and how the document will be pretranslated upon being uploaded. The accepted values are `TM`, or `TM+MT`  (optional)
 auto_accept = True # bool | An optional parameter to auto-accept segments with 100% translation memory matches when the `pretranslate` option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to `false`, no segments will be auto-accepted.  (optional)
+case_sensitive = True # bool | An optional parameter to use case sensitive translation memory matching when the `pretranslate` option is also enabled. Matches must have identical character-by-character case to qualify as matches. Default value is `false`  (optional)
+match_attribution = True # bool | An optional parameter to attribute translation authorship of exact matches to the author of the file when the `pretranslate` option is also enabled. Default value is `false`  (optional)
 config_id = 56 # int | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.  (optional)
 
     try:
         # Upload a File
-        api_response = api_instance.upload_document(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, config_id=config_id)
+        api_response = api_instance.upload_document(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, case_sensitive=case_sensitive, match_attribution=match_attribution, config_id=config_id)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DocumentsApi->upload_document: %s\n" % e)
@@ -1191,14 +1457,16 @@ with lilt.ApiClient(configuration) as api_client:
     api_instance = lilt.DocumentsApi(api_client)
     name = 'name_example' # str | A file name.
 project_id = 56 # int | A unique Project identifier.
-body = 'body_example' # str | The file contents to be uploaded. The entire POST body will be treated as the file. 
-pretranslate = 'pretranslate_example' # str | An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are `null`, `tm`, or `tm+mt`  (optional)
+body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file. 
+pretranslate = 'pretranslate_example' # str | An optional parameter indicating if and how the document will be pretranslated upon being uploaded. The accepted values are `TM`, or `TM+MT`  (optional)
 auto_accept = True # bool | An optional parameter to auto-accept segments with 100% translation memory matches when the `pretranslate` option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to `false`, no segments will be auto-accepted.  (optional)
+case_sensitive = True # bool | An optional parameter to use case sensitive translation memory matching when the `pretranslate` option is also enabled. Matches must have identical character-by-character case to qualify as matches. Default value is `false`  (optional)
+match_attribution = True # bool | An optional parameter to attribute translation authorship of exact matches to the author of the file when the `pretranslate` option is also enabled. Default value is `false`  (optional)
 config_id = 56 # int | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.  (optional)
 
     try:
         # Upload a File
-        api_response = api_instance.upload_document(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, config_id=config_id)
+        api_response = api_instance.upload_document(name, project_id, body, pretranslate=pretranslate, auto_accept=auto_accept, case_sensitive=case_sensitive, match_attribution=match_attribution, config_id=config_id)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DocumentsApi->upload_document: %s\n" % e)
@@ -1210,9 +1478,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| A file name. | 
  **project_id** | **int**| A unique Project identifier. | 
- **body** | **str**| The file contents to be uploaded. The entire POST body will be treated as the file.  | 
- **pretranslate** | **str**| An optional parameter indicating if and how the document will be pretranslated upon being uploaded.  The accepted values are &#x60;null&#x60;, &#x60;tm&#x60;, or &#x60;tm+mt&#x60;  | [optional] 
+ **body** | **file**| The file contents to be uploaded. The entire POST body will be treated as the file.  | 
+ **pretranslate** | **str**| An optional parameter indicating if and how the document will be pretranslated upon being uploaded. The accepted values are &#x60;TM&#x60;, or &#x60;TM+MT&#x60;  | [optional] 
  **auto_accept** | **bool**| An optional parameter to auto-accept segments with 100% translation memory matches when the &#x60;pretranslate&#x60; option is also set, or to auto-accept any target data that is present when the uploaded file is XLIFF. If omitted or set to &#x60;false&#x60;, no segments will be auto-accepted.  | [optional] 
+ **case_sensitive** | **bool**| An optional parameter to use case sensitive translation memory matching when the &#x60;pretranslate&#x60; option is also enabled. Matches must have identical character-by-character case to qualify as matches. Default value is &#x60;false&#x60;  | [optional] 
+ **match_attribution** | **bool**| An optional parameter to attribute translation authorship of exact matches to the author of the file when the &#x60;pretranslate&#x60; option is also enabled. Default value is &#x60;false&#x60;  | [optional] 
  **config_id** | **int**| An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.  | [optional] 
 
 ### Return type

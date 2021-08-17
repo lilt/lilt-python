@@ -40,7 +40,7 @@ class MemoriesApi(object):
     def create_memory(self, body, **kwargs):  # noqa: E501
         """Create a Memory  # noqa: E501
 
-        Create a new Memory. A Memory is a container that collects source/target sentences for a specific language pair (e.g., English>French). The data in the Memory is used to train the MT system, populate the TM, and update the lexicon. Memories are private to your account - the data is not shared across users - unless you explicitly share a Memory with your team (via web app only).  <a href=\"https://lilt.com/kb/memory/memories\" target=_blank>Refer to our KB</a> for a more detailed description.    # noqa: E501
+        Create a new Memory. A Memory is a container that collects source/target sentences for a specific language pair (e.g., English>French). The data in the Memory is used to train the MT system, populate the TM, and update the lexicon. Memories are private to your account - the data is not shared across users - unless you explicitly share a Memory with your team (via web app only).  <a href=\"https://support.lilt.com/hc/en-us/sections/360012579193-Lilt-Translate-Engine\" target=_blank>Refer to our KB</a> for a more detailed description.    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_memory(body, async_req=True)
@@ -65,7 +65,7 @@ class MemoriesApi(object):
     def create_memory_with_http_info(self, body, **kwargs):  # noqa: E501
         """Create a Memory  # noqa: E501
 
-        Create a new Memory. A Memory is a container that collects source/target sentences for a specific language pair (e.g., English>French). The data in the Memory is used to train the MT system, populate the TM, and update the lexicon. Memories are private to your account - the data is not shared across users - unless you explicitly share a Memory with your team (via web app only).  <a href=\"https://lilt.com/kb/memory/memories\" target=_blank>Refer to our KB</a> for a more detailed description.    # noqa: E501
+        Create a new Memory. A Memory is a container that collects source/target sentences for a specific language pair (e.g., English>French). The data in the Memory is used to train the MT system, populate the TM, and update the lexicon. Memories are private to your account - the data is not shared across users - unless you explicitly share a Memory with your team (via web app only).  <a href=\"https://support.lilt.com/hc/en-us/sections/360012579193-Lilt-Translate-Engine\" target=_blank>Refer to our KB</a> for a more detailed description.    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_memory_with_http_info(body, async_req=True)
@@ -391,7 +391,8 @@ class MemoriesApi(object):
         :param async_req bool: execute request asynchronously
         :param int memory_id: A unique Memory identifier. (required)
         :param str name: Name of the TM or termbase file. (required)
-        :param str body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
+        :param file body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
+        :param bool has_header_row: A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`).
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -418,7 +419,8 @@ class MemoriesApi(object):
         :param async_req bool: execute request asynchronously
         :param int memory_id: A unique Memory identifier. (required)
         :param str name: Name of the TM or termbase file. (required)
-        :param str body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
+        :param file body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
+        :param bool has_header_row: A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`).
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -438,7 +440,8 @@ class MemoriesApi(object):
         all_params = [
             'memory_id',
             'name',
-            'body'
+            'body',
+            'has_header_row'
         ]
         all_params.extend(
             [
@@ -481,6 +484,8 @@ class MemoriesApi(object):
             header_params['memory_id'] = local_var_params['memory_id']  # noqa: E501
         if 'name' in local_var_params:
             header_params['name'] = local_var_params['name']  # noqa: E501
+        if 'has_header_row' in local_var_params:
+            header_params['has_header_row'] = local_var_params['has_header_row']  # noqa: E501
 
         form_params = []
         local_var_files = {}

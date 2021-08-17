@@ -5,9 +5,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | A name for the Project. | 
 **memory_id** | **int** | The Memory to associate with this new Project. | 
-**file_ids** | **list[int]** | A list of Files to add to this new Project. | [optional] 
+**job_id** | **int** | The Job to associate with this new Project. If a Job ID is not provided then a new Job will be created to contain the Project.  | [optional] 
 **due_date** | **int** | The due date. Measured in seconds since the Unix epoch. | [optional] 
-**metadata** | [**object**](.md) | Metadata associated with a project. This field must be valid JSON. | [optional] 
+**metadata** | [**object**](.md) | A JSON object of key/value string pairs. Stores custom project information. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

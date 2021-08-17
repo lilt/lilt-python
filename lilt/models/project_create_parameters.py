@@ -36,7 +36,7 @@ class ProjectCreateParameters(object):
     openapi_types = {
         'name': 'str',
         'memory_id': 'int',
-        'file_ids': 'list[int]',
+        'job_id': 'int',
         'due_date': 'int',
         'metadata': 'object'
     }
@@ -44,12 +44,12 @@ class ProjectCreateParameters(object):
     attribute_map = {
         'name': 'name',
         'memory_id': 'memory_id',
-        'file_ids': 'file_ids',
+        'job_id': 'job_id',
         'due_date': 'due_date',
         'metadata': 'metadata'
     }
 
-    def __init__(self, name=None, memory_id=None, file_ids=None, due_date=None, metadata=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, memory_id=None, job_id=None, due_date=None, metadata=None, local_vars_configuration=None):  # noqa: E501
         """ProjectCreateParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -57,15 +57,15 @@ class ProjectCreateParameters(object):
 
         self._name = None
         self._memory_id = None
-        self._file_ids = None
+        self._job_id = None
         self._due_date = None
         self._metadata = None
         self.discriminator = None
 
         self.name = name
         self.memory_id = memory_id
-        if file_ids is not None:
-            self.file_ids = file_ids
+        if job_id is not None:
+            self.job_id = job_id
         if due_date is not None:
             self.due_date = due_date
         if metadata is not None:
@@ -122,27 +122,27 @@ class ProjectCreateParameters(object):
         self._memory_id = memory_id
 
     @property
-    def file_ids(self):
-        """Gets the file_ids of this ProjectCreateParameters.  # noqa: E501
+    def job_id(self):
+        """Gets the job_id of this ProjectCreateParameters.  # noqa: E501
 
-        A list of Files to add to this new Project.  # noqa: E501
+        The Job to associate with this new Project. If a Job ID is not provided then a new Job will be created to contain the Project.   # noqa: E501
 
-        :return: The file_ids of this ProjectCreateParameters.  # noqa: E501
-        :rtype: list[int]
+        :return: The job_id of this ProjectCreateParameters.  # noqa: E501
+        :rtype: int
         """
-        return self._file_ids
+        return self._job_id
 
-    @file_ids.setter
-    def file_ids(self, file_ids):
-        """Sets the file_ids of this ProjectCreateParameters.
+    @job_id.setter
+    def job_id(self, job_id):
+        """Sets the job_id of this ProjectCreateParameters.
 
-        A list of Files to add to this new Project.  # noqa: E501
+        The Job to associate with this new Project. If a Job ID is not provided then a new Job will be created to contain the Project.   # noqa: E501
 
-        :param file_ids: The file_ids of this ProjectCreateParameters.  # noqa: E501
-        :type: list[int]
+        :param job_id: The job_id of this ProjectCreateParameters.  # noqa: E501
+        :type: int
         """
 
-        self._file_ids = file_ids
+        self._job_id = job_id
 
     @property
     def due_date(self):
@@ -171,7 +171,7 @@ class ProjectCreateParameters(object):
     def metadata(self):
         """Gets the metadata of this ProjectCreateParameters.  # noqa: E501
 
-        Metadata associated with a project. This field must be valid JSON.  # noqa: E501
+        A JSON object of key/value string pairs. Stores custom project information.  # noqa: E501
 
         :return: The metadata of this ProjectCreateParameters.  # noqa: E501
         :rtype: object
@@ -182,7 +182,7 @@ class ProjectCreateParameters(object):
     def metadata(self, metadata):
         """Sets the metadata of this ProjectCreateParameters.
 
-        Metadata associated with a project. This field must be valid JSON.  # noqa: E501
+        A JSON object of key/value string pairs. Stores custom project information.  # noqa: E501
 
         :param metadata: The metadata of this ProjectCreateParameters.  # noqa: E501
         :type: object
