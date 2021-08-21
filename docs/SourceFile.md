@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **detected_lang_confidence** | **float** | Confidence score for the language associated with the file. | [optional] 
 **category** | **str** | The category of the file. The options are &#x60;REFERENCE&#x60;, or &#x60;API&#x60;. The default is API. Files with the &#x60;REFERENCE&#x60; category will be displayed as reference material. | [optional] 
 **labels** | **list[str]** | The list of labels associated with the file. | [optional] 
-**created_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
-**updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
+**created_at** | **datetime** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
+**updated_at** | **datetime** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

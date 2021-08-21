@@ -41,8 +41,8 @@ class SourceFile(object):
         'detected_lang_confidence': 'float',
         'category': 'str',
         'labels': 'list[str]',
-        'created_at': 'int',
-        'updated_at': 'int'
+        'created_at': 'datetime',
+        'updated_at': 'datetime'
     }
 
     attribute_map = {
@@ -261,7 +261,7 @@ class SourceFile(object):
         Time at which the object was created. Measured in seconds since the Unix epoch.  # noqa: E501
 
         :return: The created_at of this SourceFile.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._created_at
 
@@ -272,7 +272,7 @@ class SourceFile(object):
         Time at which the object was created. Measured in seconds since the Unix epoch.  # noqa: E501
 
         :param created_at: The created_at of this SourceFile.  # noqa: E501
-        :type: int
+        :type: datetime
         """
 
         self._created_at = created_at
@@ -284,7 +284,7 @@ class SourceFile(object):
         Time at which the object was created. Measured in seconds since the Unix epoch.  # noqa: E501
 
         :return: The updated_at of this SourceFile.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._updated_at
 
@@ -295,7 +295,7 @@ class SourceFile(object):
         Time at which the object was created. Measured in seconds since the Unix epoch.  # noqa: E501
 
         :param updated_at: The updated_at of this SourceFile.  # noqa: E501
-        :type: int
+        :type: datetime
         """
 
         self._updated_at = updated_at

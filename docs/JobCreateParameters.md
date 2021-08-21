@@ -4,6 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | A name for the Job. | 
+**src_lang** | **str** | The source language for the job. | 
+**src_locale** | **str** | The source locale for the job. | [optional] 
 **due** | **str** | An ISO string date. | [optional] 
 **language_pairs** | [**list[LanguagePair]**](LanguagePair.md) | Language pairs is a set of one or more pairs that includes source language, source locale(optional), target language, target locale(optional), and memoryId. | 
 **file_ids** | **list[int]** | A list of file ids to upload to job creation. | 
