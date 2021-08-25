@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **batch_translate_file**
-> TranslationInfo batch_translate_file(file_id, memory_id, config_id=config_id)
+> list[TranslationInfo] batch_translate_file(file_id, memory_id, config_id=config_id)
 
 Translate a File
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TranslationInfo**](TranslationInfo.md)
+[**list[TranslationInfo]**](TranslationInfo.md)
 
 ### Authorization
 
