@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **monitor_file_translation**
-> TranslationInfo monitor_file_translation(translation_ids=translation_ids, status=status, from_time=from_time, to_time=to_time)
+> list[TranslationInfo] monitor_file_translation(translation_ids=translation_ids, status=status, from_time=from_time, to_time=to_time)
 
 Monitor file translation
 
@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TranslationInfo**](TranslationInfo.md)
+[**list[TranslationInfo]**](TranslationInfo.md)
 
 ### Authorization
 
