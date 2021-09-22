@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **batch_translate_file**
-> list[TranslationInfo] batch_translate_file(file_id, memory_id, config_id=config_id)
+> list[TranslationInfo] batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm)
 
 Translate a File
 
@@ -61,10 +61,11 @@ with lilt.ApiClient(configuration) as api_client:
     file_id = 'file_id_example' # str | List of File ids to be translated, comma separated.
 memory_id = 'memory_id_example' # str | Id of Memory to use in translation.
 config_id = 3.4 # float | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. (optional)
+with_tm = True # bool | An optional boolean parameter to toggle the use of Translation Memory in the translation of the file. (optional)
 
     try:
         # Translate a File
-        api_response = api_instance.batch_translate_file(file_id, memory_id, config_id=config_id)
+        api_response = api_instance.batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TranslateApi->batch_translate_file: %s\n" % e)
@@ -111,10 +112,11 @@ with lilt.ApiClient(configuration) as api_client:
     file_id = 'file_id_example' # str | List of File ids to be translated, comma separated.
 memory_id = 'memory_id_example' # str | Id of Memory to use in translation.
 config_id = 3.4 # float | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. (optional)
+with_tm = True # bool | An optional boolean parameter to toggle the use of Translation Memory in the translation of the file. (optional)
 
     try:
         # Translate a File
-        api_response = api_instance.batch_translate_file(file_id, memory_id, config_id=config_id)
+        api_response = api_instance.batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TranslateApi->batch_translate_file: %s\n" % e)
@@ -127,6 +129,7 @@ Name | Type | Description  | Notes
  **file_id** | **str**| List of File ids to be translated, comma separated. | 
  **memory_id** | **str**| Id of Memory to use in translation. | 
  **config_id** | **float**| An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. | [optional] 
+ **with_tm** | **bool**| An optional boolean parameter to toggle the use of Translation Memory in the translation of the file. | [optional] 
 
 ### Return type
 

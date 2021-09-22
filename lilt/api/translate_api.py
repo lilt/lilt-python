@@ -50,6 +50,7 @@ class TranslateApi(object):
         :param str file_id: List of File ids to be translated, comma separated. (required)
         :param str memory_id: Id of Memory to use in translation. (required)
         :param float config_id: An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.
+        :param bool with_tm: An optional boolean parameter to toggle the use of Translation Memory in the translation of the file.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -77,6 +78,7 @@ class TranslateApi(object):
         :param str file_id: List of File ids to be translated, comma separated. (required)
         :param str memory_id: Id of Memory to use in translation. (required)
         :param float config_id: An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file.
+        :param bool with_tm: An optional boolean parameter to toggle the use of Translation Memory in the translation of the file.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -96,7 +98,8 @@ class TranslateApi(object):
         all_params = [
             'file_id',
             'memory_id',
-            'config_id'
+            'config_id',
+            'with_tm'
         ]
         all_params.extend(
             [
@@ -135,6 +138,8 @@ class TranslateApi(object):
             query_params.append(('memoryId', local_var_params['memory_id']))  # noqa: E501
         if 'config_id' in local_var_params and local_var_params['config_id'] is not None:  # noqa: E501
             query_params.append(('configId', local_var_params['config_id']))  # noqa: E501
+        if 'with_tm' in local_var_params and local_var_params['with_tm'] is not None:  # noqa: E501
+            query_params.append(('withTM', local_var_params['with_tm']))  # noqa: E501
 
         header_params = {}
 
