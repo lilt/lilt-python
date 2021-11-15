@@ -146,7 +146,7 @@ class SettingUpsertBody(object):
     def project_id(self):
         """Gets the project_id of this SettingUpsertBody.  # noqa: E501
 
-        Id of the the project the setting will be applied to. Required when scope is `Project`.  # noqa: E501
+        Id of the the project the setting will be applied to. Required when scope is `Project`.   # noqa: E501
 
         :return: The project_id of this SettingUpsertBody.  # noqa: E501
         :rtype: float
@@ -157,7 +157,7 @@ class SettingUpsertBody(object):
     def project_id(self, project_id):
         """Sets the project_id of this SettingUpsertBody.
 
-        Id of the the project the setting will be applied to. Required when scope is `Project`.  # noqa: E501
+        Id of the the project the setting will be applied to. Required when scope is `Project`.   # noqa: E501
 
         :param project_id: The project_id of this SettingUpsertBody.  # noqa: E501
         :type: float
@@ -169,7 +169,7 @@ class SettingUpsertBody(object):
     def organization_id(self):
         """Gets the organization_id of this SettingUpsertBody.  # noqa: E501
 
-        Id of the the project the setting will be applied to. Required when scope is `Organization`.  # noqa: E501
+        Id of the the project the setting will be applied to. Required when scope is `Organization`.   # noqa: E501
 
         :return: The organization_id of this SettingUpsertBody.  # noqa: E501
         :rtype: float
@@ -180,7 +180,7 @@ class SettingUpsertBody(object):
     def organization_id(self, organization_id):
         """Sets the organization_id of this SettingUpsertBody.
 
-        Id of the the project the setting will be applied to. Required when scope is `Organization`.  # noqa: E501
+        Id of the the project the setting will be applied to. Required when scope is `Organization`.   # noqa: E501
 
         :param organization_id: The organization_id of this SettingUpsertBody.  # noqa: E501
         :type: float

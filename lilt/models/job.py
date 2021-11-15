@@ -36,7 +36,7 @@ class Job(object):
     openapi_types = {
         'name': 'str',
         'creation_status': 'str',
-        'delivered_at': 'datetime',
+        'delivered_at': 'int',
         'status': 'str',
         'due': 'str',
         'id': 'int',
@@ -140,7 +140,7 @@ class Job(object):
 
 
         :return: The delivered_at of this Job.  # noqa: E501
-        :rtype: datetime
+        :rtype: int
         """
         return self._delivered_at
 
@@ -150,7 +150,7 @@ class Job(object):
 
 
         :param delivered_at: The delivered_at of this Job.  # noqa: E501
-        :type: datetime
+        :type: int
         """
 
         self._delivered_at = delivered_at

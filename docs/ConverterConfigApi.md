@@ -1,23 +1,23 @@
-# lilt.SegmentsApi
+# lilt.ConverterConfigApi
 
 All URIs are relative to *https://lilt.com/2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_segment**](SegmentsApi.md#create_segment) | **POST** /segments | Create a Segment
-[**delete_segment**](SegmentsApi.md#delete_segment) | **DELETE** /segments | Delete a Segment
-[**get_segment**](SegmentsApi.md#get_segment) | **GET** /segments | Retrieve a Segment
-[**tag_segment**](SegmentsApi.md#tag_segment) | **GET** /segments/tag | Tag a Segment
-[**unlock_segments**](SegmentsApi.md#unlock_segments) | **POST** /segments/review/unlock | Unaccept and unlock segments
-[**update_segment**](SegmentsApi.md#update_segment) | **PUT** /segments | Update a Segment
+[**add_converter_config**](ConverterConfigApi.md#add_converter_config) | **PUT** /configs/converter | Add Converter Config
+[**delete_converter_config**](ConverterConfigApi.md#delete_converter_config) | **DELETE** /configs/converter/{configId} | Delete Converter Config
+[**delete_filter_mapping**](ConverterConfigApi.md#delete_filter_mapping) | **DELETE** /configs/converter/{configId}/{fileExtension} | Delete Filter Mapping
+[**edit_filter_mapping**](ConverterConfigApi.md#edit_filter_mapping) | **PUT** /configs/converter/{configId}/{fileExtension} | Add Filter Mapping
+[**get_converter_config_by_id**](ConverterConfigApi.md#get_converter_config_by_id) | **GET** /configs/converter/{configId} | Fetch Converter Config by Id
+[**get_converter_configs**](ConverterConfigApi.md#get_converter_configs) | **GET** /configs/converter | List Converter Configs
 
 
-# **create_segment**
-> Segment create_segment(body)
+# **add_converter_config**
+> ConverterConfigUpdateResponse add_converter_config(organization_id, body=body)
 
-Create a Segment
+Add Converter Config
 
-Create a Segment and add it to a Memory. A Segment is a source/target pair that is used to train the machine translation system and populate the translation memory. This is not intended to be used on documents and will throw an error.  The maximum source length is 5,000 characters.  
+Add a file filter configuration for your Organization. 
 
 ### Example
 
@@ -37,26 +37,28 @@ configuration = lilt.Configuration(
 # Enter a context with an instance of the API client
 with lilt.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = lilt.SegmentsApi(api_client)
-    body = lilt.SegmentCreateParameters() # SegmentCreateParameters | 
+    api_instance = lilt.ConverterConfigApi(api_client)
+    organization_id = 56 # int | A unique Organization identifier.
+body = lilt.CreateConverterConfigParameters() # CreateConverterConfigParameters |  (optional)
 
     try:
-        # Create a Segment
-        api_response = api_instance.create_segment(body)
+        # Add Converter Config
+        api_response = api_instance.add_converter_config(organization_id, body=body)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling SegmentsApi->create_segment: %s\n" % e)
+        print("Exception when calling ConverterConfigApi->add_converter_config: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**SegmentCreateParameters**](SegmentCreateParameters.md)|  | 
+ **organization_id** | **int**| A unique Organization identifier. | 
+ **body** | [**CreateConverterConfigParameters**](CreateConverterConfigParameters.md)|  | [optional] 
 
 ### Return type
 
-[**Segment**](Segment.md)
+[**ConverterConfigUpdateResponse**](ConverterConfigUpdateResponse.md)
 
 ### Authorization
 
@@ -70,17 +72,17 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A Segment object. |  -  |
+**200** | The config id of the configuration created. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_segment**
-> SegmentDeleteResponse delete_segment(id)
+# **delete_converter_config**
+> ConverterConfigUpdateResponse delete_converter_config(config_id)
 
-Delete a Segment
+Delete Converter Config
 
-Delete a Segment from memory. This will not delete a segment from a document. 
+Delete a file filter configuration by id. 
 
 ### Example
 
@@ -100,26 +102,26 @@ configuration = lilt.Configuration(
 # Enter a context with an instance of the API client
 with lilt.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = lilt.SegmentsApi(api_client)
-    id = 56 # int | A unique Segment identifier.
+    api_instance = lilt.ConverterConfigApi(api_client)
+    config_id = 56 # int | A unique configuration identifier.
 
     try:
-        # Delete a Segment
-        api_response = api_instance.delete_segment(id)
+        # Delete Converter Config
+        api_response = api_instance.delete_converter_config(config_id)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling SegmentsApi->delete_segment: %s\n" % e)
+        print("Exception when calling ConverterConfigApi->delete_converter_config: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| A unique Segment identifier. | 
+ **config_id** | **int**| A unique configuration identifier. | 
 
 ### Return type
 
-[**SegmentDeleteResponse**](SegmentDeleteResponse.md)
+[**ConverterConfigUpdateResponse**](ConverterConfigUpdateResponse.md)
 
 ### Authorization
 
@@ -133,17 +135,17 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A status object. |  -  |
+**200** | The config id of the configuration deleted. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_segment**
-> SegmentWithComments get_segment(id, include_comments=include_comments)
+# **delete_filter_mapping**
+> dict(str, str) delete_filter_mapping(config_id, file_extension)
 
-Retrieve a Segment
+Delete Filter Mapping
 
-Retrieve a Segment.  
+Delete a file filter mapping by id and file extension. 
 
 ### Example
 
@@ -163,28 +165,28 @@ configuration = lilt.Configuration(
 # Enter a context with an instance of the API client
 with lilt.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = lilt.SegmentsApi(api_client)
-    id = 56 # int | A unique Segment identifier.
-include_comments = False # bool | Include comments in the response. (optional) (default to False)
+    api_instance = lilt.ConverterConfigApi(api_client)
+    config_id = 56 # int | A unique configuration identifier.
+file_extension = 'file_extension_example' # str | A file extension to delete.
 
     try:
-        # Retrieve a Segment
-        api_response = api_instance.get_segment(id, include_comments=include_comments)
+        # Delete Filter Mapping
+        api_response = api_instance.delete_filter_mapping(config_id, file_extension)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling SegmentsApi->get_segment: %s\n" % e)
+        print("Exception when calling ConverterConfigApi->delete_filter_mapping: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| A unique Segment identifier. | 
- **include_comments** | **bool**| Include comments in the response. | [optional] [default to False]
+ **config_id** | **int**| A unique configuration identifier. | 
+ **file_extension** | **str**| A file extension to delete. | 
 
 ### Return type
 
-[**SegmentWithComments**](SegmentWithComments.md)
+**dict(str, str)**
 
 ### Authorization
 
@@ -198,17 +200,17 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A Segment object. |  -  |
+**200** | A map of config id to string escaped config json. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **tag_segment**
-> TaggedSegment tag_segment(source_tagged, target, memory_id)
+# **edit_filter_mapping**
+> dict(str, str) edit_filter_mapping(config_id, file_extension, body=body)
 
-Tag a Segment
+Add Filter Mapping
 
-Project tags for a segment. The `source_tagged` string contains one or more SGML tags. The `target` string is untagged. This endpoint will automatically place the source tags in the target.  Usage charges apply to this endpoint for production REST API keys.  
+Add a specific filter mapping to your file filter configuration 
 
 ### Example
 
@@ -228,93 +230,30 @@ configuration = lilt.Configuration(
 # Enter a context with an instance of the API client
 with lilt.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = lilt.SegmentsApi(api_client)
-    source_tagged = 'source_tagged_example' # str | The tagged source string.
-target = 'target_example' # str | The target string.
-memory_id = 56 # int | A unique Memory identifier.
+    api_instance = lilt.ConverterConfigApi(api_client)
+    config_id = 56 # int | A unique configuration identifier.
+file_extension = 'file_extension_example' # str | A file extension for the filter mapping.
+body = lilt.EditFilterMappingParameters() # EditFilterMappingParameters |  (optional)
 
     try:
-        # Tag a Segment
-        api_response = api_instance.tag_segment(source_tagged, target, memory_id)
+        # Add Filter Mapping
+        api_response = api_instance.edit_filter_mapping(config_id, file_extension, body=body)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling SegmentsApi->tag_segment: %s\n" % e)
+        print("Exception when calling ConverterConfigApi->edit_filter_mapping: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source_tagged** | **str**| The tagged source string. | 
- **target** | **str**| The target string. | 
- **memory_id** | **int**| A unique Memory identifier. | 
+ **config_id** | **int**| A unique configuration identifier. | 
+ **file_extension** | **str**| A file extension for the filter mapping. | 
+ **body** | [**EditFilterMappingParameters**](EditFilterMappingParameters.md)|  | [optional] 
 
 ### Return type
 
-[**TaggedSegment**](TaggedSegment.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | A TaggedSegment object. |  -  |
-**0** | Unexpected error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **unlock_segments**
-> list[float] unlock_segments(body)
-
-Unaccept and unlock segments
-
-Unaccept and unlock segments. Sets individual segments' \"Review Done\" to false. Confirmed segments will remain confirmed.  Example curl: ```   curl --X --request POST 'https://lilt.com/2/segments/review/unlock?key=API_KEY' \\   --header 'Content-Type: application/json' \\   --data-raw '{       \"segmentIds\": [23921, 23922]   }' ``` 
-
-### Example
-
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient() as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.SegmentsApi(api_client)
-    body = lilt.SegmentDoneResponse() # SegmentDoneResponse | 
-
-    try:
-        # Unaccept and unlock segments
-        api_response = api_instance.unlock_segments(body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling SegmentsApi->unlock_segments: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**SegmentDoneResponse**](SegmentDoneResponse.md)|  | 
-
-### Return type
-
-**list[float]**
+**dict(str, str)**
 
 ### Authorization
 
@@ -328,16 +267,17 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | array of updated segments |  -  |
+**200** | A map of config id to string escaped config json. |  -  |
+**0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_segment**
-> Segment update_segment(body)
+# **get_converter_config_by_id**
+> dict(str, str) get_converter_config_by_id(config_id)
 
-Update a Segment
+Fetch Converter Config by Id
 
-Update a Segment in memory. The Memory will be updated with the new target string.  
+Fetch a file filter configuration by id. 
 
 ### Example
 
@@ -357,26 +297,26 @@ configuration = lilt.Configuration(
 # Enter a context with an instance of the API client
 with lilt.ApiClient() as api_client:
     # Create an instance of the API class
-    api_instance = lilt.SegmentsApi(api_client)
-    body = lilt.SegmentUpdateParameters() # SegmentUpdateParameters | 
+    api_instance = lilt.ConverterConfigApi(api_client)
+    config_id = 56 # int | A unique configuration identifier.
 
     try:
-        # Update a Segment
-        api_response = api_instance.update_segment(body)
+        # Fetch Converter Config by Id
+        api_response = api_instance.get_converter_config_by_id(config_id)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling SegmentsApi->update_segment: %s\n" % e)
+        print("Exception when calling ConverterConfigApi->get_converter_config_by_id: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**SegmentUpdateParameters**](SegmentUpdateParameters.md)|  | 
+ **config_id** | **int**| A unique configuration identifier. | 
 
 ### Return type
 
-[**Segment**](Segment.md)
+**dict(str, str)**
 
 ### Authorization
 
@@ -384,13 +324,76 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A Segment object. |  -  |
+**200** | A map of config id to string escaped config json. |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_converter_configs**
+> dict(str, str) get_converter_configs(organization_id)
+
+List Converter Configs
+
+List all file filter configurations for your Organization. 
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.ConverterConfigApi(api_client)
+    organization_id = 56 # int | A unique Organization identifier.
+
+    try:
+        # List Converter Configs
+        api_response = api_instance.get_converter_configs(organization_id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ConverterConfigApi->get_converter_configs: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organization_id** | **int**| A unique Organization identifier. | 
+
+### Return type
+
+**dict(str, str)**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A map of config id to string escaped config json. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

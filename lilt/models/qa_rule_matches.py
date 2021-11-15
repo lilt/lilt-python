@@ -34,24 +34,29 @@ class QARuleMatches(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'matches': 'list[QARuleMatchesMatches]'
+        'matches': 'list[QARuleMatchesMatches]',
+        'custom_rules': 'list[QARuleMatchesCustomRules]'
     }
 
     attribute_map = {
-        'matches': 'matches'
+        'matches': 'matches',
+        'custom_rules': 'custom_rules'
     }
 
-    def __init__(self, matches=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, matches=None, custom_rules=None, local_vars_configuration=None):  # noqa: E501
         """QARuleMatches - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._matches = None
+        self._custom_rules = None
         self.discriminator = None
 
         if matches is not None:
             self.matches = matches
+        if custom_rules is not None:
+            self.custom_rules = custom_rules
 
     @property
     def matches(self):
@@ -73,6 +78,27 @@ class QARuleMatches(object):
         """
 
         self._matches = matches
+
+    @property
+    def custom_rules(self):
+        """Gets the custom_rules of this QARuleMatches.  # noqa: E501
+
+
+        :return: The custom_rules of this QARuleMatches.  # noqa: E501
+        :rtype: list[QARuleMatchesCustomRules]
+        """
+        return self._custom_rules
+
+    @custom_rules.setter
+    def custom_rules(self, custom_rules):
+        """Sets the custom_rules of this QARuleMatches.
+
+
+        :param custom_rules: The custom_rules of this QARuleMatches.  # noqa: E501
+        :type: list[QARuleMatchesCustomRules]
+        """
+
+        self._custom_rules = custom_rules
 
     def to_dict(self):
         """Returns the model properties as a dict"""

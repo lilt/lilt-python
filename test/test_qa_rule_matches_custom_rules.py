@@ -17,11 +17,11 @@ import unittest
 import datetime
 
 import lilt
-from lilt.models.inline_response200 import InlineResponse200  # noqa: E501
+from lilt.models.qa_rule_matches_custom_rules import QARuleMatchesCustomRules  # noqa: E501
 from lilt.rest import ApiException
 
-class TestInlineResponse200(unittest.TestCase):
-    """InlineResponse200 unit test stubs"""
+class TestQARuleMatchesCustomRules(unittest.TestCase):
+    """QARuleMatchesCustomRules unit test stubs"""
 
     def setUp(self):
         pass
@@ -30,29 +30,21 @@ class TestInlineResponse200(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test InlineResponse200
+        """Test QARuleMatchesCustomRules
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = lilt.models.inline_response200.InlineResponse200()  # noqa: E501
+        # model = lilt.models.qa_rule_matches_custom_rules.QARuleMatchesCustomRules()  # noqa: E501
         if include_optional :
-            return InlineResponse200(
-                file = lilt.models.file.File(
-                    id = 46530, 
-                    name = 'en_US.json', 
-                    file_hash = '3858f62230ac3c915f300c664312c63f', 
-                    export_uri = 'https://example.com/export', 
-                    created_at = 1489147692, 
-                    updated_at = 1489147692, ), 
-                detected_lang = 'de', 
-                detected_lang_confidence = 0.7
+            return QARuleMatchesCustomRules(
+                description = 'Mistake detected by a custom rule.'
             )
         else :
-            return InlineResponse200(
+            return QARuleMatchesCustomRules(
         )
 
-    def testInlineResponse200(self):
-        """Test InlineResponse200"""
+    def testQARuleMatchesCustomRules(self):
+        """Test QARuleMatchesCustomRules"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

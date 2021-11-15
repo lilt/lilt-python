@@ -14,46 +14,62 @@
 from __future__ import absolute_import
 
 import unittest
-import datetime
 
 import lilt
-from lilt.models.inline_response201 import InlineResponse201  # noqa: E501
+from lilt.api.converter_config_api import ConverterConfigApi  # noqa: E501
 from lilt.rest import ApiException
 
-class TestInlineResponse201(unittest.TestCase):
-    """InlineResponse201 unit test stubs"""
+
+class TestConverterConfigApi(unittest.TestCase):
+    """ConverterConfigApi unit test stubs"""
 
     def setUp(self):
-        pass
+        self.api = lilt.api.converter_config_api.ConverterConfigApi()  # noqa: E501
 
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional):
-        """Test InlineResponse201
-            include_option is a boolean, when False only required
-            params are included, when True both required and
-            optional params are included """
-        # model = lilt.models.inline_response201.InlineResponse201()  # noqa: E501
-        if include_optional :
-            return InlineResponse201(
-                file = lilt.models.file.File(
-                    id = 46530, 
-                    name = 'en_US.json', 
-                    file_hash = '3858f62230ac3c915f300c664312c63f', 
-                    export_uri = 'https://example.com/export', 
-                    created_at = 1489147692, 
-                    updated_at = 1489147692, ), 
-                detected_lang = 'zxx'
-            )
-        else :
-            return InlineResponse201(
-        )
+    def test_add_converter_config(self):
+        """Test case for add_converter_config
 
-    def testInlineResponse201(self):
-        """Test InlineResponse201"""
-        inst_req_only = self.make_instance(include_optional=False)
-        inst_req_and_optional = self.make_instance(include_optional=True)
+        Add Converter Config  # noqa: E501
+        """
+        pass
+
+    def test_delete_converter_config(self):
+        """Test case for delete_converter_config
+
+        Delete Converter Config  # noqa: E501
+        """
+        pass
+
+    def test_delete_filter_mapping(self):
+        """Test case for delete_filter_mapping
+
+        Delete Filter Mapping  # noqa: E501
+        """
+        pass
+
+    def test_edit_filter_mapping(self):
+        """Test case for edit_filter_mapping
+
+        Add Filter Mapping  # noqa: E501
+        """
+        pass
+
+    def test_get_converter_config_by_id(self):
+        """Test case for get_converter_config_by_id
+
+        Fetch Converter Config by Id  # noqa: E501
+        """
+        pass
+
+    def test_get_converter_configs(self):
+        """Test case for get_converter_configs
+
+        List Converter Configs  # noqa: E501
+        """
+        pass
 
 
 if __name__ == '__main__':

@@ -133,7 +133,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/archive', 'POST',
@@ -251,7 +251,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs', 'POST',
@@ -269,17 +269,17 @@ class JobsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_job(self, id, **kwargs):  # noqa: E501
+    def delete_job(self, job_id, **kwargs):  # noqa: E501
         """Delete a Job  # noqa: E501
 
         Delete a job, deletes all projects and documents in the job, deletes all the segments from all the job's translation memories.  Example CURL command:  ``` curl -X DELETE 'https://lilt.com/2/jobs/{id}?key=API_KEY' ```  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_job(id, async_req=True)
+        >>> thread = api.delete_job(job_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int id: A job id. (required)
+        :param int job_id: A job id. (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -292,19 +292,19 @@ class JobsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.delete_job_with_http_info(id, **kwargs)  # noqa: E501
+        return self.delete_job_with_http_info(job_id, **kwargs)  # noqa: E501
 
-    def delete_job_with_http_info(self, id, **kwargs):  # noqa: E501
+    def delete_job_with_http_info(self, job_id, **kwargs):  # noqa: E501
         """Delete a Job  # noqa: E501
 
         Delete a job, deletes all projects and documents in the job, deletes all the segments from all the job's translation memories.  Example CURL command:  ``` curl -X DELETE 'https://lilt.com/2/jobs/{id}?key=API_KEY' ```  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_job_with_http_info(id, async_req=True)
+        >>> thread = api.delete_job_with_http_info(job_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int id: A job id. (required)
+        :param int job_id: A job id. (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -322,7 +322,7 @@ class JobsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'id'
+            'job_id'
         ]
         all_params.extend(
             [
@@ -341,16 +341,16 @@ class JobsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `delete_job`")  # noqa: E501
+        # verify the required parameter 'job_id' is set
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `job_id` when calling `delete_job`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+        if 'job_id' in local_var_params:
+            path_params['jobId'] = local_var_params['job_id']  # noqa: E501
 
         query_params = []
 
@@ -365,7 +365,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}', 'DELETE',
@@ -479,7 +479,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/deliver', 'POST',
@@ -593,7 +593,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/downlod', 'GET',
@@ -716,7 +716,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/export', 'GET',
@@ -830,7 +830,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}', 'GET',
@@ -944,7 +944,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/stats', 'POST',
@@ -1058,7 +1058,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/reactivate', 'POST',
@@ -1168,7 +1168,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs', 'GET',
@@ -1282,7 +1282,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/unarchive', 'POST',
@@ -1300,17 +1300,17 @@ class JobsApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_job(self, id, **kwargs):  # noqa: E501
+    def update_job(self, job_id, **kwargs):  # noqa: E501
         """Update a Job  # noqa: E501
 
         Updates a job with the new job properties. To update a specific job, you will need the job `id` in the url path.  You can update job's name and due date by passing the property and new value in the body.  Example CURL command:  ``` curl -X PUT 'https://lilt.com/2/jobs/{id}?key=API_KEY' \\ --header 'Content-Type: application/json' \\ --data-raw '{   \"name\": \"test job\",   \"due\": \"2022-05-05T10:56:44.985Z\" }' ```  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_job(id, async_req=True)
+        >>> thread = api.update_job(job_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int id: A job id. (required)
+        :param int job_id: A job id. (required)
         :param JobUpdateParameters body:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -1324,19 +1324,19 @@ class JobsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.update_job_with_http_info(id, **kwargs)  # noqa: E501
+        return self.update_job_with_http_info(job_id, **kwargs)  # noqa: E501
 
-    def update_job_with_http_info(self, id, **kwargs):  # noqa: E501
+    def update_job_with_http_info(self, job_id, **kwargs):  # noqa: E501
         """Update a Job  # noqa: E501
 
         Updates a job with the new job properties. To update a specific job, you will need the job `id` in the url path.  You can update job's name and due date by passing the property and new value in the body.  Example CURL command:  ``` curl -X PUT 'https://lilt.com/2/jobs/{id}?key=API_KEY' \\ --header 'Content-Type: application/json' \\ --data-raw '{   \"name\": \"test job\",   \"due\": \"2022-05-05T10:56:44.985Z\" }' ```  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_job_with_http_info(id, async_req=True)
+        >>> thread = api.update_job_with_http_info(job_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int id: A job id. (required)
+        :param int job_id: A job id. (required)
         :param JobUpdateParameters body:
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -1355,7 +1355,7 @@ class JobsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'id',
+            'job_id',
             'body'
         ]
         all_params.extend(
@@ -1375,16 +1375,16 @@ class JobsApi(object):
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
-        # verify the required parameter 'id' is set
-        if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
-                                                        local_var_params['id'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `id` when calling `update_job`")  # noqa: E501
+        # verify the required parameter 'job_id' is set
+        if self.api_client.client_side_validation and ('job_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['job_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `job_id` when calling `update_job`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'id' in local_var_params:
-            path_params['id'] = local_var_params['id']  # noqa: E501
+        if 'job_id' in local_var_params:
+            path_params['jobId'] = local_var_params['job_id']  # noqa: E501
 
         query_params = []
 
@@ -1405,7 +1405,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}', 'PUT',

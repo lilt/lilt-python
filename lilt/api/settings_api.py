@@ -38,7 +38,7 @@ class SettingsApi(object):
         self.api_client = api_client
 
     def get_organization_settings(self, **kwargs):  # noqa: E501
-        """Update or create a setting  # noqa: E501
+        """Get organization-level settings  # noqa: E501
 
         Get the organization-level settings for the active users organization  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/organization?key=<API_KEY>' \\ ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -54,7 +54,7 @@ class SettingsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: SettingDictionary
+        :return: dict(str, Setting)
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -62,7 +62,7 @@ class SettingsApi(object):
         return self.get_organization_settings_with_http_info(**kwargs)  # noqa: E501
 
     def get_organization_settings_with_http_info(self, **kwargs):  # noqa: E501
-        """Update or create a setting  # noqa: E501
+        """Get organization-level settings  # noqa: E501
 
         Get the organization-level settings for the active users organization  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/organization?key=<API_KEY>' \\ ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -80,7 +80,7 @@ class SettingsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(SettingDictionary, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(dict(str, Setting), status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -124,7 +124,7 @@ class SettingsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/settings/organization', 'GET',
@@ -134,7 +134,7 @@ class SettingsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SettingDictionary',  # noqa: E501
+            response_type='dict(str, Setting)',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -160,7 +160,7 @@ class SettingsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: SettingDictionary
+        :return: dict(str, Setting)
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -187,7 +187,7 @@ class SettingsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(SettingDictionary, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(dict(str, Setting), status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -238,7 +238,7 @@ class SettingsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/settings/project/{projectId}', 'GET',
@@ -248,7 +248,7 @@ class SettingsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SettingDictionary',  # noqa: E501
+            response_type='dict(str, Setting)',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -257,9 +257,9 @@ class SettingsApi(object):
             collection_formats=collection_formats)
 
     def get_user_settings(self, **kwargs):  # noqa: E501
-        """Get settings for a project  # noqa: E501
+        """Get settings for the authenticated  user  # noqa: E501
 
-        Get the active settings applied to a user.  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/user?key=<API_KEY>' \\ ```    # noqa: E501
+        Get the active settings applied to the authenticated user.  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/user?key=<API_KEY>' \\ ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_user_settings(async_req=True)
@@ -273,7 +273,7 @@ class SettingsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: SettingDictionary
+        :return: dict(str, Setting)
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -281,9 +281,9 @@ class SettingsApi(object):
         return self.get_user_settings_with_http_info(**kwargs)  # noqa: E501
 
     def get_user_settings_with_http_info(self, **kwargs):  # noqa: E501
-        """Get settings for a project  # noqa: E501
+        """Get settings for the authenticated  user  # noqa: E501
 
-        Get the active settings applied to a user.  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/user?key=<API_KEY>' \\ ```    # noqa: E501
+        Get the active settings applied to the authenticated user.  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/user?key=<API_KEY>' \\ ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_user_settings_with_http_info(async_req=True)
@@ -299,7 +299,7 @@ class SettingsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(SettingDictionary, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(dict(str, Setting), status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -343,7 +343,7 @@ class SettingsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/settings/user', 'GET',
@@ -353,7 +353,7 @@ class SettingsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='SettingDictionary',  # noqa: E501
+            response_type='dict(str, Setting)',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -362,7 +362,7 @@ class SettingsApi(object):
             collection_formats=collection_formats)
 
     def upsert_setting(self, **kwargs):  # noqa: E501
-        """Get organization-level settings  # noqa: E501
+        """Update or create a setting  # noqa: E501
 
         Create or update the value for the given setting and setting scope.  Example CURL to set an organization-level setting:  ``` curl --location --request POST 'https://lilt.com/2/settings?key=<API_KEY>' \\ --header 'Content-Type: application/json' \\ --data-raw '{     \"settingName\": \"requireBatchQaTranslator\",     \"value\": false,     \"organizationId\": 285,     \"scope\": \"Organization\" }' ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -371,7 +371,7 @@ class SettingsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param object body:
+        :param SettingUpsertBody body:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -379,7 +379,7 @@ class SettingsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: object
+        :return: SettingUpsertResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -387,7 +387,7 @@ class SettingsApi(object):
         return self.upsert_setting_with_http_info(**kwargs)  # noqa: E501
 
     def upsert_setting_with_http_info(self, **kwargs):  # noqa: E501
-        """Get organization-level settings  # noqa: E501
+        """Update or create a setting  # noqa: E501
 
         Create or update the value for the given setting and setting scope.  Example CURL to set an organization-level setting:  ``` curl --location --request POST 'https://lilt.com/2/settings?key=<API_KEY>' \\ --header 'Content-Type: application/json' \\ --data-raw '{     \"settingName\": \"requireBatchQaTranslator\",     \"value\": false,     \"organizationId\": 285,     \"scope\": \"Organization\" }' ```    # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
@@ -396,7 +396,7 @@ class SettingsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param object body:
+        :param SettingUpsertBody body:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -406,7 +406,7 @@ class SettingsApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(object, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(SettingUpsertResponse, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -457,7 +457,7 @@ class SettingsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/settings', 'POST',
@@ -467,7 +467,7 @@ class SettingsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='object',  # noqa: E501
+            response_type='SettingUpsertResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

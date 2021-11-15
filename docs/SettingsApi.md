@@ -4,22 +4,21 @@ All URIs are relative to *https://lilt.com/2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_organization_settings**](SettingsApi.md#get_organization_settings) | **GET** /settings/organization | Update or create a setting
+[**get_organization_settings**](SettingsApi.md#get_organization_settings) | **GET** /settings/organization | Get organization-level settings
 [**get_project_settings**](SettingsApi.md#get_project_settings) | **GET** /settings/project/{projectId} | Get settings for a project
-[**get_user_settings**](SettingsApi.md#get_user_settings) | **GET** /settings/user | Get settings for a project
-[**upsert_setting**](SettingsApi.md#upsert_setting) | **POST** /settings | Get organization-level settings
+[**get_user_settings**](SettingsApi.md#get_user_settings) | **GET** /settings/user | Get settings for the authenticated  user
+[**upsert_setting**](SettingsApi.md#upsert_setting) | **POST** /settings | Update or create a setting
 
 
 # **get_organization_settings**
-> SettingDictionary get_organization_settings()
+> dict(str, Setting) get_organization_settings()
 
-Update or create a setting
+Get organization-level settings
 
 Get the organization-level settings for the active users organization  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/organization?key=<API_KEY>' \\ ```  
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -32,81 +31,14 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.SettingsApi(api_client)
     
     try:
-        # Update or create a setting
-        api_response = api_instance.get_organization_settings()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling SettingsApi->get_organization_settings: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.SettingsApi(api_client)
-    
-    try:
-        # Update or create a setting
+        # Get organization-level settings
         api_response = api_instance.get_organization_settings()
         pprint(api_response)
     except ApiException as e:
@@ -118,11 +50,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**SettingDictionary**](SettingDictionary.md)
+[**dict(str, Setting)**](Setting.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -138,7 +70,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_project_settings**
-> SettingDictionary get_project_settings(project_id)
+> dict(str, Setting) get_project_settings(project_id)
 
 Get settings for a project
 
@@ -146,7 +78,6 @@ Get the settings as applied to a specific project. Active settings will combine 
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -159,77 +90,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.SettingsApi(api_client)
-    project_id = 56 # int | A project id.
-
-    try:
-        # Get settings for a project
-        api_response = api_instance.get_project_settings(project_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling SettingsApi->get_project_settings: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.SettingsApi(api_client)
     project_id = 56 # int | A project id.
@@ -250,11 +113,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SettingDictionary**](SettingDictionary.md)
+[**dict(str, Setting)**](Setting.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -270,15 +133,14 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_settings**
-> SettingDictionary get_user_settings()
+> dict(str, Setting) get_user_settings()
 
-Get settings for a project
+Get settings for the authenticated  user
 
-Get the active settings applied to a user.  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/user?key=<API_KEY>' \\ ```  
+Get the active settings applied to the authenticated user.  Example CURL:  ``` curl --location --request GET 'https://lilt.com/2/settings/user?key=<API_KEY>' \\ ```  
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -291,81 +153,14 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.SettingsApi(api_client)
     
     try:
-        # Get settings for a project
-        api_response = api_instance.get_user_settings()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling SettingsApi->get_user_settings: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.SettingsApi(api_client)
-    
-    try:
-        # Get settings for a project
+        # Get settings for the authenticated  user
         api_response = api_instance.get_user_settings()
         pprint(api_response)
     except ApiException as e:
@@ -377,11 +172,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**SettingDictionary**](SettingDictionary.md)
+[**dict(str, Setting)**](Setting.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -391,21 +186,20 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Project settings dictionary. |  -  |
+**200** | Settings dictionary. |  -  |
 **0** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upsert_setting**
-> object upsert_setting(body=body)
+> SettingUpsertResponse upsert_setting(body=body)
 
-Get organization-level settings
+Update or create a setting
 
 Create or update the value for the given setting and setting scope.  Example CURL to set an organization-level setting:  ``` curl --location --request POST 'https://lilt.com/2/settings?key=<API_KEY>' \\ --header 'Content-Type: application/json' \\ --data-raw '{     \"settingName\": \"requireBatchQaTranslator\",     \"value\": false,     \"organizationId\": 285,     \"scope\": \"Organization\" }' ```  
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -418,83 +212,15 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.SettingsApi(api_client)
-    body = None # object |  (optional)
+    body = lilt.SettingUpsertBody() # SettingUpsertBody |  (optional)
 
     try:
-        # Get organization-level settings
-        api_response = api_instance.upsert_setting(body=body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling SettingsApi->upsert_setting: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.SettingsApi(api_client)
-    body = None # object |  (optional)
-
-    try:
-        # Get organization-level settings
+        # Update or create a setting
         api_response = api_instance.upsert_setting(body=body)
         pprint(api_response)
     except ApiException as e:
@@ -505,15 +231,15 @@ with lilt.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **object**|  | [optional] 
+ **body** | [**SettingUpsertBody**](SettingUpsertBody.md)|  | [optional] 
 
 ### Return type
 
-**object**
+[**SettingUpsertResponse**](SettingUpsertResponse.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 

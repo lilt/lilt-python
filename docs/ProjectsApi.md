@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_project**](ProjectsApi.md#create_project) | **POST** /projects | Create a Project
 [**delete_project**](ProjectsApi.md#delete_project) | **DELETE** /projects | Delete a Project
 [**get_project_report**](ProjectsApi.md#get_project_report) | **GET** /projects/quote | Retrieve Project report
+[**get_project_revision_report**](ProjectsApi.md#get_project_revision_report) | **GET** /projects/{id}/revision | Retrieve Project revision report
 [**get_project_status**](ProjectsApi.md#get_project_status) | **GET** /projects/status | Retrieve Project status
 [**get_projects**](ProjectsApi.md#get_projects) | **GET** /projects | Retrieve a Project
 [**update_project**](ProjectsApi.md#update_project) | **PUT** /projects | Update a Project
@@ -21,7 +22,6 @@ Create a Project. A Project is a collection of Documents.  A Project is associat
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -34,77 +34,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.ProjectsApi(api_client)
-    body = lilt.ProjectCreateParameters() # ProjectCreateParameters | 
-
-    try:
-        # Create a Project
-        api_response = api_instance.create_project(body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->create_project: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
     body = lilt.ProjectCreateParameters() # ProjectCreateParameters | 
@@ -129,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -153,7 +85,6 @@ Delete a Project.
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -166,77 +97,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.ProjectsApi(api_client)
-    id = 56 # int | A unique Project identifier. (optional)
-
-    try:
-        # Delete a Project
-        api_response = api_instance.delete_project(id=id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->delete_project: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
     id = 56 # int | A unique Project identifier. (optional)
@@ -261,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -285,7 +148,6 @@ Get information about a project that can be used for quoting. This includes: * A
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -298,77 +160,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.ProjectsApi(api_client)
-    id = 56 # int | A unique Project identifier.
-
-    try:
-        # Retrieve Project report
-        api_response = api_instance.get_project_report(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->get_project_report: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
     id = 56 # int | A unique Project identifier.
@@ -393,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -408,6 +202,68 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_project_revision_report**
+> get_project_revision_report(id)
+
+Retrieve Project revision report
+
+Get information about a project's revision report. This includes: * Stats on accepted segments * reviewer details * Error rate  
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.ProjectsApi(api_client)
+    id = 56 # int | A unique Project identifier.
+
+    try:
+        # Retrieve Project revision report
+        api_instance.get_project_revision_report(id)
+    except ApiException as e:
+        print("Exception when calling ProjectsApi->get_project_revision_report: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| A unique Project identifier. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A csv file containing revision report. |  -  |
+**0** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_project_status**
 > ProjectStatus get_project_status(id)
 
@@ -417,7 +273,6 @@ Retrieve the status of a Project.
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -430,77 +285,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.ProjectsApi(api_client)
-    id = 56 # int | A unique Project identifier.
-
-    try:
-        # Retrieve Project status
-        api_response = api_instance.get_project_status(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->get_project_status: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
     id = 56 # int | A unique Project identifier.
@@ -525,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -549,7 +336,6 @@ Retrieves one or more projects, including the documents associated with each pro
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -562,84 +348,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.ProjectsApi(api_client)
-    id = 56 # int | A unique Project identifier. (optional)
-srclang = 'srclang_example' # str | An ISO 639-1 language code. (optional)
-trglang = 'trglang_example' # str | An ISO 639-1 language code. (optional)
-from_time = 56 # int | Unix time stamp (epoch, in seconds) of Projects with `created_at` greater than or equal to the value. (optional)
-to_time = 56 # int | Unix time stamp (epoch, in seconds) of Projects with `created_at` less than the value. (optional)
-state = 'state_example' # str | A project state (backlog, inProgress, inReview, inQA, done). (optional)
-archived = True # bool | A flag that toggles whether to include archived projects in the response (the default is `true`). (optional)
-connector_id = 56 # int | A unique Connector identifier. (optional)
-
-    try:
-        # Retrieve a Project
-        api_response = api_instance.get_projects(id=id, srclang=srclang, trglang=trglang, from_time=from_time, to_time=to_time, state=state, archived=archived, connector_id=connector_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->get_projects: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
     id = 56 # int | A unique Project identifier. (optional)
@@ -678,7 +389,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -702,7 +413,6 @@ Update a Project.
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -715,77 +425,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.ProjectsApi(api_client)
-    body = lilt.ProjectUpdateResponse() # ProjectUpdateResponse | 
-
-    try:
-        # Update a Project
-        api_response = api_instance.update_project(body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling ProjectsApi->update_project: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
     body = lilt.ProjectUpdateResponse() # ProjectUpdateResponse | 
@@ -810,7 +452,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 

@@ -5,6 +5,7 @@ from __future__ import absolute_import
 # import apis into api package
 from lilt.api.comments_api import CommentsApi
 from lilt.api.connectors_api import ConnectorsApi
+from lilt.api.converter_config_api import ConverterConfigApi
 from lilt.api.documents_api import DocumentsApi
 from lilt.api.files_api import FilesApi
 from lilt.api.jobs_api import JobsApi

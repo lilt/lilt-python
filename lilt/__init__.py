@@ -15,11 +15,12 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.6.4"
+__version__ = "0.6.5"
 
 # import apis into sdk package
 from lilt.api.comments_api import CommentsApi
 from lilt.api.connectors_api import ConnectorsApi
+from lilt.api.converter_config_api import ConverterConfigApi
 from lilt.api.documents_api import DocumentsApi
 from lilt.api.files_api import FilesApi
 from lilt.api.jobs_api import JobsApi
@@ -42,6 +43,7 @@ from lilt.exceptions import ApiValueError
 from lilt.exceptions import ApiKeyError
 from lilt.exceptions import ApiException
 # import models into sdk package
+from lilt.models.add_file_label_request import AddFileLabelRequest
 from lilt.models.annotation import Annotation
 from lilt.models.api_root import ApiRoot
 from lilt.models.comment import Comment
@@ -51,6 +53,8 @@ from lilt.models.connector import Connector
 from lilt.models.connector_arguments import ConnectorArguments
 from lilt.models.connector_delete_response import ConnectorDeleteResponse
 from lilt.models.connector_job import ConnectorJob
+from lilt.models.converter_config_update_response import ConverterConfigUpdateResponse
+from lilt.models.create_converter_config_parameters import CreateConverterConfigParameters
 from lilt.models.document_assignment_parameters import DocumentAssignmentParameters
 from lilt.models.document_assignment_response import DocumentAssignmentResponse
 from lilt.models.document_comments import DocumentComments
@@ -68,6 +72,7 @@ from lilt.models.document_update_parameters import DocumentUpdateParameters
 from lilt.models.document_with_segments import DocumentWithSegments
 from lilt.models.document_without_segments import DocumentWithoutSegments
 from lilt.models.document_without_segments_status import DocumentWithoutSegmentsStatus
+from lilt.models.edit_filter_mapping_parameters import EditFilterMappingParameters
 from lilt.models.error import Error
 from lilt.models.file_delete_response import FileDeleteResponse
 from lilt.models.job import Job
@@ -103,6 +108,7 @@ from lilt.models.project_status import ProjectStatus
 from lilt.models.project_update_response import ProjectUpdateResponse
 from lilt.models.qa_rule_matches import QARuleMatches
 from lilt.models.qa_rule_matches_context import QARuleMatchesContext
+from lilt.models.qa_rule_matches_custom_rules import QARuleMatchesCustomRules
 from lilt.models.qa_rule_matches_matches import QARuleMatchesMatches
 from lilt.models.qa_rule_matches_replacements import QARuleMatchesReplacements
 from lilt.models.qa_rule_matches_rule import QARuleMatchesRule
@@ -116,7 +122,7 @@ from lilt.models.segment_done_response import SegmentDoneResponse
 from lilt.models.segment_update_parameters import SegmentUpdateParameters
 from lilt.models.segment_with_comments import SegmentWithComments
 from lilt.models.setting import Setting
-from lilt.models.setting_dictionary import SettingDictionary
+from lilt.models.setting_upsert_body import SettingUpsertBody
 from lilt.models.setting_upsert_response import SettingUpsertResponse
 from lilt.models.source_file import SourceFile
 from lilt.models.tagged_segment import TaggedSegment

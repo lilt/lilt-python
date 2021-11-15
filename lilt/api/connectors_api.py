@@ -137,7 +137,7 @@ class ConnectorsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/connectors', 'POST',
@@ -251,7 +251,7 @@ class ConnectorsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/connectors', 'DELETE',
@@ -365,7 +365,7 @@ class ConnectorsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/connectors/jobs/deliver', 'POST',
@@ -479,7 +479,7 @@ class ConnectorsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/connectors/jobs', 'GET',
@@ -589,7 +589,7 @@ class ConnectorsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/connectors', 'GET',
@@ -703,7 +703,7 @@ class ConnectorsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/connectors/sync', 'POST',
@@ -821,7 +821,7 @@ class ConnectorsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/connectors', 'PUT',

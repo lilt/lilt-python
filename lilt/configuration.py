@@ -51,42 +51,6 @@ class Configuration(object):
       additional properties map. In that case, there are undeclared properties, and
       nothing to discard.
 
-    :Example:
-
-    API Key Authentication Example.
-    Given the following security scheme in the OpenAPI specification:
-      components:
-        securitySchemes:
-          cookieAuth:         # name for the security scheme
-            type: apiKey
-            in: cookie
-            name: JSESSIONID  # cookie name
-
-    You can programmatically set the cookie:
-
-conf = lilt.Configuration(
-    api_key={'cookieAuth': 'abc123'}
-    api_key_prefix={'cookieAuth': 'JSESSIONID'}
-)
-
-    The following cookie will be added to the HTTP request:
-       Cookie: JSESSIONID abc123
-
-    HTTP Basic Authentication Example.
-    Given the following security scheme in the OpenAPI specification:
-      components:
-        securitySchemes:
-          http_basic_auth:
-            type: http
-            scheme: basic
-
-    Configure API client with HTTP basic authentication:
-
-conf = lilt.Configuration(
-    username='the-user',
-    password='the-password',
-)
-
     """
 
     _default = None
@@ -351,20 +315,6 @@ conf = lilt.Configuration(
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if 'key' in self.api_key:
-            auth['ApiKeyAuth'] = {
-                'type': 'api_key',
-                'in': 'query',
-                'key': 'key',
-                'value': self.get_api_key_with_prefix('key')
-            }
-        if self.username is not None and self.password is not None:
-            auth['BasicAuth'] = {
-                'type': 'basic',
-                'in': 'header',
-                'key': 'Authorization',
-                'value': self.get_basic_auth_token()
-            }
         return auth
 
     def to_debug_report(self):
@@ -376,7 +326,7 @@ conf = lilt.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v2.0\n"\
-               "SDK Package Version: 0.6.4".\
+               "SDK Package Version: 0.6.5".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):

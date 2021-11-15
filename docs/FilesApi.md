@@ -4,10 +4,76 @@ All URIs are relative to *https://lilt.com/2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**add_label**](FilesApi.md#add_label) | **POST** /files/labels | Add Label to File
 [**delete_file**](FilesApi.md#delete_file) | **DELETE** /files | Delete a File
+[**download**](FilesApi.md#download) | **GET** /files/download | Download file
 [**get_files**](FilesApi.md#get_files) | **GET** /files | Retrieve a File
+[**remove_label**](FilesApi.md#remove_label) | **DELETE** /files/labels | Remove Label from File
 [**upload_file**](FilesApi.md#upload_file) | **POST** /files | Upload a File
 
+
+# **add_label**
+> add_label(id, name)
+
+Add Label to File
+
+Add a label to a File.  Example CURL: ``` curl --X --request POST 'https://lilt.com/2/files/labels?key=API_KEY&id=1' --header 'Content-Type: application/json' \\ --data-raw '{     \"name\": \"label_name\" }' ``` 
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.FilesApi(api_client)
+    id = 'id_example' # str | A File id.
+name = lilt.AddFileLabelRequest() # AddFileLabelRequest | 
+
+    try:
+        # Add Label to File
+        api_instance.add_label(id, name)
+    except ApiException as e:
+        print("Exception when calling FilesApi->add_label: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| A File id. | 
+ **name** | [**AddFileLabelRequest**](AddFileLabelRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | A success response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_file**
 > FileDeleteResponse delete_file(id)
@@ -18,7 +84,6 @@ Delete a File.  Example CURL command: ```   curl -X DELETE https://lilt.com/2/fi
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -31,77 +96,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.FilesApi(api_client)
-    id = 56 # int | A unique File identifier.
-
-    try:
-        # Delete a File
-        api_response = api_instance.delete_file(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FilesApi->delete_file: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.FilesApi(api_client)
     id = 56 # int | A unique File identifier.
@@ -126,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -141,8 +138,70 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **download**
+> str download(id)
+
+Download file
+
+Download a File.  Example CURL: ``` curl --X --request GET 'https://lilt.com/2/files/download?key=API_KEY&id=1' ``` 
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.FilesApi(api_client)
+    id = 'id_example' # str | A File id.
+
+    try:
+        # Download file
+        api_response = api_instance.download(id)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling FilesApi->download: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| A File id. | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/octet-stream
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A file. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_files**
-> list[SourceFile] get_files(id=id)
+> list[SourceFile] get_files(id=id, labels=labels)
 
 Retrieve a File
 
@@ -150,7 +209,6 @@ Retrieves one or more files available to your user. Files are not associated wit
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -163,84 +221,17 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.FilesApi(api_client)
     id = 56 # int | A unique File identifier. (optional)
+labels = ['labels_example'] # list[str] | One or more labels. This will return the files which contain all of the given labels.  (optional)
 
     try:
         # Retrieve a File
-        api_response = api_instance.get_files(id=id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FilesApi->get_files: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.FilesApi(api_client)
-    id = 56 # int | A unique File identifier. (optional)
-
-    try:
-        # Retrieve a File
-        api_response = api_instance.get_files(id=id)
+        api_response = api_instance.get_files(id=id, labels=labels)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling FilesApi->get_files: %s\n" % e)
@@ -251,6 +242,7 @@ with lilt.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| A unique File identifier. | [optional] 
+ **labels** | [**list[str]**](str.md)| One or more labels. This will return the files which contain all of the given labels.  | [optional] 
 
 ### Return type
 
@@ -258,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -275,6 +267,69 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **remove_label**
+> remove_label(id, name)
+
+Remove Label from File
+
+Remove a label from a File.  Example CURL: ``` curl --X --request DELETE 'https://lilt.com/2/files/labels?key=API_KEY&id=1&name=label_name' ``` 
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import lilt
+from lilt.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://lilt.com/2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = lilt.Configuration(
+    host = "https://lilt.com/2"
+)
+
+
+# Enter a context with an instance of the API client
+with lilt.ApiClient() as api_client:
+    # Create an instance of the API class
+    api_instance = lilt.FilesApi(api_client)
+    id = 'id_example' # str | A File id.
+name = 'name_example' # str | A label name.
+
+    try:
+        # Remove Label from File
+        api_instance.remove_label(id, name)
+    except ApiException as e:
+        print("Exception when calling FilesApi->remove_label: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| A File id. | 
+ **name** | **str**| A label name. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | A success response. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **upload_file**
 > SourceFile upload_file(name, body, file_hash=file_hash, lang_id=lang_id, project_id=project_id, category=category, labels=labels)
 
@@ -284,7 +339,6 @@ Upload a File in any of the formats [documented in our knowledge base](https://s
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -297,83 +351,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.FilesApi(api_client)
-    name = 'name_example' # str | A file name.
-body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
-file_hash = 'file_hash_example' # str | A hash value to associate with the file. The MD5 hash of the body contents will be used by default if a value isn't provided. (optional)
-lang_id = True # bool | Flag indicating whether to perform language detection on the uploaded file. Default is false. (optional)
-project_id = 56 # int | The project to associate the uploaded file with. (optional)
-category = 'category_example' # str | The category of the file. The options are `REFERENCE`, or `API`. The default is API. Files with the `REFERENCE` category will be displayed as reference material. (optional)
-labels = 'labels_example' # str | Comma-separated list of labels to add to the uploaded document. (optional)
-
-    try:
-        # Upload a File
-        api_response = api_instance.upload_file(name, body, file_hash=file_hash, lang_id=lang_id, project_id=project_id, category=category, labels=labels)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling FilesApi->upload_file: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.FilesApi(api_client)
     name = 'name_example' # str | A file name.
@@ -410,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 

@@ -35,7 +35,7 @@ class SettingUpsertResponse(object):
     """
     openapi_types = {
         'scoped_setting': 'Setting',
-        'active_settings': 'SettingDictionary'
+        'active_settings': 'dict(str, Setting)'
     }
 
     attribute_map = {
@@ -83,9 +83,10 @@ class SettingUpsertResponse(object):
     def active_settings(self):
         """Gets the active_settings of this SettingUpsertResponse.  # noqa: E501
 
+        A dictionary of configuration settings, keyed by setting name  # noqa: E501
 
         :return: The active_settings of this SettingUpsertResponse.  # noqa: E501
-        :rtype: SettingDictionary
+        :rtype: dict(str, Setting)
         """
         return self._active_settings
 
@@ -93,9 +94,10 @@ class SettingUpsertResponse(object):
     def active_settings(self, active_settings):
         """Sets the active_settings of this SettingUpsertResponse.
 
+        A dictionary of configuration settings, keyed by setting name  # noqa: E501
 
         :param active_settings: The active_settings of this SettingUpsertResponse.  # noqa: E501
-        :type: SettingDictionary
+        :type: dict(str, Setting)
         """
 
         self._active_settings = active_settings

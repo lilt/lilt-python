@@ -137,7 +137,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories', 'POST',
@@ -251,7 +251,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories', 'DELETE',
@@ -361,7 +361,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories', 'GET',
@@ -502,7 +502,7 @@ class MemoriesApi(object):
             ['application/octet-stream'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/import', 'POST',
@@ -630,7 +630,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/query', 'GET',
@@ -759,7 +759,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/sync', 'DELETE',
@@ -888,7 +888,7 @@ class MemoriesApi(object):
             ['application/x-tmx'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/sync', 'GET',
@@ -1020,7 +1020,7 @@ class MemoriesApi(object):
             ['application/octet-stream'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/sync', 'POST',
@@ -1162,7 +1162,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/sync', 'PUT',
@@ -1280,7 +1280,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/memories', 'PUT',

@@ -12,15 +12,14 @@ Method | HTTP request | Description
 
 
 # **batch_translate_file**
-> list[TranslationInfo] batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm)
+> TranslationInfo batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm)
 
 Translate a File
 
-Start machine translation of one or more Files that have previously been uploaded.  The response will include an `id` parameter that can be used to monitor and download the translations in subsequent calls.  Example CURL: ``` curl --X --request POST 'https://lilt.com/2/translate/file?key=API_KEY&fileId=583&memoryId=2495&configId=123' ```  
+Start machine translation of one or more Files that have previously been uploaded.  The response will include an `id` parameter that can be used to monitor and download the translations in subsequent calls.  Example CURL: ``` curl --X --request POST 'https://lilt.com/2/translate/file?key=API_KEY&fileId=583&memoryId=2495&configId=123&withTM=true' ```  
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -33,80 +32,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.TranslateApi(api_client)
-    file_id = 'file_id_example' # str | List of File ids to be translated, comma separated.
-memory_id = 'memory_id_example' # str | Id of Memory to use in translation.
-config_id = 3.4 # float | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. (optional)
-with_tm = True # bool | An optional boolean parameter to toggle the use of Translation Memory in the translation of the file. (optional)
-
-    try:
-        # Translate a File
-        api_response = api_instance.batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling TranslateApi->batch_translate_file: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.TranslateApi(api_client)
     file_id = 'file_id_example' # str | List of File ids to be translated, comma separated.
@@ -133,11 +61,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[TranslationInfo]**](TranslationInfo.md)
+[**TranslationInfo**](TranslationInfo.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -161,7 +89,6 @@ Download a translated File.  Example CURL: ``` curl --X --request GET 'https://l
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -174,77 +101,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.TranslateApi(api_client)
-    id = 'id_example' # str | A translation id.
-
-    try:
-        # Download translated file
-        api_response = api_instance.download_file(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling TranslateApi->download_file: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.TranslateApi(api_client)
     id = 'id_example' # str | A translation id.
@@ -269,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -284,7 +143,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **monitor_file_translation**
-> list[TranslationInfo] monitor_file_translation(translation_ids=translation_ids, status=status, from_time=from_time, to_time=to_time)
+> TranslationInfo monitor_file_translation(translation_ids=translation_ids, status=status, from_time=from_time, to_time=to_time)
 
 Monitor file translation
 
@@ -292,7 +151,6 @@ Get information about the one or more Files that are being translated with machi
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -305,80 +163,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.TranslateApi(api_client)
-    translation_ids = 'translation_ids_example' # str | List of translation ids, comma separated (optional)
-status = 'status_example' # str | One of the translation statuses - `InProgress`, `Completed`, `Failed`, `ReadyForDownload` (optional)
-from_time = 3.4 # float | Results after this time (inclusive) will be returned, specified as seconds since the Unix epoch. (optional)
-to_time = 3.4 # float | Results before this time (exclusive) will be returned, specified as seconds since the Unix epoch. (optional)
-
-    try:
-        # Monitor file translation
-        api_response = api_instance.monitor_file_translation(translation_ids=translation_ids, status=status, from_time=from_time, to_time=to_time)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling TranslateApi->monitor_file_translation: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.TranslateApi(api_client)
     translation_ids = 'translation_ids_example' # str | List of translation ids, comma separated (optional)
@@ -405,11 +192,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[TranslationInfo]**](TranslationInfo.md)
+[**TranslationInfo**](TranslationInfo.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -433,7 +220,6 @@ Register a source string for interactive translation. The `source_hash` value th
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -446,79 +232,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.TranslateApi(api_client)
-    source = 'source_example' # str | A source string to be registered.
-srclang = 'srclang_example' # str | An ISO 639-1 language code.
-trglang = 'trglang_example' # str | An ISO 639-1 language code.
-
-    try:
-        # Register a segment
-        api_response = api_instance.register_segment(source, srclang, trglang)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling TranslateApi->register_segment: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.TranslateApi(api_client)
     source = 'source_example' # str | A source string to be registered.
@@ -547,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -571,7 +287,6 @@ Translate a source string.  Setting the `rich` parameter to `true` will change t
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 ```python
 from __future__ import print_function
 import time
@@ -584,84 +299,9 @@ configuration = lilt.Configuration(
     host = "https://lilt.com/2"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
 
 # Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.TranslateApi(api_client)
-    memory_id = 56 # int | A unique Memory identifier.
-source = 'source_example' # str | The source text to be translated. (optional)
-source_hash = 56 # int | A source hash code. (optional)
-prefix = 'prefix_example' # str | A target prefix. (optional)
-n = 1 # int | Return top n translations (deprecated). (optional) (default to 1)
-rich = False # bool | Returns rich translation information (e.g., with word alignments). (optional) (default to False)
-tm_matches = True # bool | Include translation memory fuzzy matches. (optional) (default to True)
-project_tags = False # bool | Project tags. Projects tags in source to target if set to true. (optional) (default to False)
-
-    try:
-        # Translate a segment
-        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling TranslateApi->translate_segment: %s\n" % e)
-```
-
-* Basic Authentication (BasicAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
+with lilt.ApiClient() as api_client:
     # Create an instance of the API class
     api_instance = lilt.TranslateApi(api_client)
     memory_id = 56 # int | A unique Memory identifier.
@@ -700,7 +340,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+No authorization required
 
 ### HTTP request headers
 

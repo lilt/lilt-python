@@ -51,6 +51,7 @@ class QAApi(object):
         :param str trglang: An ISO 639-1 language code. (required)
         :param str source: An optional source string.
         :param str srclang: An ISO 639-1 language code.
+        :param int memory_id: Any custom rules defined for this Memory will also be applied as part of the QA check. 
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -79,6 +80,7 @@ class QAApi(object):
         :param str trglang: An ISO 639-1 language code. (required)
         :param str source: An optional source string.
         :param str srclang: An ISO 639-1 language code.
+        :param int memory_id: Any custom rules defined for this Memory will also be applied as part of the QA check. 
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -99,7 +101,8 @@ class QAApi(object):
             'target',
             'trglang',
             'source',
-            'srclang'
+            'srclang',
+            'memory_id'
         ]
         all_params.extend(
             [
@@ -140,6 +143,8 @@ class QAApi(object):
             query_params.append(('source', local_var_params['source']))  # noqa: E501
         if 'srclang' in local_var_params and local_var_params['srclang'] is not None:  # noqa: E501
             query_params.append(('srclang', local_var_params['srclang']))  # noqa: E501
+        if 'memory_id' in local_var_params and local_var_params['memory_id'] is not None:  # noqa: E501
+            query_params.append(('memory_id', local_var_params['memory_id']))  # noqa: E501
 
         header_params = {}
 
@@ -152,7 +157,7 @@ class QAApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
+        auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
             '/qa', 'GET',

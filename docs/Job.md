@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | A name for the job. | [optional] 
 **creation_status** | **str** | Status of job creation process that includes PENDING, COMPLETE, and FAILED. | [optional] 
-**delivered_at** | **datetime** |  | [optional] 
+**delivered_at** | **int** |  | [optional] 
 **status** | **str** | Current status of job that includes archived, delivered, and active. | [optional] 
 **due** | **str** | An ISO string date. | [optional] 
 **id** | **int** | An id for the job. | [optional] 

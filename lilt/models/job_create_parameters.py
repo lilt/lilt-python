@@ -35,8 +35,6 @@ class JobCreateParameters(object):
     """
     openapi_types = {
         'name': 'str',
-        'src_lang': 'str',
-        'src_locale': 'str',
         'due': 'str',
         'language_pairs': 'list[LanguagePair]',
         'file_ids': 'list[int]'
@@ -44,31 +42,24 @@ class JobCreateParameters(object):
 
     attribute_map = {
         'name': 'name',
-        'src_lang': 'srcLang',
-        'src_locale': 'srcLocale',
         'due': 'due',
         'language_pairs': 'languagePairs',
         'file_ids': 'fileIds'
     }
 
-    def __init__(self, name=None, src_lang=None, src_locale=None, due=None, language_pairs=None, file_ids=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, due=None, language_pairs=None, file_ids=None, local_vars_configuration=None):  # noqa: E501
         """JobCreateParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
-        self._src_lang = None
-        self._src_locale = None
         self._due = None
         self._language_pairs = None
         self._file_ids = None
         self.discriminator = None
 
         self.name = name
-        self.src_lang = src_lang
-        if src_locale is not None:
-            self.src_locale = src_locale
         if due is not None:
             self.due = due
         self.language_pairs = language_pairs
@@ -98,54 +89,6 @@ class JobCreateParameters(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
-
-    @property
-    def src_lang(self):
-        """Gets the src_lang of this JobCreateParameters.  # noqa: E501
-
-        The source language for the job.  # noqa: E501
-
-        :return: The src_lang of this JobCreateParameters.  # noqa: E501
-        :rtype: str
-        """
-        return self._src_lang
-
-    @src_lang.setter
-    def src_lang(self, src_lang):
-        """Sets the src_lang of this JobCreateParameters.
-
-        The source language for the job.  # noqa: E501
-
-        :param src_lang: The src_lang of this JobCreateParameters.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and src_lang is None:  # noqa: E501
-            raise ValueError("Invalid value for `src_lang`, must not be `None`")  # noqa: E501
-
-        self._src_lang = src_lang
-
-    @property
-    def src_locale(self):
-        """Gets the src_locale of this JobCreateParameters.  # noqa: E501
-
-        The source locale for the job.  # noqa: E501
-
-        :return: The src_locale of this JobCreateParameters.  # noqa: E501
-        :rtype: str
-        """
-        return self._src_locale
-
-    @src_locale.setter
-    def src_locale(self, src_locale):
-        """Sets the src_locale of this JobCreateParameters.
-
-        The source locale for the job.  # noqa: E501
-
-        :param src_locale: The src_locale of this JobCreateParameters.  # noqa: E501
-        :type: str
-        """
-
-        self._src_locale = src_locale
 
     @property
     def due(self):
