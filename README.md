@@ -71,7 +71,7 @@ from pprint import pprint
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
     host = "https://lilt.com/2",
-    api_key={'key': "YOUR_API_KEY"}
+    api_key={"key": "YOUR_API_KEY"}
 )
 
 
