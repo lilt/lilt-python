@@ -32,9 +32,9 @@ Python 2.7 and 3.4+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/lilt/lilt-python.git
+pip install lilt
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/lilt/lilt-python.git`)
+(you may need to run `pip` with root permission: `sudo pip install lilt`)
 
 Then import the package:
 ```python
@@ -70,7 +70,8 @@ from pprint import pprint
 # Defining the host is optional and defaults to https://lilt.com/2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://lilt.com/2",
+    api_key={'key': "YOUR_API_KEY"}
 )
 
 
@@ -79,9 +80,9 @@ configuration = lilt.Configuration(
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.CommentsApi(api_client)
-    document_id = 56 # int | A unique document identifier.
-segment_id = 56 # int | A unique segment identifier.
-body = lilt.CommentBody() # CommentBody | The comment being created
+    document_id = 0000 # int | A unique document identifier, api key user needs to have access to it.
+    segment_id = 0000 # int | A unique segment identifier, should belong to document_id.
+    body = lilt.CommentBody() # CommentBody | The comment being created
 
     try:
         # Create a new comment
