@@ -80,8 +80,9 @@ configuration = lilt.Configuration(
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.CommentsApi(api_client)
-    document_id = 0000 # int | A unique document identifier, api key user needs to have access to it.
-    segment_id = 0000 # int | A unique segment identifier, should belong to document_id.
+    # Important, this values are for display only, use correct information from your organization
+    document_id = 56 # int | A unique document identifier, api key user needs to have access to it.
+    segment_id = 56 # int | A unique segment identifier, should belong to document_id.
     body = lilt.CommentBody() # CommentBody | The comment being created
 
     try:
