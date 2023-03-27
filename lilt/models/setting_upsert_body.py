@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -62,10 +62,8 @@ class SettingUpsertBody(object):
         self._organization_id = None
         self.discriminator = None
 
-        if setting_name is not None:
-            self.setting_name = setting_name
-        if scope is not None:
-            self.scope = scope
+        self.setting_name = setting_name
+        self.scope = scope
         if is_enforced is not None:
             self.is_enforced = is_enforced
         if project_id is not None:
@@ -93,6 +91,8 @@ class SettingUpsertBody(object):
         :param setting_name: The setting_name of this SettingUpsertBody.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and setting_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `setting_name`, must not be `None`")  # noqa: E501
 
         self._setting_name = setting_name
 
@@ -116,6 +116,8 @@ class SettingUpsertBody(object):
         :param scope: The scope of this SettingUpsertBody.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and scope is None:  # noqa: E501
+            raise ValueError("Invalid value for `scope`, must not be `None`")  # noqa: E501
 
         self._scope = scope
 

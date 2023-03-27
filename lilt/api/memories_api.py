@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -137,7 +137,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories', 'POST',
@@ -251,7 +251,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories', 'DELETE',
@@ -361,7 +361,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories', 'GET',
@@ -393,6 +393,7 @@ class MemoriesApi(object):
         :param str name: Name of the TM or termbase file. (required)
         :param file body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
         :param bool has_header_row: A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`).
+        :param bool skip_duplicates: A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`). 
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -421,6 +422,7 @@ class MemoriesApi(object):
         :param str name: Name of the TM or termbase file. (required)
         :param file body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
         :param bool has_header_row: A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`).
+        :param bool skip_duplicates: A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`). 
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -441,7 +443,8 @@ class MemoriesApi(object):
             'memory_id',
             'name',
             'body',
-            'has_header_row'
+            'has_header_row',
+            'skip_duplicates'
         ]
         all_params.extend(
             [
@@ -486,6 +489,8 @@ class MemoriesApi(object):
             header_params['name'] = local_var_params['name']  # noqa: E501
         if 'has_header_row' in local_var_params:
             header_params['has_header_row'] = local_var_params['has_header_row']  # noqa: E501
+        if 'skip_duplicates' in local_var_params:
+            header_params['skip_duplicates'] = local_var_params['skip_duplicates']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -502,7 +507,7 @@ class MemoriesApi(object):
             ['application/octet-stream'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/import', 'POST',
@@ -630,7 +635,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/query', 'GET',
@@ -759,7 +764,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/sync', 'DELETE',
@@ -888,7 +893,7 @@ class MemoriesApi(object):
             ['application/x-tmx'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/sync', 'GET',
@@ -1020,7 +1025,7 @@ class MemoriesApi(object):
             ['application/octet-stream'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/sync', 'POST',
@@ -1162,7 +1167,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories/sync', 'PUT',
@@ -1280,7 +1285,7 @@ class MemoriesApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/memories', 'PUT',

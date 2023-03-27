@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -133,7 +133,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/archive', 'POST',
@@ -251,7 +251,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs', 'POST',
@@ -365,7 +365,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}', 'DELETE',
@@ -479,7 +479,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/deliver', 'POST',
@@ -593,7 +593,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/downlod', 'GET',
@@ -716,7 +716,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/export', 'GET',
@@ -830,7 +830,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}', 'GET',
@@ -944,7 +944,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/stats', 'POST',
@@ -1058,7 +1058,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/reactivate', 'POST',
@@ -1079,7 +1079,7 @@ class JobsApi(object):
     def retrieve_all_jobs(self, **kwargs):  # noqa: E501
         """Retrieve all Jobs  # noqa: E501
 
-        Get all Jobs. You can retrieve all jobs from your account using the above API.  Example CURL command:  ``` curl -X GET 'https://lilt.com/2/jobs?key=API_KEY&isArchived=false' ```  # noqa: E501
+        Get all Jobs within a given offset and limit. You can retrieve jobs from your account using the above API.  Example CURL command:  ``` curl -X GET 'https://lilt.com/2/jobs?key=API_KEY&isArchived=false' ```  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.retrieve_all_jobs(async_req=True)
@@ -1087,6 +1087,9 @@ class JobsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param bool is_archived: Retrieves all jobs that are archived.
+        :param bool is_delivered: Retrieves all jobs that are delivered.
+        :param int offset: Return jobs starting at the offset row. If not given the default offset will be 0.
+        :param int limit: The maximum number of jobs to be returned. If not given the default limit will be 25.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1104,7 +1107,7 @@ class JobsApi(object):
     def retrieve_all_jobs_with_http_info(self, **kwargs):  # noqa: E501
         """Retrieve all Jobs  # noqa: E501
 
-        Get all Jobs. You can retrieve all jobs from your account using the above API.  Example CURL command:  ``` curl -X GET 'https://lilt.com/2/jobs?key=API_KEY&isArchived=false' ```  # noqa: E501
+        Get all Jobs within a given offset and limit. You can retrieve jobs from your account using the above API.  Example CURL command:  ``` curl -X GET 'https://lilt.com/2/jobs?key=API_KEY&isArchived=false' ```  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.retrieve_all_jobs_with_http_info(async_req=True)
@@ -1112,6 +1115,9 @@ class JobsApi(object):
 
         :param async_req bool: execute request asynchronously
         :param bool is_archived: Retrieves all jobs that are archived.
+        :param bool is_delivered: Retrieves all jobs that are delivered.
+        :param int offset: Return jobs starting at the offset row. If not given the default offset will be 0.
+        :param int limit: The maximum number of jobs to be returned. If not given the default limit will be 25.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1129,7 +1135,10 @@ class JobsApi(object):
         local_var_params = locals()
 
         all_params = [
-            'is_archived'
+            'is_archived',
+            'is_delivered',
+            'offset',
+            'limit'
         ]
         all_params.extend(
             [
@@ -1149,6 +1158,10 @@ class JobsApi(object):
             local_var_params[key] = val
         del local_var_params['kwargs']
 
+        if self.api_client.client_side_validation and 'offset' in local_var_params and local_var_params['offset'] < 0:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `offset` when calling `retrieve_all_jobs`, must be a value greater than or equal to `0`")  # noqa: E501
+        if self.api_client.client_side_validation and 'limit' in local_var_params and local_var_params['limit'] > 50:  # noqa: E501
+            raise ApiValueError("Invalid value for parameter `limit` when calling `retrieve_all_jobs`, must be a value less than or equal to `50`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -1156,6 +1169,12 @@ class JobsApi(object):
         query_params = []
         if 'is_archived' in local_var_params and local_var_params['is_archived'] is not None:  # noqa: E501
             query_params.append(('isArchived', local_var_params['is_archived']))  # noqa: E501
+        if 'is_delivered' in local_var_params and local_var_params['is_delivered'] is not None:  # noqa: E501
+            query_params.append(('isDelivered', local_var_params['is_delivered']))  # noqa: E501
+        if 'offset' in local_var_params and local_var_params['offset'] is not None:  # noqa: E501
+            query_params.append(('offset', local_var_params['offset']))  # noqa: E501
+        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
+            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -1168,7 +1187,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs', 'GET',
@@ -1282,7 +1301,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}/unarchive', 'POST',
@@ -1405,7 +1424,7 @@ class JobsApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
             '/jobs/{jobId}', 'PUT',

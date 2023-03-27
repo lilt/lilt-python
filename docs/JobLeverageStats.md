@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **exact_words** | **int** | Total number of exact words. | [optional] 
 **fuzzy_words** | **int** | Total number of fuzzy words. | [optional] 
 **new_words** | **int** | Total number of new words. | [optional] 
-**projects** | [**list[JobLeverageStatsProjects]**](JobLeverageStatsProjects.md) |  | [optional] 
+**projects** | [**list[ProjectStats]**](ProjectStats.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | A name for the job. | [optional] 
 **creation_status** | **str** | Status of job creation process that includes PENDING, COMPLETE, and FAILED. | [optional] 
-**delivered_at** | **int** |  | [optional] 
+**delivered_at** | **datetime** |  | [optional] 
 **status** | **str** | Current status of job that includes archived, delivered, and active. | [optional] 
-**due** | **str** | An ISO string date. | [optional] 
+**due** | **datetime** | An ISO string date. | [optional] 
 **id** | **int** | An id for the job. | [optional] 
 **is_processing** | **int** | Values include &#x60;1&#x60; while in progress, &#x60;0&#x60; when idle and &#x60;-2&#x60; when processing failed. | [optional] 
 **stats** | [**JobStats**](JobStats.md) |  | [optional] 

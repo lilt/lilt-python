@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **sample_review_percentage** | **int** | The project&#39;s sample review percentage. | [optional] 
 **created_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 **updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
+**workflow_status** | **str** | The status of the Workflow for the current project. This may not be present for all project endpoints even with workflows enabled. | [optional] 
 **document** | [**list[DocumentWithoutSegments]**](DocumentWithoutSegments.md) | A list of Documents. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

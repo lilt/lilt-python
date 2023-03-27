@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -44,7 +44,9 @@ class LanguagePair(object):
         'auto_accept': 'bool',
         'case_sensitive': 'bool',
         'take_match_attribution': 'bool',
-        'config_id': 'int'
+        'config_id': 'int',
+        'workflow_template_id': 'int',
+        'workflow_stage_assignments': 'list[WorkflowStageAssignment]'
     }
 
     attribute_map = {
@@ -58,10 +60,12 @@ class LanguagePair(object):
         'auto_accept': 'autoAccept',
         'case_sensitive': 'caseSensitive',
         'take_match_attribution': 'takeMatchAttribution',
-        'config_id': 'configId'
+        'config_id': 'configId',
+        'workflow_template_id': 'workflowTemplateId',
+        'workflow_stage_assignments': 'workflowStageAssignments'
     }
 
-    def __init__(self, src_lang=None, src_locale=None, trg_lang=None, trg_locale=None, due_date=None, memory_id=None, pretranslate=None, auto_accept=None, case_sensitive=None, take_match_attribution=None, config_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, src_lang=None, src_locale=None, trg_lang=None, trg_locale=None, due_date=None, memory_id=None, pretranslate=None, auto_accept=None, case_sensitive=None, take_match_attribution=None, config_id=None, workflow_template_id=None, workflow_stage_assignments=None, local_vars_configuration=None):  # noqa: E501
         """LanguagePair - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -78,6 +82,8 @@ class LanguagePair(object):
         self._case_sensitive = None
         self._take_match_attribution = None
         self._config_id = None
+        self._workflow_template_id = None
+        self._workflow_stage_assignments = None
         self.discriminator = None
 
         if src_lang is not None:
@@ -100,12 +106,16 @@ class LanguagePair(object):
             self.take_match_attribution = take_match_attribution
         if config_id is not None:
             self.config_id = config_id
+        if workflow_template_id is not None:
+            self.workflow_template_id = workflow_template_id
+        if workflow_stage_assignments is not None:
+            self.workflow_stage_assignments = workflow_stage_assignments
 
     @property
     def src_lang(self):
         """Gets the src_lang of this LanguagePair.  # noqa: E501
 
-        Source langauge, an ISO 639-1 language identifier.  # noqa: E501
+        Source language, an ISO 639-1 language identifier.  # noqa: E501
 
         :return: The src_lang of this LanguagePair.  # noqa: E501
         :rtype: str
@@ -116,7 +126,7 @@ class LanguagePair(object):
     def src_lang(self, src_lang):
         """Sets the src_lang of this LanguagePair.
 
-        Source langauge, an ISO 639-1 language identifier.  # noqa: E501
+        Source language, an ISO 639-1 language identifier.  # noqa: E501
 
         :param src_lang: The src_lang of this LanguagePair.  # noqa: E501
         :type: str
@@ -128,7 +138,7 @@ class LanguagePair(object):
     def src_locale(self):
         """Gets the src_locale of this LanguagePair.  # noqa: E501
 
-        A locale identifier, supported for source langauge.  # noqa: E501
+        A locale identifier, supported for source language.  # noqa: E501
 
         :return: The src_locale of this LanguagePair.  # noqa: E501
         :rtype: str
@@ -139,7 +149,7 @@ class LanguagePair(object):
     def src_locale(self, src_locale):
         """Sets the src_locale of this LanguagePair.
 
-        A locale identifier, supported for source langauge.  # noqa: E501
+        A locale identifier, supported for source language.  # noqa: E501
 
         :param src_locale: The src_locale of this LanguagePair.  # noqa: E501
         :type: str
@@ -151,7 +161,7 @@ class LanguagePair(object):
     def trg_lang(self):
         """Gets the trg_lang of this LanguagePair.  # noqa: E501
 
-        Target langauge, an ISO 639-1 language identifier.  # noqa: E501
+        Target language, an ISO 639-1 language identifier.  # noqa: E501
 
         :return: The trg_lang of this LanguagePair.  # noqa: E501
         :rtype: str
@@ -162,7 +172,7 @@ class LanguagePair(object):
     def trg_lang(self, trg_lang):
         """Sets the trg_lang of this LanguagePair.
 
-        Target langauge, an ISO 639-1 language identifier.  # noqa: E501
+        Target language, an ISO 639-1 language identifier.  # noqa: E501
 
         :param trg_lang: The trg_lang of this LanguagePair.  # noqa: E501
         :type: str
@@ -357,6 +367,50 @@ class LanguagePair(object):
         """
 
         self._config_id = config_id
+
+    @property
+    def workflow_template_id(self):
+        """Gets the workflow_template_id of this LanguagePair.  # noqa: E501
+
+        Workflow Template id, to assign a specific Workflow to the project created out of this Language Pair. WorkflowTemplateIds can be retrieved via the /workflows/templates endpoint. If not specified then the Job level workflowTemplateId will be used.  # noqa: E501
+
+        :return: The workflow_template_id of this LanguagePair.  # noqa: E501
+        :rtype: int
+        """
+        return self._workflow_template_id
+
+    @workflow_template_id.setter
+    def workflow_template_id(self, workflow_template_id):
+        """Sets the workflow_template_id of this LanguagePair.
+
+        Workflow Template id, to assign a specific Workflow to the project created out of this Language Pair. WorkflowTemplateIds can be retrieved via the /workflows/templates endpoint. If not specified then the Job level workflowTemplateId will be used.  # noqa: E501
+
+        :param workflow_template_id: The workflow_template_id of this LanguagePair.  # noqa: E501
+        :type: int
+        """
+
+        self._workflow_template_id = workflow_template_id
+
+    @property
+    def workflow_stage_assignments(self):
+        """Gets the workflow_stage_assignments of this LanguagePair.  # noqa: E501
+
+
+        :return: The workflow_stage_assignments of this LanguagePair.  # noqa: E501
+        :rtype: list[WorkflowStageAssignment]
+        """
+        return self._workflow_stage_assignments
+
+    @workflow_stage_assignments.setter
+    def workflow_stage_assignments(self, workflow_stage_assignments):
+        """Sets the workflow_stage_assignments of this LanguagePair.
+
+
+        :param workflow_stage_assignments: The workflow_stage_assignments of this LanguagePair.  # noqa: E501
+        :type: list[WorkflowStageAssignment]
+        """
+
+        self._workflow_stage_assignments = workflow_stage_assignments
 
     def to_dict(self):
         """Returns the model properties as a dict"""

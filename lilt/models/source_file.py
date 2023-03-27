@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -41,8 +41,8 @@ class SourceFile(object):
         'detected_lang_confidence': 'float',
         'category': 'str',
         'labels': 'list[str]',
-        'created_at': 'int',
-        'updated_at': 'int'
+        'created_at': 'datetime',
+        'updated_at': 'datetime'
     }
 
     attribute_map = {
@@ -258,10 +258,10 @@ class SourceFile(object):
     def created_at(self):
         """Gets the created_at of this SourceFile.  # noqa: E501
 
-        Time at which the object was created. Measured in seconds since the Unix epoch.  # noqa: E501
+        Time at which the object was created.  # noqa: E501
 
         :return: The created_at of this SourceFile.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._created_at
 
@@ -269,10 +269,10 @@ class SourceFile(object):
     def created_at(self, created_at):
         """Sets the created_at of this SourceFile.
 
-        Time at which the object was created. Measured in seconds since the Unix epoch.  # noqa: E501
+        Time at which the object was created.  # noqa: E501
 
         :param created_at: The created_at of this SourceFile.  # noqa: E501
-        :type: int
+        :type: datetime
         """
 
         self._created_at = created_at
@@ -281,10 +281,10 @@ class SourceFile(object):
     def updated_at(self):
         """Gets the updated_at of this SourceFile.  # noqa: E501
 
-        Time at which the object was created. Measured in seconds since the Unix epoch.  # noqa: E501
+        Time at which the object was created.  # noqa: E501
 
         :return: The updated_at of this SourceFile.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._updated_at
 
@@ -292,10 +292,10 @@ class SourceFile(object):
     def updated_at(self, updated_at):
         """Sets the updated_at of this SourceFile.
 
-        Time at which the object was created. Measured in seconds since the Unix epoch.  # noqa: E501
+        Time at which the object was created.  # noqa: E501
 
         :param updated_at: The updated_at of this SourceFile.  # noqa: E501
-        :type: int
+        :type: datetime
         """
 
         self._updated_at = updated_at

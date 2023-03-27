@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -38,7 +38,8 @@ class ProjectCreateParameters(object):
         'memory_id': 'int',
         'job_id': 'int',
         'due_date': 'int',
-        'metadata': 'object'
+        'metadata': 'object',
+        'workflow_template_id': 'int'
     }
 
     attribute_map = {
@@ -46,10 +47,11 @@ class ProjectCreateParameters(object):
         'memory_id': 'memory_id',
         'job_id': 'job_id',
         'due_date': 'due_date',
-        'metadata': 'metadata'
+        'metadata': 'metadata',
+        'workflow_template_id': 'workflowTemplateId'
     }
 
-    def __init__(self, name=None, memory_id=None, job_id=None, due_date=None, metadata=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, memory_id=None, job_id=None, due_date=None, metadata=None, workflow_template_id=None, local_vars_configuration=None):  # noqa: E501
         """ProjectCreateParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -60,6 +62,7 @@ class ProjectCreateParameters(object):
         self._job_id = None
         self._due_date = None
         self._metadata = None
+        self._workflow_template_id = None
         self.discriminator = None
 
         self.name = name
@@ -70,6 +73,8 @@ class ProjectCreateParameters(object):
             self.due_date = due_date
         if metadata is not None:
             self.metadata = metadata
+        if workflow_template_id is not None:
+            self.workflow_template_id = workflow_template_id
 
     @property
     def name(self):
@@ -189,6 +194,29 @@ class ProjectCreateParameters(object):
         """
 
         self._metadata = metadata
+
+    @property
+    def workflow_template_id(self):
+        """Gets the workflow_template_id of this ProjectCreateParameters.  # noqa: E501
+
+        The workflow template used to create this project. WorkflowTemplateIds can be retrieved via the /workflows/templates endpoint. If not specified then the organization default workflowTemplateId will be used.  # noqa: E501
+
+        :return: The workflow_template_id of this ProjectCreateParameters.  # noqa: E501
+        :rtype: int
+        """
+        return self._workflow_template_id
+
+    @workflow_template_id.setter
+    def workflow_template_id(self, workflow_template_id):
+        """Sets the workflow_template_id of this ProjectCreateParameters.
+
+        The workflow template used to create this project. WorkflowTemplateIds can be retrieved via the /workflows/templates endpoint. If not specified then the organization default workflowTemplateId will be used.  # noqa: E501
+
+        :param workflow_template_id: The workflow_template_id of this ProjectCreateParameters.  # noqa: E501
+        :type: int
+        """
+
+        self._workflow_template_id = workflow_template_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

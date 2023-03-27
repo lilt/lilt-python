@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | A unique Project identifier. | 
 **name** | **str** | The Project name. | [optional] 
 **state** | **str** | The project&#39;s state. The possible states are &#39;backlog&#39;, &#39;inProgress&#39;, &#39;inReview&#39;, &#39;inQA&#39;, and &#39;done&#39; | [optional] 
 **due_date** | **int** | The due date. Measured in seconds since the Unix epoch. | [optional] 

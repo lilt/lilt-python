@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -36,9 +36,9 @@ class Job(object):
     openapi_types = {
         'name': 'str',
         'creation_status': 'str',
-        'delivered_at': 'int',
+        'delivered_at': 'datetime',
         'status': 'str',
-        'due': 'str',
+        'due': 'datetime',
         'id': 'int',
         'is_processing': 'int',
         'stats': 'JobStats'
@@ -140,7 +140,7 @@ class Job(object):
 
 
         :return: The delivered_at of this Job.  # noqa: E501
-        :rtype: int
+        :rtype: datetime
         """
         return self._delivered_at
 
@@ -150,7 +150,7 @@ class Job(object):
 
 
         :param delivered_at: The delivered_at of this Job.  # noqa: E501
-        :type: int
+        :type: datetime
         """
 
         self._delivered_at = delivered_at
@@ -185,7 +185,7 @@ class Job(object):
         An ISO string date.  # noqa: E501
 
         :return: The due of this Job.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._due
 
@@ -196,7 +196,7 @@ class Job(object):
         An ISO string date.  # noqa: E501
 
         :param due: The due of this Job.  # noqa: E501
-        :type: str
+        :type: datetime
         """
 
         self._due = due
