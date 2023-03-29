@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -42,6 +42,7 @@ class ProjectStatus(object):
         'time_elapsed_translation': 'int',
         'time_elapsed_research': 'int',
         'time_elapsed_review': 'int',
+        'updated_at': 'int',
         'resources': 'list[ResourceStatus]'
     }
 
@@ -54,10 +55,11 @@ class ProjectStatus(object):
         'time_elapsed_translation': 'time_elapsed_translation',
         'time_elapsed_research': 'time_elapsed_research',
         'time_elapsed_review': 'time_elapsed_review',
+        'updated_at': 'updated_at',
         'resources': 'resources'
     }
 
-    def __init__(self, id=None, num_source_words=None, num_words_confirmed=None, num_words_reviewed=None, time_elapsed=None, time_elapsed_translation=None, time_elapsed_research=None, time_elapsed_review=None, resources=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, num_source_words=None, num_words_confirmed=None, num_words_reviewed=None, time_elapsed=None, time_elapsed_translation=None, time_elapsed_research=None, time_elapsed_review=None, updated_at=None, resources=None, local_vars_configuration=None):  # noqa: E501
         """ProjectStatus - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -71,6 +73,7 @@ class ProjectStatus(object):
         self._time_elapsed_translation = None
         self._time_elapsed_research = None
         self._time_elapsed_review = None
+        self._updated_at = None
         self._resources = None
         self.discriminator = None
 
@@ -90,6 +93,8 @@ class ProjectStatus(object):
             self.time_elapsed_research = time_elapsed_research
         if time_elapsed_review is not None:
             self.time_elapsed_review = time_elapsed_review
+        if updated_at is not None:
+            self.updated_at = updated_at
         if resources is not None:
             self.resources = resources
 
@@ -276,6 +281,29 @@ class ProjectStatus(object):
         """
 
         self._time_elapsed_review = time_elapsed_review
+
+    @property
+    def updated_at(self):
+        """Gets the updated_at of this ProjectStatus.  # noqa: E501
+
+        The project update date and time. Measured in seconds.  # noqa: E501
+
+        :return: The updated_at of this ProjectStatus.  # noqa: E501
+        :rtype: int
+        """
+        return self._updated_at
+
+    @updated_at.setter
+    def updated_at(self, updated_at):
+        """Sets the updated_at of this ProjectStatus.
+
+        The project update date and time. Measured in seconds.  # noqa: E501
+
+        :param updated_at: The updated_at of this ProjectStatus.  # noqa: E501
+        :type: int
+        """
+
+        self._updated_at = updated_at
 
     @property
     def resources(self):

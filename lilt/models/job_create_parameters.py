@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -35,35 +35,40 @@ class JobCreateParameters(object):
     """
     openapi_types = {
         'name': 'str',
-        'due': 'str',
         'language_pairs': 'list[LanguagePair]',
-        'file_ids': 'list[int]'
+        'file_ids': 'list[int]',
+        'due': 'str',
+        'workflow_template_id': 'int'
     }
 
     attribute_map = {
         'name': 'name',
-        'due': 'due',
         'language_pairs': 'languagePairs',
-        'file_ids': 'fileIds'
+        'file_ids': 'fileIds',
+        'due': 'due',
+        'workflow_template_id': 'workflowTemplateId'
     }
 
-    def __init__(self, name=None, due=None, language_pairs=None, file_ids=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, language_pairs=None, file_ids=None, due=None, workflow_template_id=None, local_vars_configuration=None):  # noqa: E501
         """JobCreateParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
-        self._due = None
         self._language_pairs = None
         self._file_ids = None
+        self._due = None
+        self._workflow_template_id = None
         self.discriminator = None
 
         self.name = name
-        if due is not None:
-            self.due = due
         self.language_pairs = language_pairs
         self.file_ids = file_ids
+        if due is not None:
+            self.due = due
+        if workflow_template_id is not None:
+            self.workflow_template_id = workflow_template_id
 
     @property
     def name(self):
@@ -89,29 +94,6 @@ class JobCreateParameters(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
-
-    @property
-    def due(self):
-        """Gets the due of this JobCreateParameters.  # noqa: E501
-
-        An ISO string date.  # noqa: E501
-
-        :return: The due of this JobCreateParameters.  # noqa: E501
-        :rtype: str
-        """
-        return self._due
-
-    @due.setter
-    def due(self, due):
-        """Sets the due of this JobCreateParameters.
-
-        An ISO string date.  # noqa: E501
-
-        :param due: The due of this JobCreateParameters.  # noqa: E501
-        :type: str
-        """
-
-        self._due = due
 
     @property
     def language_pairs(self):
@@ -162,6 +144,52 @@ class JobCreateParameters(object):
             raise ValueError("Invalid value for `file_ids`, must not be `None`")  # noqa: E501
 
         self._file_ids = file_ids
+
+    @property
+    def due(self):
+        """Gets the due of this JobCreateParameters.  # noqa: E501
+
+        An ISO string date representing job due date.  # noqa: E501
+
+        :return: The due of this JobCreateParameters.  # noqa: E501
+        :rtype: str
+        """
+        return self._due
+
+    @due.setter
+    def due(self, due):
+        """Sets the due of this JobCreateParameters.
+
+        An ISO string date representing job due date.  # noqa: E501
+
+        :param due: The due of this JobCreateParameters.  # noqa: E501
+        :type: str
+        """
+
+        self._due = due
+
+    @property
+    def workflow_template_id(self):
+        """Gets the workflow_template_id of this JobCreateParameters.  # noqa: E501
+
+        Identifier of the workflow template to be used when creating a job. If not passed the organization default will be used.  # noqa: E501
+
+        :return: The workflow_template_id of this JobCreateParameters.  # noqa: E501
+        :rtype: int
+        """
+        return self._workflow_template_id
+
+    @workflow_template_id.setter
+    def workflow_template_id(self, workflow_template_id):
+        """Sets the workflow_template_id of this JobCreateParameters.
+
+        Identifier of the workflow template to be used when creating a job. If not passed the organization default will be used.  # noqa: E501
+
+        :param workflow_template_id: The workflow_template_id of this JobCreateParameters.  # noqa: E501
+        :type: int
+        """
+
+        self._workflow_template_id = workflow_template_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

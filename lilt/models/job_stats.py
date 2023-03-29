@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -45,7 +45,8 @@ class JobStats(object):
         'projects': 'list[JobProject]',
         'source_words': 'int',
         'unique_language_pairs': 'int',
-        'unique_linguists': 'int'
+        'unique_linguists': 'int',
+        'workflow_status': 'str'
     }
 
     attribute_map = {
@@ -60,10 +61,11 @@ class JobStats(object):
         'projects': 'projects',
         'source_words': 'sourceWords',
         'unique_language_pairs': 'uniqueLanguagePairs',
-        'unique_linguists': 'uniqueLinguists'
+        'unique_linguists': 'uniqueLinguists',
+        'workflow_status': 'workflowStatus'
     }
 
-    def __init__(self, exact_words=None, fuzzy_words=None, new_words=None, num_delivered_projects=None, num_language_pairs=None, num_projects=None, percent_reviewed=None, percent_translated=None, projects=None, source_words=None, unique_language_pairs=None, unique_linguists=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, exact_words=None, fuzzy_words=None, new_words=None, num_delivered_projects=None, num_language_pairs=None, num_projects=None, percent_reviewed=None, percent_translated=None, projects=None, source_words=None, unique_language_pairs=None, unique_linguists=None, workflow_status=None, local_vars_configuration=None):  # noqa: E501
         """JobStats - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -81,6 +83,7 @@ class JobStats(object):
         self._source_words = None
         self._unique_language_pairs = None
         self._unique_linguists = None
+        self._workflow_status = None
         self.discriminator = None
 
         if exact_words is not None:
@@ -107,6 +110,8 @@ class JobStats(object):
             self.unique_language_pairs = unique_language_pairs
         if unique_linguists is not None:
             self.unique_linguists = unique_linguists
+        if workflow_status is not None:
+            self.workflow_status = workflow_status
 
     @property
     def exact_words(self):
@@ -273,6 +278,7 @@ class JobStats(object):
     def percent_translated(self):
         """Gets the percent_translated of this JobStats.  # noqa: E501
 
+        Overall percentage of documents translated.  # noqa: E501
 
         :return: The percent_translated of this JobStats.  # noqa: E501
         :rtype: int
@@ -283,6 +289,7 @@ class JobStats(object):
     def percent_translated(self, percent_translated):
         """Sets the percent_translated of this JobStats.
 
+        Overall percentage of documents translated.  # noqa: E501
 
         :param percent_translated: The percent_translated of this JobStats.  # noqa: E501
         :type: int
@@ -379,6 +386,35 @@ class JobStats(object):
         """
 
         self._unique_linguists = unique_linguists
+
+    @property
+    def workflow_status(self):
+        """Gets the workflow_status of this JobStats.  # noqa: E501
+
+        The status of the Workflow for the current job.  # noqa: E501
+
+        :return: The workflow_status of this JobStats.  # noqa: E501
+        :rtype: str
+        """
+        return self._workflow_status
+
+    @workflow_status.setter
+    def workflow_status(self, workflow_status):
+        """Sets the workflow_status of this JobStats.
+
+        The status of the Workflow for the current job.  # noqa: E501
+
+        :param workflow_status: The workflow_status of this JobStats.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["READY_TO_START", "IN_PROGRESS", "DONE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and workflow_status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `workflow_status` ({0}), must be one of {1}"  # noqa: E501
+                .format(workflow_status, allowed_values)
+            )
+
+        self._workflow_status = workflow_status
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -49,6 +49,7 @@ class Project(object):
         'sample_review_percentage': 'int',
         'created_at': 'int',
         'updated_at': 'int',
+        'workflow_status': 'str',
         'document': 'list[DocumentWithoutSegments]'
     }
 
@@ -68,10 +69,11 @@ class Project(object):
         'sample_review_percentage': 'sample_review_percentage',
         'created_at': 'created_at',
         'updated_at': 'updated_at',
+        'workflow_status': 'workflowStatus',
         'document': 'document'
     }
 
-    def __init__(self, id=None, memory_id=None, job_id=None, srclang=None, trglang=None, srclocale=None, trglocale=None, name=None, state=None, due_date=None, archived=None, metadata=None, sample_review_percentage=None, created_at=None, updated_at=None, document=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, memory_id=None, job_id=None, srclang=None, trglang=None, srclocale=None, trglocale=None, name=None, state=None, due_date=None, archived=None, metadata=None, sample_review_percentage=None, created_at=None, updated_at=None, workflow_status=None, document=None, local_vars_configuration=None):  # noqa: E501
         """Project - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -92,6 +94,7 @@ class Project(object):
         self._sample_review_percentage = None
         self._created_at = None
         self._updated_at = None
+        self._workflow_status = None
         self._document = None
         self.discriminator = None
 
@@ -125,6 +128,8 @@ class Project(object):
             self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
+        if workflow_status is not None:
+            self.workflow_status = workflow_status
         if document is not None:
             self.document = document
 
@@ -472,6 +477,35 @@ class Project(object):
         """
 
         self._updated_at = updated_at
+
+    @property
+    def workflow_status(self):
+        """Gets the workflow_status of this Project.  # noqa: E501
+
+        The status of the Workflow for the current project. This may not be present for all project endpoints even with workflows enabled.  # noqa: E501
+
+        :return: The workflow_status of this Project.  # noqa: E501
+        :rtype: str
+        """
+        return self._workflow_status
+
+    @workflow_status.setter
+    def workflow_status(self, workflow_status):
+        """Sets the workflow_status of this Project.
+
+        The status of the Workflow for the current project. This may not be present for all project endpoints even with workflows enabled.  # noqa: E501
+
+        :param workflow_status: The workflow_status of this Project.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["READY_TO_START", "IN_PROGRESS", "DONE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and workflow_status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `workflow_status` ({0}), must be one of {1}"  # noqa: E501
+                .format(workflow_status, allowed_values)
+            )
+
+        self._workflow_status = workflow_status
 
     @property
     def document(self):

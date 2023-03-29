@@ -11,11 +11,12 @@ Name | Type | Description | Notes
 **num_language_pairs** | **int** | Total number of delivered projects. | [optional] 
 **num_projects** | **int** | Total number of projects. | [optional] 
 **percent_reviewed** | **int** | Overall percentage of documents reviewed. | [optional] 
-**percent_translated** | **int** |  | [optional] 
+**percent_translated** | **int** | Overall percentage of documents translated. | [optional] 
 **projects** | [**list[JobProject]**](JobProject.md) |  | [optional] 
 **source_words** | **int** | Total number of source words. | [optional] 
 **unique_language_pairs** | **int** | Number of unique language pairs. | [optional] 
 **unique_linguists** | **int** | Number of unique linguists. | [optional] 
+**workflow_status** | **str** | The status of the Workflow for the current job. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

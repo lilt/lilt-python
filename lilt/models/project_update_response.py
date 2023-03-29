@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -34,7 +34,6 @@ class ProjectUpdateResponse(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'id': 'int',
         'name': 'str',
         'state': 'str',
         'due_date': 'int',
@@ -44,7 +43,6 @@ class ProjectUpdateResponse(object):
     }
 
     attribute_map = {
-        'id': 'id',
         'name': 'name',
         'state': 'state',
         'due_date': 'due_date',
@@ -53,13 +51,12 @@ class ProjectUpdateResponse(object):
         'sample_review_percentage': 'sample_review_percentage'
     }
 
-    def __init__(self, id=None, name=None, state=None, due_date=None, archived=None, metadata=None, sample_review_percentage=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, state=None, due_date=None, archived=None, metadata=None, sample_review_percentage=None, local_vars_configuration=None):  # noqa: E501
         """ProjectUpdateResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._id = None
         self._name = None
         self._state = None
         self._due_date = None
@@ -68,7 +65,6 @@ class ProjectUpdateResponse(object):
         self._sample_review_percentage = None
         self.discriminator = None
 
-        self.id = id
         if name is not None:
             self.name = name
         if state is not None:
@@ -81,31 +77,6 @@ class ProjectUpdateResponse(object):
             self.metadata = metadata
         if sample_review_percentage is not None:
             self.sample_review_percentage = sample_review_percentage
-
-    @property
-    def id(self):
-        """Gets the id of this ProjectUpdateResponse.  # noqa: E501
-
-        A unique Project identifier.  # noqa: E501
-
-        :return: The id of this ProjectUpdateResponse.  # noqa: E501
-        :rtype: int
-        """
-        return self._id
-
-    @id.setter
-    def id(self, id):
-        """Sets the id of this ProjectUpdateResponse.
-
-        A unique Project identifier.  # noqa: E501
-
-        :param id: The id of this ProjectUpdateResponse.  # noqa: E501
-        :type: int
-        """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
-
-        self._id = id
 
     @property
     def name(self):

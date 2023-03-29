@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **time_elapsed_translation** | **int** | The total time spent on translation by all resources. Measured in milliseconds. | [optional] 
 **time_elapsed_research** | **int** | The total time spent on research by all resources. Measured in milliseconds. | [optional] 
 **time_elapsed_review** | **int** | The total time spent on reviewing by all resources. Measured in milliseconds. | [optional] 
+**updated_at** | **int** | The project update date and time. Measured in seconds. | [optional] 
 **resources** | [**list[ResourceStatus]**](ResourceStatus.md) | A list of ResourceStatus objects that represent per-resource statistics. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

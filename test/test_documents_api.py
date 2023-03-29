@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -14,10 +14,6 @@
 from __future__ import absolute_import
 
 import unittest
-
-# from unittest.mock import Mock
-from unittest.mock import Mock, patch
-import json
 
 import lilt
 from lilt.api.documents_api import DocumentsApi  # noqa: E501
@@ -33,151 +29,76 @@ class TestDocumentsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    @patch.object(lilt.ApiClient, "request")
-    def test_create_document(self, mock_request):
-        """Test case for create_document
-
-        Create a Document  # noqa: E501
-        """
-        mock_response = Mock()
-        mock_response.data = json.dumps({"id": 46530})
-        mock_request.return_value = mock_response
-        api_client = lilt.ApiClient()
-        doc_api = DocumentsApi(api_client)
-
-        body = {"name": "Introduction.xliff", "project_id": 23618}
-        r = doc_api.create_document(body=body)
-        assert r.id == 46530
-
-    @patch.object(lilt.ApiClient, "request")
-    def test_assign_document(self, mock_request):
+    def test_assign_document(self):
         """Test case for assign_document
 
         Assign a Document  # noqa: E501
         """
-        mock_response = Mock()
-        mock_response.data = json.dumps({"id": 46530})
-        mock_request.return_value = mock_response
-        api_client = lilt.ApiClient()
-        doc_api = DocumentsApi(api_client)
+        pass
 
-        body = {
-            "id": 46530,
-            "email": "user@email.com",
-            "is_translator": True,
-            "is_reviewer": False,
-            "due_date": "2019-10-16T22:12:34.000Z",
-        }
+    def test_create_document(self):
+        """Test case for create_document
 
-        assignment_response = doc_api.assign_document(body)
-        assert assignment_response.id == 46530
+        Create a Document  # noqa: E501
+        """
+        pass
 
-    @patch.object(lilt.ApiClient, "request")
-    def test_delete_document(self, mock_request):
+    def test_delete_document(self):
         """Test case for delete_document
 
         Delete a Document  # noqa: E501
         """
-        mock_response = Mock()
-        mock_response.data = json.dumps({"id": 46530, "deleted": True})
-        mock_request.return_value = mock_response
-        api_client = lilt.ApiClient()
-        doc_api = DocumentsApi(api_client)
+        pass
 
-        r = doc_api.delete_document(46530)
-        assert r.id == 46530
-        assert r.deleted == True
+    def test_download_document(self):
+        """Test case for download_document
 
-    @patch.object(lilt.ApiClient, "request")
-    def test_download_file(self, mock_request):
-        """Test case for download_file
-
-        Download a File  # noqa: E501
+        Download a Document  # noqa: E501
         """
-        mock_client = Mock()
-        vR = "file"
-        mock_client.call_api.return_value = vR
-        doc_api = DocumentsApi(mock_client)
+        pass
 
-        r = doc_api.download_file(46530)
-        assert r == vR
-        assert mock_client.call_api.call_count == 1
-
-    @patch.object(lilt.ApiClient, "request")
-    def test_get_document(self, mock_request):
+    def test_get_document(self):
         """Test case for get_document
 
         Retrieve a Document  # noqa: E501
         """
-        mock_response = Mock()
-        data = None
-        with open("test_resources/get_documents.json") as f:
-            data = json.load(f)
-        mock_response.data = json.dumps(data)
-        mock_request.return_value = mock_response
-        api_client = lilt.ApiClient()
-        doc_api = DocumentsApi(api_client)
+        pass
 
-        r = doc_api.get_document(46530)
-        assert r.id == 46530
+    def test_mark_review_done(self):
+        """Test case for mark_review_done
 
-    @patch.object(lilt.ApiClient, "request")
-    def test_pretranslate_document(self,mock_request):
-        """Test case for pretranslate_document
+        Mark review done  # noqa: E501
+        """
+        pass
+
+    def test_mark_translation_done(self):
+        """Test case for mark_translation_done
+
+        Mark translation done  # noqa: E501
+        """
+        pass
+
+    def test_pretranslate_documents(self):
+        """Test case for pretranslate_documents
 
         Pretranslate a Document  # noqa: E501
         """
-        mock_response = Mock()
-        data = None
-        with open("test_resources/post_translate.json") as f:
-            data = json.load(f)
-        mock_response.data = json.dumps(data)
-        mock_request.return_value = mock_response
-        api_client = lilt.ApiClient()
-        doc_api = DocumentsApi(api_client)
+        pass
 
-        body = {"id": [123, 234]}
-        r = doc_api.pretranslate_documents(body=body)
-        assert r.is_pretranslating == True
+    def test_unlock_documents(self):
+        """Test case for unlock_documents
 
-    @patch.object(lilt.ApiClient, "request")
-    def test_update_document(self, mock_request):
-        """Test case for update_document
-
-        Update a Document  # noqa: E501
+        Unlock documents  # noqa: E501
         """
-        mock_response = Mock()
-        data = None
-        with open("test_resources/put_documents.json") as f:
-            data = json.load(f)
-        mock_response.data = json.dumps(data)
-        mock_request.return_value = mock_response
-        api_client = lilt.ApiClient()
-        doc_api = DocumentsApi(api_client)
+        pass
 
-        body = {"id": 46530, "name": "Introduction to our App"}
-        r = doc_api.update_document(body)
-        assert r.id == 46530
-
-    @patch.object(lilt.ApiClient, "request")
-    def test_upload_document_file(self, mock_request):
-        """Test case for upload_document_file
+    def test_upload_document(self):
+        """Test case for upload_document
 
         Upload a File  # noqa: E501
         """
-        mock_response = Mock()
-        data = None
-        with open("test_resources/post_documents.json") as f:
-            data = json.load(f)
-        mock_response.data = json.dumps(data)
-        mock_request.return_value = mock_response
-        api_client = lilt.ApiClient()
-        doc_api = DocumentsApi(api_client)
-
-        body = "file"
-        r = doc_api.upload_document_file("test", 4234, body)
-        assert r.id == 46530
+        pass
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

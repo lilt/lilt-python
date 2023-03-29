@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -113,6 +113,7 @@ class CommentBody(object):
     def is_resolved(self):
         """Gets the is_resolved of this CommentBody.  # noqa: E501
 
+        An optional value indicating whether the comment has been resolved, defaults to `false`. Resolved comments will not be returned in subsequent requests.  # noqa: E501
 
         :return: The is_resolved of this CommentBody.  # noqa: E501
         :rtype: str
@@ -123,6 +124,7 @@ class CommentBody(object):
     def is_resolved(self, is_resolved):
         """Sets the is_resolved of this CommentBody.
 
+        An optional value indicating whether the comment has been resolved, defaults to `false`. Resolved comments will not be returned in subsequent requests.  # noqa: E501
 
         :param is_resolved: The is_resolved of this CommentBody.  # noqa: E501
         :type: str

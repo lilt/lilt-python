@@ -18,3 +18,4 @@ from lilt.api.root_api import RootApi
 from lilt.api.segments_api import SegmentsApi
 from lilt.api.settings_api import SettingsApi
 from lilt.api.translate_api import TranslateApi
+from lilt.api.workflows_api import WorkflowsApi

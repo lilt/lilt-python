@@ -3,7 +3,7 @@
 """
     Lilt REST API
 
-    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests. ## Authentication Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.   # noqa: E501
+    The Lilt REST API enables programmatic access to the full-range of Lilt backend services including:   * Training of and translating with interactive, adaptive machine translation   * Large-scale translation memory   * The Lexicon (a large-scale termbase)   * Programmatic control of the Lilt CAT environment   * Translation memory synchronization  Requests and responses are in JSON format. The REST API only responds to HTTPS / SSL requests.  ## Authentication  Requests are authenticated via REST API key, which requires the Business plan.  Requests are authenticated using [HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication). Add your REST API key as both the `username` and `password`.  For development, you may also pass the REST API key via the `key` query parameter. This is less secure than HTTP Basic Auth, and is not recommended for production use.  ## Quotas  Our services have a general quota of 4000 requests per minute. Should you hit the maximum requests per minute, you will need to wait 60 seconds before you can send another request.   # noqa: E501
 
     The version of the OpenAPI document: v2.0
     Contact: support@lilt.com
@@ -48,7 +48,9 @@ class JobProject(object):
         'created_at': 'str',
         'updated_at': 'str',
         'is_deleted': 'bool',
-        'memory_id': 'int'
+        'memory_id': 'int',
+        'workflow_status': 'str',
+        'workflow_name': 'str'
     }
 
     attribute_map = {
@@ -66,10 +68,12 @@ class JobProject(object):
         'created_at': 'createdAt',
         'updated_at': 'updatedAt',
         'is_deleted': 'isDeleted',
-        'memory_id': 'memoryId'
+        'memory_id': 'memoryId',
+        'workflow_status': 'workflowStatus',
+        'workflow_name': 'workflowName'
     }
 
-    def __init__(self, id=None, src_lang=None, src_locale=None, trg_lang=None, trg_locale=None, name=None, due=None, is_complete=None, is_archived=None, state=None, num_source_tokens=None, created_at=None, updated_at=None, is_deleted=None, memory_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, src_lang=None, src_locale=None, trg_lang=None, trg_locale=None, name=None, due=None, is_complete=None, is_archived=None, state=None, num_source_tokens=None, created_at=None, updated_at=None, is_deleted=None, memory_id=None, workflow_status=None, workflow_name=None, local_vars_configuration=None):  # noqa: E501
         """JobProject - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -90,6 +94,8 @@ class JobProject(object):
         self._updated_at = None
         self._is_deleted = None
         self._memory_id = None
+        self._workflow_status = None
+        self._workflow_name = None
         self.discriminator = None
 
         if id is not None:
@@ -122,6 +128,10 @@ class JobProject(object):
             self.is_deleted = is_deleted
         if memory_id is not None:
             self.memory_id = memory_id
+        if workflow_status is not None:
+            self.workflow_status = workflow_status
+        if workflow_name is not None:
+            self.workflow_name = workflow_name
 
     @property
     def id(self):
@@ -150,7 +160,7 @@ class JobProject(object):
     def src_lang(self):
         """Gets the src_lang of this JobProject.  # noqa: E501
 
-        Source langauge, an ISO 639-1 language identifier.  # noqa: E501
+        Source language, an ISO 639-1 language identifier.  # noqa: E501
 
         :return: The src_lang of this JobProject.  # noqa: E501
         :rtype: str
@@ -161,7 +171,7 @@ class JobProject(object):
     def src_lang(self, src_lang):
         """Sets the src_lang of this JobProject.
 
-        Source langauge, an ISO 639-1 language identifier.  # noqa: E501
+        Source language, an ISO 639-1 language identifier.  # noqa: E501
 
         :param src_lang: The src_lang of this JobProject.  # noqa: E501
         :type: str
@@ -173,7 +183,7 @@ class JobProject(object):
     def src_locale(self):
         """Gets the src_locale of this JobProject.  # noqa: E501
 
-        A locale identifier, supported for source langauge.  # noqa: E501
+        A locale identifier, supported for source language.  # noqa: E501
 
         :return: The src_locale of this JobProject.  # noqa: E501
         :rtype: str
@@ -184,7 +194,7 @@ class JobProject(object):
     def src_locale(self, src_locale):
         """Sets the src_locale of this JobProject.
 
-        A locale identifier, supported for source langauge.  # noqa: E501
+        A locale identifier, supported for source language.  # noqa: E501
 
         :param src_locale: The src_locale of this JobProject.  # noqa: E501
         :type: str
@@ -196,7 +206,7 @@ class JobProject(object):
     def trg_lang(self):
         """Gets the trg_lang of this JobProject.  # noqa: E501
 
-        Target langauge, an ISO 639-1 language identifier.  # noqa: E501
+        Target language, an ISO 639-1 language identifier.  # noqa: E501
 
         :return: The trg_lang of this JobProject.  # noqa: E501
         :rtype: str
@@ -207,7 +217,7 @@ class JobProject(object):
     def trg_lang(self, trg_lang):
         """Sets the trg_lang of this JobProject.
 
-        Target langauge, an ISO 639-1 language identifier.  # noqa: E501
+        Target language, an ISO 639-1 language identifier.  # noqa: E501
 
         :param trg_lang: The trg_lang of this JobProject.  # noqa: E501
         :type: str
@@ -219,7 +229,7 @@ class JobProject(object):
     def trg_locale(self):
         """Gets the trg_locale of this JobProject.  # noqa: E501
 
-        A locale identifier, supported for target langauge.  # noqa: E501
+        A locale identifier, supported for target language.  # noqa: E501
 
         :return: The trg_locale of this JobProject.  # noqa: E501
         :rtype: str
@@ -230,7 +240,7 @@ class JobProject(object):
     def trg_locale(self, trg_locale):
         """Sets the trg_locale of this JobProject.
 
-        A locale identifier, supported for target langauge.  # noqa: E501
+        A locale identifier, supported for target language.  # noqa: E501
 
         :param trg_locale: The trg_locale of this JobProject.  # noqa: E501
         :type: str
@@ -467,6 +477,58 @@ class JobProject(object):
         """
 
         self._memory_id = memory_id
+
+    @property
+    def workflow_status(self):
+        """Gets the workflow_status of this JobProject.  # noqa: E501
+
+        The status of the Workflow for the current project.  # noqa: E501
+
+        :return: The workflow_status of this JobProject.  # noqa: E501
+        :rtype: str
+        """
+        return self._workflow_status
+
+    @workflow_status.setter
+    def workflow_status(self, workflow_status):
+        """Sets the workflow_status of this JobProject.
+
+        The status of the Workflow for the current project.  # noqa: E501
+
+        :param workflow_status: The workflow_status of this JobProject.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["READY_TO_START", "IN_PROGRESS", "DONE"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and workflow_status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `workflow_status` ({0}), must be one of {1}"  # noqa: E501
+                .format(workflow_status, allowed_values)
+            )
+
+        self._workflow_status = workflow_status
+
+    @property
+    def workflow_name(self):
+        """Gets the workflow_name of this JobProject.  # noqa: E501
+
+        Human readable name of the workflow associated with the current project.  # noqa: E501
+
+        :return: The workflow_name of this JobProject.  # noqa: E501
+        :rtype: str
+        """
+        return self._workflow_name
+
+    @workflow_name.setter
+    def workflow_name(self, workflow_name):
+        """Sets the workflow_name of this JobProject.
+
+        Human readable name of the workflow associated with the current project.  # noqa: E501
+
+        :param workflow_name: The workflow_name of this JobProject.  # noqa: E501
+        :type: str
+        """
+
+        self._workflow_name = workflow_name
 
     def to_dict(self):
         """Returns the model properties as a dict"""
