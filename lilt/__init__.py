@@ -15,7 +15,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.0.0"
+__version__ = "0.6.5"
 
 # import apis into sdk package
 from lilt.api.comments_api import CommentsApi
