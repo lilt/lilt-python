@@ -17,11 +17,11 @@ import unittest
 import datetime
 
 import lilt
-from lilt.models.inline_object1 import InlineObject1  # noqa: E501
+from lilt.models.projects_to_deliver import ProjectsToDeliver  # noqa: E501
 from lilt.rest import ApiException
 
-class TestInlineObject1(unittest.TestCase):
-    """InlineObject1 unit test stubs"""
+class TestProjectsToDeliver(unittest.TestCase):
+    """ProjectsToDeliver unit test stubs"""
 
     def setUp(self):
         pass
@@ -30,26 +30,26 @@ class TestInlineObject1(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test InlineObject1
+        """Test ProjectsToDeliver
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = lilt.models.inline_object1.InlineObject1()  # noqa: E501
+        # model = lilt.models.projects_to_deliver.ProjectsToDeliver()  # noqa: E501
         if include_optional :
-            return InlineObject1(
+            return ProjectsToDeliver(
                 project_ids = [
                     1234
                     ]
             )
         else :
-            return InlineObject1(
+            return ProjectsToDeliver(
                 project_ids = [
                     1234
                     ],
         )
 
-    def testInlineObject1(self):
-        """Test InlineObject1"""
+    def testProjectsToDeliver(self):
+        """Test ProjectsToDeliver"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

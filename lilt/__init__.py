@@ -81,8 +81,6 @@ from lilt.models.document_workflow import DocumentWorkflow
 from lilt.models.edit_filter_mapping_parameters import EditFilterMappingParameters
 from lilt.models.error import Error
 from lilt.models.file_delete_response import FileDeleteResponse
-from lilt.models.inline_object import InlineObject
-from lilt.models.inline_object1 import InlineObject1
 from lilt.models.job import Job
 from lilt.models.job_create_parameters import JobCreateParameters
 from lilt.models.job_delete_response import JobDeleteResponse
@@ -115,6 +113,8 @@ from lilt.models.project_quote import ProjectQuote
 from lilt.models.project_stats import ProjectStats
 from lilt.models.project_status import ProjectStatus
 from lilt.models.project_update_response import ProjectUpdateResponse
+from lilt.models.projects_to_deliver import ProjectsToDeliver
+from lilt.models.projects_to_update import ProjectsToUpdate
 from lilt.models.qa_rule_matches import QARuleMatches
 from lilt.models.qa_rule_matches_context import QARuleMatchesContext
 from lilt.models.qa_rule_matches_custom_rules import QARuleMatchesCustomRules

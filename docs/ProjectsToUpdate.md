@@ -1,4 +1,4 @@
-# InlineObject
+# ProjectsToUpdate
 
 ## Properties
 Name | Type | Description | Notes

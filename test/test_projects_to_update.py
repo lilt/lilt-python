@@ -17,11 +17,11 @@ import unittest
 import datetime
 
 import lilt
-from lilt.models.inline_object import InlineObject  # noqa: E501
+from lilt.models.projects_to_update import ProjectsToUpdate  # noqa: E501
 from lilt.rest import ApiException
 
-class TestInlineObject(unittest.TestCase):
-    """InlineObject unit test stubs"""
+class TestProjectsToUpdate(unittest.TestCase):
+    """ProjectsToUpdate unit test stubs"""
 
     def setUp(self):
         pass
@@ -30,13 +30,13 @@ class TestInlineObject(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test InlineObject
+        """Test ProjectsToUpdate
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = lilt.models.inline_object.InlineObject()  # noqa: E501
+        # model = lilt.models.projects_to_update.ProjectsToUpdate()  # noqa: E501
         if include_optional :
-            return InlineObject(
+            return ProjectsToUpdate(
                 project_ids = [
                     1234
                     ], 
@@ -49,7 +49,7 @@ class TestInlineObject(unittest.TestCase):
                     sample_review_percentage = 20, )
             )
         else :
-            return InlineObject(
+            return ProjectsToUpdate(
                 project_ids = [
                     1234
                     ],
@@ -62,8 +62,8 @@ class TestInlineObject(unittest.TestCase):
                     sample_review_percentage = 20, ),
         )
 
-    def testInlineObject(self):
-        """Test InlineObject"""
+    def testProjectsToUpdate(self):
+        """Test ProjectsToUpdate"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

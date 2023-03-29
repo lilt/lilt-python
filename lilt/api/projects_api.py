@@ -275,7 +275,7 @@ class ProjectsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param InlineObject1 body: (required)
+        :param ProjectsToDeliver body: (required)
         :param bool workflow_enabled: Whether the project has or not workflows enabled. (not used)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -301,7 +301,7 @@ class ProjectsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param InlineObject1 body: (required)
+        :param ProjectsToDeliver body: (required)
         :param bool workflow_enabled: Whether the project has or not workflows enabled. (not used)
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -1008,7 +1008,7 @@ class ProjectsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param InlineObject body: (required)
+        :param ProjectsToUpdate body: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1033,7 +1033,7 @@ class ProjectsApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param InlineObject body: (required)
+        :param ProjectsToUpdate body: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will

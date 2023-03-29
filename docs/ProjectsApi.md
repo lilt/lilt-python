@@ -326,7 +326,7 @@ configuration = lilt.Configuration(
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
-    body = lilt.InlineObject1() # InlineObject1 | 
+    body = lilt.ProjectsToDeliver() # ProjectsToDeliver | 
 workflow_enabled = True # bool | Whether the project has or not workflows enabled. (not used) (optional)
 
     try:
@@ -374,7 +374,7 @@ configuration = lilt.Configuration(
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
-    body = lilt.InlineObject1() # InlineObject1 | 
+    body = lilt.ProjectsToDeliver() # ProjectsToDeliver | 
 workflow_enabled = True # bool | Whether the project has or not workflows enabled. (not used) (optional)
 
     try:
@@ -388,7 +388,7 @@ workflow_enabled = True # bool | Whether the project has or not workflows enable
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**InlineObject1**](InlineObject1.md)|  | 
+ **body** | [**ProjectsToDeliver**](ProjectsToDeliver.md)|  | 
  **workflow_enabled** | **bool**| Whether the project has or not workflows enabled. (not used) | [optional] 
 
 ### Return type
@@ -1142,7 +1142,7 @@ configuration = lilt.Configuration(
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
-    body = lilt.InlineObject() # InlineObject | 
+    body = lilt.ProjectsToUpdate() # ProjectsToUpdate | 
 
     try:
         # Update multiple Projects with a single payload
@@ -1190,7 +1190,7 @@ configuration = lilt.Configuration(
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
-    body = lilt.InlineObject() # InlineObject | 
+    body = lilt.ProjectsToUpdate() # ProjectsToUpdate | 
 
     try:
         # Update multiple Projects with a single payload
@@ -1204,7 +1204,7 @@ with lilt.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**InlineObject**](InlineObject.md)|  | 
+ **body** | [**ProjectsToUpdate**](ProjectsToUpdate.md)|  | 
 
 ### Return type
 
