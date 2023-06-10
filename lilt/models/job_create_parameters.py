@@ -38,6 +38,7 @@ class JobCreateParameters(object):
         'language_pairs': 'list[LanguagePair]',
         'file_ids': 'list[int]',
         'due': 'str',
+        'is_plural': 'bool',
         'workflow_template_id': 'int'
     }
 
@@ -46,10 +47,11 @@ class JobCreateParameters(object):
         'language_pairs': 'languagePairs',
         'file_ids': 'fileIds',
         'due': 'due',
+        'is_plural': 'isPlural',
         'workflow_template_id': 'workflowTemplateId'
     }
 
-    def __init__(self, name=None, language_pairs=None, file_ids=None, due=None, workflow_template_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, language_pairs=None, file_ids=None, due=None, is_plural=None, workflow_template_id=None, local_vars_configuration=None):  # noqa: E501
         """JobCreateParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +61,7 @@ class JobCreateParameters(object):
         self._language_pairs = None
         self._file_ids = None
         self._due = None
+        self._is_plural = None
         self._workflow_template_id = None
         self.discriminator = None
 
@@ -67,6 +70,8 @@ class JobCreateParameters(object):
         self.file_ids = file_ids
         if due is not None:
             self.due = due
+        if is_plural is not None:
+            self.is_plural = is_plural
         if workflow_template_id is not None:
             self.workflow_template_id = workflow_template_id
 
@@ -167,6 +172,29 @@ class JobCreateParameters(object):
         """
 
         self._due = due
+
+    @property
+    def is_plural(self):
+        """Gets the is_plural of this JobCreateParameters.  # noqa: E501
+
+        A boolean value representing if the files have plurals.  # noqa: E501
+
+        :return: The is_plural of this JobCreateParameters.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_plural
+
+    @is_plural.setter
+    def is_plural(self, is_plural):
+        """Sets the is_plural of this JobCreateParameters.
+
+        A boolean value representing if the files have plurals.  # noqa: E501
+
+        :param is_plural: The is_plural of this JobCreateParameters.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_plural = is_plural
 
     @property
     def workflow_template_id(self):

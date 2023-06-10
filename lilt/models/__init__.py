@@ -96,6 +96,7 @@ from lilt.models.qa_rule_matches_rule_category import QARuleMatchesRuleCategory
 from lilt.models.qa_rule_matches_rule_urls import QARuleMatchesRuleUrls
 from lilt.models.resource_status import ResourceStatus
 from lilt.models.review_completion_type_error import ReviewCompletionTypeError
+from lilt.models.sdlxliff_filter import SDLXLIFFFilter
 from lilt.models.segment import Segment
 from lilt.models.segment_create_parameters import SegmentCreateParameters
 from lilt.models.segment_delete_response import SegmentDeleteResponse
