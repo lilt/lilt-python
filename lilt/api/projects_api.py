@@ -733,14 +733,14 @@ class ProjectsApi(object):
     def get_projects(self, **kwargs):  # noqa: E501
         """Retrieve a Project  # noqa: E501
 
-        Retrieves one or more projects, including the documents associated with each project. Retrieving a project is the most efficient way to retrieve a single project or a list of all available projects.  To retrieve a specific project, specify the `id` request parameter. To retrieve all projects, omit the `id` request parameter. To limit the retrieved projects to those with a particular source language or target language, specify the corresponding ISO 639-1 language codes in the `srclang` and `trglang` request parameters, respectively.  # noqa: E501
+        Retrieves one or more projects, including the documents associated with each project. Retrieving a project is the most efficient way to retrieve a single project, multiple projects or a list of all available projects.  To retrieve a specific project, specify the `id` request parameter or you can retrieve multiple projects by adding comma (,) between ids eg. `?id=1234,5678`. To retrieve all projects, omit the `id` request parameter. To limit the retrieved projects to those with a particular source language or target language, specify the corresponding ISO 639-1 language codes in the `srclang` and `trglang` request parameters, respectively.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_projects(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int id: A unique Project identifier.
+        :param int id: A unique Project identifier. It can be a single id or multiple ids separated by a comma
         :param str srclang: An ISO 639-1 language code.
         :param str trglang: An ISO 639-1 language code.
         :param int from_time: Unix time stamp (epoch, in seconds) of Projects with `created_at` greater than or equal to the value.
@@ -765,14 +765,14 @@ class ProjectsApi(object):
     def get_projects_with_http_info(self, **kwargs):  # noqa: E501
         """Retrieve a Project  # noqa: E501
 
-        Retrieves one or more projects, including the documents associated with each project. Retrieving a project is the most efficient way to retrieve a single project or a list of all available projects.  To retrieve a specific project, specify the `id` request parameter. To retrieve all projects, omit the `id` request parameter. To limit the retrieved projects to those with a particular source language or target language, specify the corresponding ISO 639-1 language codes in the `srclang` and `trglang` request parameters, respectively.  # noqa: E501
+        Retrieves one or more projects, including the documents associated with each project. Retrieving a project is the most efficient way to retrieve a single project, multiple projects or a list of all available projects.  To retrieve a specific project, specify the `id` request parameter or you can retrieve multiple projects by adding comma (,) between ids eg. `?id=1234,5678`. To retrieve all projects, omit the `id` request parameter. To limit the retrieved projects to those with a particular source language or target language, specify the corresponding ISO 639-1 language codes in the `srclang` and `trglang` request parameters, respectively.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_projects_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param int id: A unique Project identifier.
+        :param int id: A unique Project identifier. It can be a single id or multiple ids separated by a comma
         :param str srclang: An ISO 639-1 language code.
         :param str trglang: An ISO 639-1 language code.
         :param int from_time: Unix time stamp (epoch, in seconds) of Projects with `created_at` greater than or equal to the value.
