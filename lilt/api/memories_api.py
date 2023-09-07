@@ -382,7 +382,7 @@ class MemoriesApi(object):
     def import_memory_file(self, memory_id, name, body, **kwargs):  # noqa: E501
         """File import for a Memory  # noqa: E501
 
-        Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm` and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```    # noqa: E501
+        Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm`, `*.sdlxliff`(With custom Filters), '*.xliff', and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```  Example CURL command to upload a translation memory file named `my_memory.sdlxliff` in the current working directory, with Custom Filters based on SDLXLIFF fields, conf_name which maps to, percentage, and whether we should ignore unlocked segments. ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdlxliff\\\",\\\"memory_id\\\": 12,\\\"sdlxliff_filters\\\":[{\\\"conf_name\\\": \\\"Translated\\\", \\\"percentage\\\": 100, \\\"allow_unlocked\\\": false}]\"}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdlxliff     # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.import_memory_file(memory_id, name, body, async_req=True)
@@ -392,6 +392,7 @@ class MemoriesApi(object):
         :param int memory_id: A unique Memory identifier. (required)
         :param str name: Name of the TM or termbase file. (required)
         :param file body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
+        :param list[SDLXLIFFFilter] sdlxliff_filters: Contains Filter information Unique to SDLXLIFF
         :param bool has_header_row: A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`).
         :param bool skip_duplicates: A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`). 
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -411,7 +412,7 @@ class MemoriesApi(object):
     def import_memory_file_with_http_info(self, memory_id, name, body, **kwargs):  # noqa: E501
         """File import for a Memory  # noqa: E501
 
-        Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm` and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```    # noqa: E501
+        Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm`, `*.sdlxliff`(With custom Filters), '*.xliff', and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```  Example CURL command to upload a translation memory file named `my_memory.sdlxliff` in the current working directory, with Custom Filters based on SDLXLIFF fields, conf_name which maps to, percentage, and whether we should ignore unlocked segments. ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdlxliff\\\",\\\"memory_id\\\": 12,\\\"sdlxliff_filters\\\":[{\\\"conf_name\\\": \\\"Translated\\\", \\\"percentage\\\": 100, \\\"allow_unlocked\\\": false}]\"}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdlxliff     # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.import_memory_file_with_http_info(memory_id, name, body, async_req=True)
@@ -421,6 +422,7 @@ class MemoriesApi(object):
         :param int memory_id: A unique Memory identifier. (required)
         :param str name: Name of the TM or termbase file. (required)
         :param file body: The file contents to be uploaded. The entire POST body will be treated as the file. (required)
+        :param list[SDLXLIFFFilter] sdlxliff_filters: Contains Filter information Unique to SDLXLIFF
         :param bool has_header_row: A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`).
         :param bool skip_duplicates: A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`). 
         :param _return_http_data_only: response data without head status code
@@ -443,6 +445,7 @@ class MemoriesApi(object):
             'memory_id',
             'name',
             'body',
+            'sdlxliff_filters',
             'has_header_row',
             'skip_duplicates'
         ]
@@ -487,6 +490,9 @@ class MemoriesApi(object):
             header_params['memory_id'] = local_var_params['memory_id']  # noqa: E501
         if 'name' in local_var_params:
             header_params['name'] = local_var_params['name']  # noqa: E501
+        if 'sdlxliff_filters' in local_var_params:
+            header_params['sdlxliff_filters'] = local_var_params['sdlxliff_filters']  # noqa: E501
+            collection_formats['sdlxliff_filters'] = 'csv'  # noqa: E501
         if 'has_header_row' in local_var_params:
             header_params['has_header_row'] = local_var_params['has_header_row']  # noqa: E501
         if 'skip_duplicates' in local_var_params:

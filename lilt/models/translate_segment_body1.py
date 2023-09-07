@@ -41,7 +41,8 @@ class TranslateSegmentBody1(object):
         'prefix': 'str',
         'rich': 'bool',
         'tm_matches': 'bool',
-        'project_tags': 'bool'
+        'project_tags': 'bool',
+        'contains_icu_data': 'bool'
     }
 
     attribute_map = {
@@ -52,10 +53,11 @@ class TranslateSegmentBody1(object):
         'prefix': 'prefix',
         'rich': 'rich',
         'tm_matches': 'tm_matches',
-        'project_tags': 'project_tags'
+        'project_tags': 'project_tags',
+        'contains_icu_data': 'containsICUData'
     }
 
-    def __init__(self, source=None, memory_id=None, source_hash=None, n=None, prefix=None, rich=False, tm_matches=True, project_tags=False, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, source=None, memory_id=None, source_hash=None, n=None, prefix=None, rich=False, tm_matches=True, project_tags=False, contains_icu_data=False, local_vars_configuration=None):  # noqa: E501
         """TranslateSegmentBody1 - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -69,6 +71,7 @@ class TranslateSegmentBody1(object):
         self._rich = None
         self._tm_matches = None
         self._project_tags = None
+        self._contains_icu_data = None
         self.discriminator = None
 
         if source is not None:
@@ -86,6 +89,8 @@ class TranslateSegmentBody1(object):
             self.tm_matches = tm_matches
         if project_tags is not None:
             self.project_tags = project_tags
+        if contains_icu_data is not None:
+            self.contains_icu_data = contains_icu_data
 
     @property
     def source(self):
@@ -272,6 +277,29 @@ class TranslateSegmentBody1(object):
         """
 
         self._project_tags = project_tags
+
+    @property
+    def contains_icu_data(self):
+        """Gets the contains_icu_data of this TranslateSegmentBody1.  # noqa: E501
+
+        Contains ICU data. If true then tags in the source following the ICU standard will be parsed and retained.  # noqa: E501
+
+        :return: The contains_icu_data of this TranslateSegmentBody1.  # noqa: E501
+        :rtype: bool
+        """
+        return self._contains_icu_data
+
+    @contains_icu_data.setter
+    def contains_icu_data(self, contains_icu_data):
+        """Sets the contains_icu_data of this TranslateSegmentBody1.
+
+        Contains ICU data. If true then tags in the source following the ICU standard will be parsed and retained.  # noqa: E501
+
+        :param contains_icu_data: The contains_icu_data of this TranslateSegmentBody1.  # noqa: E501
+        :type: bool
+        """
+
+        self._contains_icu_data = contains_icu_data
 
     def to_dict(self):
         """Returns the model properties as a dict"""

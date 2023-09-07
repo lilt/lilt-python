@@ -43,7 +43,6 @@ class Memory(object):
         'version': 'int',
         'created_at': 'int',
         'updated_at': 'int',
-        'num_segments': 'int',
         'resources': 'list[str]'
     }
 
@@ -57,11 +56,10 @@ class Memory(object):
         'version': 'version',
         'created_at': 'created_at',
         'updated_at': 'updated_at',
-        'num_segments': 'num_segments',
         'resources': 'resources'
     }
 
-    def __init__(self, id=None, srclang=None, trglang=None, srclocale=None, trglocale=None, name=None, version=None, created_at=None, updated_at=None, num_segments=None, resources=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, srclang=None, trglang=None, srclocale=None, trglocale=None, name=None, version=None, created_at=None, updated_at=None, resources=None, local_vars_configuration=None):  # noqa: E501
         """Memory - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -76,7 +74,6 @@ class Memory(object):
         self._version = None
         self._created_at = None
         self._updated_at = None
-        self._num_segments = None
         self._resources = None
         self.discriminator = None
 
@@ -98,8 +95,6 @@ class Memory(object):
             self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
-        if num_segments is not None:
-            self.num_segments = num_segments
         if resources is not None:
             self.resources = resources
 
@@ -309,29 +304,6 @@ class Memory(object):
         """
 
         self._updated_at = updated_at
-
-    @property
-    def num_segments(self):
-        """Gets the num_segments of this Memory.  # noqa: E501
-
-        The number of confirmed Segments incorporated into this Memory.  # noqa: E501
-
-        :return: The num_segments of this Memory.  # noqa: E501
-        :rtype: int
-        """
-        return self._num_segments
-
-    @num_segments.setter
-    def num_segments(self, num_segments):
-        """Sets the num_segments of this Memory.
-
-        The number of confirmed Segments incorporated into this Memory.  # noqa: E501
-
-        :param num_segments: The num_segments of this Memory.  # noqa: E501
-        :type: int
-        """
-
-        self._num_segments = num_segments
 
     @property
     def resources(self):

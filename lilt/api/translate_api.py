@@ -559,6 +559,7 @@ class TranslateApi(object):
         :param bool rich: Returns rich translation information (e.g., with word alignments).
         :param bool tm_matches: Include translation memory fuzzy matches.
         :param bool project_tags: Project tags. Projects tags in source to target if set to true.
+        :param bool contains_icu_data: Contains ICU data. If true then tags in the source following the ICU standard will be parsed and retained.
         :param TranslateSegmentBody body:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -592,6 +593,7 @@ class TranslateApi(object):
         :param bool rich: Returns rich translation information (e.g., with word alignments).
         :param bool tm_matches: Include translation memory fuzzy matches.
         :param bool project_tags: Project tags. Projects tags in source to target if set to true.
+        :param bool contains_icu_data: Contains ICU data. If true then tags in the source following the ICU standard will be parsed and retained.
         :param TranslateSegmentBody body:
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -618,6 +620,7 @@ class TranslateApi(object):
             'rich',
             'tm_matches',
             'project_tags',
+            'contains_icu_data',
             'body'
         ]
         all_params.extend(
@@ -663,6 +666,8 @@ class TranslateApi(object):
             query_params.append(('tm_matches', local_var_params['tm_matches']))  # noqa: E501
         if 'project_tags' in local_var_params and local_var_params['project_tags'] is not None:  # noqa: E501
             query_params.append(('project_tags', local_var_params['project_tags']))  # noqa: E501
+        if 'contains_icu_data' in local_var_params and local_var_params['contains_icu_data'] is not None:  # noqa: E501
+            query_params.append(('contains_icu_data', local_var_params['contains_icu_data']))  # noqa: E501
 
         header_params = {}
 

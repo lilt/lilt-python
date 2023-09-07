@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **version** | **int** | The current version of the Memory, which is the number of updates since the memory was created. | [optional] 
 **created_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 **updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
-**num_segments** | **int** | The number of confirmed Segments incorporated into this Memory. | [optional] 
 **resources** | **list[str]** | The resource files (translation memories and termbases) associated with this Memory. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

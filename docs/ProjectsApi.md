@@ -811,7 +811,7 @@ Name | Type | Description  | Notes
 
 Retrieve a Project
 
-Retrieves one or more projects, including the documents associated with each project. Retrieving a project is the most efficient way to retrieve a single project or a list of all available projects.  To retrieve a specific project, specify the `id` request parameter. To retrieve all projects, omit the `id` request parameter. To limit the retrieved projects to those with a particular source language or target language, specify the corresponding ISO 639-1 language codes in the `srclang` and `trglang` request parameters, respectively.
+Retrieves one or more projects, including the documents associated with each project. Retrieving a project is the most efficient way to retrieve a single project, multiple projects or a list of all available projects.  To retrieve a specific project, specify the `id` request parameter or you can retrieve multiple projects by adding comma (,) between ids eg. `?id=1234,5678`. To retrieve all projects, omit the `id` request parameter. To limit the retrieved projects to those with a particular source language or target language, specify the corresponding ISO 639-1 language codes in the `srclang` and `trglang` request parameters, respectively.
 
 ### Example
 
@@ -853,7 +853,7 @@ configuration = lilt.Configuration(
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
-    id = 56 # int | A unique Project identifier. (optional)
+    id = 56 # int | A unique Project identifier. It can be a single id or multiple ids separated by a comma (optional)
 srclang = 'srclang_example' # str | An ISO 639-1 language code. (optional)
 trglang = 'trglang_example' # str | An ISO 639-1 language code. (optional)
 from_time = 56 # int | Unix time stamp (epoch, in seconds) of Projects with `created_at` greater than or equal to the value. (optional)
@@ -908,7 +908,7 @@ configuration = lilt.Configuration(
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.ProjectsApi(api_client)
-    id = 56 # int | A unique Project identifier. (optional)
+    id = 56 # int | A unique Project identifier. It can be a single id or multiple ids separated by a comma (optional)
 srclang = 'srclang_example' # str | An ISO 639-1 language code. (optional)
 trglang = 'trglang_example' # str | An ISO 639-1 language code. (optional)
 from_time = 56 # int | Unix time stamp (epoch, in seconds) of Projects with `created_at` greater than or equal to the value. (optional)
@@ -929,7 +929,7 @@ connector_id = 56 # int | A unique Connector identifier. (optional)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| A unique Project identifier. | [optional] 
+ **id** | **int**| A unique Project identifier. It can be a single id or multiple ids separated by a comma | [optional] 
  **srclang** | **str**| An ISO 639-1 language code. | [optional] 
  **trglang** | **str**| An ISO 639-1 language code. | [optional] 
  **from_time** | **int**| Unix time stamp (epoch, in seconds) of Projects with &#x60;created_at&#x60; greater than or equal to the value. | [optional] 

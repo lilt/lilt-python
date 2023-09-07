@@ -38,6 +38,9 @@ class JobCreateParameters(object):
         'language_pairs': 'list[LanguagePair]',
         'file_ids': 'list[int]',
         'due': 'str',
+        'src_lang': 'str',
+        'src_locale': 'str',
+        'is_plural': 'bool',
         'workflow_template_id': 'int'
     }
 
@@ -46,10 +49,13 @@ class JobCreateParameters(object):
         'language_pairs': 'languagePairs',
         'file_ids': 'fileIds',
         'due': 'due',
+        'src_lang': 'srcLang',
+        'src_locale': 'srcLocale',
+        'is_plural': 'isPlural',
         'workflow_template_id': 'workflowTemplateId'
     }
 
-    def __init__(self, name=None, language_pairs=None, file_ids=None, due=None, workflow_template_id=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, language_pairs=None, file_ids=None, due=None, src_lang=None, src_locale=None, is_plural=None, workflow_template_id=None, local_vars_configuration=None):  # noqa: E501
         """JobCreateParameters - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +65,9 @@ class JobCreateParameters(object):
         self._language_pairs = None
         self._file_ids = None
         self._due = None
+        self._src_lang = None
+        self._src_locale = None
+        self._is_plural = None
         self._workflow_template_id = None
         self.discriminator = None
 
@@ -67,6 +76,10 @@ class JobCreateParameters(object):
         self.file_ids = file_ids
         if due is not None:
             self.due = due
+        self.src_lang = src_lang
+        self.src_locale = src_locale
+        if is_plural is not None:
+            self.is_plural = is_plural
         if workflow_template_id is not None:
             self.workflow_template_id = workflow_template_id
 
@@ -167,6 +180,79 @@ class JobCreateParameters(object):
         """
 
         self._due = due
+
+    @property
+    def src_lang(self):
+        """Gets the src_lang of this JobCreateParameters.  # noqa: E501
+
+        2-letter ISO source language code  # noqa: E501
+
+        :return: The src_lang of this JobCreateParameters.  # noqa: E501
+        :rtype: str
+        """
+        return self._src_lang
+
+    @src_lang.setter
+    def src_lang(self, src_lang):
+        """Sets the src_lang of this JobCreateParameters.
+
+        2-letter ISO source language code  # noqa: E501
+
+        :param src_lang: The src_lang of this JobCreateParameters.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and src_lang is None:  # noqa: E501
+            raise ValueError("Invalid value for `src_lang`, must not be `None`")  # noqa: E501
+
+        self._src_lang = src_lang
+
+    @property
+    def src_locale(self):
+        """Gets the src_locale of this JobCreateParameters.  # noqa: E501
+
+        2-letter source language code  # noqa: E501
+
+        :return: The src_locale of this JobCreateParameters.  # noqa: E501
+        :rtype: str
+        """
+        return self._src_locale
+
+    @src_locale.setter
+    def src_locale(self, src_locale):
+        """Sets the src_locale of this JobCreateParameters.
+
+        2-letter source language code  # noqa: E501
+
+        :param src_locale: The src_locale of this JobCreateParameters.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and src_locale is None:  # noqa: E501
+            raise ValueError("Invalid value for `src_locale`, must not be `None`")  # noqa: E501
+
+        self._src_locale = src_locale
+
+    @property
+    def is_plural(self):
+        """Gets the is_plural of this JobCreateParameters.  # noqa: E501
+
+        A boolean value representing if the files have plurals.  # noqa: E501
+
+        :return: The is_plural of this JobCreateParameters.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_plural
+
+    @is_plural.setter
+    def is_plural(self, is_plural):
+        """Sets the is_plural of this JobCreateParameters.
+
+        A boolean value representing if the files have plurals.  # noqa: E501
+
+        :param is_plural: The is_plural of this JobCreateParameters.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_plural = is_plural
 
     @property
     def workflow_template_id(self):
