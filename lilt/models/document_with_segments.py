@@ -51,6 +51,7 @@ class DocumentWithSegments(object):
         'reviewer_email': 'str',
         'created_at': 'int',
         'updated_at': 'int',
+        'is_review_complete': 'bool',
         'segments': 'list[Segment]'
     }
 
@@ -72,10 +73,11 @@ class DocumentWithSegments(object):
         'reviewer_email': 'reviewer_email',
         'created_at': 'created_at',
         'updated_at': 'updated_at',
+        'is_review_complete': 'is_review_complete',
         'segments': 'segments'
     }
 
-    def __init__(self, id=None, project_id=None, srclang=None, trglang=None, name=None, import_in_progress=None, import_succeeded=None, import_error_message=None, export_in_progress=None, export_succeeded=None, export_error_message=None, is_pretranslating=None, status=None, translator_email=None, reviewer_email=None, created_at=None, updated_at=None, segments=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, project_id=None, srclang=None, trglang=None, name=None, import_in_progress=None, import_succeeded=None, import_error_message=None, export_in_progress=None, export_succeeded=None, export_error_message=None, is_pretranslating=None, status=None, translator_email=None, reviewer_email=None, created_at=None, updated_at=None, is_review_complete=None, segments=None, local_vars_configuration=None):  # noqa: E501
         """DocumentWithSegments - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -98,6 +100,7 @@ class DocumentWithSegments(object):
         self._reviewer_email = None
         self._created_at = None
         self._updated_at = None
+        self._is_review_complete = None
         self._segments = None
         self.discriminator = None
 
@@ -135,6 +138,8 @@ class DocumentWithSegments(object):
             self.created_at = created_at
         if updated_at is not None:
             self.updated_at = updated_at
+        if is_review_complete is not None:
+            self.is_review_complete = is_review_complete
         if segments is not None:
             self.segments = segments
 
@@ -526,6 +531,29 @@ class DocumentWithSegments(object):
         """
 
         self._updated_at = updated_at
+
+    @property
+    def is_review_complete(self):
+        """Gets the is_review_complete of this DocumentWithSegments.  # noqa: E501
+
+        Document review status.  # noqa: E501
+
+        :return: The is_review_complete of this DocumentWithSegments.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_review_complete
+
+    @is_review_complete.setter
+    def is_review_complete(self, is_review_complete):
+        """Sets the is_review_complete of this DocumentWithSegments.
+
+        Document review status.  # noqa: E501
+
+        :param is_review_complete: The is_review_complete of this DocumentWithSegments.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_review_complete = is_review_complete
 
     @property
     def segments(self):

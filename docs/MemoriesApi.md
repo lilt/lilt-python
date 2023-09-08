@@ -413,11 +413,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **import_memory_file**
-> MemoryImportResponse import_memory_file(memory_id, name, body, has_header_row=has_header_row, skip_duplicates=skip_duplicates)
+> MemoryImportResponse import_memory_file(memory_id, name, body, sdlxliff_filters=sdlxliff_filters, has_header_row=has_header_row, skip_duplicates=skip_duplicates)
 
 File import for a Memory
 
-Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm` and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```  
+Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm`, `*.sdlxliff`(With custom Filters), '*.xliff', and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```  Example CURL command to upload a translation memory file named `my_memory.sdlxliff` in the current working directory, with Custom Filters based on SDLXLIFF fields, conf_name which maps to, percentage, and whether we should ignore unlocked segments. ```   curl -X POST https://lilt.com/2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdlxliff\\\",\\\"memory_id\\\": 12,\\\"sdlxliff_filters\\\":[{\\\"conf_name\\\": \\\"Translated\\\", \\\"percentage\\\": 100, \\\"allow_unlocked\\\": false}]\"}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdlxliff   
 
 ### Example
 
@@ -462,12 +462,13 @@ with lilt.ApiClient(configuration) as api_client:
     memory_id = 56 # int | A unique Memory identifier.
 name = 'name_example' # str | Name of the TM or termbase file.
 body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
+sdlxliff_filters = [lilt.SDLXLIFFFilter()] # list[SDLXLIFFFilter] | Contains Filter information Unique to SDLXLIFF (optional)
 has_header_row = True # bool | A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`). (optional)
 skip_duplicates = True # bool | A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`).  (optional)
 
     try:
         # File import for a Memory
-        api_response = api_instance.import_memory_file(memory_id, name, body, has_header_row=has_header_row, skip_duplicates=skip_duplicates)
+        api_response = api_instance.import_memory_file(memory_id, name, body, sdlxliff_filters=sdlxliff_filters, has_header_row=has_header_row, skip_duplicates=skip_duplicates)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling MemoriesApi->import_memory_file: %s\n" % e)
@@ -514,12 +515,13 @@ with lilt.ApiClient(configuration) as api_client:
     memory_id = 56 # int | A unique Memory identifier.
 name = 'name_example' # str | Name of the TM or termbase file.
 body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
+sdlxliff_filters = [lilt.SDLXLIFFFilter()] # list[SDLXLIFFFilter] | Contains Filter information Unique to SDLXLIFF (optional)
 has_header_row = True # bool | A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`). (optional)
 skip_duplicates = True # bool | A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`).  (optional)
 
     try:
         # File import for a Memory
-        api_response = api_instance.import_memory_file(memory_id, name, body, has_header_row=has_header_row, skip_duplicates=skip_duplicates)
+        api_response = api_instance.import_memory_file(memory_id, name, body, sdlxliff_filters=sdlxliff_filters, has_header_row=has_header_row, skip_duplicates=skip_duplicates)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling MemoriesApi->import_memory_file: %s\n" % e)
@@ -532,6 +534,7 @@ Name | Type | Description  | Notes
  **memory_id** | **int**| A unique Memory identifier. | 
  **name** | **str**| Name of the TM or termbase file. | 
  **body** | **file**| The file contents to be uploaded. The entire POST body will be treated as the file. | 
+ **sdlxliff_filters** | [**list[SDLXLIFFFilter]**](SDLXLIFFFilter.md)| Contains Filter information Unique to SDLXLIFF | [optional] 
  **has_header_row** | **bool**| A flag indicating whether an imported Termbase CSV has a header row or not (the default value is &#x60;false&#x60;). | [optional] 
  **skip_duplicates** | **bool**| A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is &#x60;false&#x60;).  | [optional] 
 

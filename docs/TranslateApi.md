@@ -564,7 +564,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **translate_segment**
-> TranslationList translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags, body=body)
+> TranslationList translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags, contains_icu_data=contains_icu_data, body=body)
 
 Translate a segment
 
@@ -618,11 +618,12 @@ n = 1 # int | Return top n translations (deprecated). (optional) (default to 1)
 rich = False # bool | Returns rich translation information (e.g., with word alignments). (optional) (default to False)
 tm_matches = True # bool | Include translation memory fuzzy matches. (optional) (default to True)
 project_tags = False # bool | Project tags. Projects tags in source to target if set to true. (optional) (default to False)
+contains_icu_data = False # bool | Contains ICU data. If true then tags in the source following the ICU standard will be parsed and retained. (optional) (default to False)
 body = lilt.TranslateSegmentBody() # TranslateSegmentBody |  (optional)
 
     try:
         # Translate a segment
-        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags, body=body)
+        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags, contains_icu_data=contains_icu_data, body=body)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TranslateApi->translate_segment: %s\n" % e)
@@ -674,11 +675,12 @@ n = 1 # int | Return top n translations (deprecated). (optional) (default to 1)
 rich = False # bool | Returns rich translation information (e.g., with word alignments). (optional) (default to False)
 tm_matches = True # bool | Include translation memory fuzzy matches. (optional) (default to True)
 project_tags = False # bool | Project tags. Projects tags in source to target if set to true. (optional) (default to False)
+contains_icu_data = False # bool | Contains ICU data. If true then tags in the source following the ICU standard will be parsed and retained. (optional) (default to False)
 body = lilt.TranslateSegmentBody() # TranslateSegmentBody |  (optional)
 
     try:
         # Translate a segment
-        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags, body=body)
+        api_response = api_instance.translate_segment(memory_id, source=source, source_hash=source_hash, prefix=prefix, n=n, rich=rich, tm_matches=tm_matches, project_tags=project_tags, contains_icu_data=contains_icu_data, body=body)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling TranslateApi->translate_segment: %s\n" % e)
@@ -696,6 +698,7 @@ Name | Type | Description  | Notes
  **rich** | **bool**| Returns rich translation information (e.g., with word alignments). | [optional] [default to False]
  **tm_matches** | **bool**| Include translation memory fuzzy matches. | [optional] [default to True]
  **project_tags** | **bool**| Project tags. Projects tags in source to target if set to true. | [optional] [default to False]
+ **contains_icu_data** | **bool**| Contains ICU data. If true then tags in the source following the ICU standard will be parsed and retained. | [optional] [default to False]
  **body** | [**TranslateSegmentBody**](TranslateSegmentBody.md)|  | [optional] 
 
 ### Return type
