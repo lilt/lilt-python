@@ -22,9 +22,8 @@ jobs:
         uses: docker://openapitools/openapi-generator-cli:v4.3.1
         with:
           args: >-
-            wget https://developers.lilt.com/redocusaurus/plugin-redoc-0.yaml -O lilt-openapi.yaml
             generate
-            -i lilt-openapi.yaml
+            -i https://developers.lilt.com/redocusaurus/plugin-redoc-0.yaml
             -g python
             -p packageName=lilt
             -p projectName=lilt-python
