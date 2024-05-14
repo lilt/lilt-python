@@ -19,8 +19,10 @@ Name | Type | Description | Notes
 **status** | [**DocumentWithoutSegmentsStatus**](DocumentWithoutSegmentsStatus.md) |  | [optional] 
 **translator_email** | **str** | The email of the assigned translator. | [optional] 
 **reviewer_email** | **str** | The email of the assigned reviewer. | [optional] 
+**customer_reviewer_email** | **str** | The email of the assigned customer reviewer. Only present if the project was request by id. | [optional] 
 **created_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 **updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
+**is_review_complete** | **bool** | Document review status. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
