@@ -4,10 +4,8 @@
 name: OpenAPI Generator
 
 on:
-  workflow_dispatch:
-    inputs: null
-  schedule:
-    - cron: "0 0 * * *"
+  repository_dispatch:
+    types: [dispatch-event]
 
 jobs:
   build:
