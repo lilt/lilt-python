@@ -1,15 +1,15 @@
 # lilt.FilesApi
 
-All URIs are relative to *https://lilt.com/2*
+All URIs are relative to *https://api.lilt.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_label**](FilesApi.md#add_label) | **POST** /files/labels | Add Label to File
-[**delete_file**](FilesApi.md#delete_file) | **DELETE** /files | Delete a File
-[**download**](FilesApi.md#download) | **GET** /files/download | Download file
-[**get_files**](FilesApi.md#get_files) | **GET** /files | Retrieve a File
-[**remove_label**](FilesApi.md#remove_label) | **DELETE** /files/labels | Remove Label from File
-[**upload_file**](FilesApi.md#upload_file) | **POST** /files | Upload a File
+[**add_label**](FilesApi.md#add_label) | **POST** /v2/files/labels | Add Label to File
+[**delete_file**](FilesApi.md#delete_file) | **DELETE** /v2/files | Delete a File
+[**download**](FilesApi.md#download) | **GET** /v2/files/download | Download file
+[**get_files**](FilesApi.md#get_files) | **GET** /v2/files | Retrieve a File
+[**remove_label**](FilesApi.md#remove_label) | **DELETE** /v2/files/labels | Remove Label from File
+[**upload_file**](FilesApi.md#upload_file) | **POST** /v2/files | Upload a File
 
 
 # **add_label**
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Add Label to File
 
-Add a label to a File.  Example CURL: ``` curl --X --request POST 'https://lilt.com/2/files/labels?key=API_KEY&id=1' --header 'Content-Type: application/json' \\ --data-raw '{     \"name\": \"label_name\" }' ``` 
+Add a label to a File.  Example CURL: ``` curl --X --request POST 'https://api.lilt.com/v2/files/labels?key=API_KEY&id=1' --header 'Content-Type: application/json' \\ --data-raw '{     \"name\": \"label_name\" }' ``` 
 
 ### Example
 
@@ -28,10 +28,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -41,7 +41,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -76,10 +76,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -89,7 +89,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -149,7 +149,7 @@ void (empty response body)
 
 Delete a File
 
-Delete a File.  Example CURL command: ```   curl -X DELETE https://lilt.com/2/files?key=API_KEY&id=123 ```  
+Delete a File.  Example CURL command: ```   curl -X DELETE https://api.lilt.com/v2/files?key=API_KEY&id=123 ```  
 
 ### Example
 
@@ -160,10 +160,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -173,7 +173,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -208,10 +208,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -221,7 +221,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 Download file
 
-Download a File.  Example CURL: ``` curl --X --request GET 'https://lilt.com/2/files/download?key=API_KEY&id=1' ``` 
+Download a File.  Example CURL: ``` curl --X --request GET 'https://api.lilt.com/v2/files/download?key=API_KEY&id=1' ``` 
 
 ### Example
 
@@ -292,10 +292,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -305,7 +305,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -340,10 +340,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -353,7 +353,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 Retrieve a File
 
-Retrieves one or more files available to your user. Files are not associated with a project or a memory. They are unprocessed and can be used later in the project/document creation workflow step.  To retrieve a specific file, specify the <strong>id</strong> request parameter. To retrieve all files, omit the <strong>id</strong> request parameter.  Example CURL command: ```  curl -X GET https://lilt.com/2/files?key=API_KEY&id=274```
+Retrieves one or more files available to your user. Files are not associated with a project or a memory. They are unprocessed and can be used later in the project/document creation workflow step.  To retrieve a specific file, specify the <strong>id</strong> request parameter. To retrieve all files, omit the <strong>id</strong> request parameter.  Example CURL command: ```  curl -X GET https://api.lilt.com/v2/files?key=API_KEY&id=274```
 
 ### Example
 
@@ -423,10 +423,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -436,7 +436,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -472,10 +472,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -485,7 +485,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -549,7 +549,7 @@ Name | Type | Description  | Notes
 
 Remove Label from File
 
-Remove a label from a File.  Example CURL: ``` curl --X --request DELETE 'https://lilt.com/2/files/labels?key=API_KEY&id=1&name=label_name' ``` 
+Remove a label from a File.  Example CURL: ``` curl --X --request DELETE 'https://api.lilt.com/v2/files/labels?key=API_KEY&id=1&name=label_name' ``` 
 
 ### Example
 
@@ -560,10 +560,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -573,7 +573,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -608,10 +608,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -621,7 +621,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -681,7 +681,7 @@ void (empty response body)
 
 Upload a File
 
-Upload a File in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed in as query string parameters.  Example CURL command: ```   curl -X POST https://lilt.com/2/files?key=API_KEY&name=en_US.json \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @en_US.json ``` Calls to GET /files are used to monitor the language detection results. The API response will be augmented to include detected language and confidence score.  The language detection will complete asynchronously. Prior to completion, the `detected_lang` value will be `zxx`, the reserved ISO 639-2 code for \"No linguistic content/not applicable\".  If the language can not be determined, or the detection process fails, the `detected_lang` field will return `und`, the reserved ISO 639-2 code for undetermined language, and the `detected_lang_confidence` score will be `0`.  
+Upload a File in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats). Request parameters should be passed in as query string parameters.  Example CURL command: ```   curl -X POST https://api.lilt.com/v2/files?key=API_KEY&name=en_US.json \\   --header \"Content-Type: application/octet-stream\" \\   --data-binary @en_US.json ``` Calls to GET /files are used to monitor the language detection results. The API response will be augmented to include detected language and confidence score.  The language detection will complete asynchronously. Prior to completion, the `detected_lang` value will be `zxx`, the reserved ISO 639-2 code for \"No linguistic content/not applicable\".  If the language can not be determined, or the detection process fails, the `detected_lang` field will return `und`, the reserved ISO 639-2 code for undetermined language, and the `detected_lang_confidence` score will be `0`.  
 
 ### Example
 
@@ -692,10 +692,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -705,7 +705,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -746,10 +746,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -759,7 +759,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
