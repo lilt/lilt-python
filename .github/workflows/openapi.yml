@@ -33,7 +33,7 @@ jobs:
             --skip-validate-spec
             -o .
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4.2.4
+        uses: peter-evans/create-pull-request@v6.1.0
         with:
           commit-message: Regenerates API Bindings
           title: "OpenAPI: Regenerates API Bindings"
