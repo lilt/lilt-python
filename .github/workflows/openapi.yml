@@ -4,8 +4,9 @@
 name: OpenAPI Generator
 
 on:
+  workflow_dispatch:
   repository_dispatch:
-    types: [dispatch-event]
+    types: [API-DocumentationV3-Deployment]
 
 jobs:
   build:
