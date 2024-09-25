@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **reviewer_email** | **str** | The email of the assigned reviewer. | [optional] 
 **created_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 **updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
+**is_review_complete** | **bool** | Document review status. | [optional] 
 **segments** | [**list[Segment]**](Segment.md) | A list of Segments. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
