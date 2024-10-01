@@ -9,9 +9,9 @@ from lilt.rest import ApiException
 from pprint import pprint
 
 configuration = lilt.Configuration(
-    host = os.environ["STAGING_HOST"],
-    api_key = {
-        "key": os.environ["STAGING_API_KEY"]
+    host=os.environ["API_HOST"],
+    api_key={
+        "key": os.environ["API_KEY"]
     }
 )
 
@@ -214,85 +214,86 @@ def assert_response(create_content_obj, expected):
 
 @pytest.mark.parametrize("sign_case", sign_cases)
 def test_sign(sign_case):
-    with lilt.ApiClient(configuration) as api_client:
-        #Sign terms and conditions
-        api_instance = lilt.CreateApi(api_client)
-        sign = get_sign(sign_case)
+    api_client = lilt.ApiClient(configuration)
 
-        try:
-            signed_agreement = lilt.CreateConverterConfigParameters(sign)
-            api_response = api_instance.sign_lilt_create_terms(signed_agreement)
-            assert api_response.signed_agreement == bool(sign)
-        except ValueError as e:
-            print("Exception when calling CreateApi->sign_lilt_create_terms: %s\n" % e)
-            if sign_case != "none":
-                raise e
+    #Sign terms and conditions
+    api_instance = lilt.CreateApi(api_client)
+    sign = get_sign(sign_case)
+
+    try:
+        signed_agreement = lilt.CreateConverterConfigParameters(sign)
+        api_response = api_instance.sign_lilt_create_terms(signed_agreement)
+        assert api_response.signed_agreement == bool(sign)
+    except ValueError as e:
+        print("Exception when calling CreateApi->sign_lilt_create_terms: %s\n" % e)
+        if sign_case != "none":
+            raise e
 
         
 @pytest.mark.parametrize("char_case", generate_content_char_cases)
 def test_create_content_chars(char_case):
-    with lilt.ApiClient(configuration) as api_client:
-        api_instance = lilt.CreateApi(api_client)
+    api_client = lilt.ApiClient(configuration)
+    
+    #Sign agreement
+    api_instance = lilt.CreateApi(api_client)
+    signed_agreement = lilt.CreateConverterConfigParameters(True)
+    api_response = api_instance.sign_lilt_create_terms(signed_agreement)
+    assert api_response.signed_agreement == True
 
-        #Sign agreement
-        signed_agreement = lilt.CreateConverterConfigParameters(True)
-        api_response = api_instance.sign_lilt_create_terms(signed_agreement)
-        assert api_response.signed_agreement == True
-
-        #Generate content
-        template_params = lilt.LiltCreateContentTemplateParams(
-            content_length = 1000,
-            language = "en-US",
-            summary = get_summary(char_case),
-            sections = ["Bees and me", "Honey for you", "Conclusion"]
-        )
-        preferences = lilt.LiltCreateContentPreferences(
-            tone = "formal"
-        )
-        request_body = lilt.LiltCreateContent(
-            language = "en-US",
-            template = "blog-post",
-            template_params = template_params,
-            preferences = preferences
-        )
-        
-        api_instance.generate_lilt_create_content(request_body)
-        time.sleep(5)
-        api_response = api_instance.get_lilt_create_content()
-        latest_content = api_response.contents[-1]
-        assert_response(latest_content, expected_chars(char_case))
+    #Generate content
+    template_params = lilt.LiltCreateContentTemplateParams(
+        content_length=1000,
+        language="en-US",
+        summary=get_summary(char_case),
+        sections=["Bees and me", "Honey for you", "Conclusion"]
+    )
+    preferences = lilt.LiltCreateContentPreferences(
+        tone="formal"
+    )
+    request_body = lilt.LiltCreateContent(
+        language="en-US",
+        template="blog-post",
+        template_params=template_params,
+        preferences=preferences
+    )
+    
+    api_instance.generate_lilt_create_content(request_body)
+    time.sleep(5)
+    api_response = api_instance.get_lilt_create_content()
+    latest_content = api_response.contents[-1]
+    assert_response(latest_content, expected_chars(char_case))
 
 
 @pytest.mark.parametrize("section_case", generate_content_sections_cases)
 def test_create_content_sections(section_case):
-    with lilt.ApiClient(configuration) as api_client:
-        api_instance = lilt.CreateApi(api_client)
+    api_client = lilt.ApiClient(configuration)
+       
+    #Sign agreement
+    api_instance = lilt.CreateApi(api_client)
+    signed_agreement = lilt.CreateConverterConfigParameters(True)
+    api_response = api_instance.sign_lilt_create_terms(signed_agreement)
+    assert api_response.signed_agreement == True
 
-        #Sign agreement
-        signed_agreement = lilt.CreateConverterConfigParameters(True)
-        api_response = api_instance.sign_lilt_create_terms(signed_agreement)
-        assert api_response.signed_agreement == True
-
-        #Generate content
-        template_params = lilt.LiltCreateContentTemplateParams(
-            content_length = 1000,
-            language = "en-US",
-            summary = "a blog post about how important bees are to my honey farm",
-            sections = get_section(section_case)
-        )
-        preferences = lilt.LiltCreateContentPreferences(
-            tone = "formal"
-        )
-        request_body = lilt.LiltCreateContent(
-            language = "en-US",
-            template = "blog-post",
-            template_params = template_params,
-            preferences = preferences
-        )
-        
-        api_instance.generate_lilt_create_content(request_body)
-        time.sleep(5)
-        api_response = api_instance.get_lilt_create_content()
-        latest_content = api_response.contents[-1]
-        assert_response(latest_content, expected_section(section_case))
+    #Generate content
+    template_params = lilt.LiltCreateContentTemplateParams(
+        content_length=1000,
+        language="en-US",
+        summary="a blog post about how important bees are to my honey farm",
+        sections=get_section(section_case)
+    )
+    preferences = lilt.LiltCreateContentPreferences(
+        tone="formal"
+    )
+    request_body = lilt.LiltCreateContent(
+        language="en-US",
+        template="blog-post",
+        template_params=template_params,
+        preferences=preferences
+    )
+    
+    api_instance.generate_lilt_create_content(request_body)
+    time.sleep(5)
+    api_response = api_instance.get_lilt_create_content()
+    latest_content = api_response.contents[-1]
+    assert_response(latest_content, expected_section(section_case))
  

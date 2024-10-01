@@ -10,9 +10,9 @@ from pprint import pprint
 
 
 configuration = lilt.Configuration(
-    host = os.environ["STAGING_HOST"],
-    api_key = {
-        "key": os.environ["STAGING_API_KEY"]
+    host=os.environ["API_HOST"],
+    api_key={
+        "key": os.environ["API_KEY"]
     }
 )
 
@@ -30,6 +30,8 @@ tmx_file_cases = [
     "wrong_data",
     "normal"
 ]
+
+translate_file_path = "./workflow_tests/resources"
 
 def get_data_source_parameters(case):
     match case:
@@ -103,13 +105,13 @@ def get_tmx_settings(case):
         case "wrong_data":
             return {
                 "name": "get_documents.json",
-                "body": "./resources/get_documents.json"
+                "body": f"{translate_file_path}/get_documents.json"
             }
 
         case "normal":
             return {
                 "name": "fr_to_en.tmx",
-                "body": "./resources/test-fr_to_en.tmx"
+                "body": f"{translate_file_path}/test-fr_to_en.tmx"
             }
 
 def get_expected_data_source(data_source_case):
@@ -196,78 +198,80 @@ def assert_query_response(query_object, expected):
 
 @pytest.mark.parametrize("data_source_case", create_data_source_cases)
 def test_create_data_source_workflow(data_source_case):  
-    with lilt.ApiClient(configuration) as api_client:
-        #Create data source
-        api_instance = lilt.MemoriesApi(api_client)
+    api_client = lilt.ApiClient(configuration)
 
-        try:
-            data_source_parameters = get_data_source_parameters(data_source_case)
-            body = lilt.MemoryCreateParameters(
-                name = data_source_parameters["name"],
-                srclang = data_source_parameters["srclang"],
-                trglang = data_source_parameters["trglang"],
-                srclocale = data_source_parameters["srclocale"],
-                trglocale = data_source_parameters["trglocale"]
-            )
-        except ValueError as e:
-            print("Value error when calling MemoriesApi->create_memory: %s\n" % e)
-            if data_source_case in ["none_src", "none_trg", "none_both"]:
-                return
-            else:
-                raise e
+    #Create data source
+    api_instance = lilt.MemoriesApi(api_client)
 
-        try:
-            api_response = api_instance.create_memory(body)
-            pprint(api_response)
-            assert_data_source_response(api_response, get_expected_data_source(data_source_case))
-        except ApiException as e:
-            print("Exception when calling MemoriesApi->create_memory: %s\n" % e)
-            if data_source_case == "unsupported_languages":
-                assert e.status == 400
-            else:
-                raise e
+    try:
+        data_source_parameters = get_data_source_parameters(data_source_case)
+        body = lilt.MemoryCreateParameters(
+            name=data_source_parameters["name"],
+            srclang=data_source_parameters["srclang"],
+            trglang=data_source_parameters["trglang"],
+            srclocale=data_source_parameters["srclocale"],
+            trglocale=data_source_parameters["trglocale"]
+        )
+    except ValueError as e:
+        print("Value error when calling MemoriesApi->create_memory: %s\n" % e)
+        if data_source_case in ["none_src", "none_trg", "none_both"]:
+            return
+        else:
+            raise e
+
+    try:
+        api_response = api_instance.create_memory(body)
+        pprint(api_response)
+        assert_data_source_response(api_response, get_expected_data_source(data_source_case))
+    except ApiException as e:
+        print("Exception when calling MemoriesApi->create_memory: %s\n" % e)
+        if data_source_case == "unsupported_languages":
+            assert e.status == 400
+        else:
+            raise e
 
 @pytest.mark.parametrize("tmx_file_case", tmx_file_cases)
 def test_upload_tmx_file_workflow(tmx_file_case):
-    with lilt.ApiClient(configuration) as api_client:
-        api_instance = lilt.MemoriesApi(api_client)
+    api_client = lilt.ApiClient(configuration)
 
-        #Create data source
-        data_source_parameters = get_data_source_parameters("fr_to_en")
-        body = lilt.MemoryCreateParameters(
-            name = data_source_parameters["name"],
-            srclang = data_source_parameters["srclang"],
-            trglang = data_source_parameters["trglang"],
-            srclocale = data_source_parameters["srclocale"],
-            trglocale = data_source_parameters["trglocale"]
-        )
-        api_response = api_instance.create_memory(body)
-        assert_data_source_response(api_response, get_expected_data_source("fr_to_en"))
-        memory_id = api_response.id
-        print(f"Memory ID: {memory_id}")
+    #Create data source
+    api_instance = lilt.MemoriesApi(api_client)
+    data_source_parameters = get_data_source_parameters("fr_to_en")
+    body = lilt.MemoryCreateParameters(
+        name=data_source_parameters["name"],
+        srclang=data_source_parameters["srclang"],
+        trglang=data_source_parameters["trglang"],
+        srclocale=data_source_parameters["srclocale"],
+        trglocale=data_source_parameters["trglocale"]
+    )
+    api_response = api_instance.create_memory(body)
+    assert_data_source_response(api_response, get_expected_data_source("fr_to_en"))
+    memory_id = api_response.id
+    print(f"Memory ID: {memory_id}")
 
-        #Upload file
-        tmx_settings = get_tmx_settings(tmx_file_case)
-        with open(tmx_settings["body"], "rb") as upload_file:
-            body = upload_file.read()
-        print("-----FILE START-----")
-        print(body)
-        print("-----FILE END-----")
-        api_response = api_instance.import_memory_file(
-            memory_id=memory_id,
-            name=tmx_settings["name"], 
-            body=body
-        )
-        pprint(api_response)
-        assert api_response.id == memory_id
-        assert api_response.is_processing == 1
-        time.sleep(10)
+    #Upload file
+    print(os.getcwd())
+    tmx_settings = get_tmx_settings(tmx_file_case)
+    upload_file = open(tmx_settings["body"], "rb")
+    body = upload_file.read()
+    print("-----FILE START-----")
+    print(body)
+    print("-----FILE END-----")
+    api_response = api_instance.import_memory_file(
+        memory_id=memory_id,
+        name=tmx_settings["name"], 
+        body=body
+    )
+    pprint(api_response)
+    assert api_response.id == memory_id
+    assert api_response.is_processing == 1
+    time.sleep(10)
 
-        #Query memory
-        query = "chatte" 
-        api_response = api_instance.query_memory(memory_id, query)
-        if tmx_file_case == "wrong_data":
-            assert api_response == []
-        else:
-            assert len(api_response) > 0
-            assert_query_response(api_response[0], get_expected_query())
+    #Query memory
+    query = "chatte" 
+    api_response = api_instance.query_memory(memory_id, query)
+    if tmx_file_case == "wrong_data":
+        assert api_response == []
+    else:
+        assert len(api_response) > 0
+        assert_query_response(api_response[0], get_expected_query())
