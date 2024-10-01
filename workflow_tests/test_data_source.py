@@ -33,6 +33,7 @@ tmx_file_cases = [
 
 translate_file_path = "./workflow_tests/resources"
 
+
 def get_data_source_parameters(case):
     match case:
         case "none_src":
@@ -100,6 +101,7 @@ def get_data_source_parameters(case):
                 "trglocale": "US"
             }
 
+
 def get_tmx_settings(case):
     match case:
         case "wrong_data":
@@ -113,6 +115,7 @@ def get_tmx_settings(case):
                 "name": "fr_to_en.tmx",
                 "body": f"{translate_file_path}/test-fr_to_en.tmx"
             }
+
 
 def get_expected_data_source(data_source_case):
     match data_source_case:
@@ -161,6 +164,7 @@ def get_expected_data_source(data_source_case):
                 "version": 0
             }
 
+
 def get_expected_query():
     return {
         "metadata": {
@@ -171,6 +175,7 @@ def get_expected_query():
         "source": "chatte",
         "target": "cat"
     }
+
 
 def assert_data_source_response(data_source_object, expected):
     assert data_source_object.is_processing == expected["is_processing"]
@@ -185,6 +190,7 @@ def assert_data_source_response(data_source_object, expected):
     assert data_source_object.updated_at is not None
     assert data_source_object.id is not None
 
+
 def assert_query_response(query_object, expected):
     metadata = query_object.metadata
     assert metadata["resource_name"] == expected["metadata"]["resource_name"]
@@ -197,10 +203,10 @@ def assert_query_response(query_object, expected):
 
 
 @pytest.mark.parametrize("data_source_case", create_data_source_cases)
-def test_create_data_source_workflow(data_source_case):  
+def test_create_data_source_workflow(data_source_case):
     api_client = lilt.ApiClient(configuration)
 
-    #Create data source
+    # Create data source
     api_instance = lilt.MemoriesApi(api_client)
 
     try:
@@ -230,11 +236,12 @@ def test_create_data_source_workflow(data_source_case):
         else:
             raise e
 
+
 @pytest.mark.parametrize("tmx_file_case", tmx_file_cases)
 def test_upload_tmx_file_workflow(tmx_file_case):
     api_client = lilt.ApiClient(configuration)
 
-    #Create data source
+    # Create data source
     api_instance = lilt.MemoriesApi(api_client)
     data_source_parameters = get_data_source_parameters("fr_to_en")
     body = lilt.MemoryCreateParameters(
@@ -249,7 +256,7 @@ def test_upload_tmx_file_workflow(tmx_file_case):
     memory_id = api_response.id
     print(f"Memory ID: {memory_id}")
 
-    #Upload file
+    # Upload file
     print(os.getcwd())
     tmx_settings = get_tmx_settings(tmx_file_case)
     upload_file = open(tmx_settings["body"], "rb")
@@ -259,7 +266,7 @@ def test_upload_tmx_file_workflow(tmx_file_case):
     print("-----FILE END-----")
     api_response = api_instance.import_memory_file(
         memory_id=memory_id,
-        name=tmx_settings["name"], 
+        name=tmx_settings["name"],
         body=body
     )
     pprint(api_response)
@@ -267,8 +274,8 @@ def test_upload_tmx_file_workflow(tmx_file_case):
     assert api_response.is_processing == 1
     time.sleep(10)
 
-    #Query memory
-    query = "chatte" 
+    # Query memory
+    query = "chatte"
     api_response = api_instance.query_memory(memory_id, query)
     if tmx_file_case == "wrong_data":
         assert api_response == []
