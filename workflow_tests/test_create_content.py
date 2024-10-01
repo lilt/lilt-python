@@ -5,9 +5,6 @@ import pytest
 import time
 import lilt
 
-from lilt.rest import ApiException
-from pprint import pprint
-
 configuration = lilt.Configuration(
     host=os.environ["API_HOST"],
     api_key={
@@ -38,6 +35,7 @@ generate_content_sections_cases = [
     "non_string_elements"
 ]
 
+
 def get_sign(sign_case):
     match sign_case:
         case "none":
@@ -51,6 +49,7 @@ def get_sign(sign_case):
         case "non_boolean_0":
             return 0
 
+
 def get_summary(char_case):
     match char_case:
         case "none":
@@ -62,6 +61,7 @@ def get_summary(char_case):
         case "non_string":
             return 1
 
+
 def get_section(section_case):
     match section_case:
         case "none":
@@ -69,11 +69,12 @@ def get_section(section_case):
         case "one":
             return ["Bees and me"]
         case "multiple":
-            return ["Bees and me","Honey for you", "Conclusion"]
+            return ["Bees and me", "Honey for you", "Conclusion"]
         case "non_list":
             return 1
         case "non_string_elements":
             return [1, 2]
+
 
 def expected_chars(char_case):
     match char_case:
@@ -139,6 +140,7 @@ def expected_chars(char_case):
                 }
             }
 
+
 def expected_section(section_case):
     match section_case:
         case "none":
@@ -202,6 +204,7 @@ def expected_section(section_case):
                 }
             }
 
+
 def assert_response(create_content_obj, expected):
     assert create_content_obj.language == expected["language"]
     assert create_content_obj.preferences == expected["preferences"]
@@ -212,11 +215,12 @@ def assert_response(create_content_obj, expected):
     assert template_params.sections == expected["template_params"]["sections"]
     assert template_params.summary == expected["template_params"]["summary"]
 
+
 @pytest.mark.parametrize("sign_case", sign_cases)
 def test_sign(sign_case):
     api_client = lilt.ApiClient(configuration)
 
-    #Sign terms and conditions
+    # Sign terms and conditions
     api_instance = lilt.CreateApi(api_client)
     sign = get_sign(sign_case)
 
@@ -229,18 +233,18 @@ def test_sign(sign_case):
         if sign_case != "none":
             raise e
 
-        
+
 @pytest.mark.parametrize("char_case", generate_content_char_cases)
 def test_create_content_chars(char_case):
     api_client = lilt.ApiClient(configuration)
-    
-    #Sign agreement
+
+    # Sign agreement
     api_instance = lilt.CreateApi(api_client)
     signed_agreement = lilt.CreateConverterConfigParameters(True)
     api_response = api_instance.sign_lilt_create_terms(signed_agreement)
-    assert api_response.signed_agreement == True
+    assert api_response.signed_agreement
 
-    #Generate content
+    # Generate content
     template_params = lilt.LiltCreateContentTemplateParams(
         content_length=1000,
         language="en-US",
@@ -256,7 +260,7 @@ def test_create_content_chars(char_case):
         template_params=template_params,
         preferences=preferences
     )
-    
+
     api_instance.generate_lilt_create_content(request_body)
     time.sleep(5)
     api_response = api_instance.get_lilt_create_content()
@@ -267,14 +271,14 @@ def test_create_content_chars(char_case):
 @pytest.mark.parametrize("section_case", generate_content_sections_cases)
 def test_create_content_sections(section_case):
     api_client = lilt.ApiClient(configuration)
-       
-    #Sign agreement
+
+    # Sign agreement
     api_instance = lilt.CreateApi(api_client)
     signed_agreement = lilt.CreateConverterConfigParameters(True)
     api_response = api_instance.sign_lilt_create_terms(signed_agreement)
-    assert api_response.signed_agreement == True
+    assert api_response.signed_agreement
 
-    #Generate content
+    # Generate content
     template_params = lilt.LiltCreateContentTemplateParams(
         content_length=1000,
         language="en-US",
@@ -290,10 +294,9 @@ def test_create_content_sections(section_case):
         template_params=template_params,
         preferences=preferences
     )
-    
+
     api_instance.generate_lilt_create_content(request_body)
     time.sleep(5)
     api_response = api_instance.get_lilt_create_content()
     latest_content = api_response.contents[-1]
     assert_response(latest_content, expected_section(section_case))
- 
