@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tmx version="1.4">
+<header creationtool="Lilt Inc." creationtoolversion="0.1" o-tmf="Lilt" datatype="PlainText" segtype="sentence" adminlang="fr" srclang="fr"/>
+<body>
+  <tu creationdate="20210315T164306Z" changedate="20210315T164306Z" creationid="">
+    <tuv xml:lang="fr">
+      <seg>chatte</seg>
+    </tuv>
+    <tuv xml:lang="en">
+      <seg>cat</seg>
+    </tuv>
+  </tu>
+</body>
+</tmx>

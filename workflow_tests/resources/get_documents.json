@@ -1,0 +1,36 @@
+{
+    "id": 46530,
+    "project_id": 287,
+    "srclang": "en",
+    "trglang": "de",
+    "name": "Introduction.xliff",
+    "import_in_progress": false,
+    "import_succeeded": false,
+    "import_error_message": "Could not parse XML.",
+    "export_in_progress": false,
+    "export_succeeded": false,
+    "export_error_message": "Could not parse XML.",
+    "is_pretranslating": false,
+    "status": {
+      "pretranslation": "idle"
+    },
+    "translator_email": "translator@example.com",
+    "reviewer_email": "reviewer@example.com",
+    "created_at": 1489147692,
+    "updated_at": 1489147692,
+    "segments": [
+      {
+        "id": 84480010,
+        "created_at": 1489147692,
+        "updated_at": 1489147692,
+        "document_id": 1234,
+        "memory_id": 5678,
+        "source": "The red bus.",
+        "srclang": "en",
+        "target": "Le bus rouge.",
+        "trglang": "fr",
+        "is_confirmed": true,
+        "is_reviewed": true
+      }
+    ]
+  }
