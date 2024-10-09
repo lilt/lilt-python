@@ -1,9 +1,12 @@
 from __future__ import print_function
+from dotenv import load_dotenv
 
 import os
 import pytest
 import time
 import lilt
+
+load_dotenv()
 
 configuration = lilt.Configuration(
     host=os.environ["API_HOST"],
@@ -37,172 +40,167 @@ generate_content_sections_cases = [
 
 
 def get_sign(sign_case):
-    match sign_case:
-        case "none":
-            return None
-        case "unsigned":
-            return False
-        case "signed":
-            return True
-        case "non_boolean_1":
-            return 1
-        case "non_boolean_0":
-            return 0
+    if sign_case == "none":
+        return None
+    elif sign_case == "unsigned":
+        return False
+    elif sign_case == "signed":
+        return True
+    elif sign_case == "non_boolean_1":
+        return 1
+    elif sign_case == "non_boolean_0":
+        return 0
 
 
 def get_summary(char_case):
-    match char_case:
-        case "none":
-            return ""
-        case "normal":
-            return "a blog post about how important bees are to my honey farm"
-        case "over500":
-            return "a blog post about how important bees are to my honey farm" * 10
-        case "non_string":
-            return 1
+    if char_case == "none":
+        return ""
+    elif char_case == "normal":
+        return "a blog post about how important bees are to my honey farm"
+    elif char_case == "over500":
+        return "a blog post about how important bees are to my honey farm" * 10
+    elif char_case == "non_string":
+        return 1
 
 
 def get_section(section_case):
-    match section_case:
-        case "none":
-            return []
-        case "one":
-            return ["Bees and me"]
-        case "multiple":
-            return ["Bees and me", "Honey for you", "Conclusion"]
-        case "non_list":
-            return 1
-        case "non_string_elements":
-            return [1, 2]
+    if section_case == "none":
+        return []
+    elif section_case == "one":
+        return ["Bees and me"]
+    elif section_case == "multiple":
+        return ["Bees and me", "Honey for you", "Conclusion"]
+    elif section_case == "non_list":
+        return 1
+    elif section_case == "non_string_elements":
+        return [1, 2]
 
 
 def expected_chars(char_case):
-    match char_case:
-        case "none":
-            return {
+    if char_case == "none":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
-                    "summary": ""
-                }
+                "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                "summary": ""
             }
-        case "normal":
-            return {
+        }
+    elif char_case == "normal":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
-                    "summary": "a blog post about how important bees are to my honey farm"
-                }
+                "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                "summary": "a blog post about how important bees are to my honey farm"
             }
-        case "over500":
-            return {
+        }
+    elif char_case == "over500":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
-                    "summary": 'a blog post about how important bees are to '
-                                'my honey farma blog post about how important '
-                                'bees are to my honey farma blog post about '
-                                'how important bees are to my honey farma blog '
-                                'post about how important bees are to my honey '
-                                'farma blog post about how important bees are '
-                                'to my honey farma blog post about how '
-                                'important bees are to my honey farma blog '
-                                'post about how important bees are to my honey '
-                                'farma blog post about how important bees are '
-                                'to my honey farma blog post about how '
-                                'important bees are to my honey farma blog '
-                                'post about how important bees are to my honey '
-                                'farm'
-                }
+                "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                "summary": 'a blog post about how important bees are to '
+                            'my honey farma blog post about how important '
+                            'bees are to my honey farma blog post about '
+                            'how important bees are to my honey farma blog '
+                            'post about how important bees are to my honey '
+                            'farma blog post about how important bees are '
+                            'to my honey farma blog post about how '
+                            'important bees are to my honey farma blog '
+                            'post about how important bees are to my honey '
+                            'farma blog post about how important bees are '
+                            'to my honey farma blog post about how '
+                            'important bees are to my honey farma blog '
+                            'post about how important bees are to my honey '
+                            'farm'
             }
-        case "non_string":
-            return {
+        }
+    elif char_case == "non_string":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
-                    "summary": "1"
-                }
+                "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                "summary": "1"
             }
+        }
 
 
 def expected_section(section_case):
-    match section_case:
-        case "none":
-            return {
+    if section_case == "none":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "[]",
-                    "summary": "a blog post about how important bees are to my honey farm"
-                }
+                "sections": "[]",
+                "summary": "a blog post about how important bees are to my honey farm"
             }
-        case "one":
-            return {
+        }
+    elif section_case == "one":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "['Bees and me']",
-                    "summary": "a blog post about how important bees are to my honey farm"
-                }
+                "sections": "['Bees and me']",
+                "summary": "a blog post about how important bees are to my honey farm"
             }
-        case "multiple":
-            return {
+        }
+    elif section_case == "multiple":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
-                    "summary": "a blog post about how important bees are to my honey farm"
-                }
+                "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                "summary": "a blog post about how important bees are to my honey farm"
             }
-        case "non_list":
-            return {
+        }
+    elif section_case == "non_list":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "1",
-                    "summary": "a blog post about how important bees are to my honey farm"
-                }
+                "sections": "1",
+                "summary": "a blog post about how important bees are to my honey farm"
             }
-        case "non_string_elements":
-            return {
+        }
+    elif section_case == "non_string_elements":
+        return {
+            "language": "en-US",
+            "preferences": None,
+            "template": "blog-post",
+            "template_params": {
+                "content_length": 1000,
                 "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "[1, 2]",
-                    "summary": "a blog post about how important bees are to my honey farm"
-                }
+                "sections": "[1, 2]",
+                "summary": "a blog post about how important bees are to my honey farm"
             }
+        }
 
 
 def assert_response(create_content_obj, expected):

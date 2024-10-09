@@ -1,4 +1,5 @@
 from __future__ import print_function
+from dotenv import load_dotenv
 
 import os
 import pytest
@@ -6,6 +7,7 @@ import lilt
 
 from tenacity import retry, stop_after_delay, wait_exponential, retry_if_result, RetryError
 
+load_dotenv()
 
 configuration = lilt.Configuration(
     host=os.environ["API_HOST"],
