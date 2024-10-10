@@ -37,131 +37,135 @@ tmx_file_cases = [
 translate_file_path = "./workflow_tests/resources"
 
 
-def get_data_source_parameters(data_source_case):
-    if data_source_case == "none_src":
-        return {
-            "name": "test-non-src",
-            "srclang": None,
-            "trglang": "en",
-            "srclocale": "US",
-            "trglocale": None
-        }
-    elif data_source_case == "none_trg":
-        return {
-            "name": "test-none-trg",
-            "srclang": "en",
-            "trglang": None,
-            "srclocale": "US",
-            "trglocale": None
-        }
-    elif data_source_case == "none_both":
-        return {
-            "name": "test-none-both",
-            "srclang": None,
-            "trglang": None,
-            "srclocale": "US",
-            "trglocale": None
-        }
-    elif data_source_case == "english":
-        return {
-            "name": "test-english",
-            "srclang": "en",
-            "trglang": "es",
-            "srclocale": "US",
-            "trglocale": None
-        }
-    elif data_source_case == "non_english":
-        return {
-            "name": "test-non-english",
-            "srclang": "de",
-            "trglang": "fr",
-            "srclocale": "DE",
-            "trglocale": "FR"
-        }
-    elif data_source_case == "source_is_target":
-        return {
-            "name": "test-source-is-target",
-            "srclang": "fr",
-            "trglang": "fr",
-            "srclocale": "FR",
-            "trglocale": "FR"
-        }
-    elif data_source_case == "unsupported_languages":
-        return {
-            "name": "test-unsupported-languages",
-            "srclang": "ac",
-            "trglang": "ad",
-            "srclocale": None,
-            "trglocale": None
-        }
-    elif data_source_case == "fr_to_en":
-        return {
-            "name": "test-fr-to-en",
-            "srclang": "fr",
-            "trglang": "en",
-            "srclocale": "FR",
-            "trglocale": "US"
-        }
+def get_data_source_parameters(case):
+    match case:
+        case "none_src":
+            return {
+                "name": "test-non-src",
+                "srclang": None,
+                "trglang": "en",
+                "srclocale": "US",
+                "trglocale": None
+            }
+        case "none_trg":
+            return {
+                "name": "test-none-trg",
+                "srclang": "en",
+                "trglang": None,
+                "srclocale": "US",
+                "trglocale": None
+            }
+        case "none_both":
+            return {
+                "name": "test-none-both",
+                "srclang": None,
+                "trglang": None,
+                "srclocale": "US",
+                "trglocale": None
+            }
+        case "english":
+            return {
+                "name": "test-english",
+                "srclang": "en",
+                "trglang": "es",
+                "srclocale": "US",
+                "trglocale": None
+            }
+        case "non_english":
+            return {
+                "name": "test-non-english",
+                "srclang": "de",
+                "trglang": "fr",
+                "srclocale": "DE",
+                "trglocale": "FR"
+            }
+        case "source_is_target":
+            return {
+                "name": "test-source-is-target",
+                "srclang": "fr",
+                "trglang": "fr",
+                "srclocale": "FR",
+                "trglocale": "FR"
+            }
+        case "unsupported_languages":
+            return {
+                "name": "test-unsupported-languages",
+                "srclang": "ac",
+                "trglang": "ad",
+                "srclocale": None,
+                "trglocale": None
+            }
+        case "fr_to_en":
+            return {
+                "name": "test-fr-to-en",
+                "srclang": "fr",
+                "trglang": "en",
+                "srclocale": "FR",
+                "trglocale": "US"
+            }
 
 
-def get_tmx_settings(tmx_settings_case):
-    if tmx_settings_case == "wrong_data":
-        return {
-            "name": "get_documents.json",
-            "body": f"{translate_file_path}/get_documents.json"
-        }
-    elif tmx_settings_case == "normal":
-        return {
-            "name": "fr_to_en.tmx",
-            "body": f"{translate_file_path}/test-fr_to_en.tmx"
-        }
+def get_tmx_settings(case):
+    match case:
+        case "wrong_data":
+            return {
+                "name": "get_documents.json",
+                "body": f"{translate_file_path}/get_documents.json"
+            }
+
+        case "normal":
+            return {
+                "name": "fr_to_en.tmx",
+                "body": f"{translate_file_path}/test-fr_to_en.tmx"
+            }
 
 
 def get_expected_data_source(data_source_case):
-    if data_source_case == "english":
-        return {
-            "is_processing": None,
-            "name": "test-english",
-            "resources": None,
-            "srclang": "en",
-            "srclocale": "US",
-            "trglang": "es",
-            "trglocale": None,
-            "version": 0
-        }
-    elif data_source_case == "non_english":
-        return {
-            "is_processing": None,
-            "name": "test-non-english",
-            "resources": None,
-            "srclang": "de",
-            "srclocale": "DE",
-            "trglang": "fr",
-            "trglocale": "FR",
-            "version": 0
-        }
-    elif data_source_case == "source_is_target":
-        return {
-            "is_processing": None,
-            "name": "test-source-is-target",
-            "resources": None,
-            "srclang": "fr",
-            "srclocale": "FR",
-            "trglang": "fr",
-            "trglocale": "FR",
-            "version": 0
-        }
-    elif data_source_case == "fr_to_en":
-        return {
-            "is_processing": None,
-            "name": "test-fr-to-en",
-            "resources": None,
-            "srclang": "fr",
-            "srclocale": "FR",
-            "trglang": "en",
-            "trglocale": "US",
-            "version": 0
-        }
+    match data_source_case:
+        case "english":
+            return {
+                "is_processing": None,
+                "name": "test-english",
+                "resources": None,
+                "srclang": "en",
+                "srclocale": "US",
+                "trglang": "es",
+                "trglocale": None,
+                "version": 0
+            }
+        case "non_english":
+            return {
+                "is_processing": None,
+                "name": "test-non-english",
+                "resources": None,
+                "srclang": "de",
+                "srclocale": "DE",
+                "trglang": "fr",
+                "trglocale": "FR",
+                "version": 0
+            }
+        case "source_is_target":
+            return {
+                "is_processing": None,
+                "name": "test-source-is-target",
+                "resources": None,
+                "srclang": "fr",
+                "srclocale": "FR",
+                "trglang": "fr",
+                "trglocale": "FR",
+                "version": 0
+            }
+        case "fr_to_en":
+            return {
+                "is_processing": None,
+                "name": "test-fr-to-en",
+                "resources": None,
+                "srclang": "fr",
+                "srclocale": "FR",
+                "trglang": "en",
+                "trglocale": "US",
+                "version": 0
+            }
 
 
 def get_expected_query():
