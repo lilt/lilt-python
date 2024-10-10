@@ -37,8 +37,8 @@ tmx_file_cases = [
 translate_file_path = "./workflow_tests/resources"
 
 
-def get_data_source_parameters(case):
-    if case == "none_src":
+def get_data_source_parameters(data_source_case):
+    if data_source_case == "none_src":
         return {
             "name": "test-non-src",
             "srclang": None,
@@ -46,7 +46,7 @@ def get_data_source_parameters(case):
             "srclocale": "US",
             "trglocale": None
         }
-    elif case == "none_trg":
+    elif data_source_case == "none_trg":
         return {
             "name": "test-none-trg",
             "srclang": "en",
@@ -54,7 +54,7 @@ def get_data_source_parameters(case):
             "srclocale": "US",
             "trglocale": None
         }
-    elif case == "none_both":
+    elif data_source_case == "none_both":
         return {
             "name": "test-none-both",
             "srclang": None,
@@ -62,7 +62,7 @@ def get_data_source_parameters(case):
             "srclocale": "US",
             "trglocale": None
         }
-    elif case == "english":
+    elif data_source_case == "english":
         return {
             "name": "test-english",
             "srclang": "en",
@@ -70,7 +70,7 @@ def get_data_source_parameters(case):
             "srclocale": "US",
             "trglocale": None
         }
-    elif case == "non_english":
+    elif data_source_case == "non_english":
         return {
             "name": "test-non-english",
             "srclang": "de",
@@ -78,7 +78,7 @@ def get_data_source_parameters(case):
             "srclocale": "DE",
             "trglocale": "FR"
         }
-    elif case == "source_is_target":
+    elif data_source_case == "source_is_target":
         return {
             "name": "test-source-is-target",
             "srclang": "fr",
@@ -86,7 +86,7 @@ def get_data_source_parameters(case):
             "srclocale": "FR",
             "trglocale": "FR"
         }
-    elif case == "unsupported_languages":
+    elif data_source_case == "unsupported_languages":
         return {
             "name": "test-unsupported-languages",
             "srclang": "ac",
@@ -94,7 +94,7 @@ def get_data_source_parameters(case):
             "srclocale": None,
             "trglocale": None
         }
-    elif case == "fr_to_en":
+    elif data_source_case == "fr_to_en":
         return {
             "name": "test-fr-to-en",
             "srclang": "fr",
@@ -104,13 +104,13 @@ def get_data_source_parameters(case):
         }
 
 
-def get_tmx_settings(case):
-    if case == "wrong_data":
+def get_tmx_settings(tmx_settings_case):
+    if tmx_settings_case == "wrong_data":
         return {
             "name": "get_documents.json",
             "body": f"{translate_file_path}/get_documents.json"
         }
-    elif case == "normal":
+    elif tmx_settings_case == "normal":
         return {
             "name": "fr_to_en.tmx",
             "body": f"{translate_file_path}/test-fr_to_en.tmx"
