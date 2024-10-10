@@ -8,6 +8,7 @@ import lilt
 
 from lilt.rest import ApiException
 from pprint import pprint
+from tenacity import retry, stop_after_delay, wait_exponential, retry_if_result, RetryError
 
 load_dotenv()
 
@@ -205,6 +206,18 @@ def assert_query_response(query_object, expected):
     assert query_object.target == expected["target"]
 
 
+@retry(
+    retry=retry_if_result(lambda is_processing: is_processing == 1),
+    stop=stop_after_delay(2 * 60),
+    wait=wait_exponential()
+)
+def monitor_file_import(api_instance, memory_id):
+    api_response = api_instance.get_memory()
+    is_processing = api_response[0].is_processing
+    print(f"is_processing: {is_processing}")
+    return is_processing
+
+
 @pytest.mark.parametrize("data_source_case", create_data_source_cases)
 def test_create_data_source_workflow(data_source_case):
     api_client = lilt.ApiClient(configuration)
@@ -275,7 +288,9 @@ def test_upload_tmx_file_workflow(tmx_file_case):
     pprint(api_response)
     assert api_response.id == memory_id
     assert api_response.is_processing == 1
-    time.sleep(10)
+    
+    # Monitor file import
+    is_processing = monitor_file_import(api_instance, memory_id)
 
     # Query memory
     query = "chatte"
