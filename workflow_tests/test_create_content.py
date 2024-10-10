@@ -1,9 +1,12 @@
 from __future__ import print_function
+from dotenv import load_dotenv
 
 import os
 import pytest
 import time
 import lilt
+
+load_dotenv()
 
 configuration = lilt.Configuration(
     host=os.environ["API_HOST"],

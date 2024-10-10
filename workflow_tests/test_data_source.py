@@ -1,4 +1,5 @@
 from __future__ import print_function
+from dotenv import load_dotenv
 
 import os
 import pytest
@@ -7,6 +8,8 @@ import lilt
 
 from lilt.rest import ApiException
 from pprint import pprint
+
+load_dotenv()
 
 
 configuration = lilt.Configuration(

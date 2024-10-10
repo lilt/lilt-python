@@ -38,12 +38,12 @@ class TestLiltCreateContent(unittest.TestCase):
             return LiltCreateContent(
                 language = '0', 
                 template = '0', 
-                template_params = lilt.models.lilt_create_content_template_params.LiltCreateContent_templateParams(
+                template_params = lilt.models.lilt_create_content_template_params.LiltCreateContentTemplateParams(
                     content_length = 56, 
                     language = '0', 
                     sections = '0', 
                     summary = '0', ), 
-                preferences = lilt.models.lilt_create_content_preferences.LiltCreateContent_preferences(
+                preferences = lilt.models.lilt_create_content_preferences.LiltCreateContentPreferences(
                     tone = '0', 
                     styleguide = '0', )
             )
@@ -51,7 +51,7 @@ class TestLiltCreateContent(unittest.TestCase):
             return LiltCreateContent(
                 language = '0',
                 template = '0',
-                template_params = lilt.models.lilt_create_content_template_params.LiltCreateContent_templateParams(
+                template_params = lilt.models.lilt_create_content_template_params.LiltCreateContentTemplateParams(
                     content_length = 56, 
                     language = '0', 
                     sections = '0', 
