@@ -89,7 +89,7 @@ def expected_chars(char_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": ""
                 }
             }
@@ -101,7 +101,7 @@ def expected_chars(char_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
@@ -113,7 +113,7 @@ def expected_chars(char_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": 'a blog post about how important bees are to '
                                 'my honey farma blog post about how important '
                                 'bees are to my honey farma blog post about '
@@ -138,7 +138,7 @@ def expected_chars(char_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": "1"
                 }
             }
@@ -154,7 +154,7 @@ def expected_section(section_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "[]",
+                    "sections": [],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
@@ -166,7 +166,7 @@ def expected_section(section_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me']",
+                    "sections": ["Bees and me"],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
@@ -178,7 +178,7 @@ def expected_section(section_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
@@ -202,7 +202,7 @@ def expected_section(section_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "[1, 2]",
+                    "sections": [1, 2],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
