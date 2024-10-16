@@ -1,4 +1,4 @@
-name: Pytest
+name: Pytest Tests
 env:
   API_HOST: ${{ vars.API_HOST }}
   API_KEY: ${{ secrets.API_KEY }}
