@@ -36,9 +36,12 @@ jobs:
     needs:
     - build
     runs-on: ubuntu-latest
+    
     environment:
       name: pypi
       url: https://pypi.org/p/lilt-python
+
+    permissions:
       id-token: write
 
     steps:
