@@ -27,7 +27,7 @@ jobs:
             -p packageName=lilt
             -p projectName=lilt-python
             -p packageUrl=https://github.com/lilt/lilt-python
-            -p packageVersion=${{ steps.latest.outputs.tag }}
+            -p packageVersion=${{ github.event.client_payload.version }}
             --git-user-id lilt
             --git-repo-id lilt-python
             --skip-validate-spec
