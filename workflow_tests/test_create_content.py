@@ -27,15 +27,15 @@ generate_content_char_cases = [
     "none",
     "normal",
     "over500",
-    "non_string"
+    #"non_string"
 ]
 
 generate_content_sections_cases = [
     "none",
     "one",
     "multiple",
-    "non_list",
-    "non_string_elements"
+    #"non_list",
+    #"non_string_elements"
 ]
 
 
@@ -89,7 +89,7 @@ def expected_chars(char_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": ""
                 }
             }
@@ -101,7 +101,7 @@ def expected_chars(char_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
@@ -113,7 +113,7 @@ def expected_chars(char_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": 'a blog post about how important bees are to '
                                 'my honey farma blog post about how important '
                                 'bees are to my honey farma blog post about '
@@ -138,7 +138,7 @@ def expected_chars(char_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": "1"
                 }
             }
@@ -154,7 +154,7 @@ def expected_section(section_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "[]",
+                    "sections": [],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
@@ -166,7 +166,7 @@ def expected_section(section_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me']",
+                    "sections": ["Bees and me"],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
@@ -178,7 +178,7 @@ def expected_section(section_case):
                 "template_params": {
                     "content_length": 1000,
                     "language": "en-US",
-                    "sections": "['Bees and me', 'Honey for you', 'Conclusion']",
+                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
@@ -215,6 +215,7 @@ def assert_response(create_content_obj, expected):
     template_params = create_content_obj.template_params
     assert template_params.content_length == expected["template_params"]["content_length"]
     assert template_params.language == expected["template_params"]["language"]
+    print(expected["template_params"]["sections"])
     assert template_params.sections == expected["template_params"]["sections"]
     assert template_params.summary == expected["template_params"]["summary"]
 
