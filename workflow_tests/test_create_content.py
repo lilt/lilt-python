@@ -215,7 +215,6 @@ def assert_response(create_content_obj, expected):
     template_params = create_content_obj.template_params
     assert template_params.content_length == expected["template_params"]["content_length"]
     assert template_params.language == expected["template_params"]["language"]
-    print(expected["template_params"]["sections"])
     assert template_params.sections == expected["template_params"]["sections"]
     assert template_params.summary == expected["template_params"]["summary"]
 
