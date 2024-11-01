@@ -1,8 +1,5 @@
 from __future__ import print_function
-<<<<<<< HEAD
 from dotenv import load_dotenv
-=======
->>>>>>> dc52f6f (Rebasing)
 
 import os
 import pytest
@@ -11,12 +8,9 @@ import lilt
 
 from lilt.rest import ApiException
 from pprint import pprint
-<<<<<<< HEAD
 from tenacity import retry, stop_after_delay, wait_exponential, retry_if_result, RetryError
 
 load_dotenv()
-=======
->>>>>>> dc52f6f (Rebasing)
 
 
 configuration = lilt.Configuration(
