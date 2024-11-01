@@ -1,10 +1,10 @@
 # lilt.LanguagesApi
 
-All URIs are relative to *https://lilt.com/2*
+All URIs are relative to *https://api.lilt.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_languages**](LanguagesApi.md#get_languages) | **GET** /languages | Retrieve supported languages
+[**get_languages**](LanguagesApi.md#get_languages) | **GET** /v2/languages | Retrieve supported languages
 
 
 # **get_languages**
@@ -23,10 +23,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -36,7 +36,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -70,10 +70,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -83,7 +83,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }

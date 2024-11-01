@@ -1,21 +1,21 @@
 # lilt.JobsApi
 
-All URIs are relative to *https://lilt.com/2*
+All URIs are relative to *https://api.lilt.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**archive_job**](JobsApi.md#archive_job) | **POST** /jobs/{jobId}/archive | Archive a Job
-[**create_job**](JobsApi.md#create_job) | **POST** /jobs | Create a Job
-[**delete_job**](JobsApi.md#delete_job) | **DELETE** /jobs/{jobId} | Delete a Job
-[**deliver_job**](JobsApi.md#deliver_job) | **POST** /jobs/{jobId}/deliver | Deliver a Job
-[**download_job**](JobsApi.md#download_job) | **GET** /jobs/{jobId}/downlod | Download a Job
-[**export_job**](JobsApi.md#export_job) | **GET** /jobs/{jobId}/export | Export a Job
-[**get_job**](JobsApi.md#get_job) | **GET** /jobs/{jobId} | Retrieve a Job
-[**get_job_leverage_stats**](JobsApi.md#get_job_leverage_stats) | **POST** /jobs/{jobId}/stats | Retrieve Job Leverage Stats
-[**reactivate_job**](JobsApi.md#reactivate_job) | **POST** /jobs/{jobId}/reactivate | Reactivate a Job
-[**retrieve_all_jobs**](JobsApi.md#retrieve_all_jobs) | **GET** /jobs | Retrieve all Jobs
-[**unarchive_job**](JobsApi.md#unarchive_job) | **POST** /jobs/{jobId}/unarchive | Unarchive a Job
-[**update_job**](JobsApi.md#update_job) | **PUT** /jobs/{jobId} | Update a Job
+[**archive_job**](JobsApi.md#archive_job) | **POST** /v2/jobs/{jobId}/archive | Archive a Job
+[**create_job**](JobsApi.md#create_job) | **POST** /v2/jobs | Create a Job
+[**delete_job**](JobsApi.md#delete_job) | **DELETE** /v2/jobs/{jobId} | Delete a Job
+[**deliver_job**](JobsApi.md#deliver_job) | **POST** /v2/jobs/{jobId}/deliver | Deliver a Job
+[**download_job**](JobsApi.md#download_job) | **GET** /v2/jobs/{jobId}/downlod | Download a Job
+[**export_job**](JobsApi.md#export_job) | **GET** /v2/jobs/{jobId}/export | Export a Job
+[**get_job**](JobsApi.md#get_job) | **GET** /v2/jobs/{jobId} | Retrieve a Job
+[**get_job_leverage_stats**](JobsApi.md#get_job_leverage_stats) | **POST** /v2/jobs/{jobId}/stats | Retrieve Job Leverage Stats
+[**reactivate_job**](JobsApi.md#reactivate_job) | **POST** /v2/jobs/{jobId}/reactivate | Reactivate a Job
+[**retrieve_all_jobs**](JobsApi.md#retrieve_all_jobs) | **GET** /v2/jobs | Retrieve all Jobs
+[**unarchive_job**](JobsApi.md#unarchive_job) | **POST** /v2/jobs/{jobId}/unarchive | Unarchive a Job
+[**update_job**](JobsApi.md#update_job) | **PUT** /v2/jobs/{jobId} | Update a Job
 
 
 # **archive_job**
@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 Archive a Job
 
-Set job to archived, unassign all linguists and archive all projects and documents inside the job.  It will return the archived job.  Example CURL command:  ``` curl -X POST 'https://lilt.com/2/jobs/{id}/archive?key=API_KEY' ```
+Set job to archived, unassign all linguists and archive all projects and documents inside the job.  It will return the archived job.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/archive?key=API_KEY' ```
 
 ### Example
 
@@ -34,10 +34,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -47,7 +47,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -82,10 +82,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -95,7 +95,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 Create a Job
 
-Create a Job. A Job is a collection of Projects. A Job will contain multiple projects, based on the language pair. A Project is associated with exactly one Memory.  Jobs appear in the Jobs dashboard of the web app.  Example CURL command:  ``` curl -X POST 'https://lilt.com/2/jobs?key=API_KEY' \\ --header 'Content-Type: application/json' \\ --data-raw '{   \"name\": \"test job\",   \"fileIds\": [5009, 5010, 5011],   \"due\": \"2022-05-05T10:56:44.985Z\",   \"srcLang\": \"en\",   \"srcLocale\": \"US\",   \"languagePairs\": [       { \"memoryId\": 3121, \"trgLang\": \"de\" },       { \"memoryId\": 2508, \"trgLang\": \"fr\" },       { \"memoryId\": 3037, \"trgLang\": \"zh\" }     ] }' ```  
+Create a Job. A Job is a collection of Projects. A Job will contain multiple projects, based on the language pair. A Project is associated with exactly one Memory.  Jobs appear in the Jobs dashboard of the web app.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs?key=API_KEY' \\ --header 'Content-Type: application/json' \\ --data-raw '{   \"name\": \"test job\",   \"fileIds\": [5009, 5010, 5011],   \"due\": \"2022-05-05T10:56:44.985Z\",   \"srcLang\": \"en\",   \"srcLocale\": \"US\",   \"languagePairs\": [       { \"memoryId\": 3121, \"trgLang\": \"de\" },       { \"memoryId\": 2508, \"trgLang\": \"fr\" },       { \"memoryId\": 3037, \"trgLang\": \"zh\" }     ] }' ```  
 
 ### Example
 
@@ -166,10 +166,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -179,7 +179,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -214,10 +214,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -227,7 +227,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 Delete a Job
 
-Delete a job, deletes all projects and documents in the job, deletes all the segments from all the job's translation memories.  Example CURL command:  ``` curl -X DELETE 'https://lilt.com/2/jobs/{id}?key=API_KEY' ```
+Delete a job, deletes all projects and documents in the job, deletes all the segments from all the job's translation memories.  Example CURL command:  ```bash curl -X DELETE 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY' ```
 
 ### Example
 
@@ -298,10 +298,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -311,7 +311,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -346,10 +346,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -359,7 +359,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 Deliver a Job
 
-Set the job state to delivered and set all the projects in the job to done  It will return the delivered job.  Example CURL command:  ``` curl -X POST 'https://lilt.com/2/jobs/{id}/deliver?key=API_KEY' ```
+Set the job state to delivered and set all the projects in the job to done  It will return the delivered job.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/deliver?key=API_KEY' ```
 
 ### Example
 
@@ -430,10 +430,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -443,7 +443,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -478,10 +478,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -491,7 +491,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -551,7 +551,7 @@ Name | Type | Description  | Notes
 
 Download a Job
 
-Make sure you have exported a job with the same id before using this api.  Downloading files requires the exported job `id` in the param.  Example CURL command:  ``` curl -X GET 'https://lilt.com/2/jobs/{id}/download?key=API_KEY' ```
+Make sure you have exported a job with the same id before using this api.  Downloading files requires the exported job `id` in the param.  Example CURL command:  ```bash curl -X GET 'https://api.lilt.com/v2/jobs/{id}/download?key=API_KEY' ```
 
 ### Example
 
@@ -562,10 +562,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -575,7 +575,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -609,10 +609,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -622,7 +622,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -681,7 +681,7 @@ void (empty response body)
 
 Export a Job
 
-Prepare job files for download. To export translated documents from the job use the query parameter `type=files`:  Example CURL command:  ``` curl -X GET 'https://lilt.com/2/jobs/{id}/export?key=API_KEY&type=files' ```  To export job memories use the query parameter `type=memory`.  The status of the export can be checked by requesting the job `GET /jobs/:jobId`, `job.isProcessing` will be `1` while in progress, `0` when idle and `-2` when the export failed.
+Prepare job files for download. To export translated documents from the job use the query parameter `type=files`:  Example CURL command:  ```bash curl -X GET 'https://api.lilt.com/v2/jobs/{id}/export?key=API_KEY&type=files' ```  To export job memories use the query parameter `type=memory`.  The status of the export can be checked by requesting the job `GET /jobs/:jobId`, `job.isProcessing` will be `1` while in progress, `0` when idle and `-2` when the export failed.
 
 ### Example
 
@@ -692,10 +692,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -705,7 +705,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -740,10 +740,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -753,7 +753,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -814,7 +814,7 @@ void (empty response body)
 
 Retrieve a Job
 
-Retrieves a job data along with stats. To retrieve a specific job, you will need the job `id` in the url path.  Example CURL command:  ``` curl -X GET 'https://lilt.com/2/jobs/{id}?key=API_KEY' ```
+Retrieves a job data along with stats. To retrieve a specific job, you will need the job `id` in the url path.  Example CURL command:  ```bash curl -X GET 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY' ```
 
 ### Example
 
@@ -825,10 +825,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -838,7 +838,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -873,10 +873,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -886,7 +886,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -946,7 +946,7 @@ Name | Type | Description  | Notes
 
 Retrieve Job Leverage Stats
 
-Get the TM leverage stats for the job (new/exact/fuzzy matches).  Example CURL command:  ``` curl -X POST 'https://lilt.com/2/jobs/{id}/stats?key=API_KEY' ```
+Get the TM leverage stats for the job (new/exact/fuzzy matches).  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/stats?key=API_KEY' ```
 
 ### Example
 
@@ -957,10 +957,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -970,7 +970,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1005,10 +1005,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1018,7 +1018,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1078,7 +1078,7 @@ Name | Type | Description  | Notes
 
 Reactivate a Job
 
-Set the job state to active. Does not change the state of projects associated with the given job.  It will return the reactivated job.  Example CURL command:  ``` curl -X POST 'https://lilt.com/2/jobs/{id}/reactivate?key=API_KEY' ```
+Set the job state to active. Does not change the state of projects associated with the given job.  It will return the reactivated job.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/reactivate?key=API_KEY' ```
 
 ### Example
 
@@ -1089,10 +1089,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1102,7 +1102,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1137,10 +1137,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1150,7 +1150,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1210,7 +1210,7 @@ Name | Type | Description  | Notes
 
 Retrieve all Jobs
 
-Get all Jobs within a given offset and limit. You can retrieve jobs from your account using the above API.  Example CURL command:  ``` curl -X GET 'https://lilt.com/2/jobs?key=API_KEY&isArchived=false' ```
+Get all Jobs within a given offset and limit. You can retrieve jobs from your account using the above API.  Example CURL command:  ```bash curl -X GET 'https://api.lilt.com/v2/jobs?key=API_KEY&isArchived=false' ```
 
 ### Example
 
@@ -1221,10 +1221,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1234,7 +1234,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1272,10 +1272,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1285,7 +1285,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1351,7 +1351,7 @@ Name | Type | Description  | Notes
 
 Unarchive a Job
 
-Set job to unarchived, the job will move to active status.  Example CURL command:  ``` curl -X POST 'https://lilt.com/2/jobs/{id}/unarchive?key=API_KEY' ```
+Set job to unarchived, the job will move to active status.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/unarchive?key=API_KEY' ```
 
 ### Example
 
@@ -1362,10 +1362,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1375,7 +1375,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1410,10 +1410,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1423,7 +1423,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1483,7 +1483,7 @@ Name | Type | Description  | Notes
 
 Update a Job
 
-Updates a job with the new job properties. To update a specific job, you will need the job `id` in the url path.  You can update job's name and due date by passing the property and new value in the body.  Example CURL command:  ``` curl -X PUT 'https://lilt.com/2/jobs/{id}?key=API_KEY' \\ --header 'Content-Type: application/json' \\ --data-raw '{   \"name\": \"test job\",   \"due\": \"2022-05-05T10:56:44.985Z\" }' ```
+Updates a job with the new job properties. To update a specific job, you will need the job `id` in the url path.  You can update job's name and due date by passing the property and new value in the body.  Example CURL command:  ```bash curl -X PUT 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY' \\ --header 'Content-Type: application/json' \\ --data-raw '{   \"name\": \"test job\",   \"due\": \"2022-05-05T10:56:44.985Z\" }' ```
 
 ### Example
 
@@ -1494,10 +1494,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1507,7 +1507,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
@@ -1543,10 +1543,10 @@ import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
-# Defining the host is optional and defaults to https://lilt.com/2
+# Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2"
+    host = "https://api.lilt.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -1556,7 +1556,7 @@ configuration = lilt.Configuration(
 
 # Configure API key authorization: ApiKeyAuth
 configuration = lilt.Configuration(
-    host = "https://lilt.com/2",
+    host = "https://api.lilt.com",
     api_key = {
         'key': 'YOUR_API_KEY'
     }
