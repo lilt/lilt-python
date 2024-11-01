@@ -26,16 +26,13 @@ sign_cases = [
 generate_content_char_cases = [
     "none",
     "normal",
-    "over500",
-    #"non_string"
+    "over500"
 ]
 
 generate_content_sections_cases = [
     "none",
     "one",
-    "multiple",
-    #"non_list",
-    #"non_string_elements"
+    "multiple"
 ]
 
 
@@ -61,8 +58,6 @@ def get_summary(char_case):
             return "a blog post about how important bees are to my honey farm"
         case "over500":
             return "a blog post about how important bees are to my honey farm" * 10
-        case "non_string":
-            return 1
 
 
 def get_section(section_case):
@@ -73,10 +68,6 @@ def get_section(section_case):
             return ["Bees and me"]
         case "multiple":
             return ["Bees and me", "Honey for you", "Conclusion"]
-        case "non_list":
-            return 1
-        case "non_string_elements":
-            return [1, 2]
 
 
 def expected_chars(char_case):
@@ -130,18 +121,6 @@ def expected_chars(char_case):
                                 'farm'
                 }
             }
-        case "non_string":
-            return {
-                "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": ["Bees and me", "Honey for you", "Conclusion"],
-                    "summary": "1"
-                }
-            }
 
 
 def expected_section(section_case):
@@ -179,30 +158,6 @@ def expected_section(section_case):
                     "content_length": 1000,
                     "language": "en-US",
                     "sections": ["Bees and me", "Honey for you", "Conclusion"],
-                    "summary": "a blog post about how important bees are to my honey farm"
-                }
-            }
-        case "non_list":
-            return {
-                "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "1",
-                    "summary": "a blog post about how important bees are to my honey farm"
-                }
-            }
-        case "non_string_elements":
-            return {
-                "language": "en-US",
-                "preferences": None,
-                "template": "blog-post",
-                "template_params": {
-                    "content_length": 1000,
-                    "language": "en-US",
-                    "sections": "[1, 2]",
                     "summary": "a blog post about how important bees are to my honey farm"
                 }
             }
