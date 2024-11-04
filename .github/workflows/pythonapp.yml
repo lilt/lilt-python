@@ -2,6 +2,11 @@ name: Pytest Tests
 env:
   API_HOST: ${{ vars.API_HOST }}
   API_KEY: ${{ secrets.API_KEY }}
+  DD_API_KEY: ${{ secrets.DD_API_KEY }}
+  DD_SITE: us5.datadoghq.com
+  DD_ENV: staging
+  DD_SERVICE: lilt-python
+  DD_CIVISIBILITY_AGENTLESS_ENABLED: true
 
 on:
   push:
@@ -25,6 +30,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r test-requirements.txt
+    - name: Install datadog tracing library
+      run: |
+        pip install -U ddtrace
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -33,4 +41,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest workflow_tests
+        pytest workflow_tests --ddtrace
