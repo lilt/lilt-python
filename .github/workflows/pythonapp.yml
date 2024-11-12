@@ -2,10 +2,15 @@ name: Pytest Tests
 env:
   API_HOST: ${{ vars.API_HOST }}
   API_KEY: ${{ secrets.API_KEY }}
+  DD_API_KEY: ${{ secrets.DD_API_KEY }}
+  DD_SITE: us5.datadoghq.com
+  DD_ENV: staging
+  DD_SERVICE: lilt-python
+  DD_CIVISIBILITY_AGENTLESS_ENABLED: true
 
 on:
   push:
-    branches: [ master, openapi-bindings ]
+    branches: [ master ]
   pull_request:
     branches: [ master, openapi-bindings ]
 
@@ -25,14 +30,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r test-requirements.txt
+    - name: Install datadog tracing library
+      run: |
+        pip install -U ddtrace
     - name: Lint with flake8
       run: |
-        pip install flake8
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pip install pytest
-        pytest workflow_tests
+        pytest workflow_tests --ddtrace
