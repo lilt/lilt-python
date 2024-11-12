@@ -1,11 +1,10 @@
-# LiltCreateContent
+# LiltCreateContentRequest
 
 Content Parameters for LiltCreate. 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | A name for the request content. | [optional] 
-**id** | **int** | A unique identifier for the generated content. | [optional] 
 **language** | **str** | The language of the content. | 
 **template** | **str** | The template of the content. | 
 **template_params** | [**LiltCreateContentTemplateParams**](LiltCreateContentTemplateParams.md) |  | 

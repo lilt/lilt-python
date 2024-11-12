@@ -129,7 +129,7 @@ class MemoriesApi(object):
             body_params = local_var_params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -247,7 +247,7 @@ class MemoriesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -370,7 +370,7 @@ class MemoriesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -484,7 +484,7 @@ class MemoriesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -598,7 +598,7 @@ class MemoriesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -708,7 +708,7 @@ class MemoriesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -856,7 +856,7 @@ class MemoriesApi(object):
             body_params = local_var_params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -884,7 +884,7 @@ class MemoriesApi(object):
     def query_memory(self, id, query, **kwargs):  # noqa: E501
         """Query a Memory  # noqa: E501
 
-        Perform a translation memory query.    # noqa: E501
+        Perform a translation memory query.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.query_memory(id, query, async_req=True)
@@ -911,7 +911,7 @@ class MemoriesApi(object):
     def query_memory_with_http_info(self, id, query, **kwargs):  # noqa: E501
         """Query a Memory  # noqa: E501
 
-        Perform a translation memory query.    # noqa: E501
+        Perform a translation memory query.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.query_memory_with_http_info(id, query, async_req=True)
@@ -988,7 +988,7 @@ class MemoriesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -1102,7 +1102,7 @@ class MemoriesApi(object):
             body_params = local_var_params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501

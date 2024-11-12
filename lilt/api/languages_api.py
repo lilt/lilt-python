@@ -120,7 +120,7 @@ class LanguagesApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501

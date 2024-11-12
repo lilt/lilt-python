@@ -129,7 +129,7 @@ class CreateApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -160,7 +160,7 @@ class CreateApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param LiltCreateContent template_params: Input parameters that determine what content will be generated.  (required)
+        :param LiltCreateContentRequest template_params: Input parameters that determine what content will be generated.  (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -185,7 +185,7 @@ class CreateApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param LiltCreateContent template_params: Input parameters that determine what content will be generated.  (required)
+        :param LiltCreateContentRequest template_params: Input parameters that determine what content will be generated.  (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -241,6 +241,10 @@ class CreateApi(object):
         body_params = None
         if 'template_params' in local_var_params:
             body_params = local_var_params['template_params']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream', 'text/plain', 'application/json'])  # noqa: E501
+
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
@@ -357,7 +361,7 @@ class CreateApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -462,7 +466,7 @@ class CreateApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -565,6 +569,10 @@ class CreateApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream', 'text/plain', 'application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
@@ -675,6 +683,10 @@ class CreateApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream', 'text/plain', 'application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
@@ -787,7 +799,7 @@ class CreateApi(object):
             body_params = local_var_params['signed_agreement']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -910,7 +922,7 @@ class CreateApi(object):
             body_params = local_var_params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -1022,6 +1034,10 @@ class CreateApi(object):
         body_params = None
         if 'styleguide' in local_var_params:
             body_params = local_var_params['styleguide']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream', 'text/plain', 'application/json'])  # noqa: E501
+
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
