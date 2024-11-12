@@ -129,7 +129,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -243,7 +243,7 @@ class JobsApi(object):
             body_params = local_var_params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -361,7 +361,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -475,7 +475,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -589,13 +589,13 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/octet-stream', 'text/plain', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/v2/jobs/{jobId}/downlod', 'GET',
+            '/v2/jobs/{jobId}/download', 'GET',
             path_params,
             query_params,
             header_params,
@@ -712,7 +712,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/octet-stream', 'text/plain', 'application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -826,7 +826,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -940,7 +940,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -1054,7 +1054,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -1183,7 +1183,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -1297,7 +1297,7 @@ class JobsApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['ApiKeyAuth', 'BasicAuth']  # noqa: E501
@@ -1416,7 +1416,7 @@ class JobsApi(object):
             body_params = local_var_params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['application/json', 'application/octet-stream', 'text/plain'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501

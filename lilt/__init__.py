@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.5.2"
+__version__ = "3.0.0"
 
 # import apis into sdk package
 from lilt.api.create_api import CreateApi
@@ -57,6 +57,7 @@ from lilt.models.language_pair import LanguagePair
 from lilt.models.languages_response import LanguagesResponse
 from lilt.models.lilt_create_content import LiltCreateContent
 from lilt.models.lilt_create_content_preferences import LiltCreateContentPreferences
+from lilt.models.lilt_create_content_request import LiltCreateContentRequest
 from lilt.models.lilt_create_content_template_params import LiltCreateContentTemplateParams
 from lilt.models.memory import Memory
 from lilt.models.memory_create_parameters import MemoryCreateParameters

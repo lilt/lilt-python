@@ -33,7 +33,7 @@ class Error(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'message': 'object'
+        'message': 'str'
     }
 
     attribute_map = {
@@ -59,7 +59,7 @@ class Error(object):
         A human-readable message describing the error.  # noqa: E501
 
         :return: The message of this Error.  # noqa: E501
-        :rtype: object
+        :rtype: str
         """
         return self._message
 
@@ -70,7 +70,7 @@ class Error(object):
         A human-readable message describing the error.  # noqa: E501
 
         :param message: The message of this Error.  # noqa: E501
-        :type: object
+        :type: str
         """
 
         self._message = message
