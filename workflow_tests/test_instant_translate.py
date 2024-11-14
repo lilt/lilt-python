@@ -9,13 +9,6 @@ from tenacity import retry, stop_after_delay, wait_exponential, retry_if_result,
 
 load_dotenv()
 
-configuration = lilt.Configuration(
-    host=os.environ["API_HOST"],
-    api_key={
-        "key": os.environ["API_KEY"]
-    }
-)
-
 test_cases = [
     "fr_to_en"
 ]
@@ -41,44 +34,63 @@ def assert_translate_response(response, file_id, memory_id):
     assert response.created_at is not None
 
 
+@pytest.fixture(scope="module")
+def client():
+    configuration = lilt.Configuration(
+        host=os.environ["API_HOST"], api_key={"key": os.environ["API_KEY"]}
+    )
+    api_client = lilt.ApiClient(configuration)
+    commit = os.environ.get("GIT_COMMIT_SHA", "no_version_available")
+    api_client.user_agent = f"lilt-python-e2e-tests/{commit}"
+    return api_client
+
+
+@pytest.fixture(scope="module")
+def files_api(client):
+    return lilt.FilesApi(client)
+
+@pytest.fixture(scope="module")
+def translate_api(client):
+    return lilt.TranslateApi(client)
+
+
 @retry(
     retry=retry_if_result(lambda status: status != "ReadyForDownload"),
     stop=stop_after_delay(2 * 60),
     wait=wait_exponential()
 )
-def monitor_file_translation(translate_instance, translation_id, file_id, memory_id):
-    api_response = translate_instance.monitor_file_translation(translation_ids=translation_id)
+def monitor_file_translation(translate_api, translation_id, file_id, memory_id):
+    api_response = translate_api.monitor_file_translation(translation_ids=translation_id)
     translation_response = api_response[0]
     translation_status = translation_response.status
     print(f"STATUS: {translation_status}")
     assert_translate_response(translation_response, file_id, memory_id)
     return translation_status
 
-
-@pytest.mark.parametrize("test_case", test_cases)
-def test_instant_translate_workflow(test_case):
-    api_client = lilt.ApiClient(configuration)
-
-    # Upload file
-    files_instance = lilt.FilesApi(api_client)
+@pytest.fixture(scope="module")
+def upload_file(files_api):
     name = "translate-fr_to_en.txt"
     upload_file = open(f"{translate_file_path}/translate-fr_to_en.txt", "rb")
     body = upload_file.read()
 
-    api_response = files_instance.upload_file(
+    api_response = files_api.upload_file(
         name,
         body
     )
     assert_upload_response(api_response)
-    file_id = api_response.id
+    yield api_response
+    files_api.delete_file(api_response.id)
 
-    # Translate file
-    translate_instance = lilt.TranslateApi(api_client)
+
+@pytest.mark.parametrize("test_case", test_cases)
+def test_instant_translate_workflow(upload_file, translate_api, test_case):
+    file_id = upload_file.id
+
     memory_id = STAGING_MEMORY_ID
     print(f"FILE ID: {file_id}")
     print(f"MEMORY ID: {memory_id}")
 
-    api_response = translate_instance.batch_translate_file(file_id, memory_id)
+    api_response = translate_api.batch_translate_file(file_id, memory_id)
     translation_response = api_response[0]
     translation_id = translation_response.id
     translation_status = translation_response.status
@@ -87,7 +99,7 @@ def test_instant_translate_workflow(test_case):
     # Monitor translation
     try:
         translation_status = monitor_file_translation(
-            translate_instance,
+            translate_api,
             translation_id,
             file_id,
             memory_id
@@ -98,6 +110,6 @@ def test_instant_translate_workflow(test_case):
         print("Translation exceeding time limit. Switching to finished translation.")
 
     # Download translated file
-    api_response = translate_instance.download_file(translation_id)
+    api_response = translate_api.download_file(translation_id)
     assert "cat" in api_response
     assert "hello" in api_response.lower()

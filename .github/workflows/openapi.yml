@@ -35,6 +35,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6.1.0
         with:
+          token: ${{ secrets.GHA_REPO_DISPATCH_TOKEN }}
           commit-message: Regenerates API Bindings
           title: "OpenAPI: Regenerates API Bindings"
           body: |

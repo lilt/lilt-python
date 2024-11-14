@@ -13,13 +13,6 @@ from tenacity import retry, stop_after_delay, wait_exponential, retry_if_result,
 load_dotenv()
 
 
-configuration = lilt.Configuration(
-    host=os.environ["API_HOST"],
-    api_key={
-        "key": os.environ["API_KEY"]
-    }
-)
-
 create_data_source_cases = [
     "none_src",
     "none_trg",
@@ -205,26 +198,36 @@ def assert_query_response(query_object, expected):
     assert query_object.source == expected["source"]
     assert query_object.target == expected["target"]
 
+@pytest.fixture(scope="module")
+def client():
+    configuration = lilt.Configuration(
+        host=os.environ["API_HOST"], api_key={"key": os.environ["API_KEY"]}
+    )
+    api_client = lilt.ApiClient(configuration)
+    commit = os.environ.get("GIT_COMMIT_SHA", "no_version_available")
+    api_client.user_agent = f"lilt-python-e2e-tests/{commit}"
+    return api_client
+
+
+@pytest.fixture(scope="module")
+def memories_api(client):
+    return lilt.MemoriesApi(client)
+
 
 @retry(
     retry=retry_if_result(lambda is_processing: is_processing == 1),
     stop=stop_after_delay(2 * 60),
     wait=wait_exponential()
 )
-def monitor_file_import(api_instance, memory_id):
-    api_response = api_instance.get_memory()
+def monitor_file_import(memories_api, memory_id):
+    api_response = memories_api.get_memory()
     is_processing = api_response[0].is_processing
     print(f"is_processing: {is_processing}")
     return is_processing
 
 
 @pytest.mark.parametrize("data_source_case", create_data_source_cases)
-def test_create_data_source_workflow(data_source_case):
-    api_client = lilt.ApiClient(configuration)
-
-    # Create data source
-    api_instance = lilt.MemoriesApi(api_client)
-
+def test_create_data_source_workflow(memories_api, data_source_case):
     try:
         data_source_parameters = get_data_source_parameters(data_source_case)
         body = lilt.MemoryCreateParameters(
@@ -242,9 +245,11 @@ def test_create_data_source_workflow(data_source_case):
             raise e
 
     try:
-        api_response = api_instance.create_memory(body)
+        api_response = memories_api.create_memory(body)
         pprint(api_response)
         assert_data_source_response(api_response, get_expected_data_source(data_source_case))
+
+        memories_api.delete_memory(api_response.id)
     except ApiException as e:
         print("Exception when calling MemoriesApi->create_memory: %s\n" % e)
         if data_source_case == "unsupported_languages":
@@ -253,12 +258,8 @@ def test_create_data_source_workflow(data_source_case):
             raise e
 
 
-@pytest.mark.parametrize("tmx_file_case", tmx_file_cases)
-def test_upload_tmx_file_workflow(tmx_file_case):
-    api_client = lilt.ApiClient(configuration)
-
-    # Create data source
-    api_instance = lilt.MemoriesApi(api_client)
+@pytest.fixture(scope="function")
+def create_fr_to_en_memory(memories_api):
     data_source_parameters = get_data_source_parameters("fr_to_en")
     body = lilt.MemoryCreateParameters(
         name=data_source_parameters["name"],
@@ -267,20 +268,26 @@ def test_upload_tmx_file_workflow(tmx_file_case):
         srclocale=data_source_parameters["srclocale"],
         trglocale=data_source_parameters["trglocale"]
     )
-    api_response = api_instance.create_memory(body)
+    api_response = memories_api.create_memory(body)
     assert_data_source_response(api_response, get_expected_data_source("fr_to_en"))
-    memory_id = api_response.id
+    print(f"Memory ID: {api_response.id}")
+    yield api_response
+    memories_api.delete_memory(api_response.id)
+
+
+@pytest.mark.parametrize("tmx_file_case", tmx_file_cases)
+def test_upload_tmx_file_workflow(memories_api, create_fr_to_en_memory, tmx_file_case):
+    memory_id = create_fr_to_en_memory.id
     print(f"Memory ID: {memory_id}")
 
     # Upload file
-    print(os.getcwd())
     tmx_settings = get_tmx_settings(tmx_file_case)
     upload_file = open(tmx_settings["body"], "rb")
     body = upload_file.read()
     print("-----FILE START-----")
     print(body)
     print("-----FILE END-----")
-    api_response = api_instance.import_memory_file(
+    api_response = memories_api.import_memory_file(
         memory_id=memory_id,
         name=tmx_settings["name"],
         body=body
@@ -290,13 +297,14 @@ def test_upload_tmx_file_workflow(tmx_file_case):
     assert api_response.is_processing == 1
     
     # Monitor file import
-    is_processing = monitor_file_import(api_instance, memory_id)
+    is_processing = monitor_file_import(memories_api, memory_id)
 
     # Query memory
     query = "chatte"
-    api_response = api_instance.query_memory(memory_id, query)
+    api_response = memories_api.query_memory(memory_id, query)
     if tmx_file_case == "wrong_data":
         assert api_response == []
     else:
         assert len(api_response) > 0
         assert_query_response(api_response[0], get_expected_query())
+
