@@ -187,8 +187,7 @@ def create_api(client):
 @pytest.fixture(scope="function")
 def sign(create_api):
     signed_agreement = lilt.CreateConverterConfigParameters(True)
-    api_response = create_api.sign_lilt_create_terms(signed_agreement)
-    return api_response
+    return create_api.sign_lilt_create_terms(signed_agreement)
 
 
 @pytest.mark.parametrize("sign_case", sign_cases)
@@ -231,7 +230,6 @@ def test_create_content_chars(create_api, sign, char_case):
     api_response = create_api.get_lilt_create_content()
     latest_content = api_response.contents[-1]
     assert_response(latest_content, expected_chars(char_case))
-    print(latest_content)
 
     create_api.delete_lilt_create_content(latest_content.id)
 
