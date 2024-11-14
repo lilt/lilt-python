@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 
 import os
 from io import BytesIO
+from time import sleep
 from zipfile import ZipFile
 
 import pytest
@@ -75,6 +76,7 @@ def job(api, memory, uploaded_file):
 
 def test_verified_translate_monitor_job_status(api, job):
     api.deliver_job(job.id)
+    sleep(1)
     jobs = api.retrieve_all_jobs(is_delivered="true", is_archived="false")
     assert len(jobs) > 0
 
