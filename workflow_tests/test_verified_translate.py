@@ -73,9 +73,18 @@ def job(api, memory, uploaded_file):
     api.delete_job(response.id)
 
 
+@retry(
+    retry=retry_if_result(lambda jobs: len(jobs) == 0),
+    stop=stop_after_delay(2 * 60),
+    wait=wait_exponential(),
+)
+def wait_for_job_creation(api, job_id):
+    api.deliver_job(job_id)
+    return api.retrieve_all_jobs(is_delivered="true", is_archived="false")
+
+
 def test_verified_translate_monitor_job_status(api, job):
-    api.deliver_job(job.id)
-    jobs = api.retrieve_all_jobs(is_delivered="true", is_archived="false")
+    jobs = wait_for_job_creation(api, job.id)
     assert len(jobs) > 0
 
 

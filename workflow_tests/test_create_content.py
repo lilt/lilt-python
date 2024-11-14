@@ -8,12 +8,6 @@ import lilt
 
 load_dotenv()
 
-configuration = lilt.Configuration(
-    host=os.environ["API_HOST"],
-    api_key={
-        "key": os.environ["API_KEY"]
-    }
-)
 
 sign_cases = [
     "none",
@@ -174,17 +168,36 @@ def assert_response(create_content_obj, expected):
     assert template_params.summary == expected["template_params"]["summary"]
 
 
-@pytest.mark.parametrize("sign_case", sign_cases)
-def test_sign(sign_case):
+@pytest.fixture(scope="module")
+def client():
+    configuration = lilt.Configuration(
+        host=os.environ["API_HOST"], api_key={"key": os.environ["API_KEY"]}
+    )
     api_client = lilt.ApiClient(configuration)
+    commit = os.environ.get("GIT_COMMIT_SHA", "no_version_available")
+    api_client.user_agent = f"lilt-python-e2e-tests/{commit}"
+    return api_client
 
-    # Sign terms and conditions
-    api_instance = lilt.CreateApi(api_client)
+
+@pytest.fixture(scope="module")
+def create_api(client):
+    return lilt.CreateApi(client)
+
+
+@pytest.fixture(scope="function")
+def sign(create_api):
+    signed_agreement = lilt.CreateConverterConfigParameters(True)
+    api_response = create_api.sign_lilt_create_terms(signed_agreement)
+    return api_response
+
+
+@pytest.mark.parametrize("sign_case", sign_cases)
+def test_sign(sign_case, create_api):
     sign = get_sign(sign_case)
 
     try:
         signed_agreement = lilt.CreateConverterConfigParameters(sign)
-        api_response = api_instance.sign_lilt_create_terms(signed_agreement)
+        api_response = create_api.sign_lilt_create_terms(signed_agreement)
         assert api_response.signed_agreement == bool(sign)
     except ValueError as e:
         print("Exception when calling CreateApi->sign_lilt_create_terms: %s\n" % e)
@@ -193,14 +206,8 @@ def test_sign(sign_case):
 
 
 @pytest.mark.parametrize("char_case", generate_content_char_cases)
-def test_create_content_chars(char_case):
-    api_client = lilt.ApiClient(configuration)
-
-    # Sign agreement
-    api_instance = lilt.CreateApi(api_client)
-    signed_agreement = lilt.CreateConverterConfigParameters(True)
-    api_response = api_instance.sign_lilt_create_terms(signed_agreement)
-    assert api_response.signed_agreement
+def test_create_content_chars(create_api, sign, char_case):
+    assert sign.signed_agreement
 
     # Generate content
     template_params = lilt.LiltCreateContentTemplateParams(
@@ -219,22 +226,19 @@ def test_create_content_chars(char_case):
         preferences=preferences
     )
 
-    api_instance.generate_lilt_create_content(request_body)
+    create_api.generate_lilt_create_content(request_body)
     time.sleep(5)
-    api_response = api_instance.get_lilt_create_content()
+    api_response = create_api.get_lilt_create_content()
     latest_content = api_response.contents[-1]
     assert_response(latest_content, expected_chars(char_case))
+    print(latest_content)
+
+    create_api.delete_lilt_create_content(latest_content.id)
 
 
 @pytest.mark.parametrize("section_case", generate_content_sections_cases)
-def test_create_content_sections(section_case):
-    api_client = lilt.ApiClient(configuration)
-
-    # Sign agreement
-    api_instance = lilt.CreateApi(api_client)
-    signed_agreement = lilt.CreateConverterConfigParameters(True)
-    api_response = api_instance.sign_lilt_create_terms(signed_agreement)
-    assert api_response.signed_agreement
+def test_create_content_sections(create_api, sign, section_case):
+    assert sign.signed_agreement
 
     # Generate content
     template_params = lilt.LiltCreateContentTemplateParams(
@@ -253,8 +257,10 @@ def test_create_content_sections(section_case):
         preferences=preferences
     )
 
-    api_instance.generate_lilt_create_content(request_body)
+    create_api.generate_lilt_create_content(request_body)
     time.sleep(5)
-    api_response = api_instance.get_lilt_create_content()
+    api_response = create_api.get_lilt_create_content()
     latest_content = api_response.contents[-1]
     assert_response(latest_content, expected_section(section_case))
+
+    create_api.delete_lilt_create_content(latest_content.id)
