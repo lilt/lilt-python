@@ -551,7 +551,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_job**
-> download_job(job_id)
+> str download_job(job_id)
 
 Download a Job
 
@@ -601,7 +601,8 @@ with lilt.ApiClient(configuration) as api_client:
 
     try:
         # Download a Job
-        api_instance.download_job(job_id)
+        api_response = api_instance.download_job(job_id)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobsApi->download_job: %s\n" % e)
 ```
@@ -648,7 +649,8 @@ with lilt.ApiClient(configuration) as api_client:
 
     try:
         # Download a Job
-        api_instance.download_job(job_id)
+        api_response = api_instance.download_job(job_id)
+        pprint(api_response)
     except ApiException as e:
         print("Exception when calling JobsApi->download_job: %s\n" % e)
 ```
@@ -661,7 +663,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
