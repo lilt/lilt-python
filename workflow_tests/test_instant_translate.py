@@ -40,6 +40,8 @@ def client():
         host=os.environ["API_HOST"], api_key={"key": os.environ["API_KEY"]}
     )
     api_client = lilt.ApiClient(configuration)
+    api_client.set_default_header("x-is-automated-test", True)
+    api_client.set_default_header("x-is-expected-error", True)
     commit = os.environ.get("GIT_COMMIT_SHA", "no_version_available")
     api_client.user_agent = f"lilt-python-e2e-tests/{commit}"
     return api_client
