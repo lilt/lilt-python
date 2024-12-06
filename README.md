@@ -117,6 +117,31 @@ with lilt.ApiClient(configuration) as api_client:
     
 ```
 
+## Checking Credentials
+
+If you would like to test your credentials using our functionality tests you can do the following. Run: 
+
+```sh
+pip show lilt-python
+```
+
+Navigate to the Location field and create a .env file inside the package using .env_example as a template. Fill out the API_HOST and API_KEY lines using the credentials you were given.
+
+Then while inside the package folder, run:
+
+```sh
+pip install -r test-requirements.txt
+```
+
+Followed by:
+
+```sh
+local_test
+```
+
+You should be able to see the tests run.
+
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.lilt.com*
