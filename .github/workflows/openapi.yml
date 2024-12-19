@@ -30,6 +30,7 @@ jobs:
             -p packageVersion=${{ github.event.client_payload.version }}
             --git-user-id lilt
             --git-repo-id lilt-python
+            --http-user-agent Lilt_Client_Library-Python
             --skip-validate-spec
             -o .
       - name: Create Pull Request
