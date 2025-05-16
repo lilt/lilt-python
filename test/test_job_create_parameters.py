@@ -39,10 +39,10 @@ class TestJobCreateParameters(unittest.TestCase):
             return JobCreateParameters(
                 name = 'My new Job', 
                 due = '2021-10-05T14:48:00.000Z', 
+                src_lang = 'en',
+                src_locale = 'US',
                 language_pairs = [
                     lilt.models.language_pair.LanguagePair(
-                        src_lang = 'en', 
-                        src_locale = 'US', 
                         trg_lang = 'de', 
                         trg_locale = 'DE', 
                         due_date = '2021-10-03T13:43:00.000Z', 
@@ -51,17 +51,18 @@ class TestJobCreateParameters(unittest.TestCase):
                         auto_accept = True, 
                         case_sensitive = True, 
                         take_match_attribution = True, 
-                        config_id = 2332, )
+                        config_id = 2332,
+                        instructions = 'This is a test job' )
                     ], 
                 file_ids = [298, 299]
             )
         else :
             return JobCreateParameters(
                 name = 'My new Job',
+                src_lang = 'en',
+                src_locale = 'US',
                 language_pairs = [
                     lilt.models.language_pair.LanguagePair(
-                        src_lang = 'en', 
-                        src_locale = 'US', 
                         trg_lang = 'de', 
                         trg_locale = 'DE', 
                         due_date = '2021-10-03T13:43:00.000Z', 
@@ -70,7 +71,8 @@ class TestJobCreateParameters(unittest.TestCase):
                         auto_accept = True, 
                         case_sensitive = True, 
                         take_match_attribution = True, 
-                        config_id = 2332, )
+                        config_id = 2332,
+                        instructions = 'This is a test job' )
                     ],
                 file_ids = [298, 299],
         )

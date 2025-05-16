@@ -45,7 +45,8 @@ class LanguagePair(object):
         'config_id': 'int',
         'workflow_template_id': 'int',
         'workflow_template_name': 'int',
-        'workflow_stage_assignments': 'list[WorkflowStageAssignment]'
+        'workflow_stage_assignments': 'list[WorkflowStageAssignment]',
+        'instructions': 'str'
     }
 
     attribute_map = {
@@ -61,10 +62,11 @@ class LanguagePair(object):
         'config_id': 'configId',
         'workflow_template_id': 'workflowTemplateId',
         'workflow_template_name': 'workflowTemplateName',
-        'workflow_stage_assignments': 'workflowStageAssignments'
+        'workflow_stage_assignments': 'workflowStageAssignments',
+        'instructions': 'instructions'
     }
 
-    def __init__(self, trg_lang=None, trg_locale=None, due_date=None, memory_id=None, external_model_id=None, pretranslate=None, auto_accept=None, case_sensitive=None, take_match_attribution=None, config_id=None, workflow_template_id=None, workflow_template_name=None, workflow_stage_assignments=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, trg_lang=None, trg_locale=None, due_date=None, memory_id=None, external_model_id=None, pretranslate=None, auto_accept=None, case_sensitive=None, take_match_attribution=None, config_id=None, workflow_template_id=None, workflow_template_name=None, workflow_stage_assignments=None, instructions=None, local_vars_configuration=None):  # noqa: E501
         """LanguagePair - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -83,6 +85,7 @@ class LanguagePair(object):
         self._workflow_template_id = None
         self._workflow_template_name = None
         self._workflow_stage_assignments = None
+        self._instructions = None
         self.discriminator = None
 
         self.trg_lang = trg_lang
@@ -109,6 +112,8 @@ class LanguagePair(object):
             self.workflow_template_name = workflow_template_name
         if workflow_stage_assignments is not None:
             self.workflow_stage_assignments = workflow_stage_assignments
+        if instructions is not None:
+            self.instructions = instructions
 
     @property
     def trg_lang(self):
@@ -410,6 +415,29 @@ class LanguagePair(object):
         """
 
         self._workflow_stage_assignments = workflow_stage_assignments
+
+    @property
+    def instructions(self):
+        """Gets the project instructions of this LanguagePair.  # noqa: E501
+
+        Project instructions for the translation.  # noqa: E501
+
+        :return: The project instructions of this LanguagePair.  # noqa: E501
+        :rtype: str
+        """
+        return self._instructions
+
+    @instructions.setter
+    def instructions(self, instructions):
+        """Sets the project instructions of this LanguagePair.
+
+        Project instructions for the translation.  # noqa: E501
+
+        :param instructions: The project instructions of this LanguagePair.  # noqa: E501
+        :type: str
+        """
+
+        self._instructions = instructions
 
     def to_dict(self):
         """Returns the model properties as a dict"""

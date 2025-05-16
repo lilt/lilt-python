@@ -37,8 +37,6 @@ class TestLanguagePair(unittest.TestCase):
         # model = lilt.models.language_pair.LanguagePair()  # noqa: E501
         if include_optional :
             return LanguagePair(
-                src_lang = 'en', 
-                src_locale = 'US', 
                 trg_lang = 'de', 
                 trg_locale = 'DE', 
                 due_date = '2021-10-03T13:43:00.000Z', 
@@ -47,8 +45,8 @@ class TestLanguagePair(unittest.TestCase):
                 auto_accept = True, 
                 case_sensitive = True, 
                 take_match_attribution = True, 
-                config_id = 2332
-            )
+                config_id = 2332,
+                instructions = 'This is a test job' )
         else :
             return LanguagePair(
                 trg_lang = 'de',
