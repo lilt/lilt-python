@@ -1,7 +1,9 @@
 # DocumentWithSegments
 
 A Document is a collection of zero or more Segments. 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | A unique number identifying the Document. | [optional] 
@@ -22,8 +24,25 @@ Name | Type | Description | Notes
 **created_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 **updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 **is_review_complete** | **bool** | Document review status. | [optional] 
-**segments** | [**list[Segment]**](Segment.md) | A list of Segments. | [optional] 
+**segments** | [**List[Segment]**](Segment.md) | A list of Segments. | [optional] 
 
+## Example
+
+```python
+from lilt.models.document_with_segments import DocumentWithSegments
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of DocumentWithSegments from a JSON string
+document_with_segments_instance = DocumentWithSegments.from_json(json)
+# print the JSON string representation of the object
+print(DocumentWithSegments.to_json())
+
+# convert the object into a dict
+document_with_segments_dict = document_with_segments_instance.to_dict()
+# create an instance of DocumentWithSegments from a dict
+document_with_segments_from_dict = DocumentWithSegments.from_dict(document_with_segments_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 
