@@ -1,7 +1,9 @@
 # DocumentWithoutSegments
 
 A Document is a collection of zero or more Segments. 
+
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | A unique number identifying the Document. | [optional] 
@@ -24,6 +26,23 @@ Name | Type | Description | Notes
 **updated_at** | **int** | Time at which the object was created. Measured in seconds since the Unix epoch. | [optional] 
 **is_review_complete** | **bool** | Document review status. | [optional] 
 
+## Example
+
+```python
+from lilt.models.document_without_segments import DocumentWithoutSegments
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of DocumentWithoutSegments from a JSON string
+document_without_segments_instance = DocumentWithoutSegments.from_json(json)
+# print the JSON string representation of the object
+print(DocumentWithoutSegments.to_json())
+
+# convert the object into a dict
+document_without_segments_dict = document_without_segments_instance.to_dict()
+# create an instance of DocumentWithoutSegments from a dict
+document_without_segments_from_dict = DocumentWithoutSegments.from_dict(document_without_segments_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

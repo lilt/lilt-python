@@ -20,65 +20,30 @@ Method | HTTP request | Description
 
 Create a Memory
 
-Create a new Memory. A Memory is a container that collects source/target sentences for a specific language pair (e.g., English>French). The data in the Memory is used to train the MT system, populate the TM, and update the lexicon. Memories are private to your account - the data is not shared across users - unless you explicitly share a Memory with your team (via web app only).  <a href=\"https://support.lilt.com/hc/en-us/sections/360012579193-Lilt-Translate-Engine\" target=_blank>Refer to our KB</a> for a more detailed description.  
+Create a new Memory. A Memory is a container that collects source/target
+sentences for a specific language pair (e.g., English>French). The data
+in the Memory is used to train the MT system, populate the TM, and
+update the lexicon. Memories are private to your account - the data is
+not shared across users - unless you explicitly share a Memory with your
+team (via web app only).
+
+<a href="https://support.lilt.com/hc/en-us/sections/360012579193-Lilt-Translate-Engine" target=_blank>Refer
+to our KB</a> for a more detailed description.
+
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    body = lilt.MemoryCreateParameters() # MemoryCreateParameters | 
-
-    try:
-        # Create a Memory
-        api_response = api_instance.create_memory(body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->create_memory: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.memory import Memory
+from lilt.models.memory_create_parameters import MemoryCreateParameters
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -90,41 +55,41 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.MemoriesApi(api_client)
-    body = lilt.MemoryCreateParameters() # MemoryCreateParameters | 
+    body = lilt.MemoryCreateParameters() # MemoryCreateParameters | The Memory resource to create.
 
     try:
         # Create a Memory
         api_response = api_instance.create_memory(body)
+        print("The response of MemoriesApi->create_memory:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->create_memory: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MemoryCreateParameters**](MemoryCreateParameters.md)|  | 
+ **body** | [**MemoryCreateParameters**](MemoryCreateParameters.md)| The Memory resource to create. | 
 
 ### Return type
 
@@ -132,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -140,6 +105,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A Memory object. |  -  |
@@ -153,65 +119,20 @@ Name | Type | Description  | Notes
 
 Delete a Memory
 
-Delete a Memory. 
+Delete a Memory.
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    id = 56 # int | A unique Memory identifier.
-
-    try:
-        # Delete a Memory
-        api_response = api_instance.delete_memory(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->delete_memory: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.memory_delete_response import MemoryDeleteResponse
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -223,21 +144,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -248,12 +165,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Delete a Memory
         api_response = api_instance.delete_memory(id)
+        print("The response of MemoriesApi->delete_memory:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->delete_memory: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -265,7 +186,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -273,6 +194,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A status object. |  -  |
@@ -286,66 +208,24 @@ Name | Type | Description  | Notes
 
 Delete a segment from a memory.
 
-Delete a segment from a memory.  ```bash   curl -X DELETE https://api.lilt.com/v2/memories/segment?key=API_KEY&id=ID&segment_id=$SEGMENT_ID ``` 
+Delete a segment from a memory.
+
+```bash
+  curl -X DELETE https://api.lilt.com/v2/memories/segment?key=API_KEY&id=ID&segment_id=$SEGMENT_ID
+```
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    id = 56 # int | A unique Memory identifier.
-segment_id = 56 # int | A unique Segment identifier.
-
-    try:
-        # Delete a segment from a memory.
-        api_response = api_instance.delete_segment_from_memory(id, segment_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->delete_segment_from_memory: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.delete_segment_from_memory_response import DeleteSegmentFromMemoryResponse
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -357,38 +237,38 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.MemoriesApi(api_client)
     id = 56 # int | A unique Memory identifier.
-segment_id = 56 # int | A unique Segment identifier.
+    segment_id = 56 # int | A unique Segment identifier.
 
     try:
         # Delete a segment from a memory.
         api_response = api_instance.delete_segment_from_memory(id, segment_id)
+        print("The response of MemoriesApi->delete_segment_from_memory:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->delete_segment_from_memory: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -401,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -409,6 +289,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A success resposne. |  -  |
@@ -418,69 +299,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_termbase**
-> str download_termbase(id)
+> bytearray download_termbase(id)
 
 Termbase download for a Memory
 
-Downloads the termbase export for the given memory as a CSV file.  Ensure you first call the `/2/memories/termbase/export` endpoint to start the export process before you try to download it.  ```bash   curl -X GET https://api.lilt.com/v2/memories/termbase/download?key=API_KEY&id=ID ``` 
+Downloads the termbase export for the given memory as a CSV file.
+
+Ensure you first call the `/2/memories/termbase/export` endpoint to
+start the export process before you try to download it.
+
+```bash
+  curl -X GET https://api.lilt.com/v2/memories/termbase/download?key=API_KEY&id=ID
+```
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    id = 56 # int | A unique Memory identifier.
-
-    try:
-        # Termbase download for a Memory
-        api_response = api_instance.download_termbase(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->download_termbase: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -492,21 +334,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -517,12 +355,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Termbase download for a Memory
         api_response = api_instance.download_termbase(id)
+        print("The response of MemoriesApi->download_termbase:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->download_termbase: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -530,11 +372,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+**bytearray**
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -542,6 +384,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A file. |  -  |
@@ -555,65 +398,29 @@ Name | Type | Description  | Notes
 
 Termbase export for a Memory
 
-Exports the termbase entries for the given memory into a CSV file.  Calling this endpoint will begin the export process in the background. Check that the processing is complete by polling the `GET /2/memories` endpoint. When the `is_processing` value is 0 then call the `POST /2/memories/termbase/download` endpoint.  ```bash   curl -X POST https://api.lilt.com/v2/memories/termbase/export?key=API_KEY&id=ID ``` 
+Exports the termbase entries for the given memory into a CSV file.
+
+Calling this endpoint will begin the export process in the background.
+Check that the processing is complete by polling the `GET /2/memories`
+endpoint. When the `is_processing` value is 0 then call the
+`POST /2/memories/termbase/download` endpoint.
+
+```bash
+  curl -X POST https://api.lilt.com/v2/memories/termbase/export?key=API_KEY&id=ID
+```
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    id = 56 # int | A unique Memory identifier.
-
-    try:
-        # Termbase export for a Memory
-        api_response = api_instance.export_termbase(id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->export_termbase: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.termbase_export_response import TermbaseExportResponse
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -625,21 +432,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -650,12 +453,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Termbase export for a Memory
         api_response = api_instance.export_termbase(id)
+        print("The response of MemoriesApi->export_termbase:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->export_termbase: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -667,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -675,6 +482,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A status object. |  -  |
@@ -684,69 +492,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_memory**
-> list[Memory] get_memory(id=id)
+> List[Memory] get_memory(id=id)
 
 Retrieve a Memory
 
-Retrieve a Memory. If you cannot access the Memory (401 error) please check permissions (e.g. in case you created the Memory via the web app with a different account you may have to explicitly share that Memory).  
+Retrieve a Memory. If you cannot access the Memory (401 error) please check permissions (e.g. in case you created the Memory via the web app with a different account you may have to explicitly share that Memory).
+
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    id = 56 # int | An optional Memory identifier. (optional)
-
-    try:
-        # Retrieve a Memory
-        api_response = api_instance.get_memory(id=id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->get_memory: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.memory import Memory
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -758,21 +522,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -783,12 +543,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Retrieve a Memory
         api_response = api_instance.get_memory(id=id)
+        print("The response of MemoriesApi->get_memory:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->get_memory: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -796,11 +560,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Memory]**](Memory.md)
+[**List[Memory]**](Memory.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -808,6 +572,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A list of Memory objects. |  -  |
@@ -822,70 +587,38 @@ Name | Type | Description  | Notes
 
 File import for a Memory
 
-Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm`, `*.sdlxliff`(With custom Filters), '*.xliff', and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.  Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory: ```bash   curl -X POST https://api.lilt.com/v2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdltm\\\",\\\"memory_id\\\": 42}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdltm ```  Example CURL command to upload a translation memory file named `my_memory.sdlxliff` in the current working directory, with Custom Filters based on SDLXLIFF fields, conf_name which maps to, percentage, and whether we should ignore unlocked segments. ```bash   curl -X POST https://api.lilt.com/v2/memories/import?key=API_KEY \\     --header \"LILT-API: {\\\"name\\\": \\\"my_memory.sdlxliff\\\",\\\"memory_id\\\": 12,\\\"sdlxliff_filters\\\":[{\\\"conf_name\\\": \\\"Translated\\\", \\\"percentage\\\": 100, \\\"allow_unlocked\\\": false}]\"}\" \\     --header \"Content-Type: application/octet-stream\" \\     --data-binary @my_memory.sdlxliff ```  
+Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm`, `*.sdlxliff`(With custom Filters), '*.xliff', and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.
+
+Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory:
+```bash
+  curl -X POST https://api.lilt.com/v2/memories/import?key=API_KEY \
+    --header "LILT-API: {\"name\": \"my_memory.sdltm\",\"memory_id\": 42}" \
+    --header "Content-Type: application/octet-stream" \
+    --data-binary @my_memory.sdltm
+```
+
+Example CURL command to upload a translation memory file named `my_memory.sdlxliff` in the current working directory, with Custom Filters based on SDLXLIFF fields, conf_name which maps to, percentage, and whether we should ignore unlocked segments.
+```bash
+  curl -X POST https://api.lilt.com/v2/memories/import?key=API_KEY \
+    --header "LILT-API: {\"name\": \"my_memory.sdlxliff\",\"memory_id\": 12,\"sdlxliff_filters\":[{\"conf_name\": \"Translated\", \"percentage\": 100, \"allow_unlocked\": false}]"}" \
+    --header "Content-Type: application/octet-stream" \
+    --data-binary @my_memory.sdlxliff
+```
+
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    memory_id = 56 # int | A unique Memory identifier.
-name = 'name_example' # str | Name of the TM or termbase file.
-body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
-sdlxliff_filters = [lilt.SDLXLIFFFilter()] # list[SDLXLIFFFilter] | Contains Filter information Unique to SDLXLIFF (optional)
-has_header_row = True # bool | A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`). (optional)
-skip_duplicates = True # bool | A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`).  (optional)
-
-    try:
-        # File import for a Memory
-        api_response = api_instance.import_memory_file(memory_id, name, body, sdlxliff_filters=sdlxliff_filters, has_header_row=has_header_row, skip_duplicates=skip_duplicates)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->import_memory_file: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.memory_import_response import MemoryImportResponse
+from lilt.models.sdlxliff_filter import SDLXLIFFFilter
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -897,49 +630,49 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.MemoriesApi(api_client)
     memory_id = 56 # int | A unique Memory identifier.
-name = 'name_example' # str | Name of the TM or termbase file.
-body = '/path/to/file' # file | The file contents to be uploaded. The entire POST body will be treated as the file.
-sdlxliff_filters = [lilt.SDLXLIFFFilter()] # list[SDLXLIFFFilter] | Contains Filter information Unique to SDLXLIFF (optional)
-has_header_row = True # bool | A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`). (optional)
-skip_duplicates = True # bool | A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`).  (optional)
+    name = 'name_example' # str | Name of the TM or termbase file.
+    body = None # bytearray | The file contents to be uploaded. The entire POST body will be treated as the file.
+    sdlxliff_filters = [lilt.SDLXLIFFFilter()] # List[SDLXLIFFFilter] | Contains Filter information Unique to SDLXLIFF (optional)
+    has_header_row = True # bool | A flag indicating whether an imported Termbase CSV has a header row or not (the default value is `false`). (optional)
+    skip_duplicates = True # bool | A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is `false`).  (optional)
 
     try:
         # File import for a Memory
         api_response = api_instance.import_memory_file(memory_id, name, body, sdlxliff_filters=sdlxliff_filters, has_header_row=has_header_row, skip_duplicates=skip_duplicates)
+        print("The response of MemoriesApi->import_memory_file:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->import_memory_file: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memory_id** | **int**| A unique Memory identifier. | 
  **name** | **str**| Name of the TM or termbase file. | 
- **body** | **file**| The file contents to be uploaded. The entire POST body will be treated as the file. | 
- **sdlxliff_filters** | [**list[SDLXLIFFFilter]**](SDLXLIFFFilter.md)| Contains Filter information Unique to SDLXLIFF | [optional] 
+ **body** | **bytearray**| The file contents to be uploaded. The entire POST body will be treated as the file. | 
+ **sdlxliff_filters** | [**List[SDLXLIFFFilter]**](SDLXLIFFFilter.md)| Contains Filter information Unique to SDLXLIFF | [optional] 
  **has_header_row** | **bool**| A flag indicating whether an imported Termbase CSV has a header row or not (the default value is &#x60;false&#x60;). | [optional] 
  **skip_duplicates** | **bool**| A flag indicating whether or not to skip the import of segments which already exist in the memory. (the default value is &#x60;false&#x60;).  | [optional] 
 
@@ -949,7 +682,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -957,6 +690,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A status object. |  -  |
@@ -966,71 +700,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_memory**
-> list[TranslationMemoryEntry] query_memory(id, query, n=n)
+> List[TranslationMemoryEntry] query_memory(id, query, n=n)
 
 Query a Memory
 
-Perform a translation memory query. 
+Perform a translation memory query.
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    id = 56 # int | A unique Memory identifier.
-query = 'query_example' # str | A source query.
-n = 10 # int | Maximum number of results to return. (optional) (default to 10)
-
-    try:
-        # Query a Memory
-        api_response = api_instance.query_memory(id, query, n=n)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->query_memory: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.translation_memory_entry import TranslationMemoryEntry
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -1042,39 +729,39 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.MemoriesApi(api_client)
     id = 56 # int | A unique Memory identifier.
-query = 'query_example' # str | A source query.
-n = 10 # int | Maximum number of results to return. (optional) (default to 10)
+    query = 'query_example' # str | A source query.
+    n = 10 # int | Maximum number of results to return. (optional) (default to 10)
 
     try:
         # Query a Memory
         api_response = api_instance.query_memory(id, query, n=n)
+        print("The response of MemoriesApi->query_memory:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->query_memory: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1084,11 +771,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[TranslationMemoryEntry]**](TranslationMemoryEntry.md)
+[**List[TranslationMemoryEntry]**](TranslationMemoryEntry.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1096,6 +783,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A list of TranslationMemoryEntry objects. |  -  |
@@ -1109,65 +797,21 @@ Name | Type | Description  | Notes
 
 Update the name of a Memory
 
-Update a Memory. 
+Update a Memory.
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.MemoriesApi(api_client)
-    body = lilt.MemoryUpdateParameters() # MemoryUpdateParameters | 
-
-    try:
-        # Update the name of a Memory
-        api_response = api_instance.update_memory(body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling MemoriesApi->update_memory: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.memory import Memory
+from lilt.models.memory_update_parameters import MemoryUpdateParameters
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -1179,41 +823,41 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.MemoriesApi(api_client)
-    body = lilt.MemoryUpdateParameters() # MemoryUpdateParameters | 
+    body = lilt.MemoryUpdateParameters() # MemoryUpdateParameters | The Memory resource to update.
 
     try:
         # Update the name of a Memory
         api_response = api_instance.update_memory(body)
+        print("The response of MemoriesApi->update_memory:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling MemoriesApi->update_memory: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MemoryUpdateParameters**](MemoryUpdateParameters.md)|  | 
+ **body** | [**MemoryUpdateParameters**](MemoryUpdateParameters.md)| The Memory resource to update. | 
 
 ### Return type
 
@@ -1221,7 +865,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1229,6 +873,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A Memory object. |  -  |

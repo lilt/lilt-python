@@ -23,65 +23,27 @@ Method | HTTP request | Description
 
 Archive a Job
 
-Set job to archived, unassign all linguists and archive all projects and documents inside the job.  It will return the archived job.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/archive?key=API_KEY' ```
+Set job to archived, unassign all linguists and archive all projects and documents inside the job.
+
+It will return the archived job.
+
+Example CURL command:
+
+```bash
+curl -X POST 'https://api.lilt.com/v2/jobs/{id}/archive?key=API_KEY'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-
-    try:
-        # Archive a Job
-        api_response = api_instance.archive_job(job_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->archive_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job import Job
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -93,21 +55,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -118,12 +76,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Archive a Job
         api_response = api_instance.archive_job(job_id)
+        print("The response of JobsApi->archive_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->archive_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -135,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -143,6 +105,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A job object. |  -  |
@@ -156,65 +119,45 @@ Name | Type | Description  | Notes
 
 Create a Job
 
-Create a Job. A Job is a collection of Projects. A Job will contain multiple projects, based on the language pair. A Project is associated with exactly one Memory.  Jobs appear in the Jobs dashboard of the web app.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs?key=API_KEY' \\ --header 'Content-Type: application/json' \\ --data-raw '{   \"name\": \"test job\",   \"fileIds\": [5009, 5010, 5011],   \"due\": \"2022-05-05T10:56:44.985Z\",   \"srcLang\": \"en\",   \"srcLocale\": \"US\",   \"languagePairs\": [       { \"memoryId\": 3121, \"trgLang\": \"de\" },       { \"memoryId\": 2508, \"trgLang\": \"fr\" },       { \"memoryId\": 3037, \"trgLang\": \"zh\" }     ] }' ```  
+Create a Job. A Job is a collection of Projects.
+A Job will contain multiple projects, based on the language pair.
+A Project is associated with exactly one Memory.
+
+Jobs appear in the Jobs dashboard of the web app.
+
+Example CURL command:
+
+```bash
+curl -X POST 'https://api.lilt.com/v2/jobs?key=API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "test job",
+  "fileIds": [5009, 5010, 5011],
+  "due": "2022-05-05T10:56:44.985Z",
+  "srcLang": "en",
+  "srcLocale": "US",
+  "languagePairs": [
+      { "memoryId": 3121, "trgLang": "de" },
+      { "memoryId": 2508, "trgLang": "fr" },
+      { "memoryId": 3037, "trgLang": "zh" }
+    ]
+}'
+```
+
+
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    body = lilt.JobCreateParameters() # JobCreateParameters | 
-
-    try:
-        # Create a Job
-        api_response = api_instance.create_job(body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->create_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job import Job
+from lilt.models.job_create_parameters import JobCreateParameters
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -226,41 +169,41 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.JobsApi(api_client)
-    body = lilt.JobCreateParameters() # JobCreateParameters | 
+    body = lilt.JobCreateParameters() # JobCreateParameters | The Job resource to create.
 
     try:
         # Create a Job
         api_response = api_instance.create_job(body)
+        print("The response of JobsApi->create_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->create_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**JobCreateParameters**](JobCreateParameters.md)|  | 
+ **body** | [**JobCreateParameters**](JobCreateParameters.md)| The Job resource to create. | 
 
 ### Return type
 
@@ -268,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -276,6 +219,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A Job object. |  -  |
@@ -289,65 +233,25 @@ Name | Type | Description  | Notes
 
 Delete a Job
 
-Delete a job, deletes all projects and documents in the job, deletes all the segments from all the job's translation memories.  Example CURL command:  ```bash curl -X DELETE 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY' ```
+Delete a job, deletes all projects and documents in the job, deletes all the segments from all the job's translation memories.
+
+Example CURL command:
+
+```bash
+curl -X DELETE 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-
-    try:
-        # Delete a Job
-        api_response = api_instance.delete_job(job_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->delete_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job_delete_response import JobDeleteResponse
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -359,21 +263,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -384,12 +284,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Delete a Job
         api_response = api_instance.delete_job(job_id)
+        print("The response of JobsApi->delete_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->delete_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -401,7 +305,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -409,6 +313,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A status object. |  -  |
@@ -422,65 +327,27 @@ Name | Type | Description  | Notes
 
 Deliver a Job
 
-Set the job state to delivered and set all the projects in the job to done  It will return the delivered job.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/deliver?key=API_KEY' ```
+Set the job state to delivered and set all the projects in the job to done
+
+It will return the delivered job.
+
+Example CURL command:
+
+```bash
+curl -X POST 'https://api.lilt.com/v2/jobs/{id}/deliver?key=API_KEY'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-
-    try:
-        # Deliver a Job
-        api_response = api_instance.deliver_job(job_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->deliver_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job import Job
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -492,21 +359,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -517,12 +380,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Deliver a Job
         api_response = api_instance.deliver_job(job_id)
+        print("The response of JobsApi->deliver_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->deliver_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -534,7 +401,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -542,6 +409,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A job object. |  -  |
@@ -551,69 +419,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_job**
-> str download_job(job_id)
+> bytearray download_job(job_id)
 
 Download a Job
 
-Make sure you have exported a job with the same id before using this api.  Downloading files requires the exported job `id` in the param.  Example CURL command:  ```bash curl -X GET 'https://api.lilt.com/v2/jobs/{id}/download?key=API_KEY' ```
+Make sure you have exported a job with the same id before using this api.
+
+Downloading files requires the exported job `id` in the param.
+
+Example CURL command:
+
+```bash
+curl -X GET 'https://api.lilt.com/v2/jobs/{id}/download?key=API_KEY'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-
-    try:
-        # Download a Job
-        api_response = api_instance.download_job(job_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->download_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -625,21 +454,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -650,12 +475,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Download a Job
         api_response = api_instance.download_job(job_id)
+        print("The response of JobsApi->download_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->download_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -663,11 +492,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+**bytearray**
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -675,6 +504,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/octet-stream, text/plain, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | zipped file |  -  |
@@ -688,65 +518,30 @@ Name | Type | Description  | Notes
 
 Export a Job
 
-Prepare job files for download. To export translated documents from the job use the query parameter `type=files`:  Example CURL command:  ```bash curl -X GET 'https://api.lilt.com/v2/jobs/{id}/export?key=API_KEY&type=files' ```  To export job memories use the query parameter `type=memory`.  The status of the export can be checked by requesting the job `GET /jobs/:jobId`, `job.isProcessing` will be `1` while in progress, `0` when idle and `-2` when the export failed.
+Prepare job files for download.
+To export translated documents from the job use the query parameter `type=files`:
+
+Example CURL command:
+
+```bash
+curl -X GET 'https://api.lilt.com/v2/jobs/{id}/export?key=API_KEY&type=files'
+```
+
+To export job memories use the query parameter `type=memory`.
+
+The status of the export can be checked by requesting the job `GET /jobs/:jobId`, `job.isProcessing` will be `1` while in progress,
+`0` when idle and `-2` when the export failed.
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-type = 'type_example' # str | category for files and memory.
-
-    try:
-        # Export a Job
-        api_instance.export_job(job_id, type)
-    except ApiException as e:
-        print("Exception when calling JobsApi->export_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -758,37 +553,36 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.JobsApi(api_client)
     job_id = 56 # int | A job id.
-type = 'type_example' # str | category for files and memory.
+    type = 'type_example' # str | category for files and memory.
 
     try:
         # Export a Job
         api_instance.export_job(job_id, type)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->export_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -801,7 +595,7 @@ void (empty response body)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -809,6 +603,7 @@ void (empty response body)
  - **Accept**: application/octet-stream, text/plain, application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | 200 status. |  -  |
@@ -822,65 +617,25 @@ void (empty response body)
 
 Retrieve a Job
 
-Retrieves a job data along with stats. To retrieve a specific job, you will need the job `id` in the url path.  Example CURL command:  ```bash curl -X GET 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY' ```
+Retrieves a job data along with stats. To retrieve a specific job, you will need the job `id` in the url path.
+
+Example CURL command:
+
+```bash
+curl -X GET 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-
-    try:
-        # Retrieve a Job
-        api_response = api_instance.get_job(job_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->get_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job import Job
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -892,21 +647,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -917,12 +668,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Retrieve a Job
         api_response = api_instance.get_job(job_id)
+        print("The response of JobsApi->get_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->get_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -934,7 +689,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -942,6 +697,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A job object. |  -  |
@@ -955,65 +711,25 @@ Name | Type | Description  | Notes
 
 Retrieve Job Leverage Stats
 
-Get the TM leverage stats for the job (new/exact/fuzzy matches).  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/stats?key=API_KEY' ```
+Get the TM leverage stats for the job (new/exact/fuzzy matches).
+
+Example CURL command:
+
+```bash
+curl -X POST 'https://api.lilt.com/v2/jobs/{id}/stats?key=API_KEY'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-
-    try:
-        # Retrieve Job Leverage Stats
-        api_response = api_instance.get_job_leverage_stats(job_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->get_job_leverage_stats: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job_leverage_stats import JobLeverageStats
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -1025,21 +741,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -1050,12 +762,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Retrieve Job Leverage Stats
         api_response = api_instance.get_job_leverage_stats(job_id)
+        print("The response of JobsApi->get_job_leverage_stats:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->get_job_leverage_stats: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1067,7 +783,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1075,6 +791,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A job leverage stats object. |  -  |
@@ -1088,65 +805,27 @@ Name | Type | Description  | Notes
 
 Reactivate a Job
 
-Set the job state to active. Does not change the state of projects associated with the given job.  It will return the reactivated job.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/reactivate?key=API_KEY' ```
+Set the job state to active. Does not change the state of projects associated with the given job.
+
+It will return the reactivated job.
+
+Example CURL command:
+
+```bash
+curl -X POST 'https://api.lilt.com/v2/jobs/{id}/reactivate?key=API_KEY'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-
-    try:
-        # Reactivate a Job
-        api_response = api_instance.reactivate_job(job_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->reactivate_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job import Job
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -1158,21 +837,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -1183,12 +858,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Reactivate a Job
         api_response = api_instance.reactivate_job(job_id)
+        print("The response of JobsApi->reactivate_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->reactivate_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1200,7 +879,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1208,6 +887,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A job object. |  -  |
@@ -1217,72 +897,29 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_all_jobs**
-> list[Job] retrieve_all_jobs(is_archived=is_archived, is_delivered=is_delivered, offset=offset, limit=limit)
+> List[Job] retrieve_all_jobs(is_archived=is_archived, is_delivered=is_delivered, offset=offset, limit=limit)
 
 Retrieve all Jobs
 
-Get all Jobs within a given offset and limit. You can retrieve jobs from your account using the above API.  Example CURL command:  ```bash curl -X GET 'https://api.lilt.com/v2/jobs?key=API_KEY&isArchived=false' ```
+Get all Jobs within a given offset and limit. You can retrieve jobs from your account using the above API.
+
+Example CURL command:
+
+```bash
+curl -X GET 'https://api.lilt.com/v2/jobs?key=API_KEY&isArchived=false'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    is_archived = True # bool | Retrieves all jobs that are archived. (optional)
-is_delivered = True # bool | Retrieves all jobs that are delivered. (optional)
-offset = 56 # int | Return jobs starting at the offset row. If not given the default offset will be 0. (optional)
-limit = 56 # int | The maximum number of jobs to be returned. If not given the default limit will be 25. (optional)
-
-    try:
-        # Retrieve all Jobs
-        api_response = api_instance.retrieve_all_jobs(is_archived=is_archived, is_delivered=is_delivered, offset=offset, limit=limit)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->retrieve_all_jobs: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job import Job
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -1294,40 +931,40 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.JobsApi(api_client)
     is_archived = True # bool | Retrieves all jobs that are archived. (optional)
-is_delivered = True # bool | Retrieves all jobs that are delivered. (optional)
-offset = 56 # int | Return jobs starting at the offset row. If not given the default offset will be 0. (optional)
-limit = 56 # int | The maximum number of jobs to be returned. If not given the default limit will be 25. (optional)
+    is_delivered = True # bool | Retrieves all jobs that are delivered. (optional)
+    offset = 56 # int | Return jobs starting at the offset row. If not given the default offset will be 0. (optional)
+    limit = 56 # int | The maximum number of jobs to be returned. If not given the default limit will be 25. (optional)
 
     try:
         # Retrieve all Jobs
         api_response = api_instance.retrieve_all_jobs(is_archived=is_archived, is_delivered=is_delivered, offset=offset, limit=limit)
+        print("The response of JobsApi->retrieve_all_jobs:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->retrieve_all_jobs: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1338,11 +975,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Job]**](Job.md)
+[**List[Job]**](Job.md)
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1350,6 +987,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A list of Job objects. |  -  |
@@ -1363,65 +1001,25 @@ Name | Type | Description  | Notes
 
 Unarchive a Job
 
-Set job to unarchived, the job will move to active status.  Example CURL command:  ```bash curl -X POST 'https://api.lilt.com/v2/jobs/{id}/unarchive?key=API_KEY' ```
+Set job to unarchived, the job will move to active status.
+
+Example CURL command:
+
+```bash
+curl -X POST 'https://api.lilt.com/v2/jobs/{id}/unarchive?key=API_KEY'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-
-    try:
-        # Unarchive a Job
-        api_response = api_instance.unarchive_job(job_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->unarchive_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job import Job
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -1433,21 +1031,17 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
@@ -1458,12 +1052,16 @@ with lilt.ApiClient(configuration) as api_client:
     try:
         # Unarchive a Job
         api_response = api_instance.unarchive_job(job_id)
+        print("The response of JobsApi->unarchive_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->unarchive_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1475,7 +1073,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1483,6 +1081,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A job object. |  -  |
@@ -1496,66 +1095,33 @@ Name | Type | Description  | Notes
 
 Update a Job
 
-Updates a job with the new job properties. To update a specific job, you will need the job `id` in the url path.  You can update job's name and due date by passing the property and new value in the body.  Example CURL command:  ```bash curl -X PUT 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY' \\ --header 'Content-Type: application/json' \\ --data-raw '{   \"name\": \"test job\",   \"due\": \"2022-05-05T10:56:44.985Z\" }' ```
+Updates a job with the new job properties. To update a specific job, you will need the job `id` in the url path.
+
+You can update job's name and due date by passing the property and new value in the body.
+
+Example CURL command:
+
+```bash
+curl -X PUT 'https://api.lilt.com/v2/jobs/{id}?key=API_KEY' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "test job",
+  "due": "2022-05-05T10:56:44.985Z"
+}'
+```
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
-```python
-from __future__ import print_function
-import time
-import lilt
-from lilt.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://api.lilt.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
-# Configure HTTP basic authorization: BasicAuth
-configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
-)
-
-# Enter a context with an instance of the API client
-with lilt.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = lilt.JobsApi(api_client)
-    job_id = 56 # int | A job id.
-body = lilt.JobUpdateParameters() # JobUpdateParameters |  (optional)
-
-    try:
-        # Update a Job
-        api_response = api_instance.update_job(job_id, body=body)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling JobsApi->update_job: %s\n" % e)
-```
-
 * Basic Authentication (BasicAuth):
+* Api Key Authentication (ApiKeyAuth):
+
 ```python
-from __future__ import print_function
-import time
 import lilt
+from lilt.models.job import Job
+from lilt.models.job_update_parameters import JobUpdateParameters
 from lilt.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.lilt.com
 # See configuration.py for a list of all supported configuration parameters.
 configuration = lilt.Configuration(
@@ -1567,43 +1133,43 @@ configuration = lilt.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ApiKeyAuth
-configuration = lilt.Configuration(
-    host = "https://api.lilt.com",
-    api_key = {
-        'key': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['key'] = 'Bearer'
-
 # Configure HTTP basic authorization: BasicAuth
 configuration = lilt.Configuration(
-    username = 'YOUR_USERNAME',
-    password = 'YOUR_PASSWORD'
+    username = os.environ["USERNAME"],
+    password = os.environ["PASSWORD"]
 )
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.JobsApi(api_client)
     job_id = 56 # int | A job id.
-body = lilt.JobUpdateParameters() # JobUpdateParameters |  (optional)
+    body = lilt.JobUpdateParameters() # JobUpdateParameters | The Job resource to update. (optional)
 
     try:
         # Update a Job
         api_response = api_instance.update_job(job_id, body=body)
+        print("The response of JobsApi->update_job:\n")
         pprint(api_response)
-    except ApiException as e:
+    except Exception as e:
         print("Exception when calling JobsApi->update_job: %s\n" % e)
 ```
+
+
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id** | **int**| A job id. | 
- **body** | [**JobUpdateParameters**](JobUpdateParameters.md)|  | [optional] 
+ **body** | [**JobUpdateParameters**](JobUpdateParameters.md)| The Job resource to update. | [optional] 
 
 ### Return type
 
@@ -1611,7 +1177,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [BasicAuth](../README.md#BasicAuth)
+[BasicAuth](../README.md#BasicAuth), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -1619,6 +1185,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json, application/octet-stream, text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A job object. |  -  |
