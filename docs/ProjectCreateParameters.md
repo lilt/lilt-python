@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **workflow_template_id** | **int** | The workflow template used to create this project. WorkflowTemplateIds can be retrieved via the /workflows/templates endpoint. If not specified then the organization default workflowTemplateId will be used. | [optional] 
 **workflow_template_name** | **str** | Name of the workflow for the project, if a workflowTemplateId is passed, this field will be ignored. | [optional] 
 **llm_provider** | **str** | The LLM provider to use for the project. Defaults to \&quot;neural\&quot;. | [optional] 
-**external_model_id** | **int** | External model ID, if any. Must match the chosen llm_provider. | [optional] 
+**external_model_id** | **int** | An optional parameter to specify a third-party model ID to use for translation. This allows you to use external MT providers instead of Lilt&#39;s built-in MT system. Must match the chosen llm_provider. | [optional] 
 **is_plural** | **bool** | Whether the documents in this project contain ICU plural forms. | [optional] 
 **require_batch_qa_translator** | **bool** | Whether to require batch QA from the translator side. | [optional] 
 **enable_prompt_labeling** | **bool** | Whether to enable prompt labeling for the project. | [optional] 

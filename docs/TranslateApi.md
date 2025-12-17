@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 
 # **batch_translate_file**
-> List[TranslationInfo] batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm)
+> List[TranslationInfo] batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm, external_model_id=external_model_id)
 
 Translate a File
 
@@ -66,10 +66,11 @@ with lilt.ApiClient(configuration) as api_client:
     memory_id = 'memory_id_example' # str | Id of Memory to use in translation.
     config_id = 3.4 # float | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. (optional)
     with_tm = True # bool | An optional boolean parameter to toggle the use of Translation Memory in the translation of the file. (optional)
+    external_model_id = 56 # int | An optional parameter to specify a third-party model to use for translation. This allows you to use external MT providers instead of Lilt's built-in MT system. (optional)
 
     try:
         # Translate a File
-        api_response = api_instance.batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm)
+        api_response = api_instance.batch_translate_file(file_id, memory_id, config_id=config_id, with_tm=with_tm, external_model_id=external_model_id)
         print("The response of TranslateApi->batch_translate_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -87,6 +88,7 @@ Name | Type | Description  | Notes
  **memory_id** | **str**| Id of Memory to use in translation. | 
  **config_id** | **float**| An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. | [optional] 
  **with_tm** | **bool**| An optional boolean parameter to toggle the use of Translation Memory in the translation of the file. | [optional] 
+ **external_model_id** | **int**| An optional parameter to specify a third-party model to use for translation. This allows you to use external MT providers instead of Lilt&#39;s built-in MT system. | [optional] 
 
 ### Return type
 
@@ -324,7 +326,7 @@ output in the response.
 
 The maximum source length is 5,000 characters.
 
-Usage charges apply to this endpoint for production REST API keys.
+Usage charges apply to this endpoint for production API keys.
 
 
 

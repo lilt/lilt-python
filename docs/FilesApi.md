@@ -119,7 +119,7 @@ Delete a File.
 
 Example CURL command:
 ```bash
-  curl -X DELETE https://api.lilt.com/v2/files?key=API_KEY&id=123 
+  curl -X DELETE https://api.lilt.com/v2/files?key=API_KEY&id=123
 ```
 
 
@@ -496,7 +496,7 @@ void (empty response body)
 Upload a File
 
 Upload a File in any of the formats [documented in our knowledge
-base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats).
+base](/kb/supported-file-formats).
 Request parameters should be passed in as query string parameters.
 
 Example CURL command:

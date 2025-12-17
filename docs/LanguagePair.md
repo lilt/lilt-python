@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **trg_locale** | **str** | A locale identifier, supported for target language. | [optional] 
 **due_date** | **str** | An ISO date. | [optional] 
 **memory_id** | **int** | A unique number identifying the associated Memory. | 
-**external_model_id** | **int** | A unique identifier for working with a third party model in the Lilt Platform | [optional] 
+**external_model_id** | **int** | An optional parameter to specify a third-party model ID to use for translation. This allows you to use external MT providers instead of Lilt&#39;s built-in MT system. | [optional] 
 **pretranslate** | **bool** | Attribute translation authorship of exact matches to the creator of the document being pretranslated. | [optional] 
 **auto_accept** | **bool** | Accept and lock exact matches. | [optional] 
 **case_sensitive** | **bool** | Use case sensitive translation memory matching. | [optional] 
