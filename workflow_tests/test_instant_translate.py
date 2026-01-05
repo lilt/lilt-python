@@ -14,7 +14,7 @@ test_cases = [
 ]
 
 translate_file_path = "./workflow_tests/resources"
-STAGING_MEMORY_ID = 23583
+STAGING_MEMORY_ID = 9512 #23583
 STAGING_TRANSLATION_ID = 17680
 
 
@@ -37,7 +37,10 @@ def assert_translate_response(response, file_id, memory_id):
 @pytest.fixture(scope="module")
 def client():
     configuration = lilt.Configuration(
-        host=os.environ["API_HOST"], api_key={"key": os.environ["API_KEY"]}
+        host=os.environ["API_HOST"],
+        username=os.environ["API_KEY"],
+        password=os.environ["API_KEY"],
+        debug=True,
     )
     api_client = lilt.ApiClient(configuration)
     api_client.set_default_header("x-is-automated-test", True)
@@ -62,7 +65,7 @@ def translate_api(client):
     wait=wait_exponential()
 )
 def monitor_file_translation(translate_api, translation_id, file_id, memory_id):
-    api_response = translate_api.monitor_file_translation(translation_ids=translation_id)
+    api_response = translate_api.monitor_file_translation(translation_ids=str(translation_id))
     translation_response = api_response[0]
     translation_status = translation_response.status
     print(f"STATUS: {translation_status}")
@@ -112,6 +115,6 @@ def test_instant_translate_workflow(upload_file, translate_api, test_case):
         print("Translation exceeding time limit. Switching to finished translation.")
 
     # Download translated file
-    api_response = translate_api.download_file(translation_id)
-    assert "cat" in api_response
+    api_response = translate_api.download_file(translation_id).decode('utf8')
+    assert "banana" in api_response
     assert "hello" in api_response.lower()

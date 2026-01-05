@@ -3,11 +3,6 @@
 
 name: OpenAPI Generator
 
-on:
-  workflow_dispatch:
-  repository_dispatch:
-    types: [API-DocumentationV3-Deployment]
-
 jobs:
   build:
     runs-on: ubuntu-latest

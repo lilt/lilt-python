@@ -62,9 +62,9 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.TranslateApi(api_client)
-    file_id = 'file_id_example' # str | List of File ids to be translated, comma separated.
-    memory_id = 'memory_id_example' # str | Id of Memory to use in translation.
-    config_id = 3.4 # float | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. (optional)
+    file_id = 56 # int | List of File ids to be translated, comma separated.
+    memory_id = 56 # int | Id of Memory to use in translation.
+    config_id = 56 # int | An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. (optional)
     with_tm = True # bool | An optional boolean parameter to toggle the use of Translation Memory in the translation of the file. (optional)
     external_model_id = 56 # int | An optional parameter to specify a third-party model to use for translation. This allows you to use external MT providers instead of Lilt's built-in MT system. (optional)
 
@@ -84,9 +84,9 @@ with lilt.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file_id** | **str**| List of File ids to be translated, comma separated. | 
- **memory_id** | **str**| Id of Memory to use in translation. | 
- **config_id** | **float**| An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. | [optional] 
+ **file_id** | **int**| List of File ids to be translated, comma separated. | 
+ **memory_id** | **int**| Id of Memory to use in translation. | 
+ **config_id** | **int**| An optional pararameter to specify an import configuration to be applied when extracting translatable content from this file. | [optional] 
  **with_tm** | **bool**| An optional boolean parameter to toggle the use of Translation Memory in the translation of the file. | [optional] 
  **external_model_id** | **int**| An optional parameter to specify a third-party model to use for translation. This allows you to use external MT providers instead of Lilt&#39;s built-in MT system. | [optional] 
 
@@ -164,7 +164,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with lilt.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = lilt.TranslateApi(api_client)
-    id = 'id_example' # str | A translation id.
+    id = 56 # int | A translation id.
 
     try:
         # Download translated file
@@ -182,7 +182,7 @@ with lilt.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **str**| A translation id. | 
+ **id** | **int**| A translation id. | 
 
 ### Return type
 

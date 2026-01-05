@@ -111,7 +111,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_file**
-> FileDeleteResponse delete_file(id)
+> delete_file(id)
 
 Delete a File
 
@@ -131,7 +131,6 @@ Example CURL command:
 
 ```python
 import lilt
-from lilt.models.file_delete_response import FileDeleteResponse
 from lilt.rest import ApiException
 from pprint import pprint
 
@@ -166,9 +165,7 @@ with lilt.ApiClient(configuration) as api_client:
 
     try:
         # Delete a File
-        api_response = api_instance.delete_file(id)
-        print("The response of FilesApi->delete_file:\n")
-        pprint(api_response)
+        api_instance.delete_file(id)
     except Exception as e:
         print("Exception when calling FilesApi->delete_file: %s\n" % e)
 ```
@@ -184,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FileDeleteResponse**](FileDeleteResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -193,7 +190,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/octet-stream, text/plain
+ - **Accept**: application/octet-stream, text/plain, application/json
 
 ### HTTP response details
 
