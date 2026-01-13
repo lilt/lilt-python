@@ -111,7 +111,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_file**
-> FileDeleteResponse delete_file(id)
+> delete_file(id)
 
 Delete a File
 
@@ -119,7 +119,7 @@ Delete a File.
 
 Example CURL command:
 ```bash
-  curl -X DELETE https://api.lilt.com/v2/files?key=API_KEY&id=123 
+  curl -X DELETE https://api.lilt.com/v2/files?key=API_KEY&id=123
 ```
 
 
@@ -131,7 +131,6 @@ Example CURL command:
 
 ```python
 import lilt
-from lilt.models.file_delete_response import FileDeleteResponse
 from lilt.rest import ApiException
 from pprint import pprint
 
@@ -166,9 +165,7 @@ with lilt.ApiClient(configuration) as api_client:
 
     try:
         # Delete a File
-        api_response = api_instance.delete_file(id)
-        print("The response of FilesApi->delete_file:\n")
-        pprint(api_response)
+        api_instance.delete_file(id)
     except Exception as e:
         print("Exception when calling FilesApi->delete_file: %s\n" % e)
 ```
@@ -184,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FileDeleteResponse**](FileDeleteResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -193,7 +190,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/octet-stream, text/plain
+ - **Accept**: application/octet-stream, text/plain, application/json
 
 ### HTTP response details
 
@@ -496,7 +493,7 @@ void (empty response body)
 Upload a File
 
 Upload a File in any of the formats [documented in our knowledge
-base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats).
+base](/kb/supported-file-formats).
 Request parameters should be passed in as query string parameters.
 
 Example CURL command:

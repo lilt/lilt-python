@@ -27,7 +27,7 @@ update the lexicon. Memories are private to your account - the data is
 not shared across users - unless you explicitly share a Memory with your
 team (via web app only).
 
-<a href="https://support.lilt.com/hc/en-us/sections/360012579193-Lilt-Translate-Engine" target=_blank>Refer
+<a href="/kb/introduction-to-lilt-translation" target=_blank>Refer
 to our KB</a> for a more detailed description.
 
 
@@ -587,7 +587,7 @@ Name | Type | Description  | Notes
 
 File import for a Memory
 
-Imports common translation memory or termbase file formats to a specific Lilt memory. Currently supported file formats are `*.tmx`, `*.sdltm`, `*.sdlxliff`(With custom Filters), '*.xliff', and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.
+Imports common translation memory or termbase file formats to a specific LILT memory. Currently supported file formats are `*.tmx`, `*.sdltm`, `*.sdlxliff`(With custom Filters), '*.xliff', and `*.tmq` for TM data; `*.csv` and `*.tbx` for termbase data. Request parameters should be passed as JSON object with the header field `LILT-API`.
 
 Example CURL command to upload a translation memory file named `my_memory.sdltm` in the current working directory:
 ```bash

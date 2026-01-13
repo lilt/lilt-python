@@ -9,7 +9,9 @@ from lilt.api.jobs_api import JobsApi
 from lilt.api.languages_api import LanguagesApi
 from lilt.api.memories_api import MemoriesApi
 from lilt.api.projects_api import ProjectsApi
+from lilt.api.segments_api import SegmentsApi
 from lilt.api.translate_api import TranslateApi
+from lilt.api.uploads_api import UploadsApi
 from lilt.api.webhook_configuration_api import WebhookConfigurationApi
 from lilt.api.workflows_api import WorkflowsApi
 

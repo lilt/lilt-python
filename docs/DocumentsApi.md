@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 Upload a File
 
-Create a Document from a file in any of the formats [documented in our knowledge base](https://support.lilt.com/hc/en-us/articles/360020816253-File-Formats).
+Create a Document from a file in any of the formats [documented in our knowledge base](/kb/supported-file-formats).
 Request parameters should be passed as JSON object with the header field `LILT-API`.
 
 File names in the header can only contain [US-ASCII characters](https://en.wikipedia.org/wiki/ASCII). File names with characters outside of US-ASCII should be [URI encoded](https://en.wikipedia.org/wiki/Percent-encoding) or transliterated to US-ASCII strings.

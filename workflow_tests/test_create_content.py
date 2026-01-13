@@ -5,6 +5,7 @@ import os
 import pytest
 import time
 import lilt
+from lilt.exceptions import NotFoundException
 
 load_dotenv()
 
@@ -171,7 +172,10 @@ def assert_response(create_content_obj, expected):
 @pytest.fixture(scope="module")
 def client():
     configuration = lilt.Configuration(
-        host=os.environ["API_HOST"], api_key={"key": os.environ["API_KEY"]}
+        host=os.environ["API_HOST"],
+        username=os.environ["API_KEY"],
+        password=os.environ["API_KEY"],
+        debug=True,
     )
     api_client = lilt.ApiClient(configuration)
     api_client.set_default_header("x-is-automated-test", True)
@@ -188,19 +192,18 @@ def create_api(client):
 
 @pytest.fixture(scope="function")
 def sign(create_api):
-    signed_agreement = lilt.CreateConverterConfigParameters(True)
+    signed_agreement = lilt.CreateConverterConfigParameters(signedAgreement=True)
     return create_api.sign_lilt_create_terms(signed_agreement)
 
 
 @pytest.mark.parametrize("sign_case", sign_cases)
 def test_sign(sign_case, create_api):
     sign = get_sign(sign_case)
-
     try:
-        signed_agreement = lilt.CreateConverterConfigParameters(sign)
+        signed_agreement = lilt.CreateConverterConfigParameters(signedAgreement=sign)
         api_response = create_api.sign_lilt_create_terms(signed_agreement)
         assert api_response.signed_agreement == bool(sign)
-    except ValueError as e:
+    except ValueError | NotFoundException as e:
         print("Exception when calling CreateApi->sign_lilt_create_terms: %s\n" % e)
         if sign_case != "none":
             raise e

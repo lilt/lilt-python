@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **file_ids** | **List[int]** | A list of file ids to upload to job creation. | 
 **due** | **str** | An ISO string date representing job due date. | [optional] 
 **src_lang** | **str** | 2-letter ISO source language code | 
-**src_locale** | **str** | 2-letter source language code | [optional] 
+**src_locale** | **str** | 2-letter source language code | 
 **is_plural** | **bool** | A boolean value representing if the files have plurals. | [optional] 
 **workflow_template_id** | **int** | ID of the workflow template to be used. Use the [workflows templates endpoint](#tag/Workflows/operation/getWorkflowTemplates) to get the list of available workflows. | [optional] 
 **domain_id** | **int** | ID of the domain to be used. Use the [domains endpoint](#tag/Domains/operation/getDomains) to get the list of available domains. | [optional] 

@@ -3,11 +3,6 @@
 
 name: OpenAPI Generator
 
-on:
-  workflow_dispatch:
-  repository_dispatch:
-    types: [API-DocumentationV3-Deployment]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,7 +17,7 @@ jobs:
         with:
           args: >-
             generate
-            -i https://developers.lilt.com/redocusaurus/plugin-redoc-0.yaml
+            -i https://github.com/lilt/mintlify-docs/blob/main/api-reference/openapi-bundled.yaml
             -g python
             -p packageName=lilt
             -p projectName=lilt-python
