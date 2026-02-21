@@ -20,7 +20,7 @@ on:
 jobs:
   build:
 
-    runs-on: gcp-runner
+    runs-on: gcp-runner-sm
 
     steps:
     - uses: actions/checkout@v4
