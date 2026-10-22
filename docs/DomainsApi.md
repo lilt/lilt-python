@@ -43,16 +43,11 @@ configuration = lilt.Configuration(
 # satisfies your auth use case.
 
 # Configure HTTP basic authorization: BasicAuth
+# Use your REST API key as both username and password.
 configuration = lilt.Configuration(
-    username = os.environ["USERNAME"],
-    password = os.environ["PASSWORD"]
+    username = os.environ["API_KEY"],
+    password = os.environ["API_KEY"]
 )
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with lilt.ApiClient(configuration) as api_client:
