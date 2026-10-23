@@ -1,6 +1,6 @@
 [project]
 name = "lilt"
-version = "v3.1.0"
+version = "v3.1.1"
 description = "LILT API"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},

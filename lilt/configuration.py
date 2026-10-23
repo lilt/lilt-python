@@ -540,13 +540,17 @@ conf = lilt.Configuration(
                 'value': self.get_basic_auth_token()
             }
         if 'ApiKeyAuth' in self.api_key:
+            # The REST API is retiring the key in the URL, so a key configured
+            # here is sent as HTTP Basic authentication (key as username and
+            # password). The prefix is not applied.
+            key = self.api_key['ApiKeyAuth']
             auth['ApiKeyAuth'] = {
                 'type': 'api_key',
-                'in': 'query',
-                'key': 'key',
-                'value': self.get_api_key_with_prefix(
-                    'ApiKeyAuth',
-                ),
+                'in': 'header',
+                'key': 'Authorization',
+                'value': urllib3.util.make_headers(
+                    basic_auth=key + ':' + key
+                ).get('authorization'),
             }
         return auth
 
@@ -559,7 +563,7 @@ conf = lilt.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: v3.0.3\n"\
-               "SDK Package Version: 3.1.0".\
+               "SDK Package Version: 3.1.1".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:
